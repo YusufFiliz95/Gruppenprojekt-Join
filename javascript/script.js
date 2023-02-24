@@ -1,3 +1,5 @@
+setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init() {
     await includeHTML();
