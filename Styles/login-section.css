@@ -58,17 +58,19 @@
 .log-in {
     margin-top: 60px;
     width: 600px;
-    border-radius: 10px;
+    border-radius: 30px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     background-color: rgb(255, 255, 255);
     -webkit-box-shadow: 0px 0px 12px 1px rgba(151, 151, 151, 0.64);
-    box-shadow: 0px 0px 12px 1px rgba(151, 151, 151, 0.64);
+    box-shadow: 0px 0px 12px 1px rgb(151 151 151 / 20%);
+
 }
 
 .log-in-title {
+    margin-top: 15px;
     font-size: 64px;
     font-weight: 700;
 }
@@ -82,7 +84,7 @@
     border-radius: 20px;
 }
 
-.input {
+.input-field {
     width: 70%;
     display: flex;
     justify-content: center;
@@ -90,19 +92,24 @@
     border: 1px solid rgb(209, 209, 209);
     height: 50px;
     border-radius: 10px;
+    transition: 100ms ease-in-out;
 }
 
-.input input:focus {
+input:focus {
     outline: none;
 }
 
-.input input {
+.input-field:focus-within {
+    border: 1px solid rgb(119, 119, 119);
+}
+
+.input-field input {
     height: 100%;
-    width: 90%;
+    width: 85%;
     border: 0;
 }
 
-.input input::placeholder {
+.input-field input::placeholder {
     width: 90%;
     border: 0;
     color: rgb(209, 209, 209);
@@ -110,6 +117,7 @@
 }
 
 .email {
+    margin-top: 10px;
     margin-bottom: 40px;
 }
 
@@ -121,7 +129,7 @@
 }
 
 .remember-me-option {
-    margin-right: 25px;
+    margin-right: 20px;
 }
 
 .checkbox {
@@ -129,20 +137,20 @@
 }
 
 .forgot-pw-option {
-    margin-left: 25px;
+    margin-left: 20px;
 }
 
 .forgot-pw-option a {
     text-decoration: none;
-    color: rgb(68,182,230);
+    color: rgb(68, 182, 230);
 }
 
 .log-in-buttons {
-    width: 60%;
+    width: 58%;
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
-    margin-bottom: 30px;
+    margin-bottom: 33px;
 }
 
 .log-in-buttons button {
@@ -163,7 +171,7 @@
 }
 
 .log-in-btn:hover {
-    background-color: rgb(68,182,230);
+    background-color: rgb(68, 182, 230);
     -webkit-box-shadow: 0px 10px 9px -3px #979797;
     box-shadow: 0px 5px 9px -3px #979797;
 }
@@ -171,7 +179,7 @@
 .guest-log-in-btn {
     background-color: rgba(255, 255, 255, 0);
     border: 2px solid rgb(42, 54, 71);
-    width: 180px;
+    width: 175px;
     transition: 100ms ease-in-out;
 }
 
@@ -182,9 +190,175 @@
     box-shadow: 0px 5px 9px -3px #979797;
 }
 
+.password-lock {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 18px;
+    height: 21px;
+    background-size: cover;
+    background-position: center;
+    transition: ease-in-out 125ms;
+}
+
+.hide-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/show-password.svg);
+    width: 19px;
+    height: 19px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.show-password {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(../img/hide-password.svg);
+    width: 19px;
+    height: 19px;
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+}
+
+.sign-up-bottom {
+    display: none;
+}
+
 /**********************************************************************/
 
-/*CHECKBOX*/
+/*RESPONSIVE*/
+@media (max-width: 624px) {
+    .log-in {
+        margin-left: 15px;
+        margin-right: 15px;
+    }
 
+    .log-in-buttons {
+        width: 70%;
+    }
+
+    .sign-up-header {
+        display: none;
+    }
+
+    .sign-up-bottom-section {
+        width: 100%;
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .sign-up-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 360px;
+        height: 35px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .sign-up-bottom span {
+        font-size: 25px;
+    }
+
+    .sign-up-bottom button {
+        border: 0;
+        width: 100px;
+        height: 50px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        background-color: rgb(42, 54, 71);
+        color: white;
+        transition: 100ms ease-in-out;
+    }
+
+    .sign-up-bottom button:hover {
+        background-color: rgb(41, 171, 226);
+        -webkit-box-shadow: 0px 10px 9px -3px #979797;
+        box-shadow: 0px 5px 9px -3px #979797;
+    }
+
+}
+
+@media (max-width: 515px) {
+    .options {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 90%;
+        margin-top: 20px;
+    }
+
+    .input-field {
+        width: 90%;
+    }
+
+    .log-in {
+        margin-top: 20px;
+    }
+
+    .forgot-pw-option {
+        margin-left: 0;
+        margin-bottom: 20px;
+        margin-top: 0;
+    }
+
+    .log-in-buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+    }
+
+    .log-in-buttons button {
+        width: 200px;
+    }
+
+    .log-in-btn {
+        margin-top: 30px;
+        margin-bottom: 15px;
+    }
+
+    .guest-log-in-btn {
+        margin-top: 15px;
+        margin-bottom: 40px;
+    }
+
+    .login-header {
+        padding-top: 0;
+        padding-left: 0;
+    }
+
+    .join-logo {
+        margin: 20px;
+        width: 80px;
+    }
+
+    .sign-up-bottom-section {
+        width: 100%;
+        margin-top: 30px;
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 350px) {
+    .sign-up-bottom {
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .sign-up-bottom span {
+        font-size: 1.2em;
+    }
+}
 
 /**********************************************************************/
