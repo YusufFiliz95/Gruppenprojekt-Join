@@ -1,8 +1,9 @@
 body {
+    font-family: 'Inter';
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
-    background-color: rgb(246,247,248) !important;
+    background-color: rgb(246, 247, 248) !important;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
