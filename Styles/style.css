@@ -1,5 +1,7 @@
 body {
     font-family: 'Inter';
+    background-color: #F6F7F8;
+    /* background gray all over  */
     padding: 0;
     margin: 0;
     scroll-behavior: smooth;
@@ -9,6 +11,11 @@ body {
     -moz-user-select: none;
     -ms-user-select: none;
 }
+
+h1 {
+    font-size: 61px;
+}
+
 
 .d-none {
     display: none;
@@ -45,3 +52,22 @@ body {
 
 
 /******************************/
+
+/* Maincontainer for board, summary, addtask ... */
+
+.main-container {
+    margin-left: 232px;
+    margin-top: 89px;
+    height: 100%;
+    width: calc(100%-232px);
+}
+
+/* headline container for board, summary, addtask ... */
+.headline-container {
+    padding-left: 70px;
+    padding-top: 82px;
+    padding-right: 65px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
