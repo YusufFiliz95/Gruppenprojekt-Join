@@ -1,0 +1,47 @@
+body {
+    font-family: 'Inter';
+    padding: 0;
+    margin: 0;
+    scroll-behavior: smooth;
+    background-color: rgb(246, 247, 248) !important;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.d-none {
+    display: none;
+}
+
+/*BUTTONS*/
+.dark-btn {
+    border: 0;
+    background-color: rgb(42, 54, 71);
+    color: white;
+    width: 140px;
+    transition: 100ms ease-in-out;
+}
+
+.dark-btn:hover {
+    background-color: rgb(68, 182, 230);
+    -webkit-box-shadow: 0px 10px 9px -3px #979797;
+    box-shadow: 0px 5px 9px -3px #979797;
+}
+
+.transparent-btn {
+    background-color: rgba(255, 255, 255, 0);
+    border: 2px solid rgb(42, 54, 71);
+    width: 175px;
+    transition: 100ms ease-in-out;
+}
+
+.transparent-btn:hover {
+    border: 2px solid rgb(41, 171, 226);
+    color: rgb(41, 171, 226);
+    -webkit-box-shadow: 0px 10px 9px -3px #979797;
+    box-shadow: 0px 5px 9px -3px #979797;
+}
+
+
+/******************************/

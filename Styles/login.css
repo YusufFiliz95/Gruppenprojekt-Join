@@ -162,34 +162,6 @@ input:focus {
     border-radius: 10px;
 }
 
-.log-in-btn {
-    border: 0;
-    background-color: rgb(42, 54, 71);
-    color: white;
-    width: 140px;
-    transition: 100ms ease-in-out;
-}
-
-.log-in-btn:hover {
-    background-color: rgb(68, 182, 230);
-    -webkit-box-shadow: 0px 10px 9px -3px #979797;
-    box-shadow: 0px 5px 9px -3px #979797;
-}
-
-.guest-log-in-btn {
-    background-color: rgba(255, 255, 255, 0);
-    border: 2px solid rgb(42, 54, 71);
-    width: 175px;
-    transition: 100ms ease-in-out;
-}
-
-.guest-log-in-btn:hover {
-    border: 2px solid rgb(41, 171, 226);
-    color: rgb(41, 171, 226);
-    -webkit-box-shadow: 0px 10px 9px -3px #979797;
-    box-shadow: 0px 5px 9px -3px #979797;
-}
-
 .password-lock {
     display: flex;
     justify-content: center;
@@ -322,12 +294,12 @@ input:focus {
         width: 200px;
     }
 
-    .log-in-btn {
+    .dark-btn {
         margin-top: 30px;
         margin-bottom: 15px;
     }
 
-    .guest-log-in-btn {
+    .transparent-btn {
         margin-top: 15px;
         margin-bottom: 40px;
     }
