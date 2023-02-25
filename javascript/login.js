@@ -29,4 +29,17 @@ function hidePassword() {
     `;
 }
 
-
+function singUpForm() {
+    document.getElementById('login').innerHTML = '';
+    document.getElementById('signupheader').innerHTML = '';
+    document.getElementById('login').innerHTML = /*html*/ `
+    <h1 class="sign-up-tilte">Sign up</h1>
+    <div class="log-in-border"></div>
+    <div class="input-field user">
+        <input type="text" placeholder="Name">
+        <img class="user" src="img/user.svg" alt="">
+    </div>
+    <input type="email">
+    <input type="password">
+    `;
+}

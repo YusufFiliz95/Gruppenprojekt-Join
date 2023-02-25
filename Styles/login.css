@@ -46,7 +46,6 @@
     -webkit-box-shadow: 0px 10px 9px -3px #979797;
     box-shadow: 0px 5px 9px -3px #979797;
 }
-
 /**********************************************************************/
 
 /*LOGIN MAIN*/
@@ -66,7 +65,6 @@
     background-color: rgb(255, 255, 255);
     -webkit-box-shadow: 0px 0px 12px 1px rgba(151, 151, 151, 0.64);
     box-shadow: 0px 0px 12px 1px rgb(151 151 151 / 20%);
-
 }
 
 .log-in-title {
@@ -332,5 +330,4 @@ input:focus {
         font-size: 1.2em;
     }
 }
-
 /**********************************************************************/
