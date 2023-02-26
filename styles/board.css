@@ -125,7 +125,7 @@
 .add-task-dialog-bord{
     position: absolute;
     right: -130%;
-    top: calc((100% - 90%)/2);;
+    top: calc((100% - 90%)/2);
     height: 90%;
     width: 85%;
     transition: all 350ms ease-out;
