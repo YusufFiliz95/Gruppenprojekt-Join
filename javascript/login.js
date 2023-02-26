@@ -32,14 +32,28 @@ function hidePassword() {
 function singUpForm() {
     document.getElementById('login').innerHTML = '';
     document.getElementById('signupheader').innerHTML = '';
+    document.getElementById('login').classList.add('sign-up-height');
     document.getElementById('login').innerHTML = /*html*/ `
-    <h1 class="sign-up-tilte">Sign up</h1>
-    <div class="log-in-border"></div>
-    <div class="input-field user">
-        <input type="text" placeholder="Name">
-        <img class="user" src="img/user.svg" alt="">
-    </div>
-    <input type="email">
-    <input type="password">
+        <h1 class="sign-up-title">Sign Up</h1>
+        <div class="log-in-border"></div>
+        <div class="input-field user user-margin-top">
+            <input type="text" placeholder="Name">
+            <img src="img/user.svg" alt="" class="user-img">
+        </div>
+        <div class="input-field user">
+            <input type="email" placeholder="Email">
+            <img src="img/email-logo.svg" alt="">
+        </div>
+        <div class="input-field user">
+            <input type="password" placeholder="Password" id="inputpassword" oninput="showLock()" required>
+            <div class="password-lock" id="passwordlock">
+                <img id="lock" src="img/lock-logo.svg" alt="">
+            </div>
+        </div>
+        <button class="dark-btn sign-up-btn">Sign up</button>
     `;
+}
+
+function goBackToLogIn(){
+    
 }
