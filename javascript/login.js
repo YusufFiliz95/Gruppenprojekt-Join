@@ -33,6 +33,7 @@ function singUpForm() {
     document.getElementById('login').innerHTML = '';
     document.getElementById('signupheader').innerHTML = '';
     document.getElementById('login').classList.add('sign-up-height');
+    document.getElementById('signupbottomsection').classList.add('d-none');
     document.getElementById('login').innerHTML = /*html*/ `
         <h1 class="sign-up-title">Sign Up</h1>
         <div class="log-in-border"></div>

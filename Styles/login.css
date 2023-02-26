@@ -109,6 +109,7 @@ input:focus {
 
 .input-field input {
     width: 85%;
+    height: 91%;
     border: 0;
     font-size: 20px;
 }
@@ -341,7 +342,7 @@ input:focus {
     }
 
     .input-field input {
-        height: 20px;
+        height: 91%;
     }
 
     .log-in {
