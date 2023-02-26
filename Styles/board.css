@@ -84,6 +84,7 @@
     background-color: none;
     border-radius: 10px;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .tasks-bord-btn:hover {
@@ -103,6 +104,7 @@
 
 .status-container-bord {
     width: 250px;
+    cursor: pointer;
 
 }
 
@@ -118,8 +120,19 @@
     margin-bottom: 35px;
     display: flex;
     height: 203px;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
-    border-radius: 30px;
+}
 
+.add-task-dialog-bord{
+    position: relative;
+    right: 0;
+    height: 90%;
+    width: 85%;
+
+}
+
+.x-btn-div{
+    margin-top: 35px;
+    margin-right: 35px;
+    display: flex;
+    justify-content: flex-end;
 }

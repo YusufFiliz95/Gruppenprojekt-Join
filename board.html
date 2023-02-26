@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join</title>
     <script src="javascript/script.js"></script>
-    <script src="javascript/login-section.js"></script>
+    <script src="javascript/board.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/board.css">
@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body id="bodyBordId">
 
     <!-- include W3 - Menu/Header -->
 
@@ -30,7 +30,7 @@
                     <input type="text" placeholder="Find Task">
                     <img src="img/search-logo.svg" alt="">
                 </div>
-                <button class="dark-btn add-task-buttons">Add task
+                <button onclick="openAddTaskDialogBorder()" class="dark-btn add-task-buttons">Add task
                     <div class="plus-icon">
                         <img src="img/plus.svg" alt="">
 
@@ -49,12 +49,12 @@
                     </button>
                 </div>
                 <div><!-- here  renderings from status = todos -->
-                    <div class="task-container-bord">
+                    <div class="task-container-bord dialog-design">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, assumenda! Voluptates iure sit
                         porro
                         blanditiis, cumque quod quis ut voluptatum nisi dicta voluptatem aspernatur in.
                     </div>
-                    <div class="task-container-bord">
+                    <div class="task-container-bord dialog-design">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, assumenda! Voluptates iure sit
                         porro
                         blanditiis, cumque quod quis ut voluptatum nisi dicta voluptatem aspernatur in.
@@ -80,7 +80,7 @@
                     </button>
                 </div>
                 <div><!-- here  renderings from status = awaitingfeedback -->
-                    <div class="task-container-bord">
+                    <div class="task-container-bord dialog-design">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, assumenda! Voluptates iure sit
                         porro
                         blanditiis, cumque quod quis ut voluptatum nisi dicta voluptatem aspernatur in.
@@ -95,7 +95,7 @@
                     </button>
                 </div>
                 <div><!-- here  renderings from status = done -->
-                    <div class="task-container-bord">
+                    <div class="task-container-bord dialog-design">
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, assumenda! Voluptates iure sit
                         porro
                         blanditiis, cumque quod quis ut voluptatum nisi dicta voluptatem aspernatur in.
@@ -107,6 +107,17 @@
 
     </div>
 
+    <!-- overlay -->
+    <div id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
+        <div class="add-task-dialog-bord dialog-design">
+            <div class="x-btn-div">
+                <img onclick="closeAddTaskDialogBorder()" class="x-btn" src="img/black-x.svg" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    </div>
 
 
 </body>

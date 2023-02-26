@@ -24,7 +24,7 @@ h2 {
 }
 
 .d-none {
-    display: none;
+    display: none !important;
 }
 
 /*BUTTONS*/
@@ -34,6 +34,7 @@ h2 {
     color: white;
     width: 140px;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .dark-btn:hover {
@@ -47,6 +48,7 @@ h2 {
     border: 2px solid rgb(42, 54, 71);
     width: 175px;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .transparent-btn:hover {
@@ -75,4 +77,40 @@ h2 {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+/* overlay by open dialogs */
+
+.overlay-dialog-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    z-index: 1;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* use it if you have a dialog-window */
+.dialog-design {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+}
+
+/* close button x */
+.x-btn {
+    height: 25px;
+    cursor: pointer;
+}
+
+.x-btn:hover {
+    filter: invert(59%) sepia(97%) saturate(1585%) hue-rotate(165deg) brightness(93%) contrast(90%);
+}
+
+/* remove the scroll bar by open a dialog window - best set it to a bodyId */
+.overflow-dialog {
+    overflow: hidden;
 }
