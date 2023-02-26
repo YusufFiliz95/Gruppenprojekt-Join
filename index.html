@@ -17,13 +17,15 @@
 
 <!--<div w3-include-html="includes/header.html"></div>-->
 <!--TODO: 
-    - Die Placeholder vertikal machen
+    - Die Icons hinzufügen
+    - Back Button hinzufügen
+    - Img Namen ändern
 -->
 
 <body onload="init()">
     <div class="login-section">
         <div class="login-header">
-            <img src="img/join-logo.svg" alt="" class="join-logo">
+            <img src="img/join_logo.svg" alt="" class="join-logo">
             <div class="sign-up-header" id="signupheader">
                 <span>Not a Join user?</span>
                 <button onclick="singUpForm()">Sign up</button>
@@ -35,12 +37,12 @@
                 <div class="log-in-border"></div>
                 <div class="input-field email">
                     <input type="email" placeholder="Email">
-                    <img src="img/email-logo.svg" alt="">
+                    <img src="img/email_logo.svg" alt="">
                 </div>
                 <div class="input-field">
                     <input type="password" placeholder="Password" id="inputpassword" oninput="showLock()" required>
                     <div class="password-lock" id="passwordlock">
-                        <img id="lock" src="img/lock-logo.svg" alt="">
+                        <img id="lock" src="img/lock_logo.svg" alt="">
                     </div>
                 </div>
                 <div class="options">

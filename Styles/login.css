@@ -74,7 +74,7 @@
 }
 
 .sign-up-title {
-    margin-top: 31px;
+    margin-top: -30px;
     font-size: 50px;
     font-weight: 700;
 }
@@ -187,9 +187,9 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/show-password.svg);
+    background-image: url(../img/show_password.svg);
     width: 19px;
-    height: 19px;
+    height: 15px;
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -199,9 +199,9 @@ input:focus {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url(../img/hide-password.svg);
+    background-image: url(../img/hide_password.svg);
     width: 19px;
-    height: 19px;
+    height: 15px;
     background-size: cover;
     background-position: center;
     cursor: pointer;
@@ -239,7 +239,15 @@ input:focus {
         margin-bottom: 30px;
     }
     
+    .back-btn {
+        width: 100%;
+    }
 
+    .back-btn img {
+        margin-top: 35px;
+        margin-left: 35px;
+        cursor: pointer;
+    }
 /**********************************************************************/
 
 /**********************************************************************/
@@ -332,7 +340,7 @@ input:focus {
     }
 
     .email {
-        margin-top: 10px;
+        margin-top: 30px;
         margin-bottom: 20px;
     }
 
@@ -347,7 +355,7 @@ input:focus {
 
     .log-in {
         margin-top: 20px;
-        height: 550px;
+        height: 520px;
         margin-left: 25px;
         margin-right: 25px;
     }
@@ -413,12 +421,30 @@ input:focus {
     .sign-up-btn {
         margin-top: 0px;
     }
+
+    .back-btn img {
+        margin-top: 25px;
+        margin-left: 25px;
+        cursor: pointer;
+    }
+
+    .sign-up-title {
+        margin-top: -30px;
+        font-size: 40px;
+        font-weight: 700;
+    }
 }
 
 @media (max-width: 350px) {
     .sign-up-bottom {
         display: flex;
         justify-content: space-around;
+    }
+
+    .back-btn img {
+        margin-top: 15px;
+        margin-left: 15px;
+        cursor: pointer;
     }
 }
 /**********************************************************************/
