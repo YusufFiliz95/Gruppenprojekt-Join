@@ -32,6 +32,7 @@
     border: 0;
     border-right: 1px solid #d2d2d2;
     background-color: transparent;
+    outline: none;
 }
 
 .input-field-search-on-board img {
@@ -64,5 +65,61 @@
 }
 
 .plus-icon img {
-    position: absolute;
+    filter: invert(100%);
+}
+
+.tasks-maincontainer-bord {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 70px;
+    padding-right: 65px;
+    margin-top: 100px;
+}
+
+.tasks-bord-btn {
+    height: 28px;
+    display: flex;
+    align-items: center;
+    padding: 0px;
+    background-color: none;
+    border-radius: 10px;
+    transition: 100ms ease-in-out;
+}
+
+.tasks-bord-btn:hover {
+    border: 2px solid rgb(41, 171, 226);
+    -webkit-box-shadow: 0px 10px 9px -3px #979797;
+    box-shadow: 0px 5px 9px -3px #979797;
+}
+
+.tasks-bord-btn:hover .tasks-bord-plus {
+    filter: invert(59%) sepia(97%) saturate(1585%) hue-rotate(165deg) brightness(93%) contrast(90%);
+}
+
+.tasks-bord-plus {
+    height: 18px;
+    padding: 3px;
+}
+
+.status-container-bord {
+    width: 250px;
+
+}
+
+.to-do-headline-bord {
+    margin-bottom: 38px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-container-bord {
+    padding: 18px;
+    margin-bottom: 35px;
+    display: flex;
+    height: 203px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+
 }
