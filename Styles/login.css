@@ -12,21 +12,21 @@
 }
 
 .join-logo {
-    width: 150px;
+    width: 110px;
     padding-left: 20px;
 }
 
 .sign-up-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    width: 360px;
+    width: 315px;
     height: 35px;
     padding-right: 50px;
 }
 
 .sign-up-header span {
-    font-size: 25px;
+    font-size: 20px;
 }
 
 .sign-up-header button {
@@ -34,7 +34,7 @@
     width: 100px;
     height: 50px;
     border-radius: 10px;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 600;
     background-color: rgb(42, 54, 71);
     color: white;
@@ -57,6 +57,7 @@
 .log-in {
     margin-top: 60px;
     width: 600px;
+    height: 480px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -68,18 +69,24 @@
 }
 
 .log-in-title {
-    margin-top: 15px;
-    font-size: 64px;
+    margin-top: 25px;
+    font-size: 55px;
+    font-weight: 700;
+}
+
+.sign-in-title {
+    margin-top: 25px;
+    font-size: 50px;
     font-weight: 700;
 }
 
 .log-in-border {
     background-color: rgb(41, 171, 226);
-    margin-top: 10px;
+    margin-top: 15px;
     margin-bottom: 20px;
     height: 3px;
-    width: 170px;
-    border-radius: 20px;
+    width: 130px;
+    border-radius: 16px;
 }
 
 .input-field {
@@ -102,9 +109,9 @@ input:focus {
 }
 
 .input-field input {
-    height: 100%;
     width: 85%;
     border: 0;
+    font-size: 20px;
 }
 
 .input-field input::placeholder {
@@ -123,10 +130,11 @@ input:focus {
     margin-top: 50px;
     display: flex;
     justify-content: center;
-    font-size: 18px;
 }
 
 .remember-me-option {
+    display: flex;
+    align-items: center;
     margin-right: 20px;
 }
 
@@ -144,7 +152,7 @@ input:focus {
 }
 
 .log-in-buttons {
-    width: 58%;
+    width: 54%;
     display: flex;
     justify-content: space-between;
     margin-top: 30px;
@@ -158,6 +166,10 @@ input:focus {
     height: 50px;
     font-weight: 600;
     border-radius: 10px;
+}
+
+.log-in-btn {
+    width: 130px;
 }
 
 .password-lock {
@@ -227,7 +239,7 @@ input:focus {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        width: 360px;
+        width: 310px;
         height: 35px;
         padding-left: 20px;
         padding-right: 20px;
@@ -258,6 +270,22 @@ input:focus {
 }
 
 @media (max-width: 515px) {
+    .sign-up-bottom {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 270px;
+        height: 35px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .log-in-title {
+        margin-top: 33px;
+        font-size: 50px;
+    }
+
     .options {
         display: flex;
         flex-direction: column-reverse;
@@ -265,12 +293,32 @@ input:focus {
         margin-top: 20px;
     }
 
+    .log-in-border {
+        width: 100px;
+        height: 3px;
+        margin-top: 10px;
+        margin-bottom: 1px;
+    }
+
+    .email {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
     .input-field {
         width: 90%;
+        height: 40px;
+    }
+
+    .input-field input {
+        height: 20px;
     }
 
     .log-in {
         margin-top: 20px;
+        height: 550px;
+        margin-left: 25px;
+        margin-right: 25px;
     }
 
     .forgot-pw-option {
@@ -318,16 +366,17 @@ input:focus {
         display: flex;
         justify-content: center;
     }
+
+    .sign-up-bottom span {
+        font-size: 20px;
+    }
+
 }
 
 @media (max-width: 350px) {
     .sign-up-bottom {
         display: flex;
         justify-content: space-around;
-    }
-
-    .sign-up-bottom span {
-        font-size: 1.2em;
     }
 }
 /**********************************************************************/
