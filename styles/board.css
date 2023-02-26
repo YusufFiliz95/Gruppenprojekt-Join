@@ -123,12 +123,15 @@
 }
 
 .add-task-dialog-bord{
-    position: relative;
-    right: -100%;
+    position: absolute;
+    right: -130%;
+    top: calc((100% - 90%)/2);;
     height: 90%;
     width: 85%;
-    transition: all 225ms ease-in-out;
+    transition: all 350ms ease-out;
+    z-index: 2;
 }
+
 
 .x-btn-div{
     margin-top: 35px;

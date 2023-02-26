@@ -1,6 +1,7 @@
 body {
     font-family: 'Inter';
     background-color: #F6F7F8;
+    overflow-x: hidden;
     /* background gray all over  */
     padding: 0;
     margin: 0;
@@ -98,7 +99,7 @@ h2 {
     z-index: 1;
     height: 100%;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* use it if you have a dialog-window */
