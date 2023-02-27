@@ -10,7 +10,7 @@ function openAddTaskDialogBorder() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
     document.getElementById('add-task-bordId').style.top = `calc(5% + ${scrollY}px`;
-    document.getElementById('add-task-bordId').style.right = `calc((100% - 85%)/2)`;  /* Dialog return to the right outside */
+    document.getElementById('add-task-bordId').style.right = `calc((100% - 85%)/2)`;  /* Dialog go into the middle of the page */
 
 }
 

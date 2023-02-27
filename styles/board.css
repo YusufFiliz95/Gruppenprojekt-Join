@@ -105,7 +105,6 @@
 .status-container-bord {
     width: 250px;
     cursor: pointer;
-
 }
 
 .to-do-headline-bord {
@@ -115,14 +114,105 @@
     align-items: center;
 }
 
-.task-container-bord {
+.task-card-bord {
+    display: flex;
+    flex-direction: column;
     padding: 18px;
     margin-bottom: 35px;
     display: flex;
-    height: 203px;
+
 }
 
-.add-task-dialog-bord{
+.task-card-bord:hover{
+    -webkit-box-shadow: 0px 10px 9px -3px #979797;
+    box-shadow: 0px 5px 9px -3px #979797;
+}
+
+.task-card-category {
+    margin-bottom: 20px;
+    width: 53px;
+    padding: 4px;
+    padding-left: 25px;
+    padding-right: 25px;
+    background-color: orange;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.task-card-title {
+    white-space: nowrap;
+    margin-bottom: 10px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.task-card-description {
+    margin-bottom: 23px;
+    color: #A8A8A8;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.task-card-progressbar-container {
+    margin-bottom: 23px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+}
+
+.task-card-progressbar {
+    width: 138px;
+    height: 8px;
+    background: #F4F4F4;
+    border-radius: 2px;
+}
+
+.task-card-bar {
+    background-color: #29ABE2;
+    height: 8px;
+    width: 50%;
+    border-radius: 2px;
+}
+
+.task-card-assigned{
+    padding-left: 6px;
+    display: flex;
+}
+
+.task-card-contact-icon{
+    margin-left: -6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    background-color: rgb(84, 84, 246);
+    color: white;
+    border-radius: 17.5px;
+    border: 1px solid white;
+}
+
+.task-card-prio{
+    height: 17px;
+    width: 17px;
+}
+
+.task-card-ass-prio-container{
+    padding-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-task-dialog-bord {
     position: absolute;
     right: -130%;
     top: calc((100% - 90%)/2);
@@ -132,8 +222,7 @@
     z-index: 2;
 }
 
-
-.x-btn-div{
+.x-btn-div {
     margin-top: 35px;
     margin-right: 35px;
     display: flex;
