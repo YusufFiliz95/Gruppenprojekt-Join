@@ -39,6 +39,7 @@
     background-color: rgb(42, 54, 71);
     color: white;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .sign-up-header button:hover {
@@ -229,6 +230,7 @@ input:focus {
     background-color: rgb(42, 54, 71);
     color: white;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 }
 
 .user-img {
@@ -299,7 +301,7 @@ input:focus {
     }
 
     99% {
-        opacity: 0.1;
+        opacity: 0.01;
         z-index: 0;
     }
 
@@ -309,19 +311,44 @@ input:focus {
     }
 }
 
-
-
-
-
-
-
 /**********************************************************************/
 
 /*RESPONSIVE*/
 @media (max-width: 624px) {
+
+    @keyframes fromCenterToCurrentPosition {
+        from {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 300px;
+        }
+    
+        to {
+            transform: translateX(0);
+            top: 0;
+            left: 0;
+            width: 80px;
+        }
+    }
+
+    .join-logo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: auto;
+        animation: fromCenterToCurrentPosition 0.8s 0.2s forwards;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+
     .log-in {
         margin-left: 15px;
         margin-right: 15px;
+        margin-top: 7em;
     }
 
     .log-in-buttons {
@@ -363,6 +390,7 @@ input:focus {
         background-color: rgb(42, 54, 71);
         color: white;
         transition: 100ms ease-in-out;
+        cursor: pointer;
     }
 
     .sign-up-bottom button:hover {
@@ -370,10 +398,39 @@ input:focus {
         -webkit-box-shadow: 0px 10px 9px -3px #979797;
         box-shadow: 0px 5px 9px -3px #979797;
     }
-
 }
 
 @media (max-width: 515px) {
+
+    @keyframes fromCenterToCurrentPosition {
+        from {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 300px;
+        }
+    
+        to {
+            transform: translateX(0);
+            top: 0;
+            left: 0;
+            width: 80px;
+        }
+    }
+
+    .join-logo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 300px;
+        height: auto;
+        animation: fromCenterToCurrentPosition 0.8s 0.2s forwards;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+
     .sign-up-bottom {
         display: flex;
         justify-content: space-between;
@@ -419,7 +476,7 @@ input:focus {
     }
 
     .log-in {
-        margin-top: 20px;
+        margin-top: 10em;
         height: 520px;
         margin-left: 25px;
         margin-right: 25px;
@@ -459,11 +516,6 @@ input:focus {
         padding-left: 0;
     }
 
-    .join-logo {
-        margin: 20px;
-        width: 80px;
-    }
-
     .sign-up-bottom-section {
         width: 100%;
         margin-top: 30px;
@@ -500,10 +552,40 @@ input:focus {
     }
 }
 
-@media (max-width: 350px) {
+@media (max-width: 390px) {
+
+    @keyframes fromCenterToCurrentPosition {
+        from {
+            position: absolute;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            width: 100px;
+        }
+    
+        to {
+            transform: translateX(0);
+            top: 0;
+            left: 0;
+            width: 50px;
+        }
+    }
+
+    .join-logo {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100px;
+        height: auto;
+        animation: fromCenterToCurrentPosition 0.8s 0.2s forwards;
+        padding-left: 30px;
+        padding-top: 30px;
+    }
+
     .sign-up-bottom {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
     }
 
     .back-btn img {
@@ -511,6 +593,21 @@ input:focus {
         margin-left: 15px;
         cursor: pointer;
     }
+
+    .log-in {
+        margin-top: 8em;
+    }
+
+    .white-background {
+        width: 100%;
+        height: 100vh;
+        background-color: rgb(78, 146, 235);
+        position: fixed;
+        top: 0;
+        animation: hideBackground 1.5s 0.2s forwards;
+    }
+    
+
 }
 
 /**********************************************************************/
