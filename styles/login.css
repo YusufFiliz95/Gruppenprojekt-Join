@@ -583,6 +583,12 @@ input:focus {
         padding-top: 30px;
     }
 
+    .sign-up-title {
+        margin-top: -8px;
+        font-size: 40px;
+        font-weight: 700;
+    }
+
     .sign-up-bottom {
         display: flex;
         justify-content: space-between;
