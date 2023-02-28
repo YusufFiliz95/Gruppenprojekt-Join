@@ -11,40 +11,73 @@
 </head>
 
 <body>
-    <div>
-        <form class="form" action="">
-            <h1>Add Task</h1>
-            <div>
-                <span>Title</span>
-                <input type="text">
+    <!-- include W3 - Menu/Header -->
+
+    <div class="provisional-menu">provisional </div>
+    <div class="provisional-headline"></div>
+
+    <div class="container">
+        <h1 class="task-headline">Add Task</h1>
+        <div class="task-container">
+            <div class="task-left">
+                <div class="input-container">
+                    <span>Title</span>
+                    <div class="input-field">
+                        <input type="text">
+                    </div>
+                    <p class="required d-none ">This field is required</p>
+                </div>
+                <div class="input-container">
+                    <span>Description</span><br>
+                    <textarea class="textarea-field" name="" id="" cols="30" rows="3"></textarea>
+                </div>
+                <div class="input-container">
+                    <span>Category</span>
+                    <div class="input-field">
+                        <input type="text">
+                        <img src="" alt="">
+                    </div>
+
+                </div>
+                <div class="input-container">
+                    <span>Assigned to</span>
+                    <div class="input-field">
+                        <input type="text">
+                        <img src="" alt="">
+                    </div>
+                </div>
             </div>
-            <div>
-                <span>Description</span>
-                <textarea name="" id="" cols="30" rows="3"></textarea>
-            </div>
-            <div class="prio">
-                <span>Prio</span>
-                <button>Urgent <img src="" alt=""></button>
-                <button>Medium<img src="" alt=""></button>
-                <button>low<img src="" alt=""></button>
-            </div>
-            <div>
-                <span>due date</span>
+            <div class="task-right">
+                <div class="input-container">
+                    <span>due date</span>
+                    <div class="add-task-date input-field">
+                        <input type="text">
+                        <img src="./img/calender.svg">
+                    </div>
+                </div>
+                <div class="input-container">
+                    <span>Prio</span>
+                    <div class="prio-button">
+                        <button>Urgent <img src="./img/prio_urgent.svg" alt=""></button>
+                        <button>Medium<img src="./img/prio_medium.svg" alt=""></button>
+                        <button>low<img src="./img/prio_low.svg" alt=""></button>
+                    </div>
+                </div>
                 <div>
-                    <input type="text">
-                    <img src="" alt="">
+                    <span>Subtasks</span>
+                    <div>
+                        <input type="text">
+                        <img src="" alt="">
+                    </div>
+
                 </div>
 
-
             </div>
 
-        </form>
-
+        </div>
 
 
     </div>
-
-
 
 </body>
 
