@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
+    <link rel="icon" type="img/png" href="img/join_logo.svg">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/add_task.css">
 </head>
@@ -21,18 +22,18 @@
         <div class="task-container">
             <div class="task-left">
                 <div class="input-container">
-                    <span>Title</span>
+                    <label>Title</label>
                     <div class="input-field">
                         <input type="text">
                     </div>
                     <p class="required d-none ">This field is required</p>
                 </div>
                 <div class="input-container">
-                    <span>Description</span><br>
+                    <label>Description</label>
                     <textarea class="textarea-field" name="" id="" cols="30" rows="3"></textarea>
                 </div>
                 <div class="input-container">
-                    <span>Category</span>
+                    <label>Category</label>
                     <div class="input-field">
                         <input type="text">
                         <img src="" alt="">
@@ -40,7 +41,7 @@
 
                 </div>
                 <div class="input-container">
-                    <span>Assigned to</span>
+                    <label>Assigned to</label>
                     <div class="input-field">
                         <input type="text">
                         <img src="" alt="">
@@ -49,34 +50,34 @@
             </div>
             <div class="task-right">
                 <div class="input-container">
-                    <span>due date</span>
+                    <label>Due date</label>
                     <div class="add-task-date input-field">
                         <input type="text">
                         <img src="./img/calender.svg">
                     </div>
                 </div>
                 <div class="input-container">
-                    <span>Prio</span>
-                    <div class="prio-button">
-                        <button>Urgent <img src="./img/prio_urgent.svg" alt=""></button>
-                        <button>Medium<img src="./img/prio_medium.svg" alt=""></button>
-                        <button>low<img src="./img/prio_low.svg" alt=""></button>
+                    <label>Prio</label>
+                    <div class="prio-btn">
+                        <button><span>Urgent</span> <img class="prio-img" src="./img/prio_urgent.svg"></button>
+                        <button><span>Medium</span><img class="prio-img" src="./img/prio_medium.svg"></button>
+                        <button><span>low</span><img class="prio-img" src="./img/prio_low.svg"></button>
                     </div>
                 </div>
-                <div>
-                    <span>Subtasks</span>
-                    <div>
+                <div class="input-container">
+                    <label>Subtasks</label>
+                    <div class="input-field">
                         <input type="text">
                         <img src="" alt="">
                     </div>
 
                 </div>
-
             </div>
-
         </div>
-
-
+        <div class="add-task-buttons">
+            <button class="transparent-btn clear-btn"><span>clear x</span></button>
+            <button class="dark-btn create-btn"><span>Create Task</span><img src="./img/tick_white.svg" alt=""></button>
+        </div>
     </div>
 
 </body>
