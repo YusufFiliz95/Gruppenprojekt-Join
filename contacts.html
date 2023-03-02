@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="javascript/script.js"></script>
+    <script src="javascript/contacts.js"></script>
+    <link rel="stylesheet" href="styles/contacts.css">
+</head>
+
+<body onload="contactInit(); includeHTML();">
+
+    <!---
+    <div id="logOutBackground" class="logOutBackground d-none" onclick="hideLogOutButton()"></div>
+ -->
+    <div class="content">
+        <div class="rightContent">
+            <div id="headerContent"></div>
+            <div class="new-contact-mobile-box">
+                <div onclick="showContactBox()" class="new-contact-mobile d-none">
+                    <!--- <p class="new-contact-btn">New Contact</p>-->
+                    <img src="img/Secondary contact V1.svg">
+                </div>
+            </div>
+
+            <div class="mainContent">
+
+                <div id="contactList" class="contactList">
+
+                    <img src="img/contactlist.svg">
+                </div>
+
+                <div class="rightSection" id="rightSection">
+                    <div class="rightArea">
+                        <div class="showContactHeader">
+                            <p class="mobileHeader">Kanban Project Management Tool</p>
+                            <h1 class="showContactHeaderH1">Contacts</h1>
+                            <img onclick="closeMobileContactInfo()" class="closeArrow d-none" src="img/black-x.svg">
+                            <div class="line"></div>
+                            <p>Better with a team</p>
+                        </div>
+
+                        <div id="bigContactSection"></div>
+                    </div>
+
+
+                    <div onclick="showContactBox()" class="new-contact">
+                        <!--- <p class="new-contact-btn">New Contact</p>-->
+                        <img src="img/Secondary contact V1.svg">
+                    </div>
+                </div>
+
+                <div id="editContactBoxBckgr" style="display: none;" class="newContactBoxBckgr"></div>
+
+                <div id="newContactBoxBckgr" style="display: none;" class="newContactBoxBckgr">
+                    <div id="newContactBox" class="newContactBox">
+                        <img onclick="closeContactBox()" class="closeImg" src="img/black-x.svg">
+                        <img onclick="closeContactBox()" class="closeImgMobile d-none" src="img/black-x.svg">
+                        <div class="leftContent">
+                            <img src="img/Capa2 (1).png">
+                            <h1>Add Contact</h1>
+                            <p>Tasks are better with a team</p>
+                            <div class="newContactBoxLine"></div>
+                        </div>
+
+                        <div class="contactRightContent">
+                            <div class="contactRightContentImg">
+                                <img src="img/frame.svg">
+                            </div>
+                            <form onsubmit="addContact(); return false;" class="inputFieldSection">
+                                <div class="inputField">
+                                    <input required id="input1" type="name" placeholder="Name">
+                                </div>
+                                <div class="inputField">
+                                    <input required id="input2" type="email" placeholder="Email">
+                                </div>
+                                <div class="inputField">
+                                    <input required id="input3" type="phone" placeholder="Phone">
+                                </div>
+
+
+                                <div class="buttons">
+                                    <div class="log-in-guest" onclick="closeContactBox()">
+                                        <p>Cancel</p>
+                                    </div>
+                                    <button class="log-in-btn">
+                                        <p class="buttonImg">Create Contact</p>
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="contactCreated" style="display: none;" class="conctactCreatedDiv">
+                    <div class="contactCreated">
+                        <p>Contact succesfully created</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</body>
+
+</html>
