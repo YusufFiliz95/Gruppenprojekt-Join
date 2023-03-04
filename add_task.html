@@ -9,9 +9,10 @@
     <link rel="icon" type="img/png" href="img/join_logo.svg">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/add_task.css">
+    <script src="./javascript/add_tasks.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <!-- include W3 - Menu/Header -->
 
     <div class="provisional-menu">provisional </div>
@@ -24,13 +25,13 @@
                 <div class="input-container">
                     <label>Title</label>
                     <div class="input-field">
-                        <input type="text" placeholder="Enter a title">
+                        <input id="title" type="text" placeholder="Enter a title">
                     </div>
                     <p class="required d-none ">This field is required</p>
                 </div>
                 <div class="input-container">
                     <label>Description</label>
-                    <textarea class="textarea-field" name="" id="" cols="30" rows="3"
+                    <textarea class="textarea-field" name="" id="description" cols="30" rows="3"
                         placeholder="Enter a description"></textarea>
                 </div>
                 <div class="input-container">
@@ -53,7 +54,10 @@
                 <div class="input-container">
                     <label>Due date</label>
                     <div class="add-task-date input-field">
-                        <input type="text">
+
+                        <input type="text" placeholder="dd/mm/yyyy" id="datepicker" pattern="\d{1,2}\/\d{1,2}\/\d{4}"
+                            style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;"
+                            class="hasDatepicker">
                         <img src="./img/calender.svg">
                     </div>
                 </div>
