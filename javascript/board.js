@@ -2,20 +2,36 @@
 window.onscroll = function () {
     let scrollY = window.scrollY;
     document.getElementById('add-task-bordId').style.top = `calc(5% + ${scrollY}px`;
+    document.getElementById('taskoverview-bordId').style.top = `calc(5% + ${scrollY}px`;
 }
 
 
-function openAddTaskDialogBorder() {
+function openAddTaskDialogBord() {
 
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
-    document.getElementById('bodyBordId').classList.add('overflow-dialog');
     document.getElementById('add-task-bordId').style.top = `calc(5% + ${scrollY}px`;
     document.getElementById('add-task-bordId').style.right = `calc((100% - 85%)/2)`;  /* Dialog go into the middle of the page */
+    document.getElementById('bodyBordId').classList.add('overflow-dialog');
 
 }
 
-function closeAddTaskDialogBorder() {
+function closeAddTaskDialogBord() {
     document.getElementById('add-task-bordId').style.right = '-130%';  /* Dialog return to the right outside */
     document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
+}
+
+function openTaskOverviewOnBord() {
+
+    document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
+    document.getElementById('taskoverview-bordId').style.top = `calc(5% + ${scrollY}px`;
+    document.getElementById('taskoverview-bordId').style.right = `calc((100% - 623px)/2)`;  /* Dialog go into the middle of the page */
+
+}
+
+function closeTaskOverviewOnBoard() {
+    document.getElementById('taskoverview-bordId').style.right = '-130%';  /* Dialog return to the right outside */
+    document.getElementById('overlay-bord-taskoverviewId').classList.add('d-none');
+
+
 }
