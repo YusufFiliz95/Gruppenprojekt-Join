@@ -129,8 +129,8 @@
 }
 
 .task-card-category {
+    width: max-content;
     margin-bottom: 20px;
-    width: 53px;
     padding: 4px;
     padding-left: 25px;
     padding-right: 25px;
@@ -148,6 +148,7 @@
     text-overflow: ellipsis;
     font-size: 16px;
     font-weight: 700;
+    color: #2A3647;
 }
 
 .task-card-description {
@@ -249,4 +250,113 @@
     padding-left: 50px;
     padding-right: 50px;
     padding-bottom: 50px;
+}
+
+.taskoverview-category {
+    margin-bottom: 25px;
+    width: max-content;
+    padding: 4px;
+    padding-left: 36.5px;
+    padding-right: 36.5px;
+    background-color: orange;
+    border-radius: 8px;
+    color: white;
+    font-size: 27px;
+    font-weight: 400;
+}
+
+.taskoverview-title {
+    margin-bottom: 25px;
+    font-size: 61px;
+    font-weight: 700;
+    color: #2A3647;
+}
+
+.taskoverview-description {
+    margin-bottom: 23px;
+    color: black;
+}
+
+.taskoverview-subtask {
+    margin-bottom: 25px;
+    padding-right: 25px;
+    display: flex;
+    flex-direction: column;
+    max-height: 60px;
+    max-width: max-content;
+    overflow-y: auto;
+}
+
+.taskoverview-duedate {
+    display: flex;
+    align-items: center;
+    margin-bottom: 29px;
+}
+
+.taskoverview-span-left {
+    margin-right: 25px;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.taskoverview-span-right {
+    font-size: 21px;
+    font-weight: 400;
+    padding-right: 25px;
+}
+
+.taskoverview-span-over {
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.taskoverview-prio {
+    display: flex;
+    align-items: center;
+    margin-bottom: 29px;
+}
+
+.taskoverview-contacts {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    max-height: 269px;
+    max-width: max-content;
+    overflow-y: auto;
+}
+
+.taskoverview-contact {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.taskoverview-contact-icon {
+    margin-right: 36.5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background-color: rgb(84, 84, 246);
+    color: white;
+    border-radius: 22.5px;
+    border: 1px solid white;
+}
+
+.taskoverview-editbutton-container {
+    position: absolute;
+    width: max-content;
+    bottom: 35px;
+    right: 35px;
+}
+
+.edit-button {
+    width: max-content;
+    height: max-content;
+}
+
+.edit-button img {
+    padding: 13px;
+    padding-bottom: 11px;
 }

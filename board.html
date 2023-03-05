@@ -36,10 +36,7 @@
                 <button onclick="openAddTaskDialogBord()" class="dark-btn add-task-buttons">Add task
                     <div class="plus-icon">
                         <img src="img/plus.svg" alt="">
-
                     </div>
-
-
                 </button>
             </div>
         </div>
@@ -142,12 +139,72 @@
         <div class="x-btn-div">
             <img onclick="closeTaskOverviewOnBoard()" class="x-btn" src="img/black-x.svg" alt="">
         </div>
+        <!-- by click on a Task it open a overview window -->
         <div class="task-overview-container">
-            <span class="task-card-category">Design</span>
-            <span class="task-card-title">Website design</span>
-            <span class="task-card-description">Was weiß ich immer machen und so tun als würde man sich
+            <span class="taskoverview-category">Design</span>
+            <span class="taskoverview-title">Website design</span>
+            <span class="taskoverview-description">Was weiß ich immer machen und so tun als würde man sich
                 auskennen</span>
+            <div class="taskoverview-subtask">
+                <div>
+                    <input type="checkbox" id="" name="" value="">
+                    <span>Aufgabe 1</span>
+                </div>
+                <div>
+                    <input type="checkbox" id="" name="" value="">
+                    <span>Aufgabe 2</span>
+                </div>
+                <div>
+                    <input type="checkbox" id="" name="" value="">
+                    <span>Aufgabe 3</span>
+                </div>
+                <div>
+                    <input type="checkbox" id="" name="" value="">
+                    <span>Aufgabe 4</span>
+                </div>
+            </div>
+            <div class="taskoverview-duedate">
+                <span class="taskoverview-span-left">Due date:</span>
+                <span class="taskoverview-span-right">05-08-2022</span> <!-- work with timestamp -->
+            </div>
+            <div class="taskoverview-prio">
+                <span class="taskoverview-span-left">Priority:</span>
+                <span class="taskoverview-span-right">Medium</span> <!-- will copy design from addtask.html -->
+            </div>
+            <div class="taskoverview-assignto">
+                <span class="taskoverview-span-over">Assigned To:</span>
+                <div class="taskoverview-contacts">
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">TR</div>
+                        <span class="taskoverview-span-right">Tobias Ruhmanseder</span>
+                    </div>
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">AB</div>
+                        <span class="taskoverview-span-right">Anton Bergmann</span>
+                    </div>
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">CD</div>
+                        <span class="taskoverview-span-right">Claudius Depp</span>
+                    </div>
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">EF</div>
+                        <span class="taskoverview-span-right">Elfriede Fürst</span>
+                    </div>
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">GH</div>
+                        <span class="taskoverview-span-right">Gustav Häusler</span>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
+        <div class="taskoverview-editbutton-container">
+            <button onclick="" class="dark-btn edit-button">
+                <img src="img/edit_pen_white.svg" alt="">
+            </button>
+        </div>
+
     </div>
 
     </div>
