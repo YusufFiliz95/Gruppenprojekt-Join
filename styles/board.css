@@ -356,8 +356,8 @@
 }
 
 .edit-button {
-    width: max-content;
-    height: max-content;
+    width: max-content !important;
+    height: max-content !important;
 }
 
 .edit-button img {
