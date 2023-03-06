@@ -15,12 +15,12 @@
 <body onload="init()">
     <!-- include W3 - Menu/Header -->
 
-    <div class="provisional-menu">provisional </div>
-    <div class="provisional-headline"></div>
+    <div class="provisional-menu d-none">provisional </div>
+    <div class="provisional-headline d-none"></div>
 
     <div class="container">
-        <h1 class="task-headline">Add Task</h1>
         <div class="task-container">
+            <h1 class="task-headline">Add Task</h1>
             <div class="task-left">
                 <div class="input-container">
                     <label>Title</label>
@@ -31,33 +31,51 @@
                 </div>
                 <div class="input-container">
                     <label>Description</label>
-                    <textarea class="textarea-field" name="" id="description" cols="30" rows="3"
+                    <textarea class="textarea-field" name="" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
+                    <p class="required d-none ">This field is required</p>
                 </div>
+
+
                 <div class="input-container">
                     <label>Category</label>
-                    <div class="input-field">
-                        <input type="text">
-                        <img src="./img/triangle.svg" alt="">
+                    <div>
+                        <div class="toggle-menu" onclick="toggleMenu()">
+                            <div>
+                                <span>Select task category</span>
+                                <img src=" ./img/triangle.svg">
+                            </div>
+                            <div class="d-none">
+                                <input type="text">
+                                <img src="">
+                                <img src="">
+                            </div>
+                        </div>
+                        <div id="toggle" class="selection d-none">
+                            <span>New Category</span>
+                            <div class="category">
+                                <span>Sales</span>
+                                <div class="color-circle purple"></div>
+                            </div>
+                        </div>
                     </div>
-
                 </div>
+
+
                 <div class="input-container">
                     <label>Assigned to</label>
                     <div class="input-field">
-                        <input type="text">
-                        <img src="./img/triangle.svg" alt="">
+                        <span>Assigned to</span>
+                        <img src="./img/triangle.svg">
                     </div>
+
                 </div>
             </div>
             <div class="task-right">
                 <div class="input-container">
                     <label>Due date</label>
                     <div class="add-task-date input-field">
-
-                        <input type="text" placeholder="dd/mm/yyyy" id="datepicker" pattern="\d{1,2}\/\d{1,2}\/\d{4}"
-                            style="background: url('assets/img/calendar.svg') no-repeat 95%; background-color: white;"
-                            class="hasDatepicker">
+                        <input type="date" placeholder="dd/mm/yyyy">
                         <img src="./img/calender.svg">
                     </div>
                 </div>

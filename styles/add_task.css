@@ -23,47 +23,55 @@
     flex-direction: column;
     gap: 4px;
     margin-bottom: 16px;
-    cursor: pointer;
-}
-
-.input-field {
-    display: flex;
-    align-items: center;
-    width: 320px;
-    height: 30px;
-    border: 1px solid #A8A8A8;
-    border-radius: 10px;
-    font-family: 'Inter';
-
 }
 
 label {
     font-size: 18px;
 }
 
+.input-field {
+    display: flex;
+    align-items: center;
+    width: 320px;
+    height: max-content;
+    border: 1px solid #A8A8A8;
+    border-radius: 10px;
+    font-family: 'Inter';
+    cursor: pointer;
+}
+
 .input-field input {
     width: 270px;
-    margin-left: 16px;
-    font-size: 16px;
+    margin-left: 12px;
+    font-size: 20px;
     border: 0;
     background-color: transparent;
     outline: none;
     font-family: 'Inter';
+    cursor: pointer;
 }
 
 .textarea-field {
+    resize: vertical;
     width: 320px;
     border: 1px solid #A8A8A8;
     border-radius: 10px;
-
-}
-
-.textarea-field textarea {
-    width: 310px;
-    border: 0;
-    outline: none;
+    font-size: 20px;
     background-color: transparent;
     font-family: 'Inter';
+}
+
+.toggle-menu {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 320px;
+    height: max-content;
+    border: 1px solid #A8A8A8;
+    font-size: 20px;
+    border-radius: 10px;
+    font-family: 'Inter';
+    cursor: pointer;
 }
 
 .required {
@@ -103,7 +111,6 @@ label {
 .clear-btn {
     width: 100px;
     font-size: 20px;
-
 }
 
 .create-btn {
@@ -125,12 +132,46 @@ label {
     opacity: 0.5;
 }
 
+.color-circle {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+}
+
+.ligth-blue {
+    background-color: rgb(138, 164, 255);
+}
+
+.red {
+    background-color: rgb(255, 0, 0);
+}
+
+.green {
+    background-color: rgb(42, 211, 0)
+}
+
+.orange {
+    background-color: rgb(255, 138, 0);
+}
+
+.purple {
+    background-color: rgb(226, 36, 190);
+}
+
+.blue {
+    background-color: rgb(1, 61, 255)
+}
+
+
+
 @media(min-width: 1100px) {
 
+    .toggle-menu,
     .input-field {
         width: 400px;
     }
 
+    .input-field span,
     .input-field input {
         width: 350px;
 

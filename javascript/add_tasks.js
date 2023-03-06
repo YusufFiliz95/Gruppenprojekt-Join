@@ -41,3 +41,8 @@ function addTask() {
         "status": "toDo"
     }
 }
+
+function toggleMenu() {
+    document.getElementById('toggle').classList.toggle('d-none');
+
+}
