@@ -10,26 +10,150 @@ let tasks = [
         "category": "Lebensmittel",
         "category-color": "#000000",
         "contacts": [
-            {                       /* @Christoph - reicht das für unsere Anwendung, also name, initials und color ?? */
+            {
                 "name": "Tobias Ruhmanseder",
                 "initials": "TR",
-                "color": "#7AE229"  
+                "color": "#7AE229"
             }
         ],
-        "date": "timestamp",
+        "date": 1678127322623,
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
-        "subtasks": [],
+        "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
         "status": "toDo"
     },
     {
         "title": "Wäsche waschen",
-        "discription": "Die Waschmaschine muss heute noch vollgas laufen",
+        "discription": "Die Waschmaschine und der Trockner müssen heute noch glühen. Achtung bei der Temperatur-Einstellung nicht das die Hose nicht mehr passt :D",
         "category": "Hausarbeit",
-        "category-color": "#FF7A00",
-        "contacts": [],
-        "date": "timestamp",
-        "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low */
+        "category-color": "#3983AB",
+        "contacts": [
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
+                "color": "#7AE229"
+            },
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
+                "color": "#7AE229"
+            },
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
+                "color": "#7AE229"
+            }
+        ],
+        "date": 1678127322623,
+        "prio": 2,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
+        "subtasks": ["Wäsche in die Waschmaschine", "Wäsche in den Trockner", "Wäsche zusammenlegen"],
+        "status": "toProgress"
+    },
+    {
+        "title": "Meeting",
+        "discription": "Keine Ahnung",
+        "category": "Arbeit",
+        "category-color": "#DFAC1F",
+        "contacts": [
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
+                "color": "#7AE229"
+            }
+        ],
+        "date": 1678127322623,
+        "prio": 3,
+        "subtasks": [],
+        "status": "awaitingFeedback"
+    },
+    {
+        "title": "Coding",
+        "discription": "Übe in der Developer Akademie noch ein bisschen besser",
+        "category": "Weiterbildung",
+        "category-color": "#1EB8D7",
+        "contacts": [
+            {
+                "name": "Max Mustermann",
+                "initials": "MM",
+                "color": "#47965F"
+            }
+        ],
+        "date": 1678127322623,
+        "prio": 1,
+        "subtasks": [],
+        "status": "done"
+    },
+    {
+        "title": "Rasenmähen",
+        "discription": "Im Garten gehört der Rasen noch gemäht!",
+        "category": "Hausarbeit",
+        "category-color": "#3983AB",
+        "contacts": [
+            {
+                "name": "Denise Ruhmanseder",
+                "initials": "DR",
+                "color": "#EEF31A"
+            },
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
+                "color": "#7AE229"
+            }
+        ],
+        "date": 1678127322623,
+        "prio": 3,
+        "subtasks": ['Unkraut zupfen', 'Rasenmähen'],
+        "status": "toProgress"
+    },
+    {
+        "title": "zum Sport gehen",
+        "discription": "Sport ist gesund",
+        "category": "Freizeit",
+        "category-color": "#0063C0",
+        "contacts": [
+            {
+                "name": "Denise Ruhmanseder",
+                "initials": "DR",
+                "color": "#EEF31A"
+            }
+        ],
+        "date": 1678127322623,
+        "prio": 2,
+        "subtasks": [],
+        "status": "awaitingFeedback"
+    },
+    {
+        "title": "Kochen",
+        "discription": "Ich muss heute noch was gutes Kochen",
+        "category": "Lebensmittel",
+        "category-color": "#000000",
+        "contacts": [
+            {
+                "name": "Mama Ruhmanseder",
+                "initials": "MR",
+                "color": "#DC3A63"
+            }
+        ],
+        "date": 1678127322623,
+        "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
+        "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
+        "status": "awaitingFeedback"
+    },
+    {
+        "title": "Nothing",
+        "discription": "Do Nothing",
+        "category": "Lebensmittel",
+        "category-color": "#000000",
+        "contacts": [
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
+                "color": "#7AE229"
+            }
+        ],
+        "date": 1678127322623,
+        "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": [],
         "status": "toDo"
     }
 ]
+
