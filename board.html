@@ -19,9 +19,10 @@
 
 </head>
 
-<body id="bodyBordId">
+<body id="bodyBordId" onload="init()">
 
     <!-- include W3 - Menu/Header -->
+    <div w3-include-html="templates/menu_template.html"></div>
 
     <div class="provisional-menu">provisional </div>
     <div class="provisional-headline"></div>
@@ -88,7 +89,6 @@
                 </div>
                 <div><!-- here  renderings from status = inprogress -->
                 </div>
-
             </div>
             <div class="status-container-bord">
                 <div class="to-do-headline-bord">
@@ -185,7 +185,8 @@
                 </div>
                 <div class="taskoverview-contact">
                     <div class="taskoverview-contact-icon">AB</div>
-                    <span class="taskoverview-span-right">Anton Bergmann</span>   <!-- by rendering look at scrolling function!!! -->
+                    <span class="taskoverview-span-right">Anton Bergmann</span>
+                    <!-- by rendering look at scrolling function!!! -->
                 </div>
                 <div class="taskoverview-contact">
                     <div class="taskoverview-contact-icon">CD</div>
