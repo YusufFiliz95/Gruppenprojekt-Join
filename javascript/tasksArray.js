@@ -41,13 +41,24 @@ let tasks = [
             {
                 "name": "Tobias Ruhmanseder",
                 "initials": "TR",
+                "color": "#1AE350"
+            },
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
                 "color": "#7AE229"
-            }
+            },
+            {
+                "name": "Tobias Ruhmanseder",
+                "initials": "TR",
+                "color": "#7AE229"
+            },
+
         ],
         "date": 1678127322623,
         "prio": 2,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ["Wäsche in die Waschmaschine", "Wäsche in den Trockner", "Wäsche zusammenlegen"],
-        "subtasks-value": [0, 0, 0],
+        "subtasks-value": [0, 1, 0],
         "status": "toProgress"
     },
     {
@@ -106,7 +117,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 3,
         "subtasks": ['Unkraut zupfen', 'Rasenmähen'],
-        "subtasks-value": [0, 0,],
+        "subtasks-value": [0, 0],
         "status": "toProgress"
     },
     {

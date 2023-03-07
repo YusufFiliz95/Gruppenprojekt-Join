@@ -19,13 +19,10 @@
 
 </head>
 
-<body id="bodyBordId" onload="init()">
+<body id="bodyBordId" onload="init(), renderCardsIntoTheBoards()">
 
     <!-- include W3 - Menu/Header -->
     <div w3-include-html="templates/menu_template.html"></div>
-
-    <div class="provisional-menu">provisional </div>
-    <div class="provisional-headline"></div>
 
     <div class="main-container">
         <div class="headline-container">
@@ -50,34 +47,7 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div><!-- here  renderings from status = todos -->
-                    <div onclick="openTaskOverviewOnBord()" class="task-card-bord  dialog-design">
-                        <span class="task-card-category">Design</span>
-                        <span class="task-card-title">Website design</span>
-                        <span class="task-card-description">Was weiß ich immer machen und so tun als würde man sich
-                            auskennen</span>
-                        <div class="task-card-progressbar-container">
-                            <div class="task-card-progressbar">
-                                <div class="task-card-bar"></div>
-                            </div>
-                            <span>1/2 Done</span>
-                        </div>
-                        <div class="task-card-ass-prio-container">
-                            <div class="task-card-assigned">
-                                <div class="task-card-contact-icon">TR</div>
-                                <div class="task-card-contact-icon" style="background-color: brown;">AB</div>
-                                <div class="task-card-contact-icon" style="background-color: rgb(30, 184, 215);">CD
-                                </div>
-                            </div>
-                            <img class="task-card-prio" src="img/prio_urgent.svg" alt="">
-                        </div>
-
-                    </div>
-                    <div class="task-card-bord  dialog-design">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, assumenda! Voluptates iure sit
-                        porro
-                        blanditiis, cumque quod quis ut voluptatum nisi dicta voluptatem aspernatur in.
-                    </div>
+                <div id="toDoId"><!-- here  renderings from status = todos -->
                 </div>
             </div>
             <div class="status-container-bord">
@@ -87,7 +57,8 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div><!-- here  renderings from status = inprogress -->
+                <div id="toProgressId"><!-- here  renderings from status = inprogress -->
+
                 </div>
             </div>
             <div class="status-container-bord">
@@ -97,12 +68,8 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div><!-- here  renderings from status = awaitingfeedback -->
-                    <div class="task-card-bord  dialog-design">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, assumenda! Voluptates iure sit
-                        porro
-                        blanditiis, cumque quod quis ut voluptatum nisi dicta voluptatem aspernatur in.
-                    </div>
+                <div id="awaitingFeedbackId"><!-- here  renderings from status = awaitingfeedback -->
+                    
                 </div>
             </div>
             <div class="status-container-bord">
@@ -112,12 +79,8 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div><!-- here  renderings from status = done -->
-                    <div class="task-card-bord  dialog-design">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nihil, assumenda! Voluptates iure sit
-                        porro
-                        blanditiis, cumque quod quis ut voluptatum nisi dicta voluptatem aspernatur in.
-                    </div>
+                <div id="doneId"><!-- here  renderings from status = done -->
+                    
                 </div>
             </div>
         </div>
