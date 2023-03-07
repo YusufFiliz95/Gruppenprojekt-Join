@@ -18,8 +18,8 @@
     <div w3-include-html="templates/menu_template.html"></div>
 
     <div class="container">
+        <h1 class="task-headline">Add Task</h1>
         <div class="task-container">
-            <h1 class="task-headline">Add Task</h1>
             <div class="task-left">
                 <div class="input-container">
                     <label>Title</label>
@@ -34,41 +34,48 @@
                         placeholder="Enter a description"></textarea>
                     <p class="required d-none ">This field is required</p>
                 </div>
-
-
                 <div class="input-container">
                     <label>Category</label>
-                    <div>
-                        <div class="toggle-menu" onclick="toggleMenu()">
+                    <div class="toggle-menu" onclick="toggleMenu('toggle1')">
+                        <div class="select-task-category">
+                            <span>Select task category</span>
+                            <img src=" ./img/triangle.svg">
+                        </div>
+                        <div class="d-none">
+                            <input type="text">
                             <div>
-                                <span>Select task category</span>
-                                <img src=" ./img/triangle.svg">
-                            </div>
-                            <div class="d-none">
-                                <input type="text">
-                                <img src="">
-                                <img src="">
+                                <img src="./img/black-x.svg">
+                                <img src="./img/tick_dark.svg">
                             </div>
                         </div>
-                        <div id="toggle" class="selection d-none">
+                        <div id="toggle1" class="selection d-none">
                             <span>New Category</span>
                             <div class="category">
                                 <span>Sales</span>
                                 <div class="color-circle purple"></div>
                             </div>
+                            <div class="category">
+                                <span>Backoffice</span>
+                                <div class="color-circle turquoise"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="input-container">
                     <label>Assigned to</label>
-                    <div class="input-field">
-                        <span>Assigned to</span>
-                        <img src="./img/triangle.svg">
+                    <div class="toggle-menu">
+                        <div class="assigned-to" onclick="toggleMenu('toggle2')">
+                            <span>Select contact to assign</span>
+                            <img src="./img/triangle.svg">
+                        </div>
+                        <div id="toggle2" class="d-none">
+                            <span>You</span>
+                            <input type="checkbox">
+                        </div>
                     </div>
 
                 </div>
+
             </div>
             <div class="task-right">
                 <div class="input-container">

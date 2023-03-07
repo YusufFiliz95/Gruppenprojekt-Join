@@ -42,7 +42,7 @@ function addTask() {
     }
 }
 
-function toggleMenu() {
-    document.getElementById('toggle').classList.toggle('d-none');
+function toggleMenu(id) {
+    document.getElementById(id).classList.toggle('d-none');
 
 }
