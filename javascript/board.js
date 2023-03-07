@@ -36,3 +36,23 @@ function closeTaskOverviewOnBoard() {
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
 
 }
+
+
+function renderCardsIntoTheBoards(){
+for (let i = 0; i < tasks.length; i++) {
+    let category = tasks[i].category;
+    let title = tasks[i].title;
+    let discription = tasks[i].discription;
+    let subtasks = tasks[i].subtasks;
+    let contacts = tasks[i].contacts;
+    let prio = tasks[i].prio;
+
+    
+} 
+}
+
+function checkSubtasksOnCards(){
+    if (tasks[i].subtasks){
+        
+    }
+}

@@ -19,6 +19,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
+        "subtasks-value": [0, 0, 0, 0, 0],
         "status": "toDo"
     },
     {
@@ -46,6 +47,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 2,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ["Wäsche in die Waschmaschine", "Wäsche in den Trockner", "Wäsche zusammenlegen"],
+        "subtasks-value": [0, 0, 0],
         "status": "toProgress"
     },
     {
@@ -63,6 +65,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 3,
         "subtasks": [],
+        "subtasks-value": [],
         "status": "awaitingFeedback"
     },
     {
@@ -80,6 +83,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 1,
         "subtasks": [],
+        "subtasks-value": [],
         "status": "done"
     },
     {
@@ -102,6 +106,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 3,
         "subtasks": ['Unkraut zupfen', 'Rasenmähen'],
+        "subtasks-value": [0, 0,],
         "status": "toProgress"
     },
     {
@@ -119,6 +124,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 2,
         "subtasks": [],
+        "subtasks-value": [],
         "status": "awaitingFeedback"
     },
     {
@@ -136,6 +142,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
+        "subtasks-value": [0, 0, 0, 0, 0],
         "status": "awaitingFeedback"
     },
     {
@@ -153,6 +160,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": [],
+        "subtasks-value": [],
         "status": "toDo"
     }
 ]
