@@ -11,6 +11,7 @@ können das gern morgen zusammen machen :) */
 
 let category = [];
 let subtask = [];
+let prio = 0;
 
 
 async function init() {
@@ -44,5 +45,14 @@ function addTask() {
 
 function toggleMenu(id) {
     document.getElementById(id).classList.toggle('d-none');
+
+}
+
+
+function openInput(id) {
+    document.getElementById('toggle-menu').classList.add('d-none');
+    document.getElementById('category-input').classList.remove('d-none');
+    document.getElementById('toggle1').classList.add('d-none');
+
 
 }

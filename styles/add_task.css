@@ -1,14 +1,16 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 120px;
-    margin-left: 12px;
-}
-
 .join-menu {
     width: 0;
     visibility: hidden;
 }
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 120px;
+}
+
+
 
 .input-container {
     display: flex;
@@ -86,6 +88,11 @@ label {
     gap: 6px
 }
 
+.contact {
+    display: flex;
+    justify-content: space-between;
+}
+
 .required {
     margin-top: 6px;
     color: rgb(251, 129, 144);
@@ -120,6 +127,12 @@ label {
     height: 18px;
 }
 
+.urgent-aktiv {
+    content: url(./img/prio_urgent_white);
+    background-color: rgb(251, 62, 0);
+    color: white
+}
+
 .clear-btn {
     width: 100px;
     font-size: 20px;
@@ -134,11 +147,10 @@ label {
 }
 
 .add-task-buttons {
+    width: 322;
     display: flex;
-    justify-content: flex-end;
     gap: 20px;
 }
-
 
 ::placeholder {
     opacity: 0.5;
@@ -151,36 +163,47 @@ label {
 }
 
 .ligth-blue {
-    background-color: rgb(138, 164, 255);
+    background-color: #8AA4FF;
 }
 
 .red {
-    background-color: rgb(255, 0, 0);
+    background-color: #FB0101;
 }
 
 .green {
-    background-color: rgb(42, 211, 0)
+    background-color: #43D300;
 }
 
 .orange {
-    background-color: rgb(255, 138, 0);
+    background-color: #FD8A01;
 }
 
 .purple {
-    background-color: #F771FF;
+    background-color: #E224BE;
 }
 
 .brigth-blue {
-    background-color: rgb(1, 61, 255)
+    background-color: #013DFF;
 }
 
 .turquoise {
     background-color: #33D7C1;
 }
 
+.magenta {
+    background-color: #F771FF;
+}
 
 
-@media(min-width: 1100px) {
+
+@media(min-width: 1200px) {
+
+    .add-task-buttons {
+        width: 850px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+    }
 
     .toggle-menu,
     .input-field {
@@ -215,12 +238,14 @@ label {
     }
 
     .container {
-        margin-left: 232px;
+        display: flex;
+        align-items: flex-start;
+        margin-left: calc(232px + 5%);
     }
 
     .task-container {
         display: flex;
-        justify-content: center;
+
 
     }
 

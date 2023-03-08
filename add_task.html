@@ -36,12 +36,12 @@
                 </div>
                 <div class="input-container">
                     <label>Category</label>
-                    <div class="toggle-menu" onclick="toggleMenu('toggle1')">
-                        <div class="select-task-category">
+                    <div class="toggle-menu">
+                        <div id="toggle-menu" class="select-task-category" onclick="toggleMenu('toggle1')">
                             <span>Select task category</span>
                             <img src=" ./img/triangle.svg">
                         </div>
-                        <div class="d-none">
+                        <div id="category-input" class="input-field d-none">
                             <input type="text">
                             <div>
                                 <img src="./img/black-x.svg">
@@ -49,10 +49,10 @@
                             </div>
                         </div>
                         <div id="toggle1" class="selection d-none">
-                            <span>New Category</span>
+                            <span onclick="openInput('toggle1')">New Category</span>
                             <div class="category">
                                 <span>Sales</span>
-                                <div class="color-circle purple"></div>
+                                <div class="color-circle magenta"></div>
                             </div>
                             <div class="category">
                                 <span>Backoffice</span>
@@ -68,7 +68,7 @@
                             <span>Select contact to assign</span>
                             <img src="./img/triangle.svg">
                         </div>
-                        <div id="toggle2" class="d-none">
+                        <div id="toggle2" class="contact d-none">
                             <span>You</span>
                             <input type="checkbox">
                         </div>
@@ -81,16 +81,16 @@
                 <div class="input-container">
                     <label>Due date</label>
                     <div class="add-task-date input-field">
-                        <input type="date" placeholder="dd/mm/yyyy">
+                        <input type="date" placeholder="dd/mm/y">
                         <img src="./img/calender.svg">
                     </div>
                 </div>
                 <div class="input-container">
                     <label>Prio</label>
                     <div class="prio-btn">
-                        <button><span>Urgent</span> <img class="prio-img" src="./img/prio_urgent.svg"></button>
+                        <button><span>Urgent</span><img class="prio-img" src="./img/prio_urgent.svg"></button>
                         <button><span>Medium</span><img class="prio-img" src="./img/prio_medium.svg"></button>
-                        <button><span>low</span><img class="prio-img" src="./img/prio_low.svg"></button>
+                        <button><span>Low</span><img class="prio-img" src="./img/prio_low.svg"></button>
                     </div>
                 </div>
                 <div class="input-container">
