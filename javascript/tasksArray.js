@@ -19,7 +19,7 @@ let tasks = [
         "date": 1678127322623,
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
-        "subtasks-value": [0, 0, 0, 0, 0],
+        "subtasks-value": [1, 0, 0, 1, 1],
         "status": "toDo"
     },
     {

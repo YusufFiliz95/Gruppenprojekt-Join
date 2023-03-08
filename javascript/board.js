@@ -48,18 +48,19 @@ function renderCardsIntoTheBoards() {
         document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, category, categoryColor, title, discription, prio);
         checkNeedBar(i);
         renderContactsIntotheCard(i);
+        calcPercentForProgressBarOnCard(i);
     }
 }
 
 function checkSubtasksOnCard(i) {
     let subtask = tasks[i].subtasks;
+    let subtaskValue = tasks[i]["subtasks-value"];
     let amount = 0;
-    let total = 0;
+    let total = subtask.length;
     if (subtask) {
-        for (let i = 0; i < subtask.length; i++) {
-            if (subtask[i] == 1) amount++;                      /* here is a problem, use subtask.value */
+        for (let i = 0; i < subtaskValue.length; i++) {
+            if (subtaskValue[i] == 1) amount++;
         }
-        total = subtask.length;
         return `${amount}/${total}`;
     }
     return "";
@@ -82,7 +83,10 @@ function checkNeedBar(i) {
 }
 
 function calcPercentForProgressBarOnCard(i) {
-                                                        /* please finish that */
+    /*     let subtask = tasks[i].subtasks;
+        let subtaskValue = tasks[i]["subtasks-value"]; */
+
+    /* please finish that */
 }
 
 function renderContactsIntotheCard(i) {
