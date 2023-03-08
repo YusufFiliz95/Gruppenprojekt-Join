@@ -45,10 +45,10 @@ function renderCardsIntoTheBoards() {
         let discription = tasks[i].discription;
         let prio = checkPrioOnCard(i);
         let status = tasks[i].status;
-        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, category, categoryColor, title, discription, prio);
+        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, category, categoryColor, title, discription, prio,);
         checkNeedBar(i);
         renderContactsIntotheCard(i);
-        calcPercentForProgressBarOnCard(i);
+
     }
 }
 
@@ -76,17 +76,22 @@ function checkPrioOnCard(i) {
 function checkNeedBar(i) {
     let checkSubtask = checkSubtasksOnCard(i);
     let subtask = tasks[i].subtasks;
-    let percentBar = calcPercentForProgressBarOnCard();
+    let percentBar = calcPercentForProgressBarOnCard(i);
     if (subtask.length >= 1) {
         document.getElementById('progressbarId' + i).innerHTML = templateNeedBar(i, checkSubtask, percentBar);
     }
 }
 
 function calcPercentForProgressBarOnCard(i) {
-    /*     let subtask = tasks[i].subtasks;
-        let subtaskValue = tasks[i]["subtasks-value"]; */
-
-    /* please finish that */
+    let subtaskValue = tasks[i]["subtasks-value"];
+    let subtaskLength = tasks[i]["subtasks-value"].length;
+    let amount = 0;
+    let percent = 0;
+    for (let i = 0; i < subtaskLength; i++) {
+        amount = amount + subtaskValue[i];
+    }
+    percent = 100 / subtaskLength * amount;
+    return percent;
 }
 
 function renderContactsIntotheCard(i) {
@@ -133,7 +138,7 @@ function templateRenderContactsIntoTheCard(initials, backgroundColor) {
 
 function templateNeedBar(i, checkSubtask, percentBar) {
     return `<div class="task-card-progressbar">
-                <div id="barId(${i})" class="task-card-bar" style="width:${percentBar};" ></div>
+                <div id="barId(${i})" class="task-card-bar" style="width:${percentBar}%;" ></div>
             </div>
             <span>${checkSubtask} Done</span>`;
 }
