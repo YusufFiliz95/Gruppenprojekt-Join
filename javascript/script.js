@@ -1,6 +1,7 @@
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init() {
     await includeHTML();
+    loadMenu();
     setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
 }
 
