@@ -1,18 +1,5 @@
-/* when menu und headline included, you can delete this css and the provisional div in board.html */
-.provisional-menu {
+.fixed {
     position: fixed;
-    top: 0px;
-    width: 232px;
-    height: 100%;
-    background: darkgrey;
-}
-
-.provisional-headline {
-    position: fixed;
-    top: 0px;
-    width: 100%;
-    height: 89px;
-    background: rgb(93, 92, 92);
 }
 
 .input-field-search-on-board {
@@ -102,7 +89,7 @@
 
 .status-container-bord {
     width: 250px;
-    cursor: pointer;
+
 }
 
 .to-do-headline-bord {
@@ -124,7 +111,13 @@
 .task-card-bord:hover {
     -webkit-box-shadow: 0px 10px 9px -3px #979797;
     box-shadow: 0px 5px 9px -3px #979797;
+    cursor: pointer;
 }
+
+.task-card-bord:active {
+    cursor: grabbing;
+}
+
 
 .task-card-category {
     width: max-content;
@@ -212,13 +205,24 @@
 }
 
 .add-task-dialog-bord {
-    position: absolute;
-    right: -130%;
-    top: calc((100% - 90%)/2);
-    height: 90%;
-    width: 85%;
-    transition: all 350ms ease-in-out;
-    z-index: 2;
+    position: relative;
+    width: 1116px;
+    height: 914px;
+    animation-name: slideInRight;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(150%);
+        visibility: visible;
+    }
+
+    75% {
+        transform: translateX(0);
+    }
 }
 
 .x-btn-div {
@@ -229,17 +233,14 @@
 }
 
 .task-overview-bord {
-    overflow: hidden;
     width: 623px;
     height: 90%;
-    position: absolute;
-    right: -130%;
-    top: calc((100% - 90%)/2);
-    transition: all 350ms ease-in-out;
-    z-index: 2;
-    display: flex;
-    flex-direction: column;
-    /* padding: 50px; */
+    position: relative;
+    animation-name: slideInRight;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+
+
 }
 
 .task-overview-container {
@@ -363,4 +364,15 @@
 .edit-button img {
     padding: 13px;
     padding-bottom: 11px;
+}
+
+.rotate-card {
+    transform: rotate(8deg);
+}
+
+.emty-div {
+    background-color: transparent;
+    border: 2px solid #2A3647;
+    border-style: dotted;
+    border-radius: 30px;
 }

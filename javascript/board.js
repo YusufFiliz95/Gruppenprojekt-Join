@@ -1,55 +1,51 @@
-/* the Dialogs right outside (Addtask...)  runs in height with scroll */
-window.onscroll = function () {
-    let scrollY = window.scrollY;
-    document.getElementById('add-task-bordId').style.top = `calc(5% + ${scrollY}px`;
-    document.getElementById('taskoverview-bordId').style.top = `calc(5% + ${scrollY}px`;
-}
+let currentDraggedElement;
 
 
 function openAddTaskDialogBord() {
-
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
-    document.getElementById('add-task-bordId').style.top = `calc(5% + ${scrollY}px`;
-    document.getElementById('add-task-bordId').style.right = `calc((100% - 85%)/2)`;  /* Dialog go into the middle of the page */
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
 
 }
 
 function closeAddTaskDialogBord() {
-    document.getElementById('add-task-bordId').style.right = '-130%';  /* Dialog return to the right outside */
     document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
 }
 
 function openTaskOverviewOnBord() {
-
     document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
-    document.getElementById('taskoverview-bordId').style.top = `calc(5% + ${scrollY}px`;
-    document.getElementById('taskoverview-bordId').style.right = `calc((100% - 623px)/2)`;  /* Dialog go into the middle of the page */
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
 
 }
 
 function closeTaskOverviewOnBoard() {
-    document.getElementById('taskoverview-bordId').style.right = '-130%';  /* Dialog return to the right outside */
     document.getElementById('overlay-bord-taskoverviewId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
 
 }
 
+
 function renderCardsIntoTheBoards() {
+    deleteBoard();
     for (let i = 0; i < tasks.length; i++) {
+        let id = tasks[i].id;
         let category = tasks[i].category;
         let categoryColor = tasks[i]["category-color"];
         let title = tasks[i].title;
         let discription = tasks[i].discription;
         let prio = checkPrioOnCard(i);
         let status = tasks[i].status;
-        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, category, categoryColor, title, discription, prio,);
+        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prio, status);
         checkNeedBar(i);
         renderContactsIntotheCard(i);
-
     }
+}
+
+function deleteBoard() {
+    document.getElementById('toDoId').innerHTML = '';
+    document.getElementById('toProgressId').innerHTML = '';
+    document.getElementById('awaitingFeedbackId').innerHTML = '';
+    document.getElementById('doneId').innerHTML = '';
 }
 
 function checkSubtasksOnCard(i) {
@@ -117,8 +113,8 @@ function checkAmountContactsInCard(contact) {
     else return 4;
 }
 
-function templateRenderCardsIntoTheBoard(i, category, categoryColor, title, discription, prio) {
-    return `<div onclick="openTaskOverviewOnBord(${i})" class="task-card-bord  dialog-design">
+function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prio, status) {
+    return `<div onclick="openTaskOverviewOnBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="true" class="task-card-bord  dialog-design">
                     <span class="task-card-category" style="background-color:${categoryColor} ;">${category}</span>
                     <span class="task-card-title">${title}</span>
                     <span class="task-card-description">${discription}</span>
@@ -141,4 +137,70 @@ function templateNeedBar(i, checkSubtask, percentBar) {
                 <div id="barId(${i})" class="task-card-bar" style="width:${percentBar}%;" ></div>
             </div>
             <span>${checkSubtask} Done</span>`;
+}
+
+/* Drag and Drop  */
+
+function startDragging(id, status) {
+    currentDraggedElement = id;
+    rotateCardByDragging(id);
+    fillEmtyDivByDragging(id, status);
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function moveTo(status) {
+    tasks[currentDraggedElement].status = status;
+    renderCardsIntoTheBoards();
+}
+
+function rotateCardByDragging(id) {
+    document.getElementById('card' + id).classList.add('rotate-card');
+}
+
+function endDragging(id) {
+    rotateCardBack(id);
+    deleteEmtyDivByDragging();
+}
+
+function rotateCardBack(id) {
+    document.getElementById('card' + id).classList.remove('rotate-card');
+}
+
+function fillEmtyDivByDragging(id, status) {
+
+    if (status === 'toDo') {
+        document.getElementById('toProgressId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
+        document.getElementById('awaitingFeedbackId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
+        document.getElementById('doneId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
+    }
+    if (status == 'toProgress') {
+        document.getElementById('toDoId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
+        document.getElementById('awaitingFeedbackId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
+        document.getElementById('doneId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
+    }
+    if (status == 'awaitingFeedback') {
+        document.getElementById('toDoId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
+        document.getElementById('toProgressId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
+        document.getElementById('doneId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
+    }
+    if (status == 'done') {
+        document.getElementById('toDoId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
+        document.getElementById('awaitingFeedbackId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
+        document.getElementById('toProgressId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
+    }
+    height = document.getElementById('card' + id).clientHeight + 'px';
+    document.getElementById('emtyDivId1').style.height = height;
+    document.getElementById('emtyDivId2').style.height = height;
+    document.getElementById('emtyDivId3').style.height = height;
+}
+
+function deleteEmtyDivByDragging() {
+
+    for (let i = 1; i < 4; i++) {
+        divExist = document.getElementById('emtyDivId' + i);
+        if (divExist) document.getElementById('emtyDivId' + i).remove();
+    }
 }

@@ -5,6 +5,7 @@
 
 let tasks = [
     {
+        "id": 0,
         "title": "Einkaufen",
         "discription": "Ich muss heute noch einkaufen",
         "category": "Lebensmittel",
@@ -23,6 +24,7 @@ let tasks = [
         "status": "toDo"
     },
     {
+        "id": 1,
         "title": "Wäsche waschen",
         "discription": "Die Waschmaschine und der Trockner müssen heute noch glühen. Achtung bei der Temperatur-Einstellung nicht das die Hose nicht mehr passt :D",
         "category": "Hausarbeit",
@@ -62,6 +64,7 @@ let tasks = [
         "status": "toProgress"
     },
     {
+        "id": 2,
         "title": "Meeting",
         "discription": "Keine Ahnung",
         "category": "Arbeit",
@@ -80,6 +83,7 @@ let tasks = [
         "status": "awaitingFeedback"
     },
     {
+        "id": 3,
         "title": "Coding",
         "discription": "Übe in der Developer Akademie noch ein bisschen besser",
         "category": "Weiterbildung",
@@ -98,6 +102,7 @@ let tasks = [
         "status": "done"
     },
     {
+        "id": 4,
         "title": "Rasenmähen",
         "discription": "Im Garten gehört der Rasen noch gemäht!",
         "category": "Hausarbeit",
@@ -121,6 +126,7 @@ let tasks = [
         "status": "toProgress"
     },
     {
+        "id": 5,
         "title": "zum Sport gehen",
         "discription": "Sport ist gesund",
         "category": "Freizeit",
@@ -139,6 +145,7 @@ let tasks = [
         "status": "awaitingFeedback"
     },
     {
+        "id": 6,
         "title": "Kochen",
         "discription": "Ich muss heute noch was gutes Kochen",
         "category": "Lebensmittel",
@@ -157,6 +164,7 @@ let tasks = [
         "status": "awaitingFeedback"
     },
     {
+        "id": 7,
         "title": "Nothing",
         "discription": "Do Nothing",
         "category": "Lebensmittel",

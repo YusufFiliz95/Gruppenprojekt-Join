@@ -47,7 +47,8 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div id="toDoId"><!-- here  renderings from status = todos -->
+                <div id="toDoId" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+                    <!-- here  renderings from status = todos -->
                 </div>
             </div>
             <div class="status-container-bord">
@@ -57,7 +58,8 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div id="toProgressId"><!-- here  renderings from status = inprogress -->
+                <div id="toProgressId" ondrop="moveTo('toProgress')" ondragover="allowDrop(event)">
+                    <!-- here  renderings from status = inprogress -->
 
                 </div>
             </div>
@@ -68,8 +70,9 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div id="awaitingFeedbackId"><!-- here  renderings from status = awaitingfeedback -->
-                    
+                <div id="awaitingFeedbackId" ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)">
+                    <!-- here  renderings from status = awaitingfeedback -->
+
                 </div>
             </div>
             <div class="status-container-bord">
@@ -79,8 +82,9 @@
                         <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                     </button>
                 </div>
-                <div id="doneId"><!-- here  renderings from status = done -->
-                    
+                <div id="doneId" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+                    <!-- here  renderings from status = done -->
+
                 </div>
             </div>
         </div>
@@ -90,85 +94,84 @@
 
     <!-- overlay + addTask Dialog -->
     <div onclick="closeAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
-    </div>
-    <div id="add-task-bordId" class="add-task-dialog-bord dialog-design">
-        <div class="x-btn-div">
-            <img onclick="closeAddTaskDialogBord()" class="x-btn" src="img/black-x.svg" alt="">
+
+        <div id="add-task-bordId" class="add-task-dialog-bord dialog-design">
+            <div class="x-btn-div">
+                <img onclick="closeAddTaskDialogBord()" class="x-btn" src="img/black-x.svg" alt="">
+            </div>
         </div>
     </div>
 
     <!-- overlay + Task Overview -->
     <div onclick="closeTaskOverviewOnBoard()" id="overlay-bord-taskoverviewId" class="overlay-dialog-center d-none">
+        <div id="taskoverview-bordId" class="task-overview-bord dialog-design">
+
+            <div class="x-btn-div">
+                <img onclick="closeTaskOverviewOnBoard()" class="x-btn" src="img/black-x.svg" alt="">
+            </div>
+            <!-- by click on a Task it open a overview window -->
+            <div class="task-overview-container">
+                <span class="taskoverview-category">Design</span>
+                <span class="taskoverview-title">Website design</span>
+                <span class="taskoverview-description">Was weiß ich immer machen und so tun als würde man sich
+                    auskennen</span>
+                <div class="taskoverview-subtask">
+                    <div>
+                        <input type="checkbox" id="" name="" value="">
+                        <span>Aufgabe 1</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="" name="" value="">
+                        <span>Aufgabe 2</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="" name="" value="">
+                        <span>Aufgabe 3</span>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="" name="" value="">
+                        <span>Aufgabe 4</span>
+                    </div>
+                </div>
+                <div class="taskoverview-duedate">
+                    <span class="taskoverview-span-left">Due date:</span>
+                    <span class="taskoverview-span-right">05-08-2022</span> <!-- work with timestamp -->
+                </div>
+                <div class="taskoverview-prio">
+                    <span class="taskoverview-span-left">Priority:</span>
+                    <span class="taskoverview-span-right">Medium</span> <!-- will copy design from addtask.html -->
+                </div>
+                <div class="taskoverview-assignto">
+                    <span class="taskoverview-span-over">Assigned To:</span>
+                </div>
+                <div class="taskoverview-contacts">
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">TR</div>
+                        <span class="taskoverview-span-right">Tobias Ruhmanseder</span>
+                    </div>
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">AB</div>
+                        <span class="taskoverview-span-right">Anton Bergmann</span>
+                        <!-- by rendering look at scrolling function!!! -->
+                    </div>
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">CD</div>
+                        <span class="taskoverview-span-right">Claudius Depp</span>
+                    </div>
+                    <div class="taskoverview-contact">
+                        <div class="taskoverview-contact-icon">EF</div>
+                        <span class="taskoverview-span-right">Elfriede Fürst</span>
+                    </div>
+                </div>
+            </div>
+            <div class="taskoverview-editbutton-container">
+                <button onclick="" class="dark-btn edit-button">
+                    <img src="img/edit_pen_white.svg" alt="">
+                </button>
+            </div>
+        </div>
+
     </div>
-
-    <div id="taskoverview-bordId" class="task-overview-bord dialog-design ">
-
-        <div class="x-btn-div">
-            <img onclick="closeTaskOverviewOnBoard()" class="x-btn" src="img/black-x.svg" alt="">
-        </div>
-        <!-- by click on a Task it open a overview window -->
-        <div class="task-overview-container">
-            <span class="taskoverview-category">Design</span>
-            <span class="taskoverview-title">Website design</span>
-            <span class="taskoverview-description">Was weiß ich immer machen und so tun als würde man sich
-                auskennen</span>
-            <div class="taskoverview-subtask">
-                <div>
-                    <input type="checkbox" id="" name="" value="">
-                    <span>Aufgabe 1</span>
-                </div>
-                <div>
-                    <input type="checkbox" id="" name="" value="">
-                    <span>Aufgabe 2</span>
-                </div>
-                <div>
-                    <input type="checkbox" id="" name="" value="">
-                    <span>Aufgabe 3</span>
-                </div>
-                <div>
-                    <input type="checkbox" id="" name="" value="">
-                    <span>Aufgabe 4</span>
-                </div>
-            </div>
-            <div class="taskoverview-duedate">
-                <span class="taskoverview-span-left">Due date:</span>
-                <span class="taskoverview-span-right">05-08-2022</span> <!-- work with timestamp -->
-            </div>
-            <div class="taskoverview-prio">
-                <span class="taskoverview-span-left">Priority:</span>
-                <span class="taskoverview-span-right">Medium</span> <!-- will copy design from addtask.html -->
-            </div>
-            <div class="taskoverview-assignto">
-                <span class="taskoverview-span-over">Assigned To:</span>
-            </div>
-            <div class="taskoverview-contacts">
-                <div class="taskoverview-contact">
-                    <div class="taskoverview-contact-icon">TR</div>
-                    <span class="taskoverview-span-right">Tobias Ruhmanseder</span>
-                </div>
-                <div class="taskoverview-contact">
-                    <div class="taskoverview-contact-icon">AB</div>
-                    <span class="taskoverview-span-right">Anton Bergmann</span>
-                    <!-- by rendering look at scrolling function!!! -->
-                </div>
-                <div class="taskoverview-contact">
-                    <div class="taskoverview-contact-icon">CD</div>
-                    <span class="taskoverview-span-right">Claudius Depp</span>
-                </div>
-                <div class="taskoverview-contact">
-                    <div class="taskoverview-contact-icon">EF</div>
-                    <span class="taskoverview-span-right">Elfriede Fürst</span>
-                </div>
-            </div>
-        </div>
-        <div class="taskoverview-editbutton-container">
-            <button onclick="" class="dark-btn edit-button">
-                <img src="img/edit_pen_white.svg" alt="">
-            </button>
-        </div>
-    </div>
-
-
     </div>
 
 
