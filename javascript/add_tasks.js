@@ -48,11 +48,18 @@ function toggleMenu(id) {
 
 }
 
-
 function openInput(id) {
     document.getElementById('toggle-menu').classList.add('d-none');
     document.getElementById('category-input').classList.remove('d-none');
-    document.getElementById('toggle1').classList.add('d-none');
+    document.getElementById(id).classList.add('d-none');
+    document.getElementById('color-container').classList.remove('d-none');
+}
 
+function renderCategorys() {
+
+
+}
+
+function renderContacts() {
 
 }
