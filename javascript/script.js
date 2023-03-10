@@ -2,7 +2,8 @@
 async function init() {
     await includeHTML();
     loadMenu();
-    setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+    loadContacts();
+    //setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
 }
 
 //FUNCTION FOR INCLUDING OTHER HTML SNIPPETS
@@ -19,3 +20,7 @@ async function includeHTML() {
         }
     }
 }
+
+
+
+
