@@ -167,8 +167,8 @@ let tasks = [
         "id": 7,
         "title": "Nothing",
         "discription": "Do Nothing",
-        "category": "Lebensmittel",
-        "category-color": "#000000",
+        "category": "Anything",
+        "category-color": "#008000",
         "contacts": [
             {
                 "name": "Tobias Ruhmanseder",

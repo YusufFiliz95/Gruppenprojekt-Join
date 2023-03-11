@@ -21,9 +21,10 @@ function slideOutAddTaskDialogBord() {
     setTimeout(closeAddTaskDialogBord, 350);
 }
 
-function openTaskOverviewDialogBord() {
+function openTaskOverviewDialogBord(i) {
     document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
+    renderTaskInToOverview(i);
 }
 
 function closeTaskOverviewDialogBoard() {
@@ -52,9 +53,9 @@ function renderCardsIntoTheBoards() {
         let categoryColor = tasks[i]["category-color"];
         let title = tasks[i].title;
         let discription = tasks[i].discription;
-        let prio = checkPrioOnCard(i);
+        let prioImage = setPrioImage(i);
         let status = tasks[i].status;
-        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prio, status);
+        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status);
         checkNeedBar(i);
         renderContactsIntotheCard(i);
     }
@@ -81,7 +82,7 @@ function checkSubtasksOnCard(i) {
     return "";
 }
 
-function checkPrioOnCard(i) {
+function setPrioImage(i) {
     let prio = tasks[i].prio;
     if (prio == 1) return "prio_urgent.svg";
     if (prio == 2) return "prio_medium.svg";
@@ -132,7 +133,7 @@ function checkAmountContactsInCard(contact) {
     else return 4;
 }
 
-function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prio, status) {
+function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status) {
     return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="true" class="task-card-bord  dialog-design">
                     <span class="task-card-category" style="background-color:${categoryColor} ;">${category}</span>
                     <span class="task-card-title">${title}</span>
@@ -140,7 +141,7 @@ function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, 
                 <div id="progressbarId${i}" class="task-card-progressbar-container"></div>
                     <div class="task-card-ass-prio-container">
                         <div id="contactsId${i}" class="task-card-assigned"></div>
-                        <img class="task-card-prio" src="img/${prio}" alt="">
+                        <img class="task-card-prio" src="img/${prioImage}" alt="">
                     </div>
                 </div>
             </div>        
@@ -158,6 +159,70 @@ function templateNeedBar(i, checkSubtask, percentBar) {
             <span>${checkSubtask} Done</span>`;
 }
 /* --------END--------all rendering function to show the Board-------------------------- */
+
+
+/* ----------------all rendering function to show the task overview-------------------------- */
+
+function renderTaskInToOverview(i) {
+    let category = tasks[i].category;
+    let categoryColor = tasks[i]["category-color"];
+    let title = tasks[i].title;
+    let discription = tasks[i].discription;
+    let date = tasks[i].date;
+    let prio = setPrio(i);
+    let prioImage = setPrioImage(i);
+    let prioColor = setPrioColor(i);
+    document.getElementById('task-overviewId').innerHTML = templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor);
+    /* render Subtasks function */
+    /* check Scroll on Subtasks */
+    /* render contacts function */
+    /* check Scroll on Contacts */
+}
+
+
+function setPrio(i) {
+    let prio = tasks[i].prio;
+    if (prio == 1) return "Urgent";
+    if (prio == 2) return "Medium";
+    if (prio == 3) return "Low";
+}
+
+function setPrioColor(i) {
+    let prio = tasks[i].prio;
+    if (prio == 1) return "#FF3D00";
+    if (prio == 2) return "#FFA800";
+    if (prio == 3) return "#F5F5F5";
+}
+
+function templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor) {
+    return `<span class="taskoverview-category" style="background-color:${categoryColor}">${category}</span>
+    <span class="taskoverview-title">${title}</span>
+    <span class="taskoverview-description">${discription}</span>
+    <div class="taskoverview-subtask">
+
+    </div>
+    <div class="taskoverview-duedate">
+        <span class="taskoverview-span-left">Due date:</span>
+        <span class="taskoverview-span-right">${date}</span> 
+    </div>
+    <div class="taskoverview-prio">
+        <span class="taskoverview-span-left">Priority:</span>
+        <span class="taskoverview-span-right">${prio}
+        <img class="" src="img/${prioImage}" alt="">
+        </span> 
+    </div>
+    <div class="taskoverview-assignto">
+        <span class="taskoverview-span-over">Assigned To:</span>
+    </div>
+</div>
+<div class="taskoverview-editbutton-container">
+    <button onclick="" class="dark-btn edit-button">
+        <img src="img/edit_pen_white.svg" alt="">
+    </button>
+</div>`;
+}
+
+/* -------END------all rendering function to show the task overview-------------------------- */
 
 
 /* ---------------------Drag and Drop-------------------------  */
