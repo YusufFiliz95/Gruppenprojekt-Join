@@ -1,16 +1,35 @@
 <head>
+<<<<<<< HEAD
     <link rel="stylesheet" href="styles/style.css".css>
     <link rel="stylesheet" href="styles/menu.css".css>
     <link rel="stylesheet" href="styles/fonts.css".css>
     <script src="../javascript/menu.js"></script>
+=======
+    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/menu.css">
+    <link rel="stylesheet" href="../styles/fonts.css">
+    <script src="../javascript/menu.js"></script>
+    <script src="../javascript/script.js"></script>
+>>>>>>> 8bf3fb625d4587c84871f990653ad509c086fa3d
 </head>
 <body onload="init()">
-    <div class="join-headline"></div>
+    <div class="join-headline">
+        <div class="join-title">
+            <p>Kanban Project Management Tool</p>
+        </div>
+        <div class="profile-section">
+            <img src="../img/question_mark.svg" alt="">
+            <div class="profile">
+                <p id="firstnamefirstletter">M</p>
+                <p id="lastnamefirstletter">M</p>
+            </div>
+        </div>
+    </div>
     <div class="join-menu" id="joinmenu">
         <img src="../img/join_logo_menu.svg" class="join-logo-menu" alt="">
         <div class="menu" id="joinmenuselection"></div>
-        <div class="legal-notice">
-            <div class="menu-icon-text" onclick="window.location.href = 'legal_notice.html'">
+        <div class="legal-notice" id="legalnotice">
+            <div class="menu-icon-text" onclick="window.location.href = 'legal_notice.html'" id="legalnotice">
                 <div class="icon legal-notice-icon">
                     <img src="../img/legal_notice_icon.svg" alt="" class="contacts-icon">
                 </div>

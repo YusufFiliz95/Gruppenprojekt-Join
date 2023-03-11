@@ -127,11 +127,6 @@ label {
     height: 18px;
 }
 
-.urgent-aktiv {
-    content: url(./img/prio_urgent_white);
-    background-color: rgb(251, 62, 0);
-    color: white
-}
 
 .clear-btn {
     width: 100px;
@@ -192,6 +187,21 @@ label {
 
 .magenta {
     background-color: #F771FF;
+}
+
+.color-container {
+    display: flex;
+    gap: 6px
+}
+
+.add-input {
+    display: flex;
+    gap: 6px;
+}
+
+.x {
+    border-right: 1px solid rgb(219, 219, 219);
+    padding: 6px;
 }
 
 

@@ -36,19 +36,19 @@
                 <div class="input-container">
                     <label>Category</label>
                     <div class="toggle-menu">
-                        <div id="toggle-menu" class="select-task-category" onclick="toggleMenu('toggle1')">
+                        <div id="toggle-menu" class="select-task-category" onclick="toggleMenu('toggle-1')">
                             <span>Select task category</span>
                             <img src=" ./img/triangle.svg">
                         </div>
                         <div id="category-input" class="input-field d-none">
-                            <input type="text">
-                            <div>
-                                <img src="./img/black-x.svg">
+                            <input type="text" placeholder="New category name">
+                            <div class="add-input">
+                                <img class="x" src="./img/black-x.svg">
                                 <img src="./img/tick_dark.svg">
                             </div>
                         </div>
-                        <div id="toggle1" class="selection d-none">
-                            <span onclick="openInput('toggle1')">New Category</span>
+                        <div id="toggle-1" class="selection d-none">
+                            <span onclick="openInput('toggle-1')">New Category</span>
                             <div class="category">
                                 <span>Sales</span>
                                 <div class="color-circle magenta"></div>
@@ -58,6 +58,15 @@
                                 <div class="color-circle turquoise"></div>
                             </div>
                         </div>
+                    </div>
+                    <div id="color-container" class="color-container d-none">
+                        <div class="color-circle ligth-blue"></div>
+                        <div class="color-circle red"></div>
+                        <div class="color-circle green"></div>
+                        <div class="color-circle orange"></div>
+                        <div class="color-circle purple"></div>
+                        <div class="color-circle brigth-blue"></div>
+
                     </div>
                 </div>
                 <div class="input-container">
@@ -72,6 +81,7 @@
                             <input type="checkbox">
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="task-right">
@@ -96,6 +106,7 @@
                         <input type="text">
                         <img src="./img/plus_dark.svg" alt="">
                     </div>
+
                 </div>
             </div>
         </div>
