@@ -66,22 +66,33 @@
                         <div class="color-circle orange"></div>
                         <div class="color-circle purple"></div>
                         <div class="color-circle brigth-blue"></div>
-
                     </div>
                 </div>
                 <div class="input-container">
                     <label>Assigned to</label>
                     <div class="toggle-menu">
-                        <div class="assigned-to" onclick="toggleMenu('toggle2')">
+                        <div class="assigned-to" onclick="toggleMenu('toggle-2')">
                             <span>Select contact to assign</span>
                             <img src="./img/triangle.svg">
                         </div>
-                        <div id="toggle2" class="contact d-none">
-                            <span>You</span>
-                            <input type="checkbox">
+                        <div id="category-input" class="input-field d-none">
+                            <input type="text" placeholder="New category name">
+                            <div class="add-input">
+                                <img class="x" src="./img/black-x.svg">
+                                <img src="./img/tick_dark.svg">
+                            </div>
+                        </div>
+                        <div id="toggle-2" class="selection d-none">
+                            <div class="contact">
+                                <span>You</span>
+                                <input type="checkbox">
+                            </div>
+                            <div class="contact" onclick="openInput('toggle-2')">
+                                <span>invite new contact</span>
+                                <img src="./img/contact_dark.svg">
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="task-right">
@@ -89,7 +100,7 @@
                     <label>Due date</label>
                     <div class="add-task-date input-field">
                         <input type="date" placeholder="dd/mm/y">
-                        <img src="./img/calender.svg">
+                        <p class="required d-none ">This field is required</p>
                     </div>
                 </div>
                 <div class="input-container">
@@ -106,7 +117,6 @@
                         <input type="text">
                         <img src="./img/plus_dark.svg" alt="">
                     </div>
-
                 </div>
             </div>
         </div>

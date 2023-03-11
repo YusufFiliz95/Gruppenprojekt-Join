@@ -1,14 +1,5 @@
 
-/* info von Tobi
-json Datei löschen
-hier in add_task.js ein Array let tasks = []; anlegen
-der backend server ist dann im Prinzip genau so aufgebaut wie ein LocalStorage zu behandeln
-siehe https://github.com/JunusErgin/smallest_backend_ever - alles gut beschrieben
-im Video  Backendintegration wird auch alles schön gut erklärt
-können das gern morgen zusammen machen :) */
-
-
-
+let tasks = [];
 let category = [];
 let subtask = [];
 let prio = 0;
@@ -30,7 +21,7 @@ function addTask() {
     prio = document.getElementById('prio');
     subtask = document.getElementById('subtask');
 
-    task = {
+    tasks = {
         "title": title.value,
         "discription": description.value,
         "category": category.value,
@@ -61,5 +52,13 @@ function renderCategorys() {
 }
 
 function renderContacts() {
+
+}
+
+function selectedPrio() {
+
+}
+
+function checkRequired() {
 
 }
