@@ -31,7 +31,7 @@
     display: flex;
 }
 
-.add-task-buttons {
+.add-task-button {
     margin-left: 35px;
     display: flex;
     align-items: center;
@@ -207,10 +207,16 @@
 .add-task-dialog-bord {
     position: relative;
     width: 1116px;
-    height: 914px;
-
-
+    height: 750px;
 }
+
+.add-task-content {
+    height: calc(100% - 120px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 .slide-in-right-add-task {
     animation-name: slideInRightAddTask;
@@ -333,14 +339,15 @@
 .taskoverview-subtask {
     margin-bottom: 25px;
     padding-right: 25px;
+    padding-left: 30px;
     display: flex;
     flex-direction: column;
-    max-height: 75px;
     max-width: max-content;
-    overflow-y: auto;
+    /* overflow-y: auto; */
+    border-left: 4px solid #d2d2d2;
 }
 
-.taskoverview-subtask-row{
+.taskoverview-subtask-row {
     margin-bottom: 5px;
 }
 
@@ -398,7 +405,7 @@
     display: flex;
     flex-direction: column;
     max-width: max-content;
-    overflow-y: scroll;
+    overflow-y: auto;
 
 }
 

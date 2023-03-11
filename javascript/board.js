@@ -163,7 +163,7 @@ function templateNeedBar(i, checkSubtask, percentBar) {
 /* --------END--------all rendering function to show the Board-------------------------- */
 
 
-/* ----------------all rendering function to show the task overview-------------------------- */
+/* ----------------all rendering functions to show the task overview-------------------------- */
 
 function renderTaskInToOverview(i) {
     let category = tasks[i].category;
@@ -176,8 +176,7 @@ function renderTaskInToOverview(i) {
     let prioColor = setPrioColor(i);
     document.getElementById('task-overviewId').innerHTML = templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor);
     if (tasks[i].subtasks.length >= 1) renderSubtaskInToOverview(i);
-    /* render contacts function */
-    /* check Scroll on Contacts */
+    renderContactsInToOverview(i);
 }
 
 function renderSubtaskInToOverview(i) {
@@ -231,6 +230,26 @@ function setPrioColor(i) {
     if (prio == 3) return "#7AE229";
 }
 
+function renderContactsInToOverview(i) {
+    let contacts = tasks[i].contacts;
+
+    for (let z = 0; z < contacts.length; z++) {
+        let name = tasks[i].contacts[z].name;
+        let surname = tasks[i].contacts[z].surname;
+        let initials = tasks[i].contacts[z].initials;
+        let color = tasks[i].contacts[z].color;
+        document.getElementById('taskoverview-contactsId').innerHTML += templateRenderContactsInToOverview(name, surname, initials, color);
+    }
+}
+
+function templateRenderContactsInToOverview(name, surname, initials, color) {
+    return `<div class="taskoverview-contact">
+        <div class="taskoverview-contact-icon" style="background-color:${color}">${initials}</div>
+        <span class="taskoverview-span-right">${name} ${surname} </span>
+    </div>  
+    `;
+}
+
 function templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor) {
     return `<span class="taskoverview-category" style="background-color:${categoryColor}">${category}</span>
     <span class="taskoverview-title">${title}</span>
@@ -251,7 +270,8 @@ function templateRenderTaskInToOverview(i, category, categoryColor, title, discr
     <div class="taskoverview-assignto">
         <span class="taskoverview-span-over">Assigned To:</span>
     </div>
-</div>
+    <div id="taskoverview-contactsId" class="taskoverview-contacts">
+    </div>
 <div class="taskoverview-editbutton-container">
     <button onclick="" class="dark-btn edit-button">
         <img src="img/edit_pen_white.svg" alt="">
@@ -259,7 +279,7 @@ function templateRenderTaskInToOverview(i, category, categoryColor, title, discr
 </div>`;
 }
 
-/* -------END------all rendering function to show the task overview-------------------------- */
+/* -------END------all rendering functions to show the task overview-------------------------- */
 
 
 /* ---------------------Drag and Drop-------------------------  */
