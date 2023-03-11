@@ -28,6 +28,10 @@ h2 {
     display: none !important;
 }
 
+.clicked {
+    background-color: rgb(9, 25, 49);
+}
+
 /*BUTTONS*/
 .dark-btn {
     border: 0;

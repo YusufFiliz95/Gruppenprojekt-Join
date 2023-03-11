@@ -1,8 +1,14 @@
+let selectedMenu;
+
+
+
 //FUNCTION FOR LOADING OTHER FUNCTIONS
-async function init() {
+async function init(i) {
     await includeHTML();
     loadMenu();
-    loadContacts();
+    selectMenuPoint(i);
+    setSelectedMenu();
+
     //setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
 }
 
@@ -23,6 +29,10 @@ async function includeHTML() {
 /* function so that the dialog window does not close when clicked */
 function doNotClose(event) {
     event.stopPropagation();
+}
+
+function selectMenuPoint(i) {
+    selectedMenu = i;
 }
 
 

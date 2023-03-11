@@ -36,7 +36,7 @@
     padding-right: 36px;
 }
 
-.profile-section img{
+.profile-section img {
     width: 31px;
     height: 31px;
     padding-left: 16px;
@@ -54,7 +54,7 @@
     border-radius: 100%;
 }
 
-.profile p{
+.profile p {
     font-size: 14px;
     padding-left: 3px;
     padding-right: 3px;
@@ -89,11 +89,6 @@
 .menu-icon-text:hover {
     background-color: rgb(9, 25, 49);
 }
-
-.clicked {
-    background-color: rgb(9, 25, 49);
-}
-
 
 .text {
     display: flex;
