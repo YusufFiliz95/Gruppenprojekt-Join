@@ -4,26 +4,42 @@ let currentDraggedElement;
 function openAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
-
 }
 
-function closeAddTaskDialogBord() {
+async function closeAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
+    addTaskWindow = document.getElementById('add-task-bordId');
+    addTaskWindow.classList.add('slide-in-right-add-task');
+    addTaskWindow.classList.remove('slide-out-right-add-task');
 }
 
-function openTaskOverviewOnBord() {
+function slideOutAddTaskDialogBord() {
+    let window = document.getElementById('add-task-bordId');
+    window.classList.remove('slide-in-right-add-task');
+    window.classList.add('slide-out-right-add-task');
+    setTimeout(closeAddTaskDialogBord, 350);
+}
+
+function openTaskOverviewDialogBord() {
     document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
-
 }
 
-function closeTaskOverviewOnBoard() {
+function closeTaskOverviewDialogBoard() {
     document.getElementById('overlay-bord-taskoverviewId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
-
+    let window = document.getElementById('taskoverview-bordId');
+    window.classList.add('slide-in-right-task-overview');
+    window.classList.remove('slide-out-right-task-overview');
 }
 
+function slideOutTaskOverviewDialogBoard() {
+    let window = document.getElementById('taskoverview-bordId');
+    window.classList.remove('slide-in-right-task-overview');
+    window.classList.add('slide-out-right-task-overview');
+    setTimeout(closeTaskOverviewDialogBoard, 350);
+}
 
 function renderCardsIntoTheBoards() {
     deleteBoard();
@@ -114,7 +130,7 @@ function checkAmountContactsInCard(contact) {
 }
 
 function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prio, status) {
-    return `<div onclick="openTaskOverviewOnBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="true" class="task-card-bord  dialog-design">
+    return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="true" class="task-card-bord  dialog-design">
                     <span class="task-card-category" style="background-color:${categoryColor} ;">${category}</span>
                     <span class="task-card-title">${title}</span>
                     <span class="task-card-description">${discription}</span>

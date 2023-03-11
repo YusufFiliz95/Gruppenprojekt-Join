@@ -208,22 +208,44 @@
     position: relative;
     width: 1116px;
     height: 914px;
-    animation-name: slideInRight;
-    animation-duration: 0.5s;
-    animation-fill-mode: both;
+
 
 }
 
-@keyframes slideInRight {
+.slide-in-right-add-task {
+    animation-name: slideInRightAddTask;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideInRightAddTask {
     0% {
         transform: translateX(150%);
         visibility: visible;
     }
 
-    75% {
+    100% {
         transform: translateX(0);
     }
 }
+
+.slide-out-right-add-task {
+    animation-name: slideOutRightAddTask;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideOutRightAddTask {
+    0% {
+        transform: translateX(0%);
+        visibility: visible;
+    }
+
+    100% {
+        transform: translateX(150%);
+    }
+}
+
 
 .x-btn-div {
     margin-top: 35px;
@@ -236,11 +258,41 @@
     width: 623px;
     height: 90%;
     position: relative;
-    animation-name: slideInRight;
-    animation-duration: 0.5s;
+
+}
+
+.slide-in-right-task-overview {
+    animation-name: slideInRightTaskOverview;
+    animation-duration: 0.3s;
     animation-fill-mode: both;
+}
 
+@keyframes slideInRightTaskOverview {
+    0% {
+        transform: translateX(150%);
+        visibility: visible;
+    }
 
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.slide-out-right-task-overview {
+    animation-name: slideOutRightTaskOverview;
+    animation-duration: 0.3s;
+    animation-fill-mode: both;
+}
+
+@keyframes slideOutRightTaskOverview {
+    0% {
+        transform: translateX(0%);
+        visibility: visible;
+    }
+
+    100% {
+        transform: translateX(200%);
+    }
 }
 
 .task-overview-container {
