@@ -96,7 +96,8 @@
     <!-- overlay + addTask Dialog -->
     <div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
 
-        <div id="add-task-bordId" class="add-task-dialog-bord dialog-design slide-in-right-add-task">
+        <div onclick="doNotClose(event)" id="add-task-bordId"
+            class="add-task-dialog-bord dialog-design slide-in-right-add-task">
             <div class="x-btn-div">
                 <img onclick="slideOutAddTaskDialogBord()" class="x-btn" src="img/black-x.svg" alt="">
             </div>
@@ -106,7 +107,8 @@
     <!-- overlay + Task Overview -->
     <div onclick="slideOutTaskOverviewDialogBoard()" id="overlay-bord-taskoverviewId"
         class="overlay-dialog-center d-none ">
-        <div id="taskoverview-bordId" class="task-overview-bord dialog-design slide-in-right-task-overview">
+        <div onclick="doNotClose(event)" id="taskoverview-bordId"
+            class="task-overview-bord dialog-design slide-in-right-task-overview">
 
             <div class="x-btn-div">
                 <img onclick="slideOutTaskOverviewDialogBoard()" class="x-btn" src="img/black-x.svg" alt="">

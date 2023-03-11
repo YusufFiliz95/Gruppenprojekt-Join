@@ -1,6 +1,6 @@
 let currentDraggedElement;
 
-
+/*  -------------------open Dialog Window AddTask and Taskoverview with slideIn slide Out Functions--------------------------  */
 function openAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
@@ -41,6 +41,9 @@ function slideOutTaskOverviewDialogBoard() {
     setTimeout(closeTaskOverviewDialogBoard, 350);
 }
 
+/* --------END--------open Dialog Window AddTask and Taskoverview with slideIn slide Out Functions-------------------------- */
+
+/* -------------------all rendering function to show the Board------------------------------ */
 function renderCardsIntoTheBoards() {
     deleteBoard();
     for (let i = 0; i < tasks.length; i++) {
@@ -154,8 +157,10 @@ function templateNeedBar(i, checkSubtask, percentBar) {
             </div>
             <span>${checkSubtask} Done</span>`;
 }
+/* --------END--------all rendering function to show the Board-------------------------- */
 
-/* Drag and Drop  */
+
+/* ---------------------Drag and Drop-------------------------  */
 
 function startDragging(id, status) {
     currentDraggedElement = id;
@@ -220,3 +225,4 @@ function deleteEmtyDivByDragging() {
         if (divExist) document.getElementById('emtyDivId' + i).remove();
     }
 }
+/* ---------END---------Drag and Drop-------------------------  */

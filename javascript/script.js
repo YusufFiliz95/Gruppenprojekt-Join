@@ -20,7 +20,9 @@ async function includeHTML() {
         }
     }
 }
-
-
+/* function so that the dialog window does not close when clicked */
+function doNotClose(event) {
+    event.stopPropagation();
+}
 
 
