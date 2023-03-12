@@ -151,43 +151,23 @@ label {
     height: 15px;
     width: 15px;
     border-radius: 50%;
+    cursor: pointer;
 }
 
-.ligth-blue {
-    background-color: #8AA4FF;
+.color-circle:hover {
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.red {
-    background-color: #FB0101;
-}
-
-.green {
-    background-color: #43D300;
-}
-
-.orange {
-    background-color: #FD8A01;
-}
-
-.purple {
-    background-color: #E224BE;
-}
-
-.brigth-blue {
-    background-color: #013DFF;
-}
-
-.turquoise {
-    background-color: #33D7C1;
-}
-
-.magenta {
-    background-color: #F771FF;
+.color-circle:focus {
+    border: 2px solid #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
 .color-container {
+    height: 20px;
     display: flex;
-    gap: 6px
+    gap: 8px
 }
 
 .add-input {
@@ -200,6 +180,22 @@ label {
     padding: 6px;
 }
 
+@media(min-width: 600px) {
+
+    .join-menu {
+        visibility: visible;
+        position: fixed;
+        top: 0px;
+        width: 232px;
+        height: 100%;
+        background: darkgrey;
+    }
+
+    .container {
+        margin-left: calc(232px + 2%);
+    }
+
+}
 
 
 @media(min-width: 1200px) {
@@ -267,8 +263,4 @@ label {
         flex-direction: column;
         padding-left: 20px;
     }
-
-
-
-
 }

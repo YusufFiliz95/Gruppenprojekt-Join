@@ -7,20 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
     <link rel="icon" type="img/png" href="img/join_logo.svg">
-    <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/add_task.css">
-    <script src="./javascript/add_tasks.js"></script>
-    <script src="./javascript/script.js"></script>
+    <script src="javascript/script.js"></script>
+    <script src="javascript/board.js"></script>
+    <script src="javascript/add_tasks.js"></script>
+    <script src="javascript/mini_backend.js"></script>
+    <script src="javascript/tasksArray.js"></script>
     <script src="javascript/menu.js"></script>
+    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/fonts.css">
+    <link rel="stylesheet" href="styles/board.css">
+    <link rel="stylesheet" href="styles/scrollbar.css">
+    <link rel="stylesheet" href="styles/add_task.css">
+    <link rel="stylesheet" href="styles/mobile_menu.css">
+
+
 </head>
 
-<body onload="init(3)">
+<body onload="init(3), renderCategoryColors()">
     <!-- include W3 - Menu/Header -->
     <div w3-include-html="templates/menu_template.html"></div>
+    <div w3-include-html="templates/menu_mobile_template.html"></div>
     <div class="container">
         <h1 class="task-headline">Add Task</h1>
         <div class="task-container">
             <div class="task-left">
+                <!-- tittle input -->
                 <div class="input-container">
                     <label>Title</label>
                     <div class="input-field">
@@ -28,12 +39,14 @@
                     </div>
                     <p class="required d-none ">This field is required</p>
                 </div>
+                <!-- description input -->
                 <div class="input-container">
                     <label>Description</label>
                     <textarea class="textarea-field" name="" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
                     <p class="required d-none ">This field is required</p>
                 </div>
+                <!-- category input -->
                 <div class="input-container">
                     <label>Category</label>
                     <div class="toggle-menu">
@@ -43,32 +56,22 @@
                         </div>
                         <div id="category-input" class="input-field d-none">
                             <input type="text" placeholder="New category name">
-                            <div class="add-input">
+                            <div id="add-input">
+                                <div id="currentColor" class="color-circle"></div>
                                 <img class="x" src="./img/black-x.svg">
-                                <img src="./img/tick_dark.svg">
+                                <img onclick="renderCategorys()" src="./img/tick_dark.svg">
                             </div>
                         </div>
                         <div id="toggle-1" class="selection d-none">
-                            <span onclick="openInput('toggle-1')">New Category</span>
-                            <div class="category">
-                                <span>Sales</span>
-                                <div class="color-circle magenta"></div>
-                            </div>
-                            <div class="category">
-                                <span>Backoffice</span>
-                                <div class="color-circle turquoise"></div>
-                            </div>
+                            <span onclick="openInputfield('toggle-1')">New Category</span>
+                            <div id="category-container"></div>
                         </div>
                     </div>
-                    <div id="color-container" class="color-container d-none">
-                        <div class="color-circle ligth-blue"></div>
-                        <div class="color-circle red"></div>
-                        <div class="color-circle green"></div>
-                        <div class="color-circle orange"></div>
-                        <div class="color-circle purple"></div>
-                        <div class="color-circle brigth-blue"></div>
+                    <div id="color-container" class="color-container">
                     </div>
                 </div>
+
+                <!-- contact input -->
                 <div class="input-container">
                     <label>Assigned to</label>
                     <div class="toggle-menu">
@@ -97,6 +100,7 @@
                 </div>
             </div>
             <div class="task-right">
+                <!-- Date input -->
                 <div class="input-container">
                     <label>Due date</label>
                     <div class="add-task-date input-field">
@@ -104,6 +108,7 @@
                         <p class="required d-none ">This field is required</p>
                     </div>
                 </div>
+                <!-- Prio Buttons input -->
                 <div class="input-container">
                     <label>Prio</label>
                     <div class="prio-btn">
@@ -112,6 +117,7 @@
                         <button><span>Low</span><img class="prio-img" src="./img/prio_low.svg"></button>
                     </div>
                 </div>
+                <!-- subtask input -->
                 <div class="input-container">
                     <label>Subtasks</label>
                     <div class="input-field">
@@ -121,6 +127,7 @@
                 </div>
             </div>
         </div>
+        <!-- Clear and Create Buttons -->
         <div class="add-task-buttons">
             <button class="transparent-btn clear-btn"><span>clear x</span></button>
             <button class="dark-btn create-btn"><span>Create Task</span><img src="./img/tick_white.svg" alt=""></button>
