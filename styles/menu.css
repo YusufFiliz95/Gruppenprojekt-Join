@@ -125,3 +125,11 @@
 .legal-notice-icon {
     margin-left: 44px !important;
 }
+
+@media(max-width: 600px) {
+
+    .join-menu {
+        display: none;
+    }
+
+}

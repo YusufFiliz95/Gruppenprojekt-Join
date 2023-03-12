@@ -7,15 +7,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="javascript/script.js"></script>
     <script src="javascript/contacts.js"></script>
-    <script src="javascript/menu.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/contacts.css">
+    <link rel="stylesheet" href="styles/mobile_menu.css">
     <!-- <link rel="stylesheet" href="styles/scrollbar.css"> -->
 
     <title>Contacts</title>
 </head>
 
 <body onload="init(4), loadContacts()">
+    <div w3-include-html="templates/menu_mobile_template.html"></div>
     <div w3-include-html="templates/menu_template.html"></div>
     <div class="contacts-section">
         <div class="contact-list" id="contactlist"></div>
