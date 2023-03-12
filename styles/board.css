@@ -57,7 +57,9 @@
 
 .tasks-maincontainer-bord {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
     padding-left: 70px;
     padding-right: 65px;
     margin-top: 100px;
@@ -89,7 +91,10 @@
 
 .status-container-bord {
     width: 250px;
+}
 
+.status-container-bord-right {
+    width: 250px;
 }
 
 .to-do-headline-bord {
@@ -454,4 +459,22 @@
     border: 2px solid #2A3647;
     border-style: dotted;
     border-radius: 30px;
+}
+
+.headline-mobile-searching {
+    height: 50px;
+    margin-top: 30px;
+    display: none;
+    padding-left: 65px;
+}
+
+@media(max-width: 1200px) {
+    .headline-mobile-searching {
+        display: flex;
+    }
+
+    #search-input-desktopviewId {
+        display: none;
+    }
+
 }

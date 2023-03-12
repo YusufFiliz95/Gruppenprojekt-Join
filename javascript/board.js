@@ -353,8 +353,8 @@ function deleteEmtyDivByDragging() {
 
 /* ---------------------Search Functions------------------------ */
 
-function filterTasksBySearching() {
-    let search = document.getElementById('input-searchingId').value;
+function filterTasksBySearching(id) {
+    let search = document.getElementById('input-searchingId' + id).value;
     search = search.toLowerCase();
     if (search == '') {
         renderCardsIntoTheBoards();

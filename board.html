@@ -31,8 +31,9 @@
         <div class="headline-container">
             <h1>Board</h1>
             <div class="headline-right">
-                <div class="input-field-search-on-board">
-                    <input id="input-searchingId" type="text" placeholder="Find Task" onkeyup="filterTasksBySearching()">
+                <div id="search-input-desktopviewId" class="input-field-search-on-board">
+                    <input id="input-searchingId1" type="text" placeholder="Find Task"
+                        onkeyup="filterTasksBySearching(1)">
                     <img src="img/search-logo.svg" alt="">
                 </div>
                 <button onclick="openAddTaskDialogBord()" class="dark-btn add-task-button">Add task
@@ -40,6 +41,12 @@
                         <img src="img/plus.svg" alt="">
                     </div>
                 </button>
+            </div>
+        </div>
+        <div class="headline-mobile-searching">
+            <div class="input-field-search-on-board "> <!-- search Input in mobile version -->
+                <input id="input-searchingId2" type="text" placeholder="Find Task" onkeyup="filterTasksBySearching(2)">
+                <img src="img/search-logo.svg" alt="">
             </div>
         </div>
         <div class="tasks-maincontainer-bord">
@@ -78,7 +85,7 @@
 
                 </div>
             </div>
-            <div class="status-container-bord">
+            <div class="status-container-bord-right">
                 <div class="to-do-headline-bord">
                     <h2>Done</h2>
                     <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
