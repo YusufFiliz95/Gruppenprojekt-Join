@@ -37,6 +37,7 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+    margin-top: 50px;
     width: 600px;
     height: 100px;
     margin-left: 32px;
@@ -64,7 +65,7 @@
     align-items: center;
     padding-left: 25px;
     width: 357px;
-    height: 79px;
+    min-height: 79px;
     border-radius: 10px;
     cursor: pointer;
     transition: 100ms ease-in-out;
@@ -108,9 +109,15 @@
 }
 
 .contact-char {
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     align-items: center;
     width: 357px;
-    height: 79px;
-    background-color: #007CEE;
+    min-height: 79px;
+    border-bottom: 1px solid #D1D1D1;
+}
+
+.contact-char p{
+    padding-left: 28px;
 }
