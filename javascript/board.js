@@ -296,7 +296,9 @@ function allowDrop(ev) {
 
 function moveTo(status) {
     tasks[currentDraggedElement].status = status;
-    renderCardsIntoTheBoards();
+    inputSearchingField = document.getElementById('input-searchingId').value;
+    if (inputSearchingField == '') renderCardsIntoTheBoards()
+    else filterTasksBySearching();
 }
 
 function rotateCardByDragging(id) {
@@ -348,3 +350,45 @@ function deleteEmtyDivByDragging() {
     }
 }
 /* ---------END---------Drag and Drop-------------------------  */
+
+/* ---------------------Search Functions------------------------ */
+
+function filterTasksBySearching() {
+    let search = document.getElementById('input-searchingId').value;
+    search = search.toLowerCase();
+    if (search == '') {
+        renderCardsIntoTheBoards();
+    } else {
+        deleteBoard();
+        indexesOfSearching(search);
+        window.scrollTo(0, 0);
+    }
+}
+
+function indexesOfSearching(search) {
+    let indexesOfSearching = [];
+    for (let i = 0; i < tasks.length; i++) {
+        let title = tasks[i].title;
+        let discription = tasks[i].discription;
+        if (title.toLowerCase().includes(search)) indexesOfSearching.push(i);
+        else if (discription.toLowerCase().includes(search)) indexesOfSearching.push(i);
+    }
+    for (let i = 0; i < indexesOfSearching.length; i++) {
+        renderTasksToInToOverviewBySearching(indexesOfSearching[i]);
+    }
+}
+
+function renderTasksToInToOverviewBySearching(i) {
+    let id = tasks[i].id;
+    let category = tasks[i].category;
+    let categoryColor = tasks[i]["category-color"];
+    let title = tasks[i].title;
+    let discription = tasks[i].discription;
+    let prioImage = setPrioImage(i);
+    let status = tasks[i].status;
+    document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status);
+    checkNeedBar(i);
+    renderContactsIntotheCard(i);
+}
+
+/* ----------END--------Search Functions------------------------ */

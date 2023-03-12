@@ -32,7 +32,7 @@
             <h1>Board</h1>
             <div class="headline-right">
                 <div class="input-field-search-on-board">
-                    <input type="text" placeholder="Find Task">
+                    <input id="input-searchingId" type="text" placeholder="Find Task" onkeyup="filterTasksBySearching()">
                     <img src="img/search-logo.svg" alt="">
                 </div>
                 <button onclick="openAddTaskDialogBord()" class="dark-btn add-task-button">Add task
