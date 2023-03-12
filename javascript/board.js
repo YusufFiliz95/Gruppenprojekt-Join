@@ -12,6 +12,7 @@ async function closeAddTaskDialogBord() {
     addTaskWindow = document.getElementById('add-task-bordId');
     addTaskWindow.classList.add('slide-in-right-add-task');
     addTaskWindow.classList.remove('slide-out-right-add-task');
+    renderCardsIntoTheBoards();
 }
 
 function slideOutAddTaskDialogBord() {
@@ -33,6 +34,7 @@ function closeTaskOverviewDialogBoard() {
     let window = document.getElementById('taskoverview-bordId');
     window.classList.add('slide-in-right-task-overview');
     window.classList.remove('slide-out-right-task-overview');
+    renderCardsIntoTheBoards();
 }
 
 function slideOutTaskOverviewDialogBoard() {
@@ -161,7 +163,7 @@ function templateNeedBar(i, checkSubtask, percentBar) {
 /* --------END--------all rendering function to show the Board-------------------------- */
 
 
-/* ----------------all rendering function to show the task overview-------------------------- */
+/* ----------------all rendering functions to show the task overview-------------------------- */
 
 function renderTaskInToOverview(i) {
     let category = tasks[i].category;
@@ -173,10 +175,44 @@ function renderTaskInToOverview(i) {
     let prioImage = setPrioImage(i);
     let prioColor = setPrioColor(i);
     document.getElementById('task-overviewId').innerHTML = templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor);
-    /* render Subtasks function */
-    /* check Scroll on Subtasks */
-    /* render contacts function */
-    /* check Scroll on Contacts */
+    if (tasks[i].subtasks.length >= 1) renderSubtaskInToOverview(i);
+    renderContactsInToOverview(i);
+}
+
+function renderSubtaskInToOverview(i) {
+    let subtaskfield = document.getElementById('overviewSubtasksId');
+    subtaskfield.innerHTML = '';
+    let subtasks = tasks[i].subtasks;
+    for (let z = 0; z < subtasks.length; z++) {
+        let subtask = subtasks[z];
+        subtaskfield.innerHTML += templateSubtasksInToOverview(i, subtask, z);
+    }
+    rendersubtaskCheckboxes(i);
+}
+
+function rendersubtaskCheckboxes(i) {
+    let subtasksValue = tasks[i]["subtasks-value"];
+    for (let z = 0; z < subtasksValue.length; z++) {
+        if (subtasksValue[z] == 0) document.getElementById('checkboxId' + z).checked = false;
+        else document.getElementById('checkboxId' + z).checked = true;
+    }
+
+}
+
+function templateSubtasksInToOverview(i, subtask, z) {
+    return `
+    <div class="taskoverview-subtask-row">
+        <input type="checkbox" id="checkboxId${z}" onclick="subtasksCheckBoxClick(${i},${z})">
+        <span>${subtask}</span>
+    </div>
+`;
+}
+
+function subtasksCheckBoxClick(i, z) {
+    let checkbox = document.getElementById('checkboxId' + z);
+    if (checkbox.checked == true) tasks[i]["subtasks-value"][z] = 1;
+    else tasks[i]["subtasks-value"][z] = 0;
+
 }
 
 
@@ -191,14 +227,34 @@ function setPrioColor(i) {
     let prio = tasks[i].prio;
     if (prio == 1) return "#FF3D00";
     if (prio == 2) return "#FFA800";
-    if (prio == 3) return "#F5F5F5";
+    if (prio == 3) return "#7AE229";
+}
+
+function renderContactsInToOverview(i) {
+    let contacts = tasks[i].contacts;
+
+    for (let z = 0; z < contacts.length; z++) {
+        let name = tasks[i].contacts[z].name;
+        let surname = tasks[i].contacts[z].surname;
+        let initials = tasks[i].contacts[z].initials;
+        let color = tasks[i].contacts[z].color;
+        document.getElementById('taskoverview-contactsId').innerHTML += templateRenderContactsInToOverview(name, surname, initials, color);
+    }
+}
+
+function templateRenderContactsInToOverview(name, surname, initials, color) {
+    return `<div class="taskoverview-contact">
+        <div class="taskoverview-contact-icon" style="background-color:${color}">${initials}</div>
+        <span class="taskoverview-span-right">${name} ${surname} </span>
+    </div>  
+    `;
 }
 
 function templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor) {
     return `<span class="taskoverview-category" style="background-color:${categoryColor}">${category}</span>
     <span class="taskoverview-title">${title}</span>
     <span class="taskoverview-description">${discription}</span>
-    <div class="taskoverview-subtask">
+    <div id="overviewSubtasksId" class="taskoverview-subtask">
 
     </div>
     <div class="taskoverview-duedate">
@@ -207,14 +263,15 @@ function templateRenderTaskInToOverview(i, category, categoryColor, title, discr
     </div>
     <div class="taskoverview-prio">
         <span class="taskoverview-span-left">Priority:</span>
-        <span class="taskoverview-span-right">${prio}
+        <span class="taskoverview-span-right taskoverview-prio-button" style= "background-color:${prioColor}">${prio}
         <img class="" src="img/${prioImage}" alt="">
         </span> 
     </div>
     <div class="taskoverview-assignto">
         <span class="taskoverview-span-over">Assigned To:</span>
     </div>
-</div>
+    <div id="taskoverview-contactsId" class="taskoverview-contacts">
+    </div>
 <div class="taskoverview-editbutton-container">
     <button onclick="" class="dark-btn edit-button">
         <img src="img/edit_pen_white.svg" alt="">
@@ -222,7 +279,7 @@ function templateRenderTaskInToOverview(i, category, categoryColor, title, discr
 </div>`;
 }
 
-/* -------END------all rendering function to show the task overview-------------------------- */
+/* -------END------all rendering functions to show the task overview-------------------------- */
 
 
 /* ---------------------Drag and Drop-------------------------  */

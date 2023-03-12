@@ -12,7 +12,8 @@ let tasks = [
         "category-color": "#000000",
         "contacts": [
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             }
@@ -31,27 +32,32 @@ let tasks = [
         "category-color": "#3983AB",
         "contacts": [
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             },
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             },
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#1AE350"
             },
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             },
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             },
@@ -71,7 +77,8 @@ let tasks = [
         "category-color": "#DFAC1F",
         "contacts": [
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             }
@@ -90,7 +97,8 @@ let tasks = [
         "category-color": "#1EB8D7",
         "contacts": [
             {
-                "name": "Max Mustermann",
+                "name": "Max",
+                "surname": "Mustermann",
                 "initials": "MM",
                 "color": "#47965F"
             }
@@ -109,12 +117,14 @@ let tasks = [
         "category-color": "#3983AB",
         "contacts": [
             {
-                "name": "Denise Ruhmanseder",
+                "name": "Denise",
+                "surname": "Ruhmanseder",
                 "initials": "DR",
                 "color": "#EEF31A"
             },
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             }
@@ -133,7 +143,8 @@ let tasks = [
         "category-color": "#0063C0",
         "contacts": [
             {
-                "name": "Denise Ruhmanseder",
+                "name": "Denise",
+                "surname": "Ruhmanseder",
                 "initials": "DR",
                 "color": "#EEF31A"
             }
@@ -152,7 +163,8 @@ let tasks = [
         "category-color": "#000000",
         "contacts": [
             {
-                "name": "Mama Ruhmanseder",
+                "name": "Mama",
+                "surname": "Ruhmanseder",
                 "initials": "MR",
                 "color": "#DC3A63"
             }
@@ -171,7 +183,8 @@ let tasks = [
         "category-color": "#008000",
         "contacts": [
             {
-                "name": "Tobias Ruhmanseder",
+                "name": "Tobias",
+                "surname": "Ruhmanseder",
                 "initials": "TR",
                 "color": "#7AE229"
             }

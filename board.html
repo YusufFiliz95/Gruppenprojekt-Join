@@ -10,6 +10,7 @@
     <link rel="icon" type="img/png" href="img/join_logo.svg">
     <script src="javascript/script.js"></script>
     <script src="javascript/board.js"></script>
+    <script src="javascript/add_tasks.js"></script>
     <script src="javascript/mini_backend.js"></script>
     <script src="javascript/tasksArray.js"></script>
     <script src="javascript/menu.js"></script>
@@ -17,6 +18,7 @@
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/board.css">
     <link rel="stylesheet" href="styles/scrollbar.css">
+    <link rel="stylesheet" href="styles/add_task.css">
 
 </head>
 
@@ -33,7 +35,7 @@
                     <input type="text" placeholder="Find Task">
                     <img src="img/search-logo.svg" alt="">
                 </div>
-                <button onclick="openAddTaskDialogBord()" class="dark-btn add-task-buttons">Add task
+                <button onclick="openAddTaskDialogBord()" class="dark-btn add-task-button">Add task
                     <div class="plus-icon">
                         <img src="img/plus.svg" alt="">
                     </div>
@@ -101,6 +103,9 @@
             <div class="x-btn-div">
                 <img onclick="slideOutAddTaskDialogBord()" class="x-btn" src="img/black-x.svg" alt="">
             </div>
+            <div class="add-task-content">
+                <div w3-include-html="templates/addTask_templates.html"></div>
+            </div>
         </div>
     </div>
 
@@ -115,69 +120,9 @@
             </div>
             <!-- by click on a Task it open a overview window -->
             <div id="task-overviewId" class="task-overview-container">
-                <!-- <span class="taskoverview-category">Design</span>
-                <span class="taskoverview-title">Website design</span>
-                <span class="taskoverview-description">Was weiß ich immer machen und so tun als würde man sich
-                    auskennen</span>
-                <div class="taskoverview-subtask">
-                    <div>
-                        <input type="checkbox" id="" name="" value="">
-                        <span>Aufgabe 1</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="" name="" value="">
-                        <span>Aufgabe 2</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="" name="" value="">
-                        <span>Aufgabe 3</span>
-                    </div>
-                    <div>
-                        <input type="checkbox" id="" name="" value="">
-                        <span>Aufgabe 4</span>
-                    </div>
-                </div>
-                <div class="taskoverview-duedate">
-                    <span class="taskoverview-span-left">Due date:</span>
-                    <span class="taskoverview-span-right">05-08-2022</span> 
-                </div>
-                <div class="taskoverview-prio">
-                    <span class="taskoverview-span-left">Priority:</span>
-                    <span class="taskoverview-span-right">Medium</span> 
-                </div>
-                <div class="taskoverview-assignto">
-                    <span class="taskoverview-span-over">Assigned To:</span>
-                </div>
-                <div class="taskoverview-contacts">
-                    <div class="taskoverview-contact">
-                        <div class="taskoverview-contact-icon">TR</div>
-                        <span class="taskoverview-span-right">Tobias Ruhmanseder</span>
-                    </div>
-                    <div class="taskoverview-contact">
-                        <div class="taskoverview-contact-icon">AB</div>
-                        <span class="taskoverview-span-right">Anton Bergmann</span>
-                    </div>
-                    <div class="taskoverview-contact">
-                        <div class="taskoverview-contact-icon">CD</div>
-                        <span class="taskoverview-span-right">Claudius Depp</span>
-                    </div>
-                    <div class="taskoverview-contact">
-                        <div class="taskoverview-contact-icon">EF</div>
-                        <span class="taskoverview-span-right">Elfriede Fürst</span>
-                    </div>
-                </div>
             </div>
-            <div class="taskoverview-editbutton-container">
-                <button onclick="" class="dark-btn edit-button">
-                    <img src="img/edit_pen_white.svg" alt="">
-                </button>
-            </div> -->
-            </div>
-
         </div>
     </div>
-
-
 </body>
 
 </html>

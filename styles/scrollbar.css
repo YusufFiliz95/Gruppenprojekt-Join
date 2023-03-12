@@ -10,7 +10,8 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: #888;
+    background: #2A3647;
+    border-radius: 4px;
 }
 
 /* Handle on hover */

@@ -1,16 +1,7 @@
 
-let tasks = [];
 let category = [];
 let subtask = [];
 let prio = 0;
-
-
-async function init() {
-    let response = await fetch('./json/tasks.json');
-    tasks = await response.json();
-    console.log(tasks);
-}
-
 
 function addTask() {
     title = document.getElementById('title');
