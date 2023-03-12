@@ -65,8 +65,6 @@
     padding-left: 25px;
     width: 357px;
     height: 79px;
-    margin-top: 5px;
-    margin-bottom: 5px;
     border-radius: 10px;
     cursor: pointer;
     transition: 100ms ease-in-out;
@@ -110,6 +108,8 @@
 }
 
 .contact-char {
+    display: flex;
+    align-items: center;
     width: 357px;
     height: 79px;
     background-color: #007CEE;

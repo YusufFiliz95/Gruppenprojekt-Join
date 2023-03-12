@@ -2,11 +2,9 @@
     <link rel="stylesheet" href="../styles/style.css">
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/fonts.css">
-    <script src="../javascript/menu.js"></script>
     <script src="../javascript/script.js"></script>
 </head>
-
-<body onload="init()">
+<body>
     <div class="join-headline">
         <div class="join-title">
             <p>Kanban Project Management Tool</p>
@@ -21,7 +19,40 @@
     </div>
     <div class="join-menu" id="joinmenu">
         <img src="../img/join_logo_menu.svg" class="join-logo-menu" alt="">
-        <div class="menu" id="joinmenuselection"></div>
+        <div class="menu" id="joinmenuselection">
+            <div class="menu-icon-text" onclick="window.location.href='../summary.html'" id="1">
+                <div class="icon">
+                    <img src="../img/summary_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Summary</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='../board.html'" id="2">
+                <div class="icon">
+                    <img src="../img/board_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Board</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='../add_task.html'" id="3">
+                <div class="icon">
+                    <img src="../img/add_task_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Add Task</p>
+                </div>
+            </div>
+            <div class="menu-icon-text" onclick="window.location.href='../contacts.html'" id="4">
+                <div class="icon">
+                    <img src="../img/contacts_icon.svg" alt="">
+                </div>
+                <div class="text">
+                    <p>Contacts</p>
+                </div>
+            </div>
+        </div>
         <div class="legal-notice" id="legalnotice">
             <div class="menu-icon-text" onclick="window.location.href = 'legal_notice.html'" id="5">
                 <div class="icon legal-notice-icon">

@@ -2,7 +2,8 @@ const contacts = [
     {
         'name': 'AMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com'
+        'email': 'max.mustermann@hotmail.com',
+        'color': ''
     },
     {
         'name': 'BMax',

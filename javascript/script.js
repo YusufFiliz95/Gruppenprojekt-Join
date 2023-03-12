@@ -1,11 +1,8 @@
 let selectedMenu;
 
-
-
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
     await includeHTML();
-    loadMenu();
     selectMenuPoint(i);
     setSelectedMenu();
 
@@ -35,4 +32,7 @@ function selectMenuPoint(i) {
     selectedMenu = i;
 }
 
+function setSelectedMenu() {
+    document.getElementById(selectedMenu).classList.add('clicked');
+}
 
