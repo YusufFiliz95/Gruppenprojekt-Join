@@ -27,8 +27,6 @@ function createColorPoint() {
 
 }
 
-
-
 function renderCategorys() {
     let categoryInput = document.getElementById('add-input').value;
     let categoryContainer = document.getElementById('category-container');
@@ -44,17 +42,36 @@ function renderCategorys() {
 }
 
 function renderCategoryColors() {
-    colorContainer = document.getElementById('color-container');
+    let colorContainer = document.getElementById('color-container');
     colorContainer.innerHTML = '';
 
     for (let i = 0; i < pointColor.length; i++) {
         color = pointColor[i]
         colorContainer.innerHTML += /*html*/`
-        <div onclick="addColor(color)" id="circle${i}" class="color-circle" style="background-color: ${'#' + color}"></div>`
+        <div onclick="addColor('${color}')" id="circle${i}" class="color-circle" style="background-color: ${'#' + color}"></div>`
     }
 }
 
 function addColor(color) {
-    document.getElementById('currentColor').style = "background-color: # + ${color}";
+    document.getElementById('currentColor').innerHTML = '';
+    document.getElementById('currentColor').innerHTML += /*html*/ `<div class="color-circle" style="background-color: ${'#' + color}"></div>`
     categoryColor = color;
 }
+
+
+function renderContacts() {
+    let contactContainer = document.getElementById('contact-container');
+    contactContainer.innerHTML = '';
+
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+
+        contactContainer.innerHTML += /*html*/ `
+        <div class="contact">
+            <span>${contact['name']} ${contact['surname']}</span>
+            <input type="checkbox">
+        </div>`
+    }
+}
+
+

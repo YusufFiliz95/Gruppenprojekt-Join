@@ -12,7 +12,7 @@
     <script src="javascript/add_tasks.js"></script>
     <script src="javascript/mini_backend.js"></script>
     <script src="javascript/tasksArray.js"></script>
-    <script src="javascript/menu.js"></script>
+    <script src="javascript/contacts.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/board.css">
@@ -23,7 +23,7 @@
 
 </head>
 
-<body onload="init(3), renderCategoryColors()">
+<body onload="init(3), renderContacts()">
     <!-- include W3 - Menu/Header -->
     <div w3-include-html="templates/menu_template.html"></div>
     <div w3-include-html="templates/menu_mobile_template.html"></div>
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div id="toggle-1" class="selection d-none">
-                            <span onclick="openInputfield('toggle-1')">New Category</span>
+                            <span onclick="openInputfield('toggle-1'), renderCategoryColors()">New Category</span>
                             <div id="category-container"></div>
                         </div>
                     </div>
@@ -79,24 +79,19 @@
                             <span>Select contact to assign</span>
                             <img src="./img/triangle.svg">
                         </div>
-                        <div id="category-input" class="input-field d-none">
-                            <input type="text" placeholder="New category name">
-                            <div class="add-input">
-                                <img class="x" src="./img/black-x.svg">
-                                <img src="./img/tick_dark.svg">
-                            </div>
-                        </div>
                         <div id="toggle-2" class="selection d-none">
                             <div class="contact">
                                 <span>You</span>
                                 <input type="checkbox">
                             </div>
-                            <div class="contact" onclick="openInput('toggle-2')">
-                                <span>invite new contact</span>
+                            <div id="contact-container"></div>
+                            <div class="contact">
+                                <span>Invite new contact</span>
                                 <img src="./img/contact_dark.svg">
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <div class="task-right">
