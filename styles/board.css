@@ -605,14 +605,11 @@
         border-radius: 0px !important;
     }
 
-    .clear-btn {
-        display: none;
-    }
 
     .create-btn {
         position: absolute;
-        top: 40px;
-        right: 40px;
+        top: 20px;
+        right: 25px;
     }
 
     h1 {
