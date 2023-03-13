@@ -1,44 +1,59 @@
-const contacts = [
+let contacts = [
     {
         'name': 'AMax',
         'surname': 'Mustermann',
         'email': 'max.mustermann@hotmail.com',
-        'color': '#ecab0'
+        'initials': 'AM',
+        'color': '7AE22A0'
     },
     {
         'name': 'BMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com'
+        'email': 'max.mustermann@hotmail.com',
+        'initials': 'BM',
+        'color': 'FB6A45'
     },
     {
         'name': 'FMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann1@hotmail.com'
+        'email': 'max.mustermann1@hotmail.com',
+        'initials': 'FM',
+        'color': '013DFF'
     },
     {
         'name': 'HMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com'
+        'email': 'max.mustermann@hotmail.com',
+        'initials': 'HM',
+        'color': '43D300'
     },
     {
         'name': 'KMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com'
+        'email': 'max.mustermann@hotmail.com',
+        'initials': 'KM',
+        'color': ''
     },
     {
         'name': 'JMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com'
+        'email': 'max.mustermann@hotmail.com',
+        'initials': 'JM',
+        'color': '8AA4FF'
     },
     {
         'name': 'OMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com'
+        'email': 'max.mustermann@hotmail.com',
+        'initials': 'OM',
+        'color': 'FD8A01'
     },
     {
         'name': 'CMax',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com'
+        'email': 'max.mustermann@hotmail.com',
+        'initials': 'CM',
+        'color': 'FB0101'
     },
 ]
 
