@@ -41,10 +41,8 @@
 
 
 .contact-info-section {
-    height: calc(100vh-130px);
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .contact-info-headline-section {
@@ -148,10 +146,16 @@
 }
 
 .contact-info {
-    width: 560px;
+    width: auto;
     height: 500px;
     margin-top: 50px;
-    margin-left: 30px;
+    margin-left: 50px;
+}
+
+.contact-info-initials-name-add-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .contact-info-initials {
@@ -163,4 +167,122 @@
     height: 120px;
     font-size: 47px;
     color: white;
+}
+
+.contact-info-name-add-task {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 110px;
+    width: 600px;
+    padding-left: 32px;
+}
+
+.contact-info-name {
+    margin: 0;
+    font-weight: 500;
+    font-size: 47px;
+}
+
+.contact-info-add-task {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 110px;
+    height: 20px;
+    padding: 10px;
+    color: #29ABE2;
+    transition: 100ms ease-in-out;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.contact-info-add-task img {
+    width: 20px;
+}
+
+.contact-info-add-task:hover {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2A3647;
+    border-radius: 10px;
+}
+
+.contact-info-add-task p {
+    margin: 0;
+}
+
+.contact-information-edit-contact {
+    display: flex;
+    justify-content: space-between;
+    width: 380px;
+    margin-top: 40px;
+}
+
+.contact-information-edit-contact p{
+    margin: 0;
+}
+
+.contact-information {
+    display: flex;
+    align-items: center;
+    font-size: 21px;
+}
+
+.edit-contact {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 120px;
+    height: 20px;
+    padding: 10px;
+    transition: 100ms ease-in-out;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.edit-contact:hover {
+    background-color: #7a99c5;
+    color: white;
+}
+
+
+.contact-info-email-phone {
+    margin-top: 32px;
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-info-email-phone p {
+    margin: 0;
+}
+
+.contact-info-email {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.contact-info-phone {
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.weight-1000 {
+    font-weight: 1000;
+}
+
+.contact-info-email-underline {
+    width: fit-content;
+    color: #007CEE;
+    cursor: pointer;
+}
+
+.contact-info-email-underline:hover{
+    text-decoration: underline;
 }

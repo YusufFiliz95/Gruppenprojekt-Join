@@ -125,13 +125,36 @@ function showContactInfo(i) {
     const contactinfo = contacts[i];
     const showClickedContact = document.getElementById('contactinfo');
     showClickedContact.innerHTML = /*html*/`
-    <div class="contact-info-initials-name">
+    <div class="contact-info-initials-name-add-task">
         <div class="contact-info-initials" style="background-color: ${contactinfo.profilecolor}">
             <p>${contactinfo.name.charAt(0).toUpperCase()}</p>
             <p>${contactinfo.surname.charAt(0).toUpperCase()}</p>
         </div>
-        <div>
-            
+        <div class="contact-info-name-add-task">
+            <p class="contact-info-name">${contactinfo.name} ${contactinfo.surname}</p>
+            <div class="contact-info-add-task">
+                <img src="img/add_task_for_contact.svg" alt="">
+                <p>Add Task</p>
+            </div>
+        </div>
+    </div>
+    <div class="contact-information-edit-contact">
+        <div class="contact-information">
+            <p>Contact Information</p>
+        </div>
+        <div class="edit-contact">
+            <img src="img/edit_contact_icon.svg" alt="">
+            <p>Edit Contact</p>
+        </div>
+    </div>
+    <div class="contact-info-email-phone">
+        <div class="contact-info-email">
+            <p class="weight-1000">Email</p>
+            <p class="contact-info-email-underline">${contactinfo.email}</p>
+        </div>
+        <div class="contact-info-phone">
+            <p class="weight-1000">Phone</p>
+            <p>${contactinfo.phonenumber}</p>
         </div>
     </div>
     `;
