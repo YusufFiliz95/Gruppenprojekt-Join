@@ -87,6 +87,8 @@
     border-radius: 10px;
     cursor: pointer;
     transition: 100ms ease-in-out;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 .contact:hover {
@@ -286,3 +288,8 @@
 .contact-info-email-underline:hover{
     text-decoration: underline;
 }
+
+.selected-contact-info {
+    background-color: #2A3647;
+    color: white;
+  }

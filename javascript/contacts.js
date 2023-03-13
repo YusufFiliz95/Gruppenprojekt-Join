@@ -142,7 +142,7 @@ function showContactInfo(i) {
         <div class="contact-information">
             <p>Contact Information</p>
         </div>
-        <div class="edit-contact">
+        <div class="edit-contact" onclick="editContact(${i})">
             <img src="img/edit_contact_icon.svg" alt="">
             <p>Edit Contact</p>
         </div>
@@ -158,7 +158,17 @@ function showContactInfo(i) {
         </div>
     </div>
     `;
+    // Highlight a contact if its clicked
+    const highlightContact = document.getElementsByClassName('contact');
+    for (let j = 0; j < highlightContact.length; j++) {
+        highlightContact[j].classList.remove('selected-contact-info');
+    }
+    highlightContact[i].classList.add('selected-contact-info');
 }
+
+
+
+
 
 /**
  *   const color = '#' + Math.floor(Math.random() * 0xFFFFFF).toString(16).padStart(6, '0'); //Generates random colors
