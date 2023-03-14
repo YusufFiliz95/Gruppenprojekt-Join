@@ -132,7 +132,7 @@ function showContactInfo(i) {
         </div>
         <div class="contact-info-name-add-task">
             <p class="contact-info-name">${contactinfo.name} ${contactinfo.surname}</p>
-            <div class="contact-info-add-task" onclick="slideOutAddTaskDialogBord(${i})">
+            <div class="contact-info-add-task" onclick="openAddTaskDialogBord(${i})">
                 <img src="img/add_task_for_contact.svg" alt="">
                 <p>Add Task</p>
             </div>

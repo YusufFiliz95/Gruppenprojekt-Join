@@ -36,3 +36,26 @@ function setSelectedMenu() {
     document.getElementById(selectedMenu).classList.add('clicked');
     document.getElementById('mobile-buttonId' + selectedMenu).classList.add('mobile-menu-selected');
 }
+
+/*  -------------------open Dialog Window AddTask with slideIn slide Out Functions--------------------------  */
+
+function openAddTaskDialogBord() {
+    document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
+    document.getElementById('bodyBordId').classList.add('overflow-dialog');
+}
+
+function closeAddTaskDialogBord() {
+    document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
+    document.getElementById('bodyBordId').classList.remove('overflow-dialog');
+    addTaskWindow = document.getElementById('add-task-bordId');
+    addTaskWindow.classList.add('slide-in-right-add-task');
+    addTaskWindow.classList.remove('slide-out-right-add-task');
+    renderCardsIntoTheBoards();
+}
+
+function slideOutAddTaskDialogBord() {
+    let window = document.getElementById('add-task-bordId');
+    window.classList.remove('slide-in-right-add-task');
+    window.classList.add('slide-out-right-add-task');
+    setTimeout(closeAddTaskDialogBord, 350);
+}
