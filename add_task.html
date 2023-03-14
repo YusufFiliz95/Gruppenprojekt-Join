@@ -55,11 +55,12 @@
                             <img src=" ./img/triangle.svg">
                         </div>
                         <div id="category-input" class="input-field d-none">
-                            <input type="text" placeholder="New category name">
+                            <input id="category-input-field" type="text" placeholder="New category name">
                             <div id="add-input">
                                 <div id="currentColor" class="color-circle"></div>
-                                <img class="x" src="./img/black-x.svg">
-                                <img onclick="renderCategorys()" src="./img/tick_dark.svg">
+                                <img onclick="closeInputfield('toggle-menu')" class="x" src="./img/black-x.svg">
+                                <img onclick="renderCategory(), closeInputfield('toggle-menu')"
+                                    src="./img/tick_dark.svg">
                             </div>
                         </div>
                         <div id="toggle-1" class="selection d-none">
