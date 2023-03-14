@@ -4,7 +4,83 @@ let contacts = [
         'surname': 'Mustermann',
         'email': 'max.mustermann@hotmail.com',
         'profilecolor': '#e04f3f',
-        'initials': 'AM',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'AMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#e04f3f',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'AMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#e04f3f',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'BMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#564eab',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'BMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#564eab',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'BMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#564eab',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'CMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#239177',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'CMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#239177',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'CMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#239177',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'DMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#b983c5',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'DMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#b983c5',
+        'phonenumber': '012345789'
+    },
+    {
+        'name': 'DMax',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': '#b983c5',
         'phonenumber': '012345789'
     },
 ]
@@ -27,7 +103,8 @@ function loadContacts() {
         document.getElementById('contactlist').innerHTML += /*html*/ `
             <div class="contact" onclick="showContactInfo(${i})">
                 <div class="contact-initials" style="background-color: ${list.profilecolor}">
-                    <p>${list.initials.toUpperCase()}</p>
+                    <p>${list.name.charAt(0).toUpperCase()}</p>
+                    <p>${list.surname.charAt(0).toUpperCase()}</p>
                 </div>
                 <div class="contact-name-email">
                 <div class="contact-name">
@@ -55,8 +132,8 @@ function showContactInfo(i) {
         </div>
         <div class="contact-info-name-add-task">
             <p class="contact-info-name">${contactinfo.name} ${contactinfo.surname}</p>
-            <div class="contact-info-add-task" onclick="">
-                <div class="plus-icon"></div>
+            <div class="contact-info-add-task" onclick="openAddTaskDialogBord(${i})">
+                <img src="img/add_task_for_contact.svg" alt="">
                 <p>Add Task</p>
             </div>
         </div>
@@ -66,7 +143,7 @@ function showContactInfo(i) {
             <p>Contact Information</p>
         </div>
         <div class="edit-contact" onclick="editContact(${i})">
-            <div class="pen-icon"></div>
+            <img src="img/edit_contact_icon.svg" alt="">
             <p>Edit Contact</p>
         </div>
     </div>

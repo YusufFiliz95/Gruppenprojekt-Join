@@ -6,13 +6,13 @@ function openAddTaskDialogBord() {
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
 }
 
-async function closeAddTaskDialogBord() {
+function closeAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
     addTaskWindow = document.getElementById('add-task-bordId');
     addTaskWindow.classList.add('slide-in-right-add-task');
     addTaskWindow.classList.remove('slide-out-right-add-task');
-    /* renderCardsIntoTheBoards(); */
+    renderCardsIntoTheBoards();
 }
 
 function slideOutAddTaskDialogBord() {
