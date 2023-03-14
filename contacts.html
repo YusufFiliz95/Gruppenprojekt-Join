@@ -36,20 +36,20 @@
         </div>
     </div>
     <!--overlay + addTask Dialog-->
-<div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
+    <div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
 
-    <div onclick="doNotClose(event)" id="add-task-bordId"
-        class="add-task-dialog-bord dialog-design slide-in-right-add-task">
-        <div class="x-btn-div">
-            <img onclick="slideOutAddTaskDialogBord()" class="x-btn" src="img/black-x.svg" alt="">
+        <div onclick="doNotClose(event)" id="add-task-bordId"
+            class="add-task-dialog-bord dialog-design slide-in-right-add-task">
+            <div class="x-btn-div">
+                <img onclick="slideOutAddTaskDialogBord()" class="x-btn" src="img/black-x.svg" alt="">
+            </div>
+            <div class="add-task-content">
+                <div w3-include-html="templates/addTask_templates.html"></div>
+            </div>
         </div>
-        <div class="add-task-content">
-            <div w3-include-html="templates/addTask_templates.html"></div>
-        </div>
+        <button class="dark-btn create-btn slide-in-right-add-task"><span>Create Task</span><img
+                src="./img/tick_white.svg" alt=""></button>
     </div>
-    <button class="dark-btn create-btn slide-in-right-add-task"><span>Create Task</span><img
-            src="./img/tick_white.svg" alt=""></button>
-</div>
 </body>
 
 </html>

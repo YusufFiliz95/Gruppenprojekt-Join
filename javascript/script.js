@@ -36,4 +36,3 @@ function setSelectedMenu() {
     document.getElementById(selectedMenu).classList.add('clicked');
     document.getElementById('mobile-buttonId' + selectedMenu).classList.add('mobile-menu-selected');
 }
-

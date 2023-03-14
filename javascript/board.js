@@ -12,7 +12,7 @@ async function closeAddTaskDialogBord() {
     addTaskWindow = document.getElementById('add-task-bordId');
     addTaskWindow.classList.add('slide-in-right-add-task');
     addTaskWindow.classList.remove('slide-out-right-add-task');
-    renderCardsIntoTheBoards();
+    /* renderCardsIntoTheBoards(); */
 }
 
 function slideOutAddTaskDialogBord() {
