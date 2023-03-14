@@ -38,8 +38,6 @@
     cursor: pointer;
 }
 
-
-
 .contact-info-section {
     display: flex;
     flex-direction: column;
@@ -81,7 +79,7 @@
 .contact {
     display: flex;
     align-items: center;
-    padding-left: 25px;
+    justify-content: space-around !important;
     width: 357px;
     min-height: 79px;
     border-radius: 10px;
@@ -113,7 +111,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: 32px;
 }
 
 .contact-name {
@@ -142,7 +139,7 @@
 }
 
 .contact-char p {
-    padding-left: 28px;
+    padding-left: 32px;
     font-weight: 400;
     font-size: 21px;
 }
@@ -199,16 +196,28 @@
     cursor: pointer;
 }
 
-.contact-info-add-task img {
+.plus-icon {
+    background-image: url('../img/add_task_for_contact.svg');
     width: 20px;
+    height: 20px;
+    background-size: cover;
+    background-position: center;
+    transition: 100ms ease-in-out;
 }
 
-.contact-info-add-task:hover {
+.contact-info-add-task:hover{
     display: flex;
     justify-content: space-between;
     background-color: #2A3647;
     border-radius: 10px;
+    color: white;
 }
+
+.contact-info-add-task:hover .plus-icon {
+    background-image: url('../img/plus_icon_hover.svg');
+}
+
+
 
 .contact-info-add-task p {
     margin: 0;
@@ -244,10 +253,21 @@
 }
 
 .edit-contact:hover {
-    background-color: #7a99c5;
+    background-color: #2A3647;
     color: white;
 }
+.pen-icon {
+    background-image: url('../img/edit_contact_icon.svg');
+    width: 18px;
+    height: 25px;
+    background-size: cover;
+    background-position: center;
+    transition: 100ms ease-in-out;
+}
 
+.edit-contact:hover .pen-icon{
+    background-image: url('../img/edit_contact_icon_hover.svg');
+}
 
 .contact-info-email-phone {
     margin-top: 32px;
@@ -291,5 +311,23 @@
 
 .selected-contact-info {
     background-color: #2A3647;
-    color: white;
-  }
+    color: white; 
+}
+
+.new-contact{
+    position: fixed;
+    bottom: 64px;
+    right: 52px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+}
+
+.new-contact p {
+    margin-left: 8px;
+}
+
+.new-contact img {
+    width: 25px;
+    margin-right: 8px;
+}
