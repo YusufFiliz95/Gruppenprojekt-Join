@@ -23,6 +23,12 @@
     font-size: 21px;
 }
 
+.headline-logo {
+    height: 39px;
+    padding-left: 25px;
+    display: none;
+}
+
 .join-title {
     padding-left: 350px;
 }
@@ -132,4 +138,30 @@
         display: none;
     }
 
+    .headline-logo {
+        display: block;
+    }
+
+    .profile-section {
+        width: auto;
+        padding-right: 20px;
+    }
+
+    .join-title {
+        left: 20px;
+        top: 105px;
+        padding-left: 0px;
+        font-size: 14px;
+    }
+
+    .question-mark {
+        display: none;
+    }
+
+}
+
+@media(max-width: 400px) {
+    .join-title {
+        display: none;
+    }
 }
