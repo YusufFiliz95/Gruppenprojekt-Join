@@ -186,8 +186,8 @@
 .contact-info-add-task {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 110px;
+    justify-content: space-around;
+    width: 120px;
     height: 20px;
     padding: 10px;
     color: #29ABE2;
@@ -196,7 +196,7 @@
     cursor: pointer;
 }
 
-.plus-icon {
+.contact-plus-icon {
     background-image: url('../img/add_task_for_contact.svg');
     width: 20px;
     height: 20px;
@@ -207,17 +207,17 @@
 
 .contact-info-add-task:hover{
     display: flex;
-    justify-content: space-between;
-    background-color: #2A3647;
+    justify-content: space-around;
+    background-color: rgb(68, 182, 230);
+    -webkit-box-shadow: 0px 10px 9px -3px #979797;
+    box-shadow: 0px 5px 9px -3px #979797;
     border-radius: 10px;
     color: white;
 }
 
-.contact-info-add-task:hover .plus-icon {
+.contact-info-add-task:hover .contact-plus-icon {
     background-image: url('../img/plus_icon_hover.svg');
 }
-
-
 
 .contact-info-add-task p {
     margin: 0;
@@ -253,7 +253,9 @@
 }
 
 .edit-contact:hover {
-    background-color: #2A3647;
+    -webkit-box-shadow: 0px 10px 9px -3px #979797;
+    box-shadow: 0px 5px 9px -3px #979797;
+    background-color: rgb(68, 182, 230);
     color: white;
 }
 .pen-icon {
@@ -330,4 +332,84 @@
 .new-contact img {
     width: 25px;
     margin-right: 8px;
+}
+
+/********ADD NEW CONTACT********/
+
+.add-new-contact-section {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.267);
+}
+
+.add-new-contact-container {
+    width: 1212px;
+    height: 594px;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+}
+
+.add-new-contact-headline {
+    -webkit-border-top-left-radius: 30px;
+    -webkit-border-bottom-left-radius: 30px;
+    -moz-border-radius-topleft: 30px;
+    -moz-border-radius-bottomleft: 30px;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+    background-color: #2A3647;
+    width: 463px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.add-new-contact-headline p {
+    font-size: 27px;
+    margin: 0;
+    margin-top: 12px;
+}
+
+.add-new-contact-headline img {
+    width: 55.12px;
+    height: 66.48px;
+    margin-bottom: 6px;
+}
+
+.add-contact-border {
+    margin-top: 10px;
+    width: 90px;
+    height: 2px;
+    background-color: #29ABE2;
+    border-radius: 10px;
+}
+
+.add-new-contact-headline-height {
+    height: fit-content;
+    width: fit-content;
+    margin-bottom: 32px;
+}
+
+.add-new-contact-form-section {
+    display: flex;
+}
+
+.empty-profile-picutre {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 200px;
+    height: 100%;
+}
+
+.empty-profile-picutre img{
+    width: 120px;
 }

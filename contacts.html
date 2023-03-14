@@ -8,7 +8,6 @@
     <script src="javascript/script.js"></script>
     <script src="javascript/contacts.js"></script>
     <script src="javascript/add_tasks.js"></script>
-    <script src="javascript/board.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/contacts.css">
     <link rel="stylesheet" href="styles/mobile_menu.css">
@@ -22,7 +21,7 @@
 <body onload="init(4), loadContacts()" id="bodyBordId">
     <div w3-include-html="templates/menu_mobile_template.html"></div>
     <div w3-include-html="templates/menu_template.html"></div>
-    <div class="contacts-section">
+    <div class="contacts-section" id="contactsection">
         <div class="contact-list" id="contactlist"></div>
         <div class="contact-info-section">
             <div class="contact-info-headline-section">
@@ -34,10 +33,13 @@
             </div>
             <div class="contact-info" id="contactinfo"></div>
         </div>
+        <div class="dark-btn new-contact" onclick="addNewConact()">
+            <p>New Contact</p>
+            <img src="../img/new_contact_icon.svg" alt="">
+        </div>
     </div>
     <!--overlay + addTask Dialog-->
     <div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
-
         <div onclick="doNotClose(event)" id="add-task-bordId"
             class="add-task-dialog-bord dialog-design slide-in-right-add-task">
             <div class="x-btn-div">
@@ -45,6 +47,28 @@
             </div>
             <div class="add-task-content">
                 <div w3-include-html="templates/addTask_templates.html"></div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="add-new-contact-section">
+        <div class="add-new-contact-container">
+            <div class="add-new-contact-headline">
+                <div class="add-new-contact-headline-height">
+                    <img src="img/join_logo_menu.svg" alt="">
+                    <h1>Add contact</h1>
+                    <p>Tasks are better with a team!</p>
+                    <div class="add-contact-border"></div>
+                </div>
+            </div>
+            <div class="add-new-contact-form-section">
+                <div class="empty-profile-picutre">
+                    <img src="img/empty_profile_picture.svg" alt="">
+                </div>
+                <div class="add-new-contact-form">
+                    <div></div>
+                    <img src="img/close_btn.svg" alt="">
+                </div>
             </div>
         </div>
     </div>
