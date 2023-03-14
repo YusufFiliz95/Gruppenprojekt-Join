@@ -1,6 +1,7 @@
 <h1 class="task-headline">Add Task</h1>
 <div class="task-container">
     <div class="task-left">
+        <!-- tittle input -->
         <div class="input-container">
             <label>Title</label>
             <div class="input-field">
@@ -8,12 +9,14 @@
             </div>
             <p class="required d-none ">This field is required</p>
         </div>
+        <!-- description input -->
         <div class="input-container">
             <label>Description</label>
             <textarea class="textarea-field" name="" id="description" rows="3"
                 placeholder="Enter a description"></textarea>
             <p class="required d-none ">This field is required</p>
         </div>
+        <!-- category input -->
         <div class="input-container">
             <label>Category</label>
             <div class="toggle-menu">
@@ -22,33 +25,23 @@
                     <img src=" ./img/triangle.svg">
                 </div>
                 <div id="category-input" class="input-field d-none">
-                    <input type="text" placeholder="New category name">
-                    <div class="add-input">
-                        <img class="x" src="./img/black-x.svg">
-                        <img src="./img/tick_dark.svg">
+                    <input id="category-input-field" type="text" placeholder="New category name">
+                    <div id="add-input">
+                        <div id="currentColor" class="color-circle"></div>
+                        <img onclick="closeInputfield('toggle-menu')" class="x" src="./img/black-x.svg">
+                        <img onclick="renderCategory(), closeInputfield('toggle-menu')" src="./img/tick_dark.svg">
                     </div>
                 </div>
                 <div id="toggle-1" class="selection d-none">
-                    <span onclick="openInput('toggle-1')">New Category</span>
-                    <div class="category">
-                        <span>Sales</span>
-                        <div class="color-circle magenta"></div>
-                    </div>
-                    <div class="category">
-                        <span>Backoffice</span>
-                        <div class="color-circle turquoise"></div>
-                    </div>
+                    <span onclick="openInputfield('toggle-1'), renderCategoryColors()">New Category</span>
+                    <div id="category-container"></div>
                 </div>
             </div>
-            <div id="color-container" class="color-container d-none">
-                <div class="color-circle ligth-blue"></div>
-                <div class="color-circle red"></div>
-                <div class="color-circle green"></div>
-                <div class="color-circle orange"></div>
-                <div class="color-circle purple"></div>
-                <div class="color-circle brigth-blue"></div>
+            <div id="color-container" class="color-container">
             </div>
         </div>
+
+        <!-- contact input -->
         <div class="input-container">
             <label>Assigned to</label>
             <div class="toggle-menu">
@@ -56,27 +49,23 @@
                     <span>Select contact to assign</span>
                     <img src="./img/triangle.svg">
                 </div>
-                <div id="category-input" class="input-field d-none">
-                    <input type="text" placeholder="New category name">
-                    <div class="add-input">
-                        <img class="x" src="./img/black-x.svg">
-                        <img src="./img/tick_dark.svg">
-                    </div>
-                </div>
                 <div id="toggle-2" class="selection d-none">
                     <div class="contact">
                         <span>You</span>
                         <input type="checkbox">
                     </div>
-                    <div class="contact" onclick="openInput('toggle-2')">
-                        <span>invite new contact</span>
+                    <div id="contact-container"></div>
+                    <div class="contact">
+                        <span>Invite new contact</span>
                         <img src="./img/contact_dark.svg">
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
     <div class="task-right">
+        <!-- Date input -->
         <div class="input-container">
             <label>Due date</label>
             <div class="add-task-date input-field">
@@ -84,6 +73,7 @@
                 <p class="required d-none ">This field is required</p>
             </div>
         </div>
+        <!-- Prio Buttons input -->
         <div class="input-container">
             <label>Prio</label>
             <div class="prio-btn">
@@ -92,6 +82,7 @@
                 <button><span>Low</span><img class="prio-img" src="./img/prio_low.svg"></button>
             </div>
         </div>
+        <!-- subtask input -->
         <div class="input-container">
             <label>Subtasks</label>
             <div class="input-field">
@@ -100,4 +91,10 @@
             </div>
         </div>
     </div>
+</div>
+<!-- Clear and Create Buttons -->
+<div class="add-task-buttons">
+    <button class="transparent-btn clear-btn"><span>clear x</span></button>
+    <button class="dark-btn create-btn"><span>Create Task</span><img src="./img/tick_white.svg" alt=""></button>
+</div>
 </div>

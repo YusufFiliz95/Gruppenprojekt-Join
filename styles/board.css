@@ -592,25 +592,26 @@
         height: 40px !important;
     }
 
+    .add-task-buttons {
+        margin-top: 50px;
+    }
+
     .input-field-search-on-board {
         width: 260px;
-
     }
 
     .add-task-dialog-bord {
-        margin-top: 80px;
+        background-color: #F6F7F8 !important;
+        margin-top: 105px;
         width: 100%;
         height: calc(100% - 80px);
-        z-index: 999;
+        z-index: 990;
         border-radius: 0px !important;
     }
 
-
-/*     .create-btn {
-        position: absolute;
-        top: 20px;
-        right: 25px;
-    } */
+    .overlay-dialog-center {
+        background-color: transparent !important;
+    }
 
     h1 {
         font-size: 47px !important;

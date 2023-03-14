@@ -138,6 +138,10 @@
         display: none;
     }
 
+    .join-headline {
+        z-index: 999;
+    }
+
     .headline-logo {
         display: block;
     }
