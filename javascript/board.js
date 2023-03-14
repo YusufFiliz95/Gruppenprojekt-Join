@@ -1,7 +1,7 @@
 let currentDraggedElement;
 
 /*  -------------------open Dialog Window AddTask and Taskoverview with slideIn slide Out Functions--------------------------  */
-function openAddTaskDialogBord() {
+/* function openAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
 }
@@ -12,7 +12,7 @@ function closeAddTaskDialogBord() {
     addTaskWindow = document.getElementById('add-task-bordId');
     addTaskWindow.classList.add('slide-in-right-add-task');
     addTaskWindow.classList.remove('slide-out-right-add-task');
-    renderCardsIntoTheBoards();
+    if (selectedMenu == 2) renderCardsIntoTheBoards();
 }
 
 function slideOutAddTaskDialogBord() {
@@ -20,8 +20,9 @@ function slideOutAddTaskDialogBord() {
     window.classList.remove('slide-in-right-add-task');
     window.classList.add('slide-out-right-add-task');
     setTimeout(closeAddTaskDialogBord, 350);
-}
+} */
 
+/*  -------------------open Dialog Window Taskoverview with slideIn slide Out Functions--------------------------  */
 function openTaskOverviewDialogBord(i) {
     document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
@@ -281,7 +282,7 @@ function templateRenderTaskInToOverview(i, category, categoryColor, title, discr
 
 /* -------END------all rendering functions to show the task overview-------------------------- */
 
-
+let test = "a";
 /* ---------------------Drag and Drop-------------------------  */
 
 function startDragging(id, status) {
@@ -295,10 +296,14 @@ function allowDrop(ev) {
 }
 
 function moveTo(status) {
+    let id;
     tasks[currentDraggedElement].status = status;
-    inputSearchingField = document.getElementById('input-searchingId').value;
-    if (inputSearchingField == '') renderCardsIntoTheBoards()
-    else filterTasksBySearching();
+    let inputSearchingField1 = document.getElementById('input-searchingId1').value;
+    let inputSearchingField2 = document.getElementById('input-searchingId2').value;
+    if (inputSearchingField1.length >= 1) id = 1;
+    if (inputSearchingField2.length >= 1) id = 2;
+    if (inputSearchingField1 == '' && inputSearchingField1 == '') renderCardsIntoTheBoards()
+    else filterTasksBySearching(id);
 }
 
 function rotateCardByDragging(id) {
