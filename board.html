@@ -22,7 +22,8 @@
 
 </head>
 
-<body id="bodyBordId" onload="init(2), renderCardsIntoTheBoards()">
+<body id="bodyBordId" onresize="checkWindowInnerScreenForDragAndDrog(), clearInputSearchingByResize()"
+    onload="init(2), renderCardsIntoTheBoards()">
 
     <!-- include W3 - Menu/Header -->
     <div w3-include-html="templates/menu_template.html"></div>

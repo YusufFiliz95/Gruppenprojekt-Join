@@ -22,6 +22,8 @@ function slideOutAddTaskDialogBord() {
     setTimeout(closeAddTaskDialogBord, 350);
 } */
 
+let cardAmounts = [];
+
 /*  -------------------open Dialog Window Taskoverview with slideIn slide Out Functions--------------------------  */
 function openTaskOverviewDialogBord(i) {
     document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
@@ -51,6 +53,7 @@ function slideOutTaskOverviewDialogBoard() {
 function renderCardsIntoTheBoards() {
     deleteBoard();
     for (let i = 0; i < tasks.length; i++) {
+        cardAmounts.push(i);  /* using for drag and drop function by searching */
         let id = tasks[i].id;
         let category = tasks[i].category;
         let categoryColor = tasks[i]["category-color"];
@@ -62,9 +65,11 @@ function renderCardsIntoTheBoards() {
         checkNeedBar(i);
         renderContactsIntotheCard(i);
     }
+    checkWindowInnerScreenForDragAndDrog();
 }
 
 function deleteBoard() {
+    cardAmounts = [];
     document.getElementById('toDoId').innerHTML = '';
     document.getElementById('toProgressId').innerHTML = '';
     document.getElementById('awaitingFeedbackId').innerHTML = '';
@@ -137,7 +142,7 @@ function checkAmountContactsInCard(contact) {
 }
 
 function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status) {
-    return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="true" class="task-card-bord  dialog-design">
+    return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="false" class="task-card-bord  dialog-design">
                     <span class="task-card-category" style="background-color:${categoryColor} ;">${category}</span>
                     <span class="task-card-title">${title}</span>
                     <span class="task-card-description">${discription}</span>
@@ -282,7 +287,7 @@ function templateRenderTaskInToOverview(i, category, categoryColor, title, discr
 
 /* -------END------all rendering functions to show the task overview-------------------------- */
 
-let test = "a";
+
 /* ---------------------Drag and Drop-------------------------  */
 
 function startDragging(id, status) {
@@ -354,6 +359,39 @@ function deleteEmtyDivByDragging() {
         if (divExist) document.getElementById('emtyDivId' + i).remove();
     }
 }
+
+function checkWindowInnerScreenForDragAndDrog() {
+    if (window.innerWidth > 1200) {
+        for (let i = 0; i < cardAmounts.length; i++) {
+            id = cardAmounts[i];
+            document.getElementById('card' + id).draggable = true;
+        }
+    } else {
+        for (let i = 0; i < cardAmounts.length; i++) {
+            id = cardAmounts[i];
+            document.getElementById('card' + id).draggable = false;
+        }
+    }
+}
+
+function clearInputSearchingByResize() {
+    let inputSearchingField1 = document.getElementById('input-searchingId1').value;
+    let inputSearchingField2 = document.getElementById('input-searchingId2').value;
+    if (inputSearchingField1 == "") {
+        if (inputSearchingField2 == "") {
+        }
+        else {
+            renderCardsIntoTheBoards();
+            document.getElementById('input-searchingId1').value = "";
+            document.getElementById('input-searchingId2').value = "";
+        }
+    } else {
+        renderCardsIntoTheBoards();
+        document.getElementById('input-searchingId1').value = "";
+        document.getElementById('input-searchingId2').value = "";
+    }
+}
+
 /* ---------END---------Drag and Drop-------------------------  */
 
 /* ---------------------Search Functions------------------------ */
@@ -363,6 +401,7 @@ function filterTasksBySearching(id) {
     search = search.toLowerCase();
     if (search == '') {
         renderCardsIntoTheBoards();
+
     } else {
         deleteBoard();
         indexesOfSearching(search);
@@ -375,12 +414,19 @@ function indexesOfSearching(search) {
     for (let i = 0; i < tasks.length; i++) {
         let title = tasks[i].title;
         let discription = tasks[i].discription;
-        if (title.toLowerCase().includes(search)) indexesOfSearching.push(i);
-        else if (discription.toLowerCase().includes(search)) indexesOfSearching.push(i);
+        if (title.toLowerCase().includes(search)) {
+            indexesOfSearching.push(i);
+            cardAmounts.push(i);
+        }
+        else if (discription.toLowerCase().includes(search)) {
+            indexesOfSearching.push(i);
+            cardAmounts.push(i);
+        }
     }
     for (let i = 0; i < indexesOfSearching.length; i++) {
         renderTasksToInToOverviewBySearching(indexesOfSearching[i]);
     }
+    checkWindowInnerScreenForDragAndDrog();
 }
 
 function renderTasksToInToOverviewBySearching(i) {
