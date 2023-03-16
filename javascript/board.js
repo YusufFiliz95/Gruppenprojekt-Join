@@ -361,7 +361,7 @@ function deleteEmtyDivByDragging() {
 }
 
 function checkWindowInnerScreenForDragAndDrog() {
-    if (window.innerWidth > 1200) {
+    if (window.innerWidth > 1280) {
         for (let i = 0; i < cardAmounts.length; i++) {
             id = cardAmounts[i];
             document.getElementById('card' + id).draggable = true;
