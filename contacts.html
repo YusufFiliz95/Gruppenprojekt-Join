@@ -33,7 +33,7 @@
             </div>
             <div class="contact-info" id="contactinfo"></div>
         </div>
-        <div class="dark-btn new-contact" onclick="addNewConact()">
+        <div class="dark-btn new-contact" onclick="NewContact()" id="newcontactbtn">
             <p>New Contact</p>
             <img src="../img/new_contact_icon.svg" alt="">
         </div>
@@ -51,8 +51,8 @@
         </div>
     </div>
     </div>
-    <div class="add-new-contact-section">
-        <div class="add-new-contact-container">
+    <div class="add-new-contact-section d-none" id="newcontactformsection" onclick="closeForm()">
+        <div class="add-new-contact-container" onclick="doNotClose(event)">
             <div class="add-new-contact-headline">
                 <div class="add-new-contact-headline-height">
                     <img src="img/join_logo_menu.svg" alt="">
@@ -66,13 +66,38 @@
                     <img src="img/empty_profile_picture.svg" alt="">
                 </div>
                 <div class="add-new-contact-form">
-                    <div></div>
-                    <img src="img/close_btn.svg" alt="">
+                    <div class="close-form-btn">
+                        <img src="img/close_btn.svg" alt="" onclick="closeForm()">
+                    </div>
+                    <div>
+                        <form action="" class="input-form">
+                            <div class="input-field" onclick="focusInputField(this)">
+                                <input type="text" placeholder="Name" id="newContactName">
+                                <img src="img/person_icon.svg" alt="">
+                            </div>
+                            <div class="input-field" onclick="focusInputField(this)">
+                                <input type="email" placeholder="Email" id="newContactEmail">
+                                <img src="img/email_logo.svg" alt="">
+                            </div>
+                            <div class="input-field" onclick="focusInputField(this)">
+                                <input type="text" placeholder="Phone" id="newContactPhone">
+                                <img src="img/phone_icon.svg" alt="">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="form-buttons">
+                        <div class="transparent-btn cancel-btn" onclick="closeForm()">
+                            <p>Cancel</p>
+                            <div class="cancel-btn-img"></div>
+                        </div>
+                        <div class="dark-btn create-contact-btn" onclick="createNewContact()">
+                            <p>Create Contact</p>
+                            <img src="img/tick_white.svg" alt="">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="test"></div>
     </div>
 </body>
-
 </html>
