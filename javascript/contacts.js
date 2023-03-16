@@ -203,10 +203,9 @@ document.addEventListener('DOMContentLoaded', function () {
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION FOR CREATING NEW CONTACT AND ADD IT TO THE ARRAY***********************************//
-const colors = ['#e04f3f', '#29b6f6', '#ffb900', '#8bc34a', '#7e57c2', '#ff5722'];
-const randomColor = colors[Math.floor(Math.random() * colors.length)];
-
 function createNewContact() {
+    const colors = ['#e04f3f', '#29b6f6', '#ffb900', '#8bc34a', '#7e57c2', '#ff5722'];
+    const randomColor = colors[Math.floor(Math.random() * colors.length)];
     const newContactNameInput = document.getElementById('newContactName');
     const newContactEmailInput = document.getElementById('newContactEmail');
     const newContactPhoneInput = document.getElementById('newContactPhone');
