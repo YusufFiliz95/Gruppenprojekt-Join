@@ -1,12 +1,8 @@
 
 let categoryColor;
 let pointColor = ['#8AA4FF', '#FB0101', '#43D300', '#FD8A01', '#E224BE', '#013DFF', '#33D7C1',];
-let subtask = [];
+let subtasks = [];
 let prio = 0;
-
-function addTask() {
-
-}
 
 
 // toggle Menu 
@@ -38,8 +34,6 @@ function renderCategory() {
         <span>${categoryInput}</span>
         <div class="color-circle " style="background-color: ${'' + categoryColor}"></div>
         </div>`
-
-
 }
 
 function renderCategoryColors() {
@@ -76,3 +70,75 @@ function renderContacts() {
 }
 
 
+function addPrio(prioValue) {
+    resetPrio();
+
+    if (prioValue == prio) {
+        prioValue = 0;
+        prio = 0;
+    }
+    if (prioValue == 1) {
+        document.getElementById('urgent-btn').classList.add('urgent-aktiv');
+        document.getElementById('urgent-image').style.filter = 'brightness(0) invert(1)';
+        prio = 1;
+    }
+    if (prioValue == 2) {
+        document.getElementById('medium-btn').classList.add('medium-aktiv');
+        document.getElementById('medium-image').style.filter = 'brightness(0) invert(1)';
+        prio = 2;
+    }
+    if (prioValue == 3) {
+        document.getElementById('low-btn').classList.add('low-aktiv');
+        document.getElementById('low-image').style.filter = 'brightness(0) invert(1)';
+        prio = 3;
+    }
+
+}
+
+function resetPrio() {
+    document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
+    document.getElementById('urgent-image').style.filter = '';
+    document.getElementById('medium-btn').classList.remove('medium-aktiv');
+    document.getElementById('medium-image').style.filter = '';
+    document.getElementById('low-btn').classList.remove('low-aktiv');
+    document.getElementById('low-image').style.filter = '';
+}
+
+
+function openSubtaskInput() {
+    document.getElementById('subtask-plus').classList.add('d-none');
+    document.getElementById('subtask-buttons').classList.remove('d-none');
+}
+
+function closeSubtaskInput() {
+    document.getElementById('subtask-input').value = '';
+    document.getElementById('subtask-buttons').classList.add('d-none');
+    document.getElementById('subtask-plus').classList.remove('d-none');
+
+}
+
+function addSubtasks() {
+    subtaskName = document.getElementById('subtask-input').value;
+    subtasks.push(subtaskName);
+
+}
+
+function renderSubtasks() {
+    document.getElementById('subtask-input').value = '';
+    subtasksContainer = document.getElementById('subtasks-container')
+    subtasksContainer.innerHTML = '';
+
+    for (let i = 0; i < subtasks.length; i++) {
+        subtasksContainer.innerHTML += /*html*/`
+        <div class="subtask">
+            <span>${subtasks[i]}</span>
+            <img  onclick="deleteSubtasks(${i})"src="./img/black-x.svg">
+        </div>`
+    }
+}
+
+
+function deleteSubtasks(i) {
+    subtasks.splice(i, 1);
+    renderSubtasks();
+}
