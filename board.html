@@ -10,6 +10,7 @@
     <link rel="icon" type="img/png" href="img/join_logo.svg">
     <script src="javascript/script.js"></script>
     <script src="javascript/board.js"></script>
+    <script src="templates/templates.js"></script>
     <script src="javascript/add_tasks.js"></script>
     <script src="javascript/mini_backend.js"></script>
     <script src="javascript/tasksArray.js"></script>
@@ -22,8 +23,9 @@
 
 </head>
 
-<body id="bodyBordId" onresize="checkWindowInnerScreenForDragAndDrog(), clearInputSearchingByResize()"
-    onload="init(2), renderCardsIntoTheBoards()">
+
+<body id="bodyBordId" onload="init(2), renderCardsIntoTheBoards()" onresize=" checkWindowInnerScreenForDragAndDrog(),
+    clearInputSearchingByResize()">
 
     <!-- include W3 - Menu/Header -->
     <div w3-include-html="templates/menu_template.html"></div>
@@ -52,56 +54,64 @@
             </div>
         </div>
         <div class="tasks-maincontainer-bord">
-            <div class="status-container-bord">
-                <div class="to-do-headline-bord">
-                    <h2>To do</h2>
-                    <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
-                        <img class="tasks-bord-plus" src="img/plus.svg" alt="">
-                    </button>
+            <div class="bord-content-left">
+                <div class="status-container-bord" ondragover="allowDrop(event, 'toDoId')" ondrop="moveTo('toDo')"
+                    ondragleave="onDragLeave('toDoId')">
+                    <div class=" to-do-headline-bord">
+                        <h2>To do</h2>
+                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="toDoId">
+                        <!-- here  renderings from status = todos -->
+                    </div>
+                    <div id="emty-div-todo" class="emty-div d-none"></div>
                 </div>
-                <div id="toDoId" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
-                    <!-- here  renderings from status = todos -->
-                </div>
-            </div>
-            <div class="status-container-bord">
-                <div class="to-do-headline-bord">
-                    <h2>In progress</h2>
-                    <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
-                        <img class="tasks-bord-plus" src="img/plus.svg" alt="">
-                    </button>
-                </div>
-                <div id="toProgressId" ondrop="moveTo('toProgress')" ondragover="allowDrop(event)">
-                    <!-- here  renderings from status = inprogress -->
-
-                </div>
-            </div>
-            <div class="status-container-bord">
-                <div class="to-do-headline-bord">
-                    <h2>Awaiting Feedback</h2>
-                    <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
-                        <img class="tasks-bord-plus" src="img/plus.svg" alt="">
-                    </button>
-                </div>
-                <div id="awaitingFeedbackId" ondrop="moveTo('awaitingFeedback')" ondragover="allowDrop(event)">
-                    <!-- here  renderings from status = awaitingfeedback -->
-
+                <div class="status-container-bord" ondragover="allowDrop(event, 'toProgressId')"
+                    ondrop="moveTo('toProgress')" ondragleave="onDragLeave('toProgressId')">
+                    <div class="to-do-headline-bord">
+                        <h2>In progress</h2>
+                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="toProgressId">
+                        <!-- here  renderings from status = inprogress -->
+                    </div>
+                    <div id="emty-div-toprogress" class="emty-div d-none"></div>
                 </div>
             </div>
-            <div class="status-container-bord">
-                <div class="to-do-headline-bord">
-                    <h2>Done</h2>
-                    <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
-                        <img class="tasks-bord-plus" src="img/plus.svg" alt="">
-                    </button>
+            <div class="bord-content-right">
+                <div class="status-container-bord" ondragover="allowDrop(event, 'awaitingFeedbackId')"
+                    ondrop="moveTo('awaitingFeedback')" ondragleave="onDragLeave('awaitingFeedbackId')">
+                    <div class="to-do-headline-bord">
+                        <h2>Awaiting Feedback</h2>
+                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="awaitingFeedbackId">
+                        <!-- here  renderings from status = awaitingfeedback -->
+                    </div>
+                    <div id="emty-div-awaiting" class="emty-div d-none"></div>
                 </div>
-                <div id="doneId" ondrop="moveTo('done')" ondragover="allowDrop(event)">
-                    <!-- here  renderings from status = done -->
-
+                <div class="status-container-bord" ondragover="allowDrop(event, 'doneId')" ondrop="moveTo('done')"
+                    ondragleave="onDragLeave('doneId')">
+                    <div class="to-do-headline-bord">
+                        <h2>Done</h2>
+                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                            <img class="tasks-bord-plus" src="img/plus.svg" alt="">
+                        </button>
+                    </div>
+                    <div class="status-container-bord-content" id="doneId">
+                        <!-- here  renderings from status = done -->
+                    </div>
+                    <div id="emty-div-done" class="emty-div d-none"></div>
                 </div>
             </div>
         </div>
     </div>
-
     </div>
 
     <!-- overlay + addTask Dialog -->

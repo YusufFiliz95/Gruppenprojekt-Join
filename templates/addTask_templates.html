@@ -1,3 +1,5 @@
+<html>
+    <body>
 <h1 class="task-headline">Add Task</h1>
 <div class="task-container">
     <div class="task-left">
@@ -26,7 +28,7 @@
                 </div>
                 <div id="category-input" class="input-field d-none">
                     <input id="category-input-field" type="text" placeholder="New category name">
-                    <div id="add-input">
+                    <div id="add-input" class="add-input">
                         <div id="currentColor" class="color-circle"></div>
                         <img onclick="closeInputfield('toggle-menu')" class="x" src="./img/black-x.svg">
                         <img onclick="renderCategory(), closeInputfield('toggle-menu')" src="./img/tick_dark.svg">
@@ -68,8 +70,8 @@
         <!-- Date input -->
         <div class="input-container">
             <label>Due date</label>
-            <div class="add-task-date input-field">
-                <input type="date" placeholder="dd/mm/y">
+            <div class="input-field">
+                <input type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
                 <p class="required d-none ">This field is required</p>
             </div>
         </div>
@@ -77,18 +79,26 @@
         <div class="input-container">
             <label>Prio</label>
             <div class="prio-btn">
-                <button><span>Urgent</span><img class="prio-img" src="./img/prio_urgent.svg"></button>
-                <button><span>Medium</span><img class="prio-img" src="./img/prio_medium.svg"></button>
-                <button><span>Low</span><img class="prio-img" src="./img/prio_low.svg"></button>
+                <button id="urgent-btn" onclick="addPrio(1)"><span>Urgent</span><img class="prio-img" id="urgent-image"
+                        src="./img/prio_urgent.svg"></button>
+                <button id="medium-btn" onclick="addPrio(2)"><span>Medium</span><img class="prio-img" id="medium-image"
+                        src="./img/prio_medium.svg"></button>
+                <button id="low-btn" onclick="addPrio(3)"><span>Low</span><img class="prio-img" id="low-image"
+                        src="./img/prio_low.svg"></button>
             </div>
         </div>
         <!-- subtask input -->
         <div class="input-container">
             <label>Subtasks</label>
             <div class="input-field">
-                <input type="text">
-                <img src="./img/plus_dark.svg" alt="">
+                <input onclick="openSubtaskInput()" id="subtask-input" type="text" placeholder="Add new subtask">
+                <img onclick="openSubtaskInput()" id="subtask-plus" src="./img/plus_dark.svg">
+                <div id="subtask-buttons" class="d-none subtask-input">
+                    <img onclick="closeSubtaskInput()" class="x" src="./img/black-x.svg">
+                    <img onclick="addSubtasks(), renderSubtasks()" src="./img/tick_dark.svg">
+                </div>
             </div>
+            <div id="subtasks-container"></div>
         </div>
     </div>
 </div>
@@ -97,4 +107,5 @@
     <button class="transparent-btn clear-btn"><span>clear x</span></button>
     <button class="dark-btn create-btn"><span>Create Task</span><img src="./img/tick_white.svg" alt=""></button>
 </div>
-</div>
+</body>
+</html>

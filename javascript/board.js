@@ -1,27 +1,4 @@
 let currentDraggedElement;
-
-/*  -------------------open Dialog Window AddTask and Taskoverview with slideIn slide Out Functions--------------------------  */
-/* function openAddTaskDialogBord() {
-    document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
-    document.getElementById('bodyBordId').classList.add('overflow-dialog');
-}
-
-function closeAddTaskDialogBord() {
-    document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
-    document.getElementById('bodyBordId').classList.remove('overflow-dialog');
-    addTaskWindow = document.getElementById('add-task-bordId');
-    addTaskWindow.classList.add('slide-in-right-add-task');
-    addTaskWindow.classList.remove('slide-out-right-add-task');
-    if (selectedMenu == 2) renderCardsIntoTheBoards();
-}
-
-function slideOutAddTaskDialogBord() {
-    let window = document.getElementById('add-task-bordId');
-    window.classList.remove('slide-in-right-add-task');
-    window.classList.add('slide-out-right-add-task');
-    setTimeout(closeAddTaskDialogBord, 350);
-} */
-
 let cardAmounts = [];
 
 /*  -------------------open Dialog Window Taskoverview with slideIn slide Out Functions--------------------------  */
@@ -141,25 +118,6 @@ function checkAmountContactsInCard(contact) {
     else return 4;
 }
 
-function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status) {
-    return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="false" class="task-card-bord  dialog-design">
-                    <span class="task-card-category" style="background-color:${categoryColor} ;">${category}</span>
-                    <span class="task-card-title">${title}</span>
-                    <span class="task-card-description">${discription}</span>
-                <div id="progressbarId${i}" class="task-card-progressbar-container"></div>
-                    <div class="task-card-ass-prio-container">
-                        <div id="contactsId${i}" class="task-card-assigned"></div>
-                        <img class="task-card-prio" src="img/${prioImage}" alt="">
-                    </div>
-                </div>
-            </div>        
-`;
-}
-
-function templateRenderContactsIntoTheCard(initials, backgroundColor) {
-    return `<div class="task-card-contact-icon" style="background-color: ${backgroundColor};">${initials}</div>`;
-}
-
 function templateNeedBar(i, checkSubtask, percentBar) {
     return `<div class="task-card-progressbar">
                 <div id="barId(${i})" class="task-card-bar" style="width:${percentBar}%;" ></div>
@@ -167,7 +125,6 @@ function templateNeedBar(i, checkSubtask, percentBar) {
             <span>${checkSubtask} Done</span>`;
 }
 /* --------END--------all rendering function to show the Board-------------------------- */
-
 
 /* ----------------all rendering functions to show the task overview-------------------------- */
 
@@ -205,22 +162,12 @@ function rendersubtaskCheckboxes(i) {
 
 }
 
-function templateSubtasksInToOverview(i, subtask, z) {
-    return `
-    <div class="taskoverview-subtask-row">
-        <input type="checkbox" id="checkboxId${z}" onclick="subtasksCheckBoxClick(${i},${z})">
-        <span>${subtask}</span>
-    </div>
-`;
-}
-
 function subtasksCheckBoxClick(i, z) {
     let checkbox = document.getElementById('checkboxId' + z);
     if (checkbox.checked == true) tasks[i]["subtasks-value"][z] = 1;
     else tasks[i]["subtasks-value"][z] = 0;
 
 }
-
 
 function setPrio(i) {
     let prio = tasks[i].prio;
@@ -248,67 +195,44 @@ function renderContactsInToOverview(i) {
     }
 }
 
-function templateRenderContactsInToOverview(name, surname, initials, color) {
-    return `<div class="taskoverview-contact">
-        <div class="taskoverview-contact-icon" style="background-color:${color}">${initials}</div>
-        <span class="taskoverview-span-right">${name} ${surname} </span>
-    </div>  
-    `;
-}
-
-function templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor) {
-    return `<span class="taskoverview-category" style="background-color:${categoryColor}">${category}</span>
-    <span class="taskoverview-title">${title}</span>
-    <span class="taskoverview-description">${discription}</span>
-    <div id="overviewSubtasksId" class="taskoverview-subtask">
-
-    </div>
-    <div class="taskoverview-duedate">
-        <span class="taskoverview-span-left">Due date:</span>
-        <span class="taskoverview-span-right">${date}</span> 
-    </div>
-    <div class="taskoverview-prio">
-        <span class="taskoverview-span-left">Priority:</span>
-        <span class="taskoverview-span-right taskoverview-prio-button" style= "background-color:${prioColor}">${prio}
-        <img class="" src="img/${prioImage}" alt="">
-        </span> 
-    </div>
-    <div class="taskoverview-assignto">
-        <span class="taskoverview-span-over">Assigned To:</span>
-    </div>
-    <div id="taskoverview-contactsId" class="taskoverview-contacts">
-    </div>
-<div class="taskoverview-editbutton-container">
-    <button onclick="" class="dark-btn edit-button">
-        <img src="img/edit_pen_white.svg" alt="">
-    </button>
-</div>`;
-}
-
 /* -------END------all rendering functions to show the task overview-------------------------- */
-
 
 /* ---------------------Drag and Drop-------------------------  */
 
-function startDragging(id, status) {
+function startDragging(id) {
     currentDraggedElement = id;
     rotateCardByDragging(id);
-    fillEmtyDivByDragging(id, status);
 }
 
-function allowDrop(ev) {
+function allowDrop(ev, id) {
     ev.preventDefault();
+    onDropOverBorder(id);
+}
+
+function onDragLeave(id) {
+    document.getElementById(id).classList.remove('ondroped');
+}
+
+function onDropOverBorder(id) {
+    document.getElementById(id).classList.add('ondroped');
+}
+
+function onDropEnd(status) {
+    id = status + 'Id';
+    console.log(id);
+    document.getElementById(id).classList.remove('ondroped');
 }
 
 function moveTo(status) {
-    let id;
+    let searchFieldId;
     tasks[currentDraggedElement].status = status;
     let inputSearchingField1 = document.getElementById('input-searchingId1').value;
     let inputSearchingField2 = document.getElementById('input-searchingId2').value;
-    if (inputSearchingField1.length >= 1) id = 1;
-    if (inputSearchingField2.length >= 1) id = 2;
-    if (inputSearchingField1 == '' && inputSearchingField1 == '') renderCardsIntoTheBoards()
-    else filterTasksBySearching(id);
+    if (inputSearchingField1.length >= 1) searchFieldId = 1;
+    if (inputSearchingField2.length >= 1) searchFieldId = 2;
+    if (inputSearchingField1 == '' && inputSearchingField1 == '') renderCardsIntoTheBoards();
+    else filterTasksBySearching(searchFieldId);
+    onDropEnd(status);
 }
 
 function rotateCardByDragging(id) {
@@ -317,47 +241,10 @@ function rotateCardByDragging(id) {
 
 function endDragging(id) {
     rotateCardBack(id);
-    deleteEmtyDivByDragging();
 }
 
 function rotateCardBack(id) {
     document.getElementById('card' + id).classList.remove('rotate-card');
-}
-
-function fillEmtyDivByDragging(id, status) {
-
-    if (status === 'toDo') {
-        document.getElementById('toProgressId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
-        document.getElementById('awaitingFeedbackId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
-        document.getElementById('doneId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
-    }
-    if (status == 'toProgress') {
-        document.getElementById('toDoId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
-        document.getElementById('awaitingFeedbackId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
-        document.getElementById('doneId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
-    }
-    if (status == 'awaitingFeedback') {
-        document.getElementById('toDoId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
-        document.getElementById('toProgressId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
-        document.getElementById('doneId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
-    }
-    if (status == 'done') {
-        document.getElementById('toDoId').innerHTML += `<div id="emtyDivId1" class="emty-div"> </div>`;
-        document.getElementById('awaitingFeedbackId').innerHTML += `<div id="emtyDivId2" class="emty-div"> </div>`;
-        document.getElementById('toProgressId').innerHTML += `<div id="emtyDivId3" class="emty-div"> </div>`;
-    }
-    height = document.getElementById('card' + id).clientHeight + 'px';
-    document.getElementById('emtyDivId1').style.height = height;
-    document.getElementById('emtyDivId2').style.height = height;
-    document.getElementById('emtyDivId3').style.height = height;
-}
-
-function deleteEmtyDivByDragging() {
-
-    for (let i = 1; i < 4; i++) {
-        divExist = document.getElementById('emtyDivId' + i);
-        if (divExist) document.getElementById('emtyDivId' + i).remove();
-    }
 }
 
 function checkWindowInnerScreenForDragAndDrog() {
@@ -405,7 +292,6 @@ function filterTasksBySearching(id) {
     } else {
         deleteBoard();
         indexesOfSearching(search);
-        window.scrollTo(0, 0);
     }
 }
 
@@ -443,3 +329,4 @@ function renderTasksToInToOverviewBySearching(i) {
 }
 
 /* ----------END--------Search Functions------------------------ */
+
