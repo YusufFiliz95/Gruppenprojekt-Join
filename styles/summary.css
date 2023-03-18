@@ -95,6 +95,8 @@
 }
 
 .rectangle-container {
+    text-decoration: none;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -107,6 +109,8 @@
 
 
 .rectrangle-small-container {
+    text-decoration: none;
+    color: black;
     display: flex;
     align-items: center;
     justify-content: center;
