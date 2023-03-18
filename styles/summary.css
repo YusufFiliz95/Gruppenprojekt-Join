@@ -348,7 +348,10 @@
 @media(max-width: 600px) {
 
     .main-container {
+        overflow-y: auto;
+        margin-bottom: 100px !important;
         margin-left: 0px !important;
+
     }
 
 }
