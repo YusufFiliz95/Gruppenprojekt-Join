@@ -9,7 +9,9 @@
     <!--Favicon-->
     <link rel="icon" type="img/png" href="img/join_logo.svg">
     <script src="javascript/script.js"></script>
+    <script src="javascript/summary.js"></script>
     <script src="javascript/mini_backend.js"></script>
+    <link rel="stylesheet" href="styles/summary.css">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/scrollbar.css">
@@ -25,4 +27,71 @@
     <div w3-include-html="templates/menu_mobile_template.html"></div>
 
     <div class="main-container">
+        <div class="headline">
+            <h1>Summary</h1>
+            <div class="border"></div>
+            <p>Everything in a nutshell</p>
+            <div class="border-mobile"></div>
+        </div>
+        <div class="summary-content">
+            <div class="content-left">
+                <div class="first-row">
+                    <a href="board.html" class="square-container dialog-design hover">
+                        <span class="ammount">5</span>
+                        <span> Tasks in Board </span>
+                    </a>
+                    <div class="square-container dialog-design hover">
+                        <span class="ammount">2</span>
+                        <span> Tasks In Progress </span>
+                    </div>
+                    <div class="square-container dialog-design hover">
+                        <span class="ammount">2</span>
+                        <span>Awaiting Feedback</span>
+                    </div>
+                </div>
+                <div class="second-row">
+                    <div class="rectangle-container dialog-design hover">
+                        <div class="urgent">
+                            <div class="urgent-image">
+                                <img src="img/prio_urgent_white.svg" alt="">
+                            </div>
+                            <div class="urgent-text">
+                                <span class="urgent-number">1</span>
+                                <span>Urgent</span>
+                            </div>
+                        </div>
+                        <div class="border-grey">
+                        </div>
+                        <div class="date-container">
+                            <span class="date">October 16, 2022</span>
+                            <span>Upcoming Deadline</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="third-row">
+                    <div class="rectrangle-small-container dialog-design hover">
+                        <div class="todo-image">
+                            <img src="img/edit_pen_white.svg" alt="">
+                        </div>
+                        <div class="todo-text">
+                            <span class="todo-number">1</span>
+                            <span>To-do</span>
+                        </div>
+                    </div>
+                    <div class="rectrangle-small-container dialog-design hover">
+                        <div class="todo-image">
+                            <img src="img/hook_white.svg" alt="">
+                        </div>
+                        <div class="todo-text">
+                            <span class="todo-number">1</span>
+                            <span>Done</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content-right">
+                <span class="greeting">Good morning,</span>
+                <span class="user">User Name</span>
+            </div>
+        </div>
     </div>
