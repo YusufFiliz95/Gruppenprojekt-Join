@@ -96,8 +96,6 @@ function getUpcomingDeadline() {
         let prio = tasks[i].prio;
         if (prio == 1) {
             let date = tasks[i].date;
-            date = date.replace(/./gi, '/');
-            console.log(date);
             date = new Date(date);
             dates.push(date);
         }
