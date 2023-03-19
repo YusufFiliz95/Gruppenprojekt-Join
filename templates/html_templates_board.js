@@ -154,6 +154,17 @@ function templateEditTask(i) {
                     </div>
                 </div>
                 </div>
+                <div class="taskoverview-editbutton-container">
+                <div class="edit-button-content">
+                    <button onclick="" class="dark-btn edit-button-trash">
+                    <img src="img/empty_trash.png" alt="">
+                    </button>
+                    <button onclick="" class="dark-btn edit-button-ok">
+                    <span>Ok</span>
+                    <img src="img/hook_white.svg" alt="">
+                    </button>
+                </div>
+                </div>
 `;
 }
 
