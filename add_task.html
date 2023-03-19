@@ -51,7 +51,7 @@
                     <label>Category</label>
                     <div class="toggle-menu">
                         <div id="toggle-menu" class="select-task-category" onclick="toggleMenu('toggle-1')">
-                            <span>Select task category</span>
+                            <span id="selected-category">Select task category</span>
                             <img src=" ./img/triangle.svg">
                         </div>
                         <div id="category-input" class="input-field d-none">
@@ -59,7 +59,7 @@
                             <div id="add-input" class="add-input">
                                 <div id="currentColor" class="color-circle"></div>
                                 <img onclick="closeInputfield('toggle-menu')" class="x" src="./img/black-x.svg">
-                                <img onclick="renderCategory(), closeInputfield('toggle-menu')"
+                                <img onclick="addedCategory(), renderCategory(), closeInputfield('toggle-menu')"
                                     src="./img/tick_dark.svg">
                             </div>
                         </div>
