@@ -42,7 +42,7 @@
                 <!-- description input -->
                 <div class="input-container">
                     <label>Description</label>
-                    <textarea class="textarea-field" name="" id="description" rows="3"
+                    <textarea id="text-area" class="textarea-field" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
                     <p class="required d-none ">This field is required</p>
                 </div>
@@ -51,7 +51,7 @@
                     <label>Category</label>
                     <div class="toggle-menu">
                         <div id="toggle-menu" class="select-task-category" onclick="toggleMenu('toggle-1')">
-                            <span id="selected-category">Select task category</span>
+                            <div id="selected-category">Select task category</div>
                             <img src=" ./img/triangle.svg">
                         </div>
                         <div id="category-input" class="input-field d-none">
@@ -92,15 +92,14 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
             <div class="task-right">
                 <!-- Date input -->
                 <div class="input-container">
                     <label>Due date</label>
-                    <div class="input-field">
-                        <input type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
+                    <div class="input-field due-date">
+                        <input id="due-date" type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
                         <p class="required d-none ">This field is required</p>
                     </div>
                 </div>
@@ -134,7 +133,7 @@
         </div>
         <!-- Clear and Create Buttons -->
         <div class="add-task-buttons">
-            <button class="transparent-btn clear-btn"><span>clear x</span></button>
+            <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear x</span></button>
             <button class="dark-btn create-btn"><span>Create Task</span><img src="./img/tick_white.svg" alt=""></button>
         </div>
     </div>

@@ -44,7 +44,7 @@ function renderCategory() {
         categoryContainer.innerHTML += /*html*/`
         <div class="category">
             <div class="category-name">
-                <span onclick="addToInput()">${categoryName[i]}</span>
+                <span onclick="addToInput(${i})">${categoryName[i]}</span>
                 <div class="color-circle" style="background-color: ${'' + categoryColor[i]}"></div>
             </div>
             <img onclick="deleteCategory(${i})"src="./img/black-x.svg" >
@@ -52,16 +52,15 @@ function renderCategory() {
     }
 }
 
-function addToInput() {
-    let selectedCategory = document.getElementById('selected-Category');
-    selectedCategory.innerText = '';
+function addToInput(i) {
+    let selectedCategory = document.getElementById('selected-category');
+    selectedCategory.innerHTML = '';
     selectedCategory.innerHTML += /*html*/`
     <div class="category">
         <div class="category-name">
             <span>${categoryName[i]}</span>
             <div class="color-circle" style="background-color: ${'' + categoryColor[i]}"></div>
         </div>
-        <img src="./img/black-x.svg" >
     </div>`
 }
 
@@ -190,6 +189,17 @@ function renderSubtasks() {
 function deleteSubtasks(i) {
     subtasks.splice(i, 1);
     renderSubtasks();
+}
+
+
+function resetForm() {
+    document.getElementById('title').value = '';
+    document.getElementById('text-area').value = '';
+    document.getElementById('selected-category').innerHTML = 'Select task category';
+    // reset Assigned to
+    document.getElementById('due-date').value = '';
+    addPrio(0);
+    document.getElementById('subtasks-container').innerHTML = '';
 }
 
 // Formvalidation

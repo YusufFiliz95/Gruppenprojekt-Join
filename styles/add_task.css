@@ -59,6 +59,10 @@ textarea:focus {
     outline: none;
 }
 
+.due-date input {
+    width: 300px;
+
+}
 
 .toggle-menu {
     display: flex;
@@ -192,8 +196,6 @@ textarea:focus {
     display: flex;
     gap: 8px
 }
-
-
 
 .subtask-input,
 .add-input {
