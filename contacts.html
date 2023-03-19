@@ -33,7 +33,7 @@
             </div>
             <div class="contact-info" id="contactinfo"></div>
         </div>
-        <div class="dark-btn new-contact" onclick="NewContact()" id="newcontactbtn">
+        <div class="dark-btn new-contact" onclick="newContact()" id="newcontactbtn">
             <p>New Contact</p>
             <img src="../img/new_contact_icon.svg" alt="">
         </div>
@@ -71,17 +71,26 @@
                     </div>
                     <div>
                         <form action="" class="input-form">
-                            <div class="input-field" onclick="focusInputField(this)">
-                                <input type="text" placeholder="Name" id="newContactName">
+                            <div class="input-field add-contact" onclick="focusInputField(this)">
+                                <input type="text" placeholder="Name" id="newContactName" required>
                                 <img src="img/person_icon.svg" alt="">
                             </div>
-                            <div class="input-field" onclick="focusInputField(this)">
-                                <input type="email" placeholder="Email" id="newContactEmail">
+                            <div class="error-message">
+                                <label for="newContactName" id="nameError" style="display:none;">Please enter a valid name (first and last name).</label>
+                            </div>
+                            <div class="input-field add-contact" onclick="focusInputField(this)">
+                                <input type="email" placeholder="Email" id="newContactEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                 <img src="img/email_logo.svg" alt="">
                             </div>
-                            <div class="input-field" onclick="focusInputField(this)">
-                                <input type="number" placeholder="Phone" id="newContactPhone">
+                            <div class="error-message">
+                                <label for="newContactEmail" id="emailError" style="display:none;">Please enter a valid email address.</label>
+                            </div>
+                            <div class="input-field add-contact" onclick="focusInputField(this)">
+                                <input type="number" placeholder="Phone" id="newContactPhone" step="any" required>
                                 <img src="img/phone_icon.svg" alt="">
+                            </div>
+                            <div class="error-message">
+                                <label for="newContactPhone" id="phoneError" style="display:none;">Please enter a valid phone number (10-15 digits).</label>
                             </div>
                         </form>
                     </div>
@@ -90,7 +99,7 @@
                             <p>Cancel</p>
                             <div class="cancel-btn-img"></div>
                         </div>
-                        <div class="dark-btn create-contact-btn" onclick="createNewContact()">
+                        <div class="dark-btn create-contact-btn" onclick="validateContact()" type="submit">
                             <p>Create Contact</p>
                             <img src="img/tick_white.svg" alt="">
                         </div>

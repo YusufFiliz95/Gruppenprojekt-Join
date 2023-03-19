@@ -120,6 +120,10 @@ function closeForm() {
         addNewContactSection.classList.remove('fade-out');
         addNewContactSection.classList.add('d-none');
         deleteFormAfterClose();
+        // Hide error messages when the form is closed.
+        hideErrorMessage('nameError');
+        hideErrorMessage('emailError');
+        hideErrorMessage('phoneError');
     }, 500);
 }
 //**************************************************************************************************************************************//
@@ -141,7 +145,7 @@ function deleteFormAfterClose() {
  * in and the section fades in. When the user clicks the section, the container slides out and the
  * section and container are hidden.
  */
-function NewContact() {
+function newContact() {
     const newContactBtn = document.getElementById('newcontactbtn');
     const addNewContactContainer = document.querySelector('.add-new-contact-container');
     const addNewContactSection = document.querySelector('.add-new-contact-section');
@@ -213,12 +217,15 @@ function createNewContact() {
     const nameValue = newContactNameInput.value;
     const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/; // Check if the name consists of two words.
 
-    if (nameRegex.test(nameValue)) {
+    const emailValue = newContactEmailInput.value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Check if the email address is valid.
+
+    if (nameRegex.test(nameValue) && emailRegex.test(emailValue)) {
         const [firstName, lastName] = nameValue.split(' '); // Split the name into first and last name.
         const newContact = {
             'name': firstName,
             'surname': lastName,
-            'email': newContactEmailInput.value,
+            'email': emailValue,
             'profilecolor': randomColor,
             'Initials': firstName[0].toUpperCase() + lastName[0].toUpperCase(),
             'phonenumber': newContactPhoneInput.value
@@ -226,8 +233,62 @@ function createNewContact() {
         contacts.push(newContact);
         closeForm();
         loadContacts();
-    } else {
-        alert('Bitte gib einen gültigen Namen ein (Vor- und Nachname).');
     }
 }
+
+
+/**
+ * It validates the input fields and if they are valid, it calls the createNewContact() function.
+ * @param id - The id of the element to show the error message in.
+ * @param message - The message to be displayed in the alert box.
+ */
+function showErrorMessage(id, message) {
+    const errorLabel = document.getElementById(id);
+    errorLabel.innerHTML = message;
+    errorLabel.style.display = 'block';
+}
+
+function hideErrorMessage(id) {
+    const errorLabel = document.getElementById(id);
+    errorLabel.style.display = 'none';
+}
+
+function validateContact() {
+    const nameValue = document.getElementById('newContactName').value;
+    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+
+    const emailValue = document.getElementById('newContactEmail').value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const phoneValue = document.getElementById('newContactPhone').value;
+    const phoneRegex = /^\d{10,15}$/; // Adjust the regex according to the desired phone number format.
+
+    let isValid = true;
+
+    if (!nameRegex.test(nameValue)) {
+        showErrorMessage('nameError', 'Please enter a valid name (first and last name).');
+        isValid = false;
+    } else {
+        hideErrorMessage('nameError');
+    }
+
+    if (!emailRegex.test(emailValue)) {
+        showErrorMessage('emailError', 'Please enter a valid email address.');
+        isValid = false;
+    } else {
+        hideErrorMessage('emailError');
+    }
+
+    if (!phoneRegex.test(phoneValue)) {
+        showErrorMessage('phoneError', 'Please enter a valid phone number (10-15 digits).');
+        isValid = false;
+    } else {
+        hideErrorMessage('phoneError');
+    }
+
+    if (isValid) {
+        createNewContact();
+    }
+}
+
 //**************************************************************************************************************************************//
