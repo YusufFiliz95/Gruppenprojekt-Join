@@ -1,3 +1,6 @@
+
+/* All templates for the renderingron the board are in the templates/template.js */
+
 let currentDraggedElement;
 let cardAmounts = [];
 

@@ -10,6 +10,7 @@
     <link rel="icon" type="img/png" href="img/join_logo.svg">
     <script src="javascript/script.js"></script>
     <script src="javascript/summary.js"></script>
+    <script src="javascript/tasksArray.js"></script>
     <script src="javascript/mini_backend.js"></script>
     <link rel="stylesheet" href="styles/summary.css">
     <link rel="stylesheet" href="styles/style.css">
@@ -20,7 +21,7 @@
 </head>
 
 
-<body id="bodyBordId" onload="init(1)">
+<body id="bodyBordId" onload="init(1), loadSummaryContent()">
 
     <!-- include W3 - Menu/Header -->
     <div w3-include-html=" templates/menu_template.html"></div>
@@ -37,15 +38,15 @@
             <div class="content-left">
                 <div class="first-row">
                     <a href="board.html" class="square-container dialog-design hover">
-                        <span class="ammount">5</span>
+                        <span id="tasksId" class="ammount"></span>
                         <span> Tasks in Board </span>
                     </a>
                     <a href="board.html" class="square-container dialog-design hover">
-                        <span class="ammount">2</span>
+                        <span id="toProgressId" class="ammount"></span>
                         <span> Tasks In Progress </span>
                     </a>
                     <a href="board.html" class="square-container dialog-design hover">
-                        <span class="ammount">2</span>
+                        <span id="awaitingFeedbackId" class="ammount"></span>
                         <span>Awaiting Feedback</span>
                     </a>
                 </div>
@@ -56,7 +57,7 @@
                                 <img src="img/prio_urgent_white.svg" alt="">
                             </div>
                             <div class="urgent-text">
-                                <span class="urgent-number">1</span>
+                                <span id="urgentsId" class="urgent-number">1</span>
                                 <span>Urgent</span>
                             </div>
                         </div>
@@ -74,7 +75,7 @@
                             <img src="img/edit_pen_white.svg" alt="">
                         </div>
                         <div class="todo-text">
-                            <span class="todo-number">1</span>
+                            <span id="toDoId" class="todo-number"></span>
                             <span>To-do</span>
                         </div>
                     </a>
@@ -83,14 +84,14 @@
                             <img src="img/hook_white.svg" alt="">
                         </div>
                         <div class="todo-text">
-                            <span class="todo-number">1</span>
+                            <span id="doneId" class="todo-number"></span>
                             <span>Done</span>
                         </div>
                     </a>
                 </div>
             </div>
             <div class="content-right">
-                <span class="greeting">Good morning,</span>
+                <span id="greetingId" class="greeting"></span>
                 <span class="user">User Name</span>
             </div>
         </div>

@@ -18,8 +18,8 @@ let tasks = [
                 "color": "#7AE229"
             }
         ],
-        "date": 1678127322623,
-        "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
+        "date": "29.03.2023",
+        "prio": 2,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
         "subtasks-value": [1, 1, 1, 1, 0],
         "status": "toDo"
@@ -63,7 +63,7 @@ let tasks = [
             },
 
         ],
-        "date": 1678127322623,
+        "date": "27.03.23",
         "prio": 2,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ["Wäsche in die Waschmaschine", "Wäsche in den Trockner", "Wäsche zusammenlegen"],
         "subtasks-value": [0, 1, 0],
@@ -83,7 +83,7 @@ let tasks = [
                 "color": "#7AE229"
             }
         ],
-        "date": 1678127322623,
+        "date": "20.03.2023",
         "prio": 3,
         "subtasks": [],
         "subtasks-value": [],
@@ -103,7 +103,7 @@ let tasks = [
                 "color": "#47965F"
             }
         ],
-        "date": 1678127322623,
+        "date": "15.03.2023",
         "prio": 1,
         "subtasks": [],
         "subtasks-value": [],
@@ -129,7 +129,7 @@ let tasks = [
                 "color": "#7AE229"
             }
         ],
-        "date": 1678127322623,
+        "date": "01.02.2023",
         "prio": 3,
         "subtasks": ['Unkraut zupfen', 'Rasenmähen'],
         "subtasks-value": [0, 0],
@@ -149,7 +149,7 @@ let tasks = [
                 "color": "#EEF31A"
             }
         ],
-        "date": 1678127322623,
+        "date": "05.02.2023",
         "prio": 2,
         "subtasks": [],
         "subtasks-value": [],
@@ -169,7 +169,7 @@ let tasks = [
                 "color": "#DC3A63"
             }
         ],
-        "date": 1678127322623,
+        "date": "02.01.2023",
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
         "subtasks-value": [0, 0, 0, 0, 0],
@@ -189,7 +189,7 @@ let tasks = [
                 "color": "#7AE229"
             }
         ],
-        "date": 1678127322623,
+        "date": "15.01.2023",
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": [],
         "subtasks-value": [],
