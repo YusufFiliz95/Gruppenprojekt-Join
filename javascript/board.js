@@ -5,6 +5,30 @@ let currentDraggedElement;
 let cardAmounts = [];
 
 /*  -------------------open Dialog Window Taskoverview with slideIn slide Out Functions--------------------------  */
+
+function openAddTaskDialogBord() {
+    document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
+    document.getElementById('bodyBordId').classList.add('overflow-dialog');
+    renderAddTaskDialog();
+}
+
+function closeAddTaskDialogBord() {
+    document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
+    document.getElementById('bodyBordId').classList.remove('overflow-dialog');
+    addTaskWindow = document.getElementById('add-task-bordId');
+    addTaskWindow.classList.add('slide-in-right-add-task');
+    addTaskWindow.classList.remove('slide-out-right-add-task');
+    if (selectedMenu == 2) renderCardsIntoTheBoards();
+    deleteAddTaskDialog();
+}
+
+function slideOutAddTaskDialogBord() {
+    let window = document.getElementById('add-task-bordId');
+    window.classList.remove('slide-in-right-add-task');
+    window.classList.add('slide-out-right-add-task');
+    setTimeout(closeAddTaskDialogBord, 350);
+}
+
 function openTaskOverviewDialogBord(i) {
     document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
@@ -17,6 +41,7 @@ function closeTaskOverviewDialogBoard() {
     let window = document.getElementById('taskoverview-bordId');
     window.classList.add('slide-in-right-task-overview');
     window.classList.remove('slide-out-right-task-overview');
+    deleteTaskOverview();
     renderCardsIntoTheBoards();
 }
 
@@ -25,6 +50,23 @@ function slideOutTaskOverviewDialogBoard() {
     window.classList.remove('slide-in-right-task-overview');
     window.classList.add('slide-out-right-task-overview');
     setTimeout(closeTaskOverviewDialogBoard, 350);
+}
+
+function renderAddTaskDialog() {
+    document.getElementById('add-task-contentId').innerHTML = templateAddTaskDialog();
+}
+
+function renderEditTaskDialog(i) {
+    deleteTaskOverview();
+    document.getElementById('task-overviewId').innerHTML = templateEditTask();
+}
+
+function deleteAddTaskDialog() {
+    document.getElementById('add-task-contentId').innerHTML = "";
+}
+
+function deleteTaskOverview() {
+    document.getElementById('task-overviewId').innerHTML = "";
 }
 
 /* --------END--------open Dialog Window AddTask and Taskoverview with slideIn slide Out Functions-------------------------- */

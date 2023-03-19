@@ -487,6 +487,19 @@
     padding-left: 65px;
 }
 
+.edit-task-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-task-headline {
+    width: 400px;
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
 
 @media(max-width: 1350px) {
 
@@ -585,6 +598,10 @@
     .task-overview-container {
         height: calc(100% - 85px);
         margin-top: 50px;
+    }
+
+    .add-task-headline {
+        width: 320px;
     }
 
 }
@@ -699,7 +716,7 @@
         padding-bottom: 0px;
     }
 
-    .taskoverview-editbutton-container{
+    .taskoverview-editbutton-container {
         right: 25px;
     }
 
@@ -710,10 +727,7 @@
         padding-bottom: 4px;
         padding-left: 2.5px;
         padding-right: 2.5px;
-        
     }
-
-
 
     h1 {
         font-size: 47px !important;

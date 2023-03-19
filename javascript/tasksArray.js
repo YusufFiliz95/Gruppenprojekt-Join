@@ -104,7 +104,7 @@ let tasks = [
             }
         ],
         "date": "2023-02-05",
-        "prio": 1,
+        "prio": 2,
         "subtasks": [],
         "subtasks-value": [],
         "status": "done"
@@ -170,7 +170,7 @@ let tasks = [
             }
         ],
         "date": "2023-01-01",
-        "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
+        "prio": 3,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
         "subtasks-value": [0, 0, 0, 0, 0],
         "status": "awaitingFeedback"

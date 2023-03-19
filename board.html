@@ -10,7 +10,7 @@
     <link rel="icon" type="img/png" href="img/join_logo.svg">
     <script src="javascript/script.js"></script>
     <script src="javascript/board.js"></script>
-    <script src="templates/templates.js"></script>
+    <script src="templates/html_templates_board.js"></script>
     <script src="javascript/add_tasks.js"></script>
     <script src="javascript/mini_backend.js"></script>
     <script src="javascript/tasksArray.js"></script>
@@ -22,7 +22,6 @@
     <link rel="stylesheet" href="styles/mobile_menu.css">
 
 </head>
-
 
 <body id="bodyBordId" onload="init(2), renderCardsIntoTheBoards()" onresize=" checkWindowInnerScreenForDragAndDrog(),
     clearInputSearchingByResize()">
@@ -113,21 +112,18 @@
         </div>
     </div>
     </div>
-
     <!-- overlay + addTask Dialog -->
     <div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
-
         <div onclick="doNotClose(event)" id="add-task-bordId"
             class="add-task-dialog-bord dialog-design slide-in-right-add-task">
             <div class="x-btn-div">
                 <img onclick="slideOutAddTaskDialogBord()" class="x-btn" src="img/black-x.svg" alt="">
             </div>
             <div class="add-task-content">
-                <div w3-include-html="templates/addTask_templates.html"></div>
+                <div id="add-task-contentId"> </div>
             </div>
         </div>
     </div>
-
     <!-- overlay + Task Overview -->
     <div onclick="slideOutTaskOverviewDialogBoard()" id="overlay-bord-taskoverviewId"
         class="overlay-dialog-center d-none ">

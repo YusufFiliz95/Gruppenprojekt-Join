@@ -100,8 +100,7 @@ function getUpcomingDeadline() {
             dates.push(date);
         }
     }
-    console.log(dates);
-    filterUrgentDates(dates);
+    if (dates.length >= 1) filterUrgentDates(dates);
 }
 
 function filterUrgentDates(dates) {
