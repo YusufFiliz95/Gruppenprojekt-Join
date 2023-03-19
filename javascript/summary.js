@@ -101,14 +101,18 @@ function getUpcomingDeadline() {
         }
     }
     console.log(dates);
-    /* filterUrgentDates(dates); */
-
+    filterUrgentDates(dates);
 }
 
 function filterUrgentDates(dates) {
-    upcomingDate = Math.min.apply(null, dates);
+    let filterTimestamp = Math.min.apply(null, dates);
+    let upcomingDate = new Date(filterTimestamp);
+    let month = upcomingDate.toLocaleString('en-us', { month: "long" });
+    let year = upcomingDate.toLocaleString('en-us', { year: "numeric" });
+    let day = upcomingDate.toLocaleString('en-us', { day: "numeric" });
 
-    console.log(upcomingDate);
+    document.getElementById('upcomingDateId').innerHTML = `${month} ${day}, ${year}`;
+
 
 }
 
