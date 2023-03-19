@@ -106,7 +106,7 @@ function focusInputField(container) {
 }
 //**************************************************************************************************************************************//
 
-//***********************************FUNCTION FOR CLOSE THE ADD CONTACT FORM***********************************//
+//***********************************FUNCTION FOR CLOSE THE ADD CONTACT FORM WITH ANIMATION***********************************//
 function closeForm() {
     const addNewContactContainer = document.querySelector('.add-new-contact-container');
     const addNewContactSection = document.querySelector('.add-new-contact-section');
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 //**************************************************************************************************************************************//
 
-//***********************************FUNCTION FOR CREATING NEW CONTACT AND ADD IT TO THE ARRAY***********************************//
+//***********************************FUNCTION FOR CREATING NEW CONTACT AND ADD IT TO THE ARRAY THAT IS SHOWN IN THE LIST AFTER THAT***********************************//
 function createNewContact() {
     const colors = ['#e04f3f', '#29b6f6', '#ffb900', '#8bc34a', '#7e57c2', '#ff5722'];
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
@@ -211,10 +211,10 @@ function createNewContact() {
     const newContactPhoneInput = document.getElementById('newContactPhone');
 
     const nameValue = newContactNameInput.value;
-    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/; // Prüft, ob Name aus zwei Wörtern besteht
+    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/; // Check if the name consists of two words.
 
     if (nameRegex.test(nameValue)) {
-        const [firstName, lastName] = nameValue.split(' '); // Splittet den Namen in Vor- und Nachname
+        const [firstName, lastName] = nameValue.split(' '); // Split the name into first and last name.
         const newContact = {
             'name': firstName,
             'surname': lastName,
