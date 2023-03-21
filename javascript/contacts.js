@@ -16,12 +16,16 @@ function loadContacts() {
     let currentChar = '';
     for (let i = 0; i < sortedContacts.length; i++) {
         const list = sortedContacts[i];
+        // Add the contact-char div at the beginning of each loop
+        document.getElementById('contactlist').innerHTML += /*html*/ `
+            <div class="contact-char" id="char-${list.name.charAt(0).toUpperCase()}"><p>${list.name.charAt(0).toUpperCase()}</p></div>
+        `;
         // Check if the first character of the name is different from the previous contact
         if (list.name.charAt(0) != currentChar) {
             currentChar = list.name.charAt(0);
-            document.getElementById('contactlist').innerHTML += /*html*/ `
-                <div class="contact-char"><p>${currentChar.charAt(0).toUpperCase()}</p></div>
-            `;
+        } else {
+            // If the first character of the name is the same as the previous contact, hide the contact-char div
+            document.getElementById(`char-${currentChar.toUpperCase()}`).style.display = 'none';
         }
         // Render the contact
         document.getElementById('contactlist').innerHTML += /*html*/ `
@@ -42,6 +46,7 @@ function loadContacts() {
         `;
     }
 }
+
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION FOR SHOW DETAILED INFORMATION OF THE CONTACT***********************************//
@@ -301,6 +306,13 @@ function openEditContactForm(i) {
     const contact = contacts[i];
     const editContactContainer = document.querySelector('.edit-contact-container');
     const editContactSection = document.querySelector('.edit-contact-section');
+    const profileOfContact = document.getElementById('profileofcontact');
+
+    profileOfContact.innerHTML = `
+    <div class="contact-info-initials" style="background-color: ${contact.profilecolor}">
+        <p>${contact.Initials}</p>
+    </div>
+    `;
 
     // Fill in the fields with existing contact information
     document.getElementById('editContactName').value = contact.name + ' ' + contact.surname;
