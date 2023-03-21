@@ -236,7 +236,6 @@ function createNewContact() {
     }
 }
 
-
 /**
  * It validates the input fields and if they are valid, it calls the createNewContact() function.
  * @param id - The id of the element to show the error message in.
@@ -292,3 +291,105 @@ function validateContact() {
 }
 
 //**************************************************************************************************************************************//
+
+function editContact(i) {
+    // Rufen Sie die openEditContactForm-Funktion mit dem Index i auf
+    openEditContactForm(i);
+}
+
+function openEditContactForm(i) {
+    const contact = contacts[i];
+    const editContactContainer = document.querySelector('.edit-contact-container');
+    const editContactSection = document.querySelector('.edit-contact-section');
+
+    // Fill in the fields with existing contact information
+    document.getElementById('editContactName').value = contact.name + ' ' + contact.surname;
+    document.getElementById('editContactEmail').value = contact.email;
+    document.getElementById('editContactPhone').value = contact.phonenumber;
+
+    // Display the edit contact form
+    editContactSection.classList.remove('d-none');
+    editContactContainer.classList.remove('d-none');
+    setTimeout(function () {
+        editContactContainer.classList.add('slide-in');
+        editContactSection.classList.add('fade-in');
+    }, 50);
+
+    // Attach event listeners to close the edit contact form
+    editContactContainer.addEventListener('click', function (e) {
+        e.stopPropagation();
+    });
+
+    editContactSection.addEventListener('click', function () {
+        closeEditContactForm();
+    });
+
+    // Save the index for updating the contact later
+    editContactContainer.dataset.contactIndex = i;
+}
+
+function closeEditContactForm() {
+    const editContactContainer = document.querySelector('.edit-contact-container');
+    const editContactSection = document.querySelector('.edit-contact-section');
+    editContactContainer.classList.remove('slide-in');
+    editContactSection.classList.remove('fade-in');
+    editContactContainer.classList.add('slide-out');
+    editContactSection.classList.add('fade-out');
+    setTimeout(function () {
+        editContactContainer.classList.add('d-none');
+        editContactContainer.classList.remove('slide-out');
+        editContactSection.classList.remove('fade-out');
+        editContactSection.classList.add('d-none');
+    }, 500);
+}
+
+function validateEditContact() {
+    const editContactContainer = document.querySelector('.edit-contact-container');
+    const i = editContactContainer.dataset.contactIndex;
+    const contact = contacts[i];
+
+    const nameValue = document.getElementById('editContactName').value;
+    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+
+    const emailValue = document.getElementById('editContactEmail').value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const phoneValue = document.getElementById('editContactPhone').value;
+    const phoneRegex = /^\d{10,15}$/; // Adjust the regex according to the desired phone number format.
+
+    let isValid = true;
+
+    if (!nameRegex.test(nameValue)) {
+        showErrorMessage('editNameError', 'Please enter a valid name (first and last name).');
+        isValid = false;
+    } else {
+        hideErrorMessage('editNameError');
+    }
+
+    if (!emailRegex.test(emailValue)) {
+        showErrorMessage('editEmailError', 'Please enter a valid email address.');
+        isValid = false;
+    } else {
+        hideErrorMessage('editEmailError');
+    }
+
+    if (!phoneRegex.test(phoneValue)) {
+        showErrorMessage('editPhoneError', 'Please enter a valid phone number (10-15 digits).');
+        isValid = false;
+    } else {
+        hideErrorMessage('editPhoneError');
+    }
+
+    if (isValid) {
+        contact.name = nameValue.split(' ')[0];
+        contact.surname = nameValue.split(' ')[1];
+        contact.email = emailValue;
+        contact.phonenumber = phoneValue;
+
+        closeEditContactForm();
+        loadContacts();
+        showContactInfo(i);
+    }
+}
+
+
