@@ -78,6 +78,7 @@ h2 {
 .main-container {
     margin-left: 232px;
     margin-top: 89px;
+    padding-bottom: 35px;
     height: 100%;
     width: calc(100%-232px);
 }

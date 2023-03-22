@@ -130,7 +130,6 @@ function templateEditTask(i) {
                 <div class="input-container">
                     <label>Status</label>
                     <div class="toggle-menu">
-
                         <div class="assigned-to" onclick="toggleMenu('toggle-3')">
                             <span></span>
                             <img src="./img/triangle.svg">
