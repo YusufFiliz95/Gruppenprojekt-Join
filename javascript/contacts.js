@@ -1,34 +1,41 @@
-let contacts = [
-    {
-        'name': 'AMax',
-        'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com',
-        'profilecolor': '#e04f3f',
-        'Initials': 'AM',
-        'phonenumber': '012345789'
-    },
-]
+let contacts = [];
 
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
 function loadContacts() {
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
-    document.getElementById('contactlist').innerHTML = '';
-    let currentChar = '';
-    for (let i = 0; i < sortedContacts.length; i++) {
-        const list = sortedContacts[i];
-        // Add the contact-char div at the beginning of each loop
-        document.getElementById('contactlist').innerHTML += /*html*/ `
-            <div class="contact-char" id="char-${list.name.charAt(0).toUpperCase()}"><p>${list.name.charAt(0).toUpperCase()}</p></div>
-        `;
-        // Check if the first character of the name is different from the previous contact
-        if (list.name.charAt(0) != currentChar) {
-            currentChar = list.name.charAt(0);
-        } else {
-            // If the first character of the name is the same as the previous contact, hide the contact-char div
-            document.getElementById(`char-${currentChar.toUpperCase()}`).style.display = 'none';
-        }
-        // Render the contact
-        document.getElementById('contactlist').innerHTML += /*html*/ `
+    const contactListDiv = document.getElementById('contactlist');
+    contactListDiv.innerHTML = '';
+
+    // If the contacts array, is empty a message will shown to add a contact
+    if (contacts.length === 0) {
+        document.getElementById('newcontactbtn').classList.add('d-none');
+        contactListDiv.innerHTML = /*html*/`
+        <div class="no-contacts">
+            <p class="no-contacts-text">No contacts yet! Add some to brighten up your list and stay connected with your favorite people.</p>
+            <div class="dark-btn new-contact" onclick="newContact()" id="newcontactbtn">
+                <p>New Contact</p>
+                <img src="../img/new_contact_icon.svg" alt="">
+            </div>
+        </div>
+            `;
+        return;
+    } else {
+        document.getElementById('newcontactbtn').classList.remove('d-none');
+        let currentChar = '';
+        for (let i = 0; i < sortedContacts.length; i++) {
+            const list = sortedContacts[i];
+            // Check if the first character of the name is different from the previous contact
+            if (list.name.charAt(0) != currentChar) {
+                currentChar = list.name.charAt(0);
+                // Add the contact-char div only if an element with the same ID does not exist
+                if (!document.getElementById(`char-${currentChar.toUpperCase()}`)) {
+                    contactListDiv.innerHTML += /*html*/ `
+                    <div class="contact-char" id="char-${currentChar.toUpperCase()}"><p>${currentChar.toUpperCase()}</p></div>
+                `;
+                }
+            }
+            // Render the contact
+            contactListDiv.innerHTML += /*html*/ `
             <div class="contacts" onclick="showContactInfo(${i})">
                 <div class="contact-initials" style="background-color: ${list.profilecolor}">
                     <p>${list.Initials.toUpperCase()}</p>
@@ -44,8 +51,11 @@ function loadContacts() {
                 </div>
             </div>
         `;
+        }
     }
 }
+
+
 
 //**************************************************************************************************************************************//
 
@@ -151,18 +161,15 @@ function deleteFormAfterClose() {
  * section and container are hidden.
  */
 function newContact() {
-    const newContactBtn = document.getElementById('newcontactbtn');
     const addNewContactContainer = document.querySelector('.add-new-contact-container');
     const addNewContactSection = document.querySelector('.add-new-contact-section');
 
-    newContactBtn.addEventListener('click', function () {
-        addNewContactSection.classList.remove('d-none');
-        addNewContactContainer.classList.remove('d-none');
-        setTimeout(function () {
-            addNewContactContainer.classList.add('slide-in');
-            addNewContactSection.classList.add('fade-in');
-        }, 50);
-    });
+    addNewContactSection.classList.remove('d-none');
+    addNewContactContainer.classList.remove('d-none');
+    setTimeout(function () {
+        addNewContactContainer.classList.add('slide-in');
+        addNewContactSection.classList.add('fade-in');
+    }, 50);
 
     addNewContactContainer.addEventListener('click', function (e) {
         e.stopPropagation();
@@ -181,33 +188,9 @@ function newContact() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Bind newContact() function to click event of the new contact button
     const newContactBtn = document.getElementById('newcontactbtn');
-    const addNewContactContainer = document.querySelector('.add-new-contact-container');
-    const addNewContactSection = document.querySelector('.add-new-contact-section');
-
-    newContactBtn.addEventListener('click', function () {
-        addNewContactSection.classList.remove('d-none');
-        addNewContactContainer.classList.remove('d-none');
-        setTimeout(function () {
-            addNewContactContainer.classList.add('slide-in');
-            addNewContactSection.classList.add('fade-in');
-        }, 50);
-    });
-
-    addNewContactContainer.addEventListener('click', function (e) {
-        e.stopPropagation();
-    });
-
-    addNewContactSection.addEventListener('click', function () {
-        addNewContactContainer.classList.remove('slide-in');
-        addNewContactSection.classList.remove('fade-in');
-        addNewContactContainer.classList.add('slide-out');
-        setTimeout(function () {
-            addNewContactContainer.classList.add('d-none');
-            addNewContactContainer.classList.remove('slide-out');
-            addNewContactSection.classList.add('d-none');
-        }, 500);
-    });
+    newContactBtn.addEventListener('click', newContact);
 });
 //**************************************************************************************************************************************//
 
