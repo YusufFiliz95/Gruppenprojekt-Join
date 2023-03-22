@@ -115,15 +115,34 @@ function renderContacts() {
     }
 }
 
-function checkSelectedBoxes() {
-    allCheckedBoxes = document.querySelectorAll('input[type=checkbox]');
-    console.log(allCheckedBoxes);
+function addContactsToArray() {
+    let checkbox = document.querySelectorAll("input[type = 'checkbox'");
+
+    for (let i = 0; i < checkbox.length; i++) {
+        if (checkbox[i].checked == true) {
+            let contact = {
+                'name': contacts[i]['name'],
+                'surname': contacts[i]['surname'],
+                'initials': contacts[i]['Initials'],
+                'color': contacts[i]['profilecolor']
+            }
+
+
+            selectedContacts.push(contact);
+
+        }
+    }
 
 }
+
 
 function renderInicialsCicles() {
 
 }
+
+
+
+
 
 // Prio Buttons
 function addPrio(prioValue) {
@@ -226,6 +245,7 @@ function resetForm() {
 
 
 function createTask() {
+    addContactsToArray();
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('due-date').value;
@@ -238,7 +258,7 @@ function createTask() {
         'description': description,
         'category': selectedCategoryName,
         'selectedCategoryColor': selectedCategoryColor,
-        // contact
+        'contacts': selectedContacts,
         'date': dueDate,
         'prio': prio,
         'subtasks': subtasks,
