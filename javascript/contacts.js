@@ -80,8 +80,6 @@ function loadContacts() {
     }
 }
 
-
-
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION FOR SHOW DETAILED INFORMATION OF THE CONTACT***********************************//
@@ -250,7 +248,7 @@ function createNewContact() {
             'Initials': firstName[0].toUpperCase() + lastName[0].toUpperCase(),
             'phonenumber': newContactPhoneInput.value
         };
-        showConfirmationPopup('contact');
+        showConfirmationPopup('addcontact');
         contacts.push(newContact);
         closeForm();
         loadContacts();
@@ -425,7 +423,7 @@ function validateEditContact() {
         contact.surname = nameValue.split(' ')[1];
         contact.email = emailValue;
         contact.phonenumber = phoneValue;
-
+        showConfirmationPopup('editcontact');
         closeEditContactForm();
         loadContacts();
         showContactInfo(i);
@@ -437,8 +435,9 @@ function deleteContact(i) {
     document.getElementById('contactinfo').innerHTML = '';
     closeDeletePopup();
     loadContacts();
-    showConfirmationPopup('delete');
+    showConfirmationPopup('deletecontact');
 }
+
 
 function deleteContactPopup(i) {
     const deleteChosenContact = contacts[i];
@@ -448,7 +447,7 @@ function deleteContactPopup(i) {
         <div class="delete-texts">
             <h1 class="delete-popup-headline">Delete Contact</h1>
             <p class="delete-popup-text">Are you sure you want to delete</p>
-            <p class="delete-contact-name" id="deleteContactName">${deleteChosenContact.name} ${deleteChosenContact.surname}?</p>
+            <p class="delete-contact-name" id="deleteContactName">${deleteChosenContact.name.charAt(0).toUpperCase() + deleteChosenContact.name.slice(1).toLowerCase()} ${deleteChosenContact.surname.charAt(0).toUpperCase() +                 deleteChosenContact.surname.slice(1).toLowerCase()}?</p>
             <div class="delete-contact-name-border"></div>
         </div>
         <div class="delete-btns">
@@ -492,3 +491,5 @@ function closeDeletePopup() {
         deleteNotification.classList.add('d-none');
     }, 300);
 }
+
+//TODO: FALLS DIE E-MAIL-ADRESSE IN DER KONTAKTLISTE ZU LANG IST, MUSS DIE LÄNGE AM ENDE GEKÜRZT WERDEN MIT "...". ZUM BEISPIEL "max.mustermann@hotma..."

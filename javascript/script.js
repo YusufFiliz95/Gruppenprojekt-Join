@@ -71,17 +71,18 @@ function showConfirmationPopup(actionType) {
         confirmationPopup.classList.add('show');
         let confirmationText = '';
         switch (actionType) {
-            case 'contact':
+            case 'addcontact':
                 confirmationText = '<p>Contact successfully created</p>';
                 break;
-            case 'task':
-                confirmationText = '<p>Task successfully created</p>';
-                break;
-            case 'delete':
+            case 'deletecontact':
                 confirmationText = '<p>Contact successfully deleted</p>';
                 break;
-            default:
-                confirmationText = '<p>Action completed successfully</p>';
+            case 'editcontact':
+                confirmationText = '<p>Contact successfully edited</p>';
+                break;
+            case 'createtask':
+                confirmationText = '<p>Task successfully created</p>';
+                break;
         }
         document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
         setTimeout(() => {
@@ -89,4 +90,4 @@ function showConfirmationPopup(actionType) {
         }, 1500);
     }
 }
-//Füge diese Funktion zu deiner Funktion hinzu, in der der Task erstellt wird: showConfirmationPopup('task');
+//Füge diese Funktion zu deiner Funktion hinzu, in der der Task erstellt wird: showConfirmationPopup('createtask');
