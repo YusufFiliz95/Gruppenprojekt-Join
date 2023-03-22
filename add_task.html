@@ -42,7 +42,7 @@
                 <!-- description input -->
                 <div class="input-container">
                     <label>Description</label>
-                    <textarea id="text-area" class="textarea-field" id="description" rows="3"
+                    <textarea class="textarea-field" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
                     <p class="required d-none ">This field is required</p>
                 </div>
@@ -91,6 +91,7 @@
                                 <img src="./img/contact_dark.svg">
                             </div>
                         </div>
+                        <div id="inicial-cirls"></div>
                     </div>
                 </div>
             </div>
@@ -133,8 +134,12 @@
         </div>
         <!-- Clear and Create Buttons -->
         <div class="add-task-buttons">
-            <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear x</span></button>
-            <button class="dark-btn create-btn"><span>Create Task</span><img src="./img/tick_white.svg" alt=""></button>
+            <button onclick="resetForm(), checkSelectedBoxes()" class="transparent-btn clear-btn"><span>clear
+                    x</span></button>
+            <button onclick="createTask()" type="submit" class="dark-btn create-btn">
+                <span>Create Task</span>
+                <img src="./img/tick_white.svg">
+            </button>
         </div>
     </div>
 

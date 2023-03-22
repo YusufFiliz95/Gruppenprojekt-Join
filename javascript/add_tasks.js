@@ -1,10 +1,13 @@
 
 let currentColor;
-let categoryColor = [];
-let categoryName = [];
+let selectedCategoryColor;
+let selectedCategoryName;
+let categorys = []
 let pointColor = ['#8AA4FF', '#FB0101', '#43D300', '#FD8A01', '#E224BE', '#013DFF', '#33D7C1',];
 let subtasks = [];
 let prio = 0;
+let selectedContacts = [];
+let subtaskValue = [];
 
 
 // toggle Menu 
@@ -32,20 +35,26 @@ function closeInputfield(id) {
 // category Input
 function addedCategory() {
     let categoryInput = document.getElementById('category-input-field').value;
-    categoryColor.push(currentColor);
-    categoryName.push(categoryInput);
+
+    let category = {
+        'name': categoryInput,
+        'color': currentColor
+    }
+
+    categorys.push(category);
 }
+
 
 function renderCategory() {
     let categoryContainer = document.getElementById('category-container');
     categoryContainer.innerHTML = '';
 
-    for (let i = 0; i < categoryName.length; i++) {
+    for (let i = 0; i < categorys.length; i++) {
         categoryContainer.innerHTML += /*html*/`
         <div class="category">
             <div class="category-name">
-                <span onclick="addToInput(${i})">${categoryName[i]}</span>
-                <div class="color-circle" style="background-color: ${'' + categoryColor[i]}"></div>
+                <span onclick="addToInput(${i})">${categorys[i]['name']}</span>
+                <div class="color-circle" style="background-color: ${'' + categorys[i]['color']}"></div>
             </div>
             <img onclick="deleteCategory(${i})"src="./img/black-x.svg" >
         </div>`
@@ -54,12 +63,14 @@ function renderCategory() {
 
 function addToInput(i) {
     let selectedCategory = document.getElementById('selected-category');
+    selectedCategoryColor = categorys[i]['color'];
+    selectedCategoryName = categorys[i]['name'];
     selectedCategory.innerHTML = '';
     selectedCategory.innerHTML += /*html*/`
     <div class="category">
         <div class="category-name">
-            <span>${categoryName[i]}</span>
-            <div class="color-circle" style="background-color: ${'' + categoryColor[i]}"></div>
+            <span id="selected-category-name">${selectedCategoryName}</span>
+            <div class="color-circle" style="background-color: ${'' + selectedCategoryColor}"></div>
         </div>
     </div>`
 }
@@ -99,9 +110,19 @@ function renderContacts() {
         contactContainer.innerHTML += /*html*/ `
         <div class="contact">
             <span>${contact['name']} ${contact['surname']}</span>
-            <input type="checkbox">
+            <input id="checkbox${i}" type="checkbox">
         </div>`
     }
+}
+
+function checkSelectedBoxes() {
+    allCheckedBoxes = document.querySelectorAll('input[type=checkbox]');
+    console.log(allCheckedBoxes);
+
+}
+
+function renderInicialsCicles() {
+
 }
 
 // Prio Buttons
@@ -166,6 +187,7 @@ function closeSubtaskInput() {
 function addSubtasks() {
     subtaskName = document.getElementById('subtask-input').value;
     subtasks.push(subtaskName);
+    subtaskValue.push(0);
 
 }
 
@@ -194,7 +216,7 @@ function deleteSubtasks(i) {
 
 function resetForm() {
     document.getElementById('title').value = '';
-    document.getElementById('text-area').value = '';
+    document.getElementById('description').value = '';
     document.getElementById('selected-category').innerHTML = 'Select task category';
     // reset Assigned to
     document.getElementById('due-date').value = '';
@@ -202,5 +224,33 @@ function resetForm() {
     document.getElementById('subtasks-container').innerHTML = '';
 }
 
-// Formvalidation
+
+function createTask() {
+    let title = document.getElementById('title').value;
+    let description = document.getElementById('description').value;
+    let dueDate = document.getElementById('due-date').value;
+
+
+
+    let task = {
+        'id': tasks.length,
+        'title': title,
+        'description': description,
+        'category': selectedCategoryName,
+        'selectedCategoryColor': selectedCategoryColor,
+        // contact
+        'date': dueDate,
+        'prio': prio,
+        'subtasks': subtasks,
+        'subtasksValue': subtaskValue,
+        'status': 'toDo'
+
+    }
+
+    tasks.push(task);
+    console.log(tasks);
+
+}
+
+
 
