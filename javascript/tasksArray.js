@@ -104,7 +104,7 @@ let tasks = [
             }
         ],
         "date": "2023-02-05",
-        "prio": 2,
+        "prio": 1,
         "subtasks": [],
         "subtasks-value": [],
         "status": "done"

@@ -1,4 +1,8 @@
 let selectedMenu;
+/* let tasks = [];
+let contacts = [];
+let user = [];
+let category = []; */
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {

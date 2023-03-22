@@ -247,6 +247,7 @@ function renderContactsInToOverview(i) {
 function startDragging(id) {
     currentDraggedElement = id;
     rotateCardByDragging(id);
+    document
 }
 
 function allowDrop(ev, id) {
