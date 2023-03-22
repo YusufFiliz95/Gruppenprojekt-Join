@@ -132,7 +132,7 @@ function showContactInfo(i) {
     </div>
     `;
     // Highlight a contact if its clicked
-    const highlightContact = document.getElementsByClassName('contact');
+    const highlightContact = document.getElementsByClassName('contacts');
     for (let j = 0; j < highlightContact.length; j++) {
         highlightContact[j].classList.remove('selected-contact-info');
     }
@@ -250,12 +250,26 @@ function createNewContact() {
             'Initials': firstName[0].toUpperCase() + lastName[0].toUpperCase(),
             'phonenumber': newContactPhoneInput.value
         };
+        showConfirmationPopup('contact');
         contacts.push(newContact);
         closeForm();
         loadContacts();
+
+        // Find the index of the newly created contact
+        let newContactIndex = -1;
+        for (let i = 0; i < contacts.length; i++) {
+            if (contacts[i] === newContact) {
+                newContactIndex = i;
+                break;
+            }
+        }
+
+        // Show the newly created contact info
+        if (newContactIndex >= 0) {
+            showContactInfo(newContactIndex);
+        }
     }
 }
-
 /**
  * It validates the input fields and if they are valid, it calls the createNewContact() function.
  * @param id - The id of the element to show the error message in.
@@ -313,7 +327,6 @@ function validateContact() {
 //**************************************************************************************************************************************//
 
 function editContact(i) {
-    // Rufen Sie die openEditContactForm-Funktion mit dem Index i auf
     openEditContactForm(i);
 }
 
@@ -424,6 +437,7 @@ function deleteContact(i) {
     document.getElementById('contactinfo').innerHTML = '';
     closeDeletePopup();
     loadContacts();
+    showConfirmationPopup('delete');
 }
 
 function deleteContactPopup(i) {
@@ -476,4 +490,3 @@ function closeDeletePopup() {
         deleteNotification.classList.add('d-none');
     }, 300); // Warten, bis die Animation abgeschlossen ist
 }
-

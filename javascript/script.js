@@ -9,7 +9,7 @@ async function init(i) {
     await includeHTML();
     selectMenuPoint(i);
     setSelectedMenu();
-
+    showConfirmationPopup();
     //setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
 }
 
@@ -65,4 +65,28 @@ function slideOutAddTaskDialogBord() {
 }
 
 
-//TODO: TASK WURDER HINZUGEFÜGT ANIMATION!!
+function showConfirmationPopup(actionType) {
+    if (actionType) {
+        const confirmationPopup = document.querySelector('.confirmation-popup');
+        confirmationPopup.classList.add('show');
+        let confirmationText = '';
+        switch (actionType) {
+            case 'contact':
+                confirmationText = '<p>Contact successfully created</p>';
+                break;
+            case 'task':
+                confirmationText = '<p>Task successfully created</p>';
+                break;
+            case 'delete':
+                confirmationText = '<p>Contact successfully deleted</p>';
+                break;
+            default:
+                confirmationText = '<p>Action completed successfully</p>';
+        }
+        document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
+        setTimeout(() => {
+            confirmationPopup.classList.remove('show');
+        }, 1500);
+    }
+}
+//Füge diese Funktion zu deiner Funktion hinzu, in der der Task erstellt wird: showConfirmationPopup('task');
