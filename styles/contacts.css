@@ -868,10 +868,6 @@ input[type="number"]::-webkit-outer-spin-button {
     margin: 0;
 }
 
-input[type="number"] {
-    -moz-appearance: textfield;
-}
-
 .error-message {
     width: 100%;
 }
