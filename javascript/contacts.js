@@ -114,13 +114,20 @@ function showContactInfo(i) {
         </div>
     </div>
     <div class="contact-info-email-phone">
-        <div class="contact-info-email">
-            <p class="weight-1000">Email</p>
-            <p class="contact-info-email-underline">${formattedEmail}</p>
+        <div class="email-phone">
+            <div class="contact-info-email">
+                <p class="weight-1000">Email</p>
+                <p class="contact-info-email-underline">${formattedEmail}</p>
+            </div>
+            <div class="contact-info-phone">
+                <p class="weight-1000">Phone</p>
+                <p>${contactinfo.phonenumber}</p>
+            </div>
         </div>
-        <div class="contact-info-phone">
-            <p class="weight-1000">Phone</p>
-            <p>${contactinfo.phonenumber}</p>
+        <div class="delete-contact-section">
+            <button onclick="deleteContactPopup(${i})" class="dark-btn delete-contact-btn">
+                <img src="img/empty_trash.png" alt="">
+            </button>
         </div>
     </div>
     `;
@@ -410,5 +417,63 @@ function validateEditContact() {
         loadContacts();
         showContactInfo(i);
     }
+}
+
+function deleteContact(i) {
+    contacts.splice(i, 1);
+    document.getElementById('contactinfo').innerHTML = '';
+    closeDeletePopup();
+    loadContacts();
+}
+
+function deleteContactPopup(i) {
+    const deleteChosenContact = contacts[i];
+    document.getElementById('deletenotification').classList.remove('d-none');
+    document.getElementById('deletenotification').innerHTML = /*html*/`
+    <div class="delete-popup" onclick="doNotClose(event)">
+        <div class="delete-texts">
+            <h1 class="delete-popup-headline">Delete Contact</h1>
+            <p class="delete-popup-text">Are you sure you want to delete</p>
+            <p class="delete-contact-name" id="deleteContactName">${deleteChosenContact.name} ${deleteChosenContact.surname}?</p>
+            <div class="delete-contact-name-border"></div>
+        </div>
+        <div class="delete-btns">
+            <div class="transparent-btn delete-cancel" onclick="closeDeletePopup()">
+                <p>No</p>
+            </div>
+            <div class="dark-btn delete-confirmation" onclick="deleteContact(${i})">
+                Yes
+            </div>
+        </div>
+    </div>
+    `;
+    const deleteContactName = document.querySelector('.delete-contact-name');
+    const deleteContactNameBorder = document.querySelector('.delete-contact-name-border');
+
+    function updateBorderWidth() {
+        const width = deleteContactName.offsetWidth + 10;
+        deleteContactNameBorder.style.width = width + 'px';
+    }
+
+    updateBorderWidth();
+    window.addEventListener('resize', updateBorderWidth);
+
+    // Elemente auswählen
+    const deleteNotification = document.getElementById('deletenotification');
+    const deletePopup = deleteNotification.querySelector('.delete-popup');
+
+    // Popup anzeigen
+    deleteNotification.classList.remove('d-none');
+    deletePopup.classList.add('show');
+}
+
+function closeDeletePopup() {
+    const deleteNotification = document.getElementById('deletenotification');
+    const deletePopup = deleteNotification.querySelector('.delete-popup');
+
+    deletePopup.classList.remove('show');
+    setTimeout(() => {
+        deleteNotification.classList.add('d-none');
+    }, 300); // Warten, bis die Animation abgeschlossen ist
 }
 
