@@ -472,11 +472,12 @@ function deleteContactPopup(i) {
     updateBorderWidth();
     window.addEventListener('resize', updateBorderWidth);
 
-    // Elemente auswählen
+    // Select elements
     const deleteNotification = document.getElementById('deletenotification');
     const deletePopup = deleteNotification.querySelector('.delete-popup');
 
-    // Popup anzeigen
+    // Show popup
+    deleteNotification.classList.add('visible');
     deleteNotification.classList.remove('d-none');
     deletePopup.classList.add('show');
 }
@@ -486,7 +487,8 @@ function closeDeletePopup() {
     const deletePopup = deleteNotification.querySelector('.delete-popup');
 
     deletePopup.classList.remove('show');
+    deleteNotification.classList.remove('visible');
     setTimeout(() => {
         deleteNotification.classList.add('d-none');
-    }, 300); // Warten, bis die Animation abgeschlossen ist
+    }, 300);
 }

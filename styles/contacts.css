@@ -924,7 +924,14 @@ input[type="number"]::-webkit-outer-spin-button {
     display: flex;
     justify-content: center;
     align-items: center;
+    opacity: 0; /* Füge diese Zeile hinzu */
+    transition: opacity 0.3s ease; /* Füge diese Zeile hinzu */
 }
+
+.delete-popup-section.visible {
+    opacity: 1;
+}
+
 
 .delete-popup {
     width: 500px;
