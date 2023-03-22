@@ -59,3 +59,6 @@ function slideOutAddTaskDialogBord() {
     window.classList.add('slide-out-right-add-task');
     setTimeout(closeAddTaskDialogBord, 350);
 }
+
+
+//TODO: TASK WURDER HINZUGEFÜGT ANIMATION!!

@@ -1,4 +1,29 @@
-let contacts = [];
+let contacts = [
+    {
+        'name': 'Max',
+        'surname': 'Mustermann',
+        'email': 'max.mustermann@hotmail.com',
+        'profilecolor': 'red',
+        'Initials': 'MM',
+        'phonenumber': '0132456789'
+    },
+    {
+        'name': 'AMax',
+        'surname': 'Mustermann',
+        'email': 'amax.mustermann@hotmail.com',
+        'profilecolor': 'red',
+        'Initials': 'MM',
+        'phonenumber': '0132456789'
+    },
+    {
+        'name': 'BMax',
+        'surname': 'Mustermann',
+        'email': 'bmax.mustermann@hotmail.com',
+        'profilecolor': 'red',
+        'Initials': 'MM',
+        'phonenumber': '0132456789'
+    }
+];
 
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
 function loadContacts() {
@@ -386,5 +411,4 @@ function validateEditContact() {
         showContactInfo(i);
     }
 }
-
 
