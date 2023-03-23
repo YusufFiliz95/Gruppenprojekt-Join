@@ -54,6 +54,7 @@ function slideOutTaskOverviewDialogBoard() {
 
 function renderAddTaskDialog() {
     document.getElementById('add-task-contentId').innerHTML = templateAddTaskDialog();
+    renderContacts(); 
 }
 
 function renderEditTaskDialog(i) {
