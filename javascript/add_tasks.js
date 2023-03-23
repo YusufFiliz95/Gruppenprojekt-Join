@@ -116,6 +116,7 @@ function renderContacts() {
 }
 
 function addContactsToArray() {
+    selectedContacts = [];
     let checkbox = document.querySelectorAll("input[type = 'checkbox'");
 
     for (let i = 0; i < checkbox.length; i++) {
@@ -127,7 +128,6 @@ function addContactsToArray() {
                 'color': contacts[i]['profilecolor']
             }
 
-
             selectedContacts.push(contact);
 
         }
@@ -136,7 +136,7 @@ function addContactsToArray() {
 }
 
 
-function renderInicialsCicles() {
+function renderInicialsCircles() {
 
 }
 
