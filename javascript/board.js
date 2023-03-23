@@ -80,10 +80,10 @@ function renderCardsIntoTheBoards() {
         let category = tasks[i].category;
         let categoryColor = tasks[i]["category-color"];
         let title = tasks[i].title;
-        let discription = tasks[i].discription;
+        let description = tasks[i].description;
         let prioImage = setPrioImage(i);
         let status = tasks[i].status;
-        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status);
+        document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, description, prioImage, status);
         checkNeedBar(i);
         renderContactsIntotheCard(i);
     }
@@ -177,12 +177,12 @@ function renderTaskInToOverview(i) {
     let category = tasks[i].category;
     let categoryColor = tasks[i]["category-color"];
     let title = tasks[i].title;
-    let discription = tasks[i].discription;
+    let e = tasks[i].e;
     let date = tasks[i].date;
     let prio = setPrio(i);
     let prioImage = setPrioImage(i);
     let prioColor = setPrioColor(i);
-    document.getElementById('task-overviewId').innerHTML = templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor);
+    document.getElementById('task-overviewId').innerHTML = templateRenderTaskInToOverview(i, category, categoryColor, title, e, date, prio, prioImage, prioColor);
     if (tasks[i].subtasks.length >= 1) renderSubtaskInToOverview(i);
     renderContactsInToOverview(i);
 }
@@ -345,12 +345,12 @@ function indexesOfSearching(search) {
     let indexesOfSearching = [];
     for (let i = 0; i < tasks.length; i++) {
         let title = tasks[i].title;
-        let discription = tasks[i].discription;
+        let description = tasks[i].description;
         if (title.toLowerCase().includes(search)) {
             indexesOfSearching.push(i);
             cardAmounts.push(i);
         }
-        else if (discription.toLowerCase().includes(search)) {
+        else if (e.toLowerCase().includes(search)) {
             indexesOfSearching.push(i);
             cardAmounts.push(i);
         }
@@ -366,10 +366,10 @@ function renderTasksToInToOverviewBySearching(i) {
     let category = tasks[i].category;
     let categoryColor = tasks[i]["category-color"];
     let title = tasks[i].title;
-    let discription = tasks[i].discription;
+    let description = tasks[i].description;
     let prioImage = setPrioImage(i);
     let status = tasks[i].status;
-    document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status);
+    document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, description, prioImage, status);
     checkNeedBar(i);
     renderContactsIntotheCard(i);
 }

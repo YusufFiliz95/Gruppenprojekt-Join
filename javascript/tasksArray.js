@@ -7,7 +7,7 @@ let tasks = [
     {
         "id": 0,
         "title": "Einkaufen",
-        "discription": "Ich muss heute noch einkaufen",
+        "description": "Ich muss heute noch einkaufen",
         "category": "Lebensmittel",
         "category-color": "#000000",
         "contacts": [
@@ -27,7 +27,7 @@ let tasks = [
     {
         "id": 1,
         "title": "Wäsche waschen",
-        "discription": "Die Waschmaschine und der Trockner müssen heute noch glühen. Achtung bei der Temperatur-Einstellung nicht das die Hose nicht mehr passt :D",
+        "description": "Die Waschmaschine und der Trockner müssen heute noch glühen. Achtung bei der Temperatur-Einstellung nicht das die Hose nicht mehr passt :D",
         "category": "Hausarbeit",
         "category-color": "#3983AB",
         "contacts": [
@@ -72,7 +72,7 @@ let tasks = [
     {
         "id": 2,
         "title": "Meeting",
-        "discription": "Keine Ahnung",
+        "description": "Keine Ahnung",
         "category": "Arbeit",
         "category-color": "#DFAC1F",
         "contacts": [
@@ -92,7 +92,7 @@ let tasks = [
     {
         "id": 3,
         "title": "Coding",
-        "discription": "Übe in der Developer Akademie noch ein bisschen besser",
+        "description": "Übe in der Developer Akademie noch ein bisschen besser",
         "category": "Weiterbildung",
         "category-color": "#1EB8D7",
         "contacts": [
@@ -112,7 +112,7 @@ let tasks = [
     {
         "id": 4,
         "title": "Rasenmähen",
-        "discription": "Im Garten gehört der Rasen noch gemäht!",
+        "description": "Im Garten gehört der Rasen noch gemäht!",
         "category": "Hausarbeit",
         "category-color": "#3983AB",
         "contacts": [
@@ -138,7 +138,7 @@ let tasks = [
     {
         "id": 5,
         "title": "zum Sport gehen",
-        "discription": "Sport ist gesund",
+        "description": "Sport ist gesund",
         "category": "Freizeit",
         "category-color": "#0063C0",
         "contacts": [
@@ -158,7 +158,7 @@ let tasks = [
     {
         "id": 6,
         "title": "Kochen",
-        "discription": "Ich muss heute noch was gutes Kochen",
+        "description": "Ich muss heute noch was gutes Kochen",
         "category": "Lebensmittel",
         "category-color": "#000000",
         "contacts": [
@@ -178,7 +178,7 @@ let tasks = [
     {
         "id": 7,
         "title": "Nothing",
-        "discription": "Do Nothing",
+        "description": "Do Nothing",
         "category": "Anything",
         "category-color": "#008000",
         "contacts": [

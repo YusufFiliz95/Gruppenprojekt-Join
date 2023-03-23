@@ -1,10 +1,10 @@
 /* TEMPLATES FOR BORD.HTML/BORD.JS */
 
-function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, discription, prioImage, status) {
+function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, description, prioImage, status) {
     return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="true" class="task-card-bord  dialog-design">
                     <span class="task-card-category" style="background-color:${categoryColor} ;">${category}</span>
                     <span class="task-card-title">${title}</span>
-                    <span class="task-card-description">${discription}</span>
+                    <span class="task-card-description">${description}</span>
                 <div id="progressbarId${i}" class="task-card-progressbar-container"></div>
                     <div class="task-card-ass-prio-container">
                         <div id="contactsId${i}" class="task-card-assigned"></div>
@@ -36,10 +36,10 @@ function templateRenderContactsInToOverview(name, surname, initials, color) {
     `;
 }
 
-function templateRenderTaskInToOverview(i, category, categoryColor, title, discription, date, prio, prioImage, prioColor) {
+function templateRenderTaskInToOverview(i, category, categoryColor, title, description, date, prio, prioImage, prioColor) {
     return `<span class="taskoverview-category" style="background-color:${categoryColor}">${category}</span>
     <span class="taskoverview-title">${title}</span>
-    <span class="taskoverview-description">${discription}</span>
+    <span class="taskoverview-description">${description}</span>
     <div id="overviewSubtasksId" class="taskoverview-subtask">
 
     </div>
@@ -183,8 +183,7 @@ function templateAddTaskDialog() {
             <!-- description input -->
             <div class="input-container">
                 <label>Description</label>
-                <textarea class="textarea-field" name="" id="description" rows="3"
-                    placeholder="Enter a description"></textarea>
+                <textarea class="textarea-field" id="description" rows="3" placeholder="Enter a description"></textarea>
                 <p class="required d-none ">This field is required</p>
             </div>
             <!-- category input -->
@@ -192,7 +191,7 @@ function templateAddTaskDialog() {
                 <label>Category</label>
                 <div class="toggle-menu">
                     <div id="toggle-menu" class="select-task-category" onclick="toggleMenu('toggle-1')">
-                        <span id="selected-category">Select task category</span>
+                        <div id="selected-category">Select task category</div>
                         <img src=" ./img/triangle.svg">
                     </div>
                     <div id="category-input" class="input-field d-none">
@@ -212,6 +211,7 @@ function templateAddTaskDialog() {
                 <div id="color-container" class="color-container">
                 </div>
             </div>
+
             <!-- contact input -->
             <div class="input-container">
                 <label>Assigned to</label>
@@ -231,6 +231,7 @@ function templateAddTaskDialog() {
                             <img src="./img/contact_dark.svg">
                         </div>
                     </div>
+                    <div id="inicial-cirls"></div>
                 </div>
             </div>
         </div>
@@ -238,8 +239,8 @@ function templateAddTaskDialog() {
             <!-- Date input -->
             <div class="input-container">
                 <label>Due date</label>
-                <div class="input-field">
-                    <input type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
+                <div class="input-field due-date">
+                    <input id="due-date" type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
                     <p class="required d-none ">This field is required</p>
                 </div>
             </div>
@@ -272,8 +273,12 @@ function templateAddTaskDialog() {
     </div>
     <!-- Clear and Create Buttons -->
     <div class="add-task-buttons">
-        <button class="transparent-btn clear-btn"><span>clear x</span></button>
-        <button class="dark-btn create-btn"><span>Create Task</span><img src="./img/tick_white.svg" alt=""></button>
+        <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear
+                x</span></button>
+        <button onclick="createTask()" type="submit" class="dark-btn create-btn">
+            <span>Create Task</span>
+            <img src="./img/tick_white.svg">
+        </button>
     </div>
     `
 }

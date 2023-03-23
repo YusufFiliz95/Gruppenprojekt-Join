@@ -257,12 +257,12 @@ function createTask() {
         'title': title,
         'description': description,
         'category': selectedCategoryName,
-        'selectedCategoryColor': selectedCategoryColor,
+        'category-color': selectedCategoryColor,
         'contacts': selectedContacts,
         'date': dueDate,
         'prio': prio,
         'subtasks': subtasks,
-        'subtasksValue': subtaskValue,
+        'subtasks-value': subtaskValue,
         'status': 'toDo'
 
     }
