@@ -126,7 +126,8 @@ function addContactsToArray() {
                 'name': contacts[i]['name'],
                 'surname': contacts[i]['surname'],
                 'initials': contacts[i]['Initials'],
-                'color': contacts[i]['profilecolor']
+                'color': contacts[i]['profilecolor'],
+                'contactId': contacts[i]['contactid']
             }
 
             selectedContacts.push(contact);

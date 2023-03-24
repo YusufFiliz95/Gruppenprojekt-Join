@@ -5,7 +5,8 @@ let contacts = [
         'email': 'max.mustermann@hotmail.com',
         'profilecolor': 'red',
         'Initials': 'MM',
-        'phonenumber': '0132456789'
+        'phonenumber': '0132456789',
+        'contactid': '1'
     },
     {
         'name': 'AMax',
@@ -13,7 +14,8 @@ let contacts = [
         'email': 'amax.mustermann@hotmail.com',
         'profilecolor': 'red',
         'Initials': 'MM',
-        'phonenumber': '0132456789'
+        'phonenumber': '0132456789',
+        'contactid': '2'
     },
     {
         'name': 'BMax',
@@ -21,7 +23,8 @@ let contacts = [
         'email': 'bmax.mustermann@hotmail.com',
         'profilecolor': 'red',
         'Initials': 'MM',
-        'phonenumber': '0132456789'
+        'phonenumber': '0132456789',
+        'contactid': '3'
     }
 ];
 
@@ -61,17 +64,16 @@ function loadContacts() {
             }
             // Render the contact
             contactListDiv.innerHTML += /*html*/ `
-            <div class="contacts" onclick="showContactInfo(${i})">
+            <div class="contacts" onclick="showContactInfo(${i})" id="${list.contactid}">
                 <div class="contact-initials" style="background-color: ${list.profilecolor}">
                     <p>${list.Initials.toUpperCase()}</p>
                 </div>
                 <div class="contact-name-email">
                 <div class="contact-name">
-                    <p>${list.name.charAt(0).toUpperCase() + list.name.slice(1).toLowerCase()}</p>
-                    <p>${list.surname.charAt(0).toUpperCase() + list.surname.slice(1).toLowerCase()}</p>
+                <p>${maxNameSurnameChar(list.name.charAt(0).toUpperCase() + list.name.slice(1).toLowerCase(), list.surname.charAt(0).toUpperCase() + list.surname.slice(1).toLowerCase())}</p>
                 </div>
                     <div class="contact-email">
-                        <p>${list.email}</p>
+                        <p>${maxEmailChar(list.email)}</p>
                     </div>
                 </div>
             </div>
@@ -80,6 +82,22 @@ function loadContacts() {
     }
 }
 
+function maxEmailChar(email, maxLength = 28) {
+    if (email.length <= maxLength) {
+        return email;
+    } else {
+        return email.slice(0, maxLength - 3) + '...';
+    }
+}
+
+function maxNameSurnameChar(name, surname, maxLength = 20) {
+    const combinedName = name + ' ' + surname;
+    if (combinedName.length <= maxLength) {
+        return combinedName;
+    } else {
+        return name.slice(0, 13) + '...';
+    }
+}
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION FOR SHOW DETAILED INFORMATION OF THE CONTACT***********************************//
@@ -227,47 +245,50 @@ document.addEventListener('DOMContentLoaded', function () {
 //***********************************FUNCTION FOR CREATING NEW CONTACT AND ADD IT TO THE ARRAY THAT IS SHOWN IN THE LIST AFTER THAT***********************************//
 function createNewContact() {
     const colors = ['#e04f3f', '#29b6f6', '#ffb900', '#8bc34a', '#7e57c2', '#ff5722'];
-    const randomColor = colors[Math.floor(Math.random() * colors.length)];
     const newContactNameInput = document.getElementById('newContactName');
     const newContactEmailInput = document.getElementById('newContactEmail');
     const newContactPhoneInput = document.getElementById('newContactPhone');
 
-    const nameValue = newContactNameInput.value;
     const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/; // Check if the name consists of two words.
-
-    const emailValue = newContactEmailInput.value;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Check if the email address is valid.
 
-    if (nameRegex.test(nameValue) && emailRegex.test(emailValue)) {
-        const [firstName, lastName] = nameValue.split(' '); // Split the name into first and last name.
+    if (nameRegex.test(newContactNameInput.value) && emailRegex.test(newContactEmailInput.value)) {
+        const [name, surname] = newContactNameInput.value.split(' '); // Split the name into first and last name.
+        const lastContactId = getNextContactId();
         const newContact = {
-            'name': firstName,
-            'surname': lastName,
-            'email': emailValue,
-            'profilecolor': randomColor,
-            'Initials': firstName[0].toUpperCase() + lastName[0].toUpperCase(),
-            'phonenumber': newContactPhoneInput.value
+            'name': name,
+            'surname': surname,
+            'email': newContactEmailInput.value,
+            'profilecolor': colors[Math.floor(Math.random() * colors.length)],
+            'Initials': name[0].toUpperCase() + surname[0].toUpperCase(),
+            'phonenumber': newContactPhoneInput.value,
+            'contactid': lastContactId
         };
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
         closeForm();
         loadContacts();
 
-        // Find the index of the newly created contact
-        let newContactIndex = -1;
-        for (let i = 0; i < contacts.length; i++) {
-            if (contacts[i] === newContact) {
-                newContactIndex = i;
-                break;
-            }
-        }
-
         // Show the newly created contact info
+        const newContactIndex = contacts.findIndex(contact => contact === newContact);
         if (newContactIndex >= 0) {
             showContactInfo(newContactIndex);
         }
     }
 }
+
+// This function finds the highest existing contact ID in the 'contacts' array, and returns a new unique ID by adding 1 to it.
+function getNextContactId() {
+    let maxId = 0;
+    for (const contact of contacts) {
+        const contactIdAsNumber = parseInt(contact.contactid);
+        if (contactIdAsNumber > maxId) {
+            maxId = contactIdAsNumber;
+        }
+    }
+    return maxId + 1;
+}
+
 /**
  * It validates the input fields and if they are valid, it calls the createNewContact() function.
  * @param id - The id of the element to show the error message in.

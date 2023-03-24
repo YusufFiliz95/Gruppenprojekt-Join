@@ -153,6 +153,7 @@
 }
 
 .contact-info-initials-name-add-task {
+    height: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -174,11 +175,12 @@
     flex-direction: column;
     justify-content: space-between;
     height: 110px;
-    width: 600px;
+    width: 800px;
     padding-left: 32px;
 }
 
 .contact-info-name {
+    word-wrap: break-word;
     margin: 0;
     font-weight: 500;
     font-size: 47px;
@@ -195,6 +197,7 @@
     transition: 100ms ease-in-out;
     border-radius: 10px;
     cursor: pointer;
+    margin-top: 10px;
 }
 
 .contact-plus-icon {
@@ -275,7 +278,7 @@
 
 .contact-info-email-phone {
     margin-top: 32px;
-    height: 150px;
+    min-height: 160px;
     width: 372px;
     display: flex;
     justify-content: space-between;
@@ -287,21 +290,18 @@
 
 .email-phone {
     margin-top: 32px;
-    height: 120px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .contact-info-email {
-    height: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .contact-info-phone {
-    height: 50px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -309,12 +309,15 @@
 
 .weight-1000 {
     font-weight: 1000;
+    margin-bottom: 8px !important;
 }
 
 .contact-info-email-underline {
-    width: fit-content;
+    word-wrap: break-word;
+    width: 300px;
     color: #007CEE;
     cursor: pointer;
+    margin-bottom: 10px !important;
 }
 
 .contact-info-email-underline:hover {
