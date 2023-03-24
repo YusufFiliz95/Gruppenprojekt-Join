@@ -20,6 +20,7 @@ function closeAddTaskDialogBord() {
     addTaskWindow.classList.remove('slide-out-right-add-task');
     if (selectedMenu == 2) renderCardsIntoTheBoards();
     deleteAddTaskDialog();
+    clearInputSearchingByResize();
 }
 
 function slideOutAddTaskDialogBord() {
@@ -43,6 +44,7 @@ function closeTaskOverviewDialogBoard() {
     window.classList.remove('slide-out-right-task-overview');
     deleteTaskOverview();
     renderCardsIntoTheBoards();
+    clearInputSearchingByResize()
 }
 
 function slideOutTaskOverviewDialogBoard() {
@@ -86,9 +88,10 @@ function renderCardsIntoTheBoards() {
         let description = tasks[i].description;
         let prioImage = setPrioImage(i);
         let status = tasks[i].status;
+        let contacts = tasks[i].contacts;
         document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, description, prioImage, status);
         checkNeedBar(i);
-        renderContactsIntotheCard(i);
+        renderContactsIntotheCard(i, contacts);
     }
     checkWindowInnerScreenForDragAndDrog();
 }
@@ -143,25 +146,40 @@ function calcPercentForProgressBarOnCard(i) {
     return percent;
 }
 
-function renderContactsIntotheCard(i) {
-    let contact = tasks[i].contacts;
-    let difference = contact.length - 3;
+function renderContactsIntotheCard(i, contactArray) {
+    let difference = -3;
     let initials;
     let backgroundColor;
-    let amountContacts = checkAmountContactsInCard(contact);
-    for (let z = 0; z < amountContacts; z++) {
-        initials = tasks[i].contacts[z].initials;
-        backgroundColor = tasks[i].contacts[z].color;
-        if (z == 3) {
-            initials = "+" + difference;
-            backgroundColor = "lightgrey";
+    let amountContacts = checkAmountContactsInCard(contactArray);
+    let contactField = document.getElementById('contactsId' + i);
+    /* checks if the id still exists */
+    for (let y = 0; y < contactArray.length; y++) {
+        for (let z = 0; z < contacts.length; z++) {
+            let indexOfContact = contacts[z].contactid.indexOf(contactArray[y]); /* if the id does not exist then -1 will be return */
+            if (indexOfContact >= 0) {
+                difference++;
+                if (y <= 2) {
+                    initials = contacts[indexOfContact].Initials;
+                    backgroundColor = contacts[indexOfContact].profilecolor;
+                    contactField.innerHTML += templateRenderContactsIntoTheCard(initials, backgroundColor);
+                }
+            }
         }
-        document.getElementById('contactsId' + i).innerHTML += templateRenderContactsIntoTheCard(initials, backgroundColor);
+    }
+    addCardContactIconOverview(difference, contactField);
+}
+
+function addCardContactIconOverview(difference, contactField) {
+    if (difference > 0) {
+        initials = "+" + difference;
+        backgroundColor = "lightgrey";
+        contactField.innerHTML += templateRenderContactsIntoTheCard(initials, backgroundColor);
     }
 }
 
-function checkAmountContactsInCard(contact) {
-    amount = contact.length
+
+function checkAmountContactsInCard(contactArray) {
+    amount = contactArray.length
     if (amount <= 4) return amount;
     else return 4;
 }
@@ -268,7 +286,6 @@ function onDropOverBorder(id) {
 
 function onDropEnd(status) {
     id = status + 'Id';
-    console.log(id);
     document.getElementById(id).classList.remove('ondroped');
 }
 
@@ -311,20 +328,20 @@ function checkWindowInnerScreenForDragAndDrog() {
 }
 
 function clearInputSearchingByResize() {
-    let inputSearchingField1 = document.getElementById('input-searchingId1').value;
-    let inputSearchingField2 = document.getElementById('input-searchingId2').value;
-    if (inputSearchingField1 == "") {
-        if (inputSearchingField2 == "") {
+    let inputSearchingField1 = document.getElementById('input-searchingId1');
+    let inputSearchingField2 = document.getElementById('input-searchingId2');
+    if (inputSearchingField1.value == "") {
+        if (inputSearchingField2.value == "") {
         }
         else {
             renderCardsIntoTheBoards();
-            document.getElementById('input-searchingId1').value = "";
-            document.getElementById('input-searchingId2').value = "";
+            inputSearchingField1.value = "";
+            inputSearchingField2.value = "";
         }
     } else {
         renderCardsIntoTheBoards();
-        document.getElementById('input-searchingId1').value = "";
-        document.getElementById('input-searchingId2').value = "";
+        inputSearchingField1.value = "";
+        inputSearchingField2.value = "";
     }
 }
 
@@ -353,7 +370,7 @@ function indexesOfSearching(search) {
             indexesOfSearching.push(i);
             cardAmounts.push(i);
         }
-        else if (e.toLowerCase().includes(search)) {
+        else if (description.toLowerCase().includes(search)) {
             indexesOfSearching.push(i);
             cardAmounts.push(i);
         }

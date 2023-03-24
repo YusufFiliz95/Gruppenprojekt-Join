@@ -10,14 +10,7 @@ let tasks = [
         "description": "Ich muss heute noch einkaufen",
         "category": "Lebensmittel",
         "category-color": "#000000",
-        "contacts": [
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            }
-        ],
+        "contacts": [1, 2, 3, 1, 2, 3],
         "date": "2023-03-15",
         "prio": 2,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
@@ -30,39 +23,7 @@ let tasks = [
         "description": "Die Waschmaschine und der Trockner müssen heute noch glühen. Achtung bei der Temperatur-Einstellung nicht das die Hose nicht mehr passt :D",
         "category": "Hausarbeit",
         "category-color": "#3983AB",
-        "contacts": [
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            },
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            },
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#1AE350"
-            },
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            },
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            },
-
-        ],
+        "contacts": [1, 3],
         "date": "2023-03-16",
         "prio": 2,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ["Wäsche in die Waschmaschine", "Wäsche in den Trockner", "Wäsche zusammenlegen"],
@@ -75,14 +36,7 @@ let tasks = [
         "description": "Keine Ahnung",
         "category": "Arbeit",
         "category-color": "#DFAC1F",
-        "contacts": [
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            }
-        ],
+        "contacts": [1],
         "date": "2023-03-01",
         "prio": 3,
         "subtasks": [],
@@ -95,14 +49,7 @@ let tasks = [
         "description": "Übe in der Developer Akademie noch ein bisschen besser",
         "category": "Weiterbildung",
         "category-color": "#1EB8D7",
-        "contacts": [
-            {
-                "name": "Max",
-                "surname": "Mustermann",
-                "initials": "MM",
-                "color": "#47965F"
-            }
-        ],
+        "contacts": [1, 2],
         "date": "2023-02-05",
         "prio": 1,
         "subtasks": [],
@@ -115,20 +62,7 @@ let tasks = [
         "description": "Im Garten gehört der Rasen noch gemäht!",
         "category": "Hausarbeit",
         "category-color": "#3983AB",
-        "contacts": [
-            {
-                "name": "Denise",
-                "surname": "Ruhmanseder",
-                "initials": "DR",
-                "color": "#EEF31A"
-            },
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            }
-        ],
+        "contacts": [1, 2, 3, 2],
         "date": "2023-02-15",
         "prio": 3,
         "subtasks": ['Unkraut zupfen', 'Rasenmähen'],
@@ -141,14 +75,7 @@ let tasks = [
         "description": "Sport ist gesund",
         "category": "Freizeit",
         "category-color": "#0063C0",
-        "contacts": [
-            {
-                "name": "Denise",
-                "surname": "Ruhmanseder",
-                "initials": "DR",
-                "color": "#EEF31A"
-            }
-        ],
+        "contacts": [2],
         "date": "2023-05-10",
         "prio": 2,
         "subtasks": [],
@@ -161,14 +88,7 @@ let tasks = [
         "description": "Ich muss heute noch was gutes Kochen",
         "category": "Lebensmittel",
         "category-color": "#000000",
-        "contacts": [
-            {
-                "name": "Mama",
-                "surname": "Ruhmanseder",
-                "initials": "MR",
-                "color": "#DC3A63"
-            }
-        ],
+        "contacts": [3],
         "date": "2023-01-01",
         "prio": 3,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": ['Banane', 'Apfel', 'Limo', 'Kaffee', 'Pizza'],
@@ -181,14 +101,7 @@ let tasks = [
         "description": "Do Nothing",
         "category": "Anything",
         "category-color": "#008000",
-        "contacts": [
-            {
-                "name": "Tobias",
-                "surname": "Ruhmanseder",
-                "initials": "TR",
-                "color": "#7AE229"
-            }
-        ],
+        "contacts": [1, 2, 3],
         "date": "2023-01-21",
         "prio": 1,  /* 1 = Urgent  2 = Medium  3= Low - please put this text to the function witch prio uses */
         "subtasks": [],

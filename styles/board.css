@@ -645,7 +645,6 @@
 
     .bord-content-left, .bord-content-right {
         flex-direction: column;
-        width: auto;
     }
 
     .status-container-bord {
