@@ -1,8 +1,8 @@
 let contacts = [
     {
-        'name': 'Max',
+        'name': 'WWWWWWWWWWWWWWWWWWWWWW',
         'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com',
+        'email': 'max.mustermayyyyyyyyyyyyyyyyyyyynn@hotmail.com',
         'profilecolor': 'red',
         'Initials': 'MM',
         'phonenumber': '0132456789',
@@ -70,11 +70,10 @@ function loadContacts() {
                 </div>
                 <div class="contact-name-email">
                 <div class="contact-name">
-                    <p>${list.name.charAt(0).toUpperCase() + list.name.slice(1).toLowerCase()}</p>
-                    <p>${list.surname.charAt(0).toUpperCase() + list.surname.slice(1).toLowerCase()}</p>
+                <p>${maxNameSurnameChar(list.name.charAt(0).toUpperCase() + list.name.slice(1).toLowerCase(), list.surname.charAt(0).toUpperCase() + list.surname.slice(1).toLowerCase())}</p>
                 </div>
                     <div class="contact-email">
-                        <p>${list.email}</p>
+                        <p>${maxEmailChar(list.email)}</p>
                     </div>
                 </div>
             </div>
@@ -83,6 +82,22 @@ function loadContacts() {
     }
 }
 
+function maxEmailChar(email, maxLength = 28) {
+    if (email.length <= maxLength) {
+        return email;
+    } else {
+        return email.slice(0, maxLength - 3) + '...';
+    }
+}
+
+function maxNameSurnameChar(name, surname, maxLength = 20) {
+    const combinedName = name + ' ' + surname;
+    if (combinedName.length <= maxLength) {
+        return combinedName;
+    } else {
+        return name.slice(0, 13) + '...';
+    }
+}
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION FOR SHOW DETAILED INFORMATION OF THE CONTACT***********************************//
