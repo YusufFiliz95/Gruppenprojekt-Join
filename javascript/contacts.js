@@ -1,8 +1,8 @@
 let contacts = [
     {
-        'name': 'WWWWWWWWWWWWWWWWWWWWWW',
+        'name': 'Max',
         'surname': 'Mustermann',
-        'email': 'max.mustermayyyyyyyyyyyyyyyyyyyynn@hotmail.com',
+        'email': 'max.mustermann@hotmail.com',
         'profilecolor': 'red',
         'Initials': 'MM',
         'phonenumber': '0132456789',
