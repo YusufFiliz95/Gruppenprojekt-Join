@@ -50,16 +50,18 @@ function slideOutTaskOverviewDialogBoard() {
     window.classList.remove('slide-in-right-task-overview');
     window.classList.add('slide-out-right-task-overview');
     setTimeout(closeTaskOverviewDialogBoard, 350);
+    prio = 0; /* var from AddTask.js */
 }
 
 function renderAddTaskDialog() {
     document.getElementById('add-task-contentId').innerHTML = templateAddTaskDialog();
-    renderContacts(); 
+    renderContacts();
 }
 
 function renderEditTaskDialog(i) {
     deleteTaskOverview();
     document.getElementById('task-overviewId').innerHTML = templateEditTask();
+    fillInputsByEditTask(i)
 }
 
 function deleteAddTaskDialog() {
@@ -328,7 +330,7 @@ function clearInputSearchingByResize() {
 
 /* ---------END---------Drag and Drop-------------------------  */
 
-/* ---------------------Search Functions------------------------ */
+/* ---------------------Search functions------------------------ */
 
 function filterTasksBySearching(id) {
     let search = document.getElementById('input-searchingId' + id).value;
@@ -375,5 +377,25 @@ function renderTasksToInToOverviewBySearching(i) {
     renderContactsIntotheCard(i);
 }
 
-/* ----------END--------Search Functions------------------------ */
+/* ----------END--------Search functions------------------------ */
 
+
+/* --------------------- all functions for edit Task------------------- */
+
+function fillInputsByEditTask(i) {
+    let title = tasks[i].title;
+    let description = tasks[i].description;
+    let dueDate = tasks[i].date;
+    document.getElementById('title').value = title;
+    document.getElementById('description').value = description;
+    /* document.getElementById('').value = dueDate; */
+    setPrioButtonByEditTask(i);
+}
+
+function setPrioButtonByEditTask(i) {
+    let prio = tasks[i].prio;
+    if (prio == 1) addPrio(1); /* function from addTask.js */
+    if (prio == 2) addPrio(2); /* function from addTask.js */
+    if (prio == 3) addPrio(3); /* function from addTask.js */
+
+}

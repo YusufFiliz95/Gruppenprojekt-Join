@@ -121,6 +121,7 @@ function addContactsToArray() {
 
     for (let i = 0; i < checkbox.length; i++) {
         if (checkbox[i].checked == true) {
+
             let contact = {
                 'name': contacts[i]['name'],
                 'surname': contacts[i]['surname'],
