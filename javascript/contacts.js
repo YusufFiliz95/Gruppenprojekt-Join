@@ -274,7 +274,7 @@ function createNewContact() {
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
         let contactsAsString = JSON.stringify(contacts);
-        backend.setItem('allContacts', contactsAsString);
+        backend.setItem('allContacts', contactsAsString); // Update this line
         closeForm();
         loadContacts();
 
@@ -470,10 +470,10 @@ function validateEditContact() {
     }
 }
 
-function deleteContact(i) {
+async function deleteContact(i) {
     contacts.splice(i, 1);
 
-    // Save updated contacts array to localStorage
+    // Save updated contacts array to the server
     let contactsAsString = JSON.stringify(contacts);
     backend.setItem('allContacts', contactsAsString);
 
