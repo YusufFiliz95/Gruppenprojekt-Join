@@ -6,11 +6,11 @@ let category = []; */
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
+    await includeHTML();
     setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('allContacts')) || [];
     loadContacts();
-    await includeHTML();
     selectMenuPoint(i);
     setSelectedMenu();
     showConfirmationPopup();

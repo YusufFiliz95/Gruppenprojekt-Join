@@ -1,4 +1,4 @@
-setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+
 
 let contacts = [
     {
@@ -472,7 +472,7 @@ function deleteContact(i) {
 
     // Save updated contacts array to localStorage
     let contactsAsString = JSON.stringify(contacts);
-    localStorage.setItem('allContacts', contactsAsString);
+    backend.setItem('allContacts', contactsAsString);
 
     document.getElementById('contactinfo').innerHTML = '';
     closeDeletePopup();
