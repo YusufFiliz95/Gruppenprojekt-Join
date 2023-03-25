@@ -66,6 +66,8 @@ textarea:focus {
 /* toggle Menu Category */
 
 .toggle-menu {
+    position: relative;
+    display: inline-block;
     display: flex;
     flex-direction: column;
     width: 320px;
@@ -87,6 +89,11 @@ textarea:focus {
 }
 
 .selection {
+    position: absolute;
+    top: 41px;
+    width: 99%;
+    background-color: #f0f0f0FF;
+    border-radius: 10px;
     padding-left: 6px;
     padding-bottom: 6px;
 
