@@ -485,7 +485,6 @@ async function saveTask(i) {
     tasks[i].date = newDueDate;
     tasks[i].status = newStatus;
     tasks[i].contacts = newContacts;
-    console.log('ja');
 }
 
 
