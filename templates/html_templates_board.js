@@ -1,7 +1,7 @@
 /* TEMPLATES FOR BORD.HTML/BORD.JS */
 
 function templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, description, prioImage, status) {
-    return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${id}" ondragstart="startDragging(${id}, '${status}')" ondragend="endDragging(${id})" draggable="true" class="task-card-bord  dialog-design">
+    return `<div onclick="openTaskOverviewDialogBord(${i})" id="card${i}" ondragstart="startDragging(${i}, '${status}')" ondragend="endDragging(${i})" draggable="true" class="task-card-bord  dialog-design">
                     <span class="task-card-category" style="background-color:${categoryColor} ;">${category}</span>
                     <span class="task-card-title">${title}</span>
                     <span class="task-card-description">${description}</span>
@@ -72,6 +72,8 @@ function templateEditTask(i) {
                 <div class="add-task-headline">
                 <h1>Edit Task</h1>
                 </div>
+
+                <!-- tittle input -->
                 <div class="input-container">
                     <label>Title</label>
                     <div class="input-field">
@@ -79,13 +81,15 @@ function templateEditTask(i) {
                     </div>
                     <p class="required d-none ">This field is required</p>
                 </div>
+
                 <!-- description input -->
                 <div class="input-container">
                     <label>Description</label>
-                    <textarea class="textarea-field" name="" id="description" rows="3"
+                    <textarea class="textarea-field" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
                     <p class="required d-none ">This field is required</p>
                 </div>
+
                 <!-- contact input -->
                 <div class="input-container">
                     <label>Assigned to</label>
@@ -95,26 +99,25 @@ function templateEditTask(i) {
                             <img src="./img/triangle.svg">
                         </div>
                         <div id="toggle-2" class="selection d-none">
-                            <div class="contact">
-                                <span>You</span>
-                                <input type="checkbox">
-                            </div>
                             <div id="contact-container"></div>
                             <div class="contact">
                                 <span>Invite new contact</span>
                                 <img src="./img/contact_dark.svg">
                             </div>
                         </div>
+                        <div id="inicial-circls"></div>
                     </div>
                 </div>
+                
                 <!-- Date input -->
                 <div class="input-container">
                     <label>Due date</label>
-                    <div class="input-field">
-                        <input type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
+                    <div class="input-field due-date">
+                        <input id="due-date" type="date" placeholder="dd/mm/yyyy" min="">
                         <p class="required d-none ">This field is required</p>
                     </div>
                 </div>
+
                 <!-- Prio Buttons input -->
                 <div class="input-container">
                     <label>Prio</label>
@@ -131,20 +134,20 @@ function templateEditTask(i) {
                     <label>Status</label>
                     <div class="toggle-menu">
                         <div class="assigned-to" onclick="toggleMenu('toggle-3')">
-                            <span></span>
+                            <span id="status"></span>
                             <img src="./img/triangle.svg">
                         </div>
                         <div id="toggle-3" class="selection d-none">  
-                        <div class="contact">                        
+                        <div onclick="changeStatusByEditTask('toDo')" class="contact">                        
                                 <span>To do</span>
                                 </div>
-                        <div class="contact">  
+                        <div  onclick=changeStatusByEditTask('toProgress') class="contact">  
                                 <span>In progress</span>
                         </div>
-                        <div class="contact">  
+                        <div onclick=changeStatusByEditTask('awaitingFeedback') class="contact">  
                             <span>Awaiting Feedback</span>
                         </div> 
-                        <div class="contact">  
+                        <div onclick=changeStatusByEditTask('done')  class="contact">  
                                 <span>Done</span>
                         </div>    
                         
@@ -155,10 +158,10 @@ function templateEditTask(i) {
                 </div>
                 <div class="taskoverview-editbutton-container">
                 <div class="edit-button-content">
-                    <button onclick="" class="dark-btn edit-button-trash">
+                    <button onclick="openDeleteTaskPopup(${i})" class="dark-btn edit-button-trash">
                     <img src="img/empty_trash.png" alt="">
                     </button>
-                    <button onclick="" class="dark-btn edit-button-ok">
+                    <button onclick="saveEditTask(${i})" class="dark-btn edit-button-ok">
                     <span>Ok</span>
                     <img src="img/hook_white.svg" alt="">
                     </button>
@@ -278,4 +281,31 @@ function templateAddTaskDialog() {
                 <img src="./img/tick_white.svg">
             </button>
     `
+}
+
+function templateNeedBar(i, checkSubtask, percentBar) {
+    return `<div class="task-card-progressbar">
+                <div id="barId(${i})" class="task-card-bar" style="width:${percentBar}%;" ></div>
+            </div>
+            <span>${checkSubtask} Done</span>`;
+}
+
+function templateDeleteTaskPopup(i) {
+    return `<div class="delete-texts">
+    <h1 class="delete-popup-headline">Delete Task</h1>
+    <p class="delete-popup-text">Are you sure you want to delete the Task</p>
+    <div>
+    <p class="delete-task-name">${tasks[i].title}</p>
+    <div id="delete-task-name-borderId" class="delete-task-name-border"></div>
+    </div>
+</div>
+<div class="delete-btns">
+    <div class="transparent-btn delete-cancel" onclick="slideOutDeleteTaskPopup()">
+        <p>No</p>
+    </div>
+    <div class="dark-btn delete-confirmation" onclick="deleteTask(${i})">
+        Yes
+    </div>
+</div>
+`
 }

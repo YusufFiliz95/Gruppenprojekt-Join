@@ -4,7 +4,7 @@
 let currentDraggedElement;
 let cardAmounts = [];
 
-/*  -------------------open Dialog Window Taskoverview with slideIn slide Out Functions--------------------------  */
+/*  -------------------open Dialog Windows with slideIn slide Out Functions--------------------------  */
 
 function openAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
@@ -44,14 +44,14 @@ function closeTaskOverviewDialogBoard() {
     window.classList.remove('slide-out-right-task-overview');
     deleteTaskOverview();
     renderCardsIntoTheBoards();
-    clearInputSearchingByResize()
+    clearInputSearchingByResize();
 }
 
 function slideOutTaskOverviewDialogBoard() {
     let window = document.getElementById('taskoverview-bordId');
     window.classList.remove('slide-in-right-task-overview');
     window.classList.add('slide-out-right-task-overview');
-    setTimeout(closeTaskOverviewDialogBoard, 350);
+    setTimeout(closeTaskOverviewDialogBoard, 100);
     prio = 0; /* var from AddTask.js */
 }
 
@@ -62,7 +62,7 @@ function renderAddTaskDialog() {
 
 function renderEditTaskDialog(i) {
     deleteTaskOverview();
-    document.getElementById('task-overviewId').innerHTML = templateEditTask();
+    document.getElementById('task-overviewId').innerHTML = templateEditTask(i);
     fillInputsByEditTask(i)
 }
 
@@ -74,7 +74,26 @@ function deleteTaskOverview() {
     document.getElementById('task-overviewId').innerHTML = "";
 }
 
-/* --------END--------open Dialog Window AddTask and Taskoverview with slideIn slide Out Functions-------------------------- */
+function openDeleteTaskPopup(i) {
+    document.getElementById('overlay-delete-taskId').classList.remove('d-none');
+    document.getElementById('delete-task-pupupId').innerHTML = templateDeleteTaskPopup(i);
+}
+
+function closeDeleteTaskPopup() {
+    document.getElementById('overlay-delete-taskId').classList.add('d-none');
+    let window = document.getElementById('delete-task-pupupId');
+    window.classList.add('slide-in-right-task-overview');
+    window.classList.remove('slide-out-right-task-overview');
+}
+
+function slideOutDeleteTaskPopup() {
+    let window = document.getElementById('delete-task-pupupId');
+    window.classList.remove('slide-in-right-task-overview');
+    window.classList.add('slide-out-right-task-overview');
+    setTimeout(closeDeleteTaskPopup, 100);
+}
+
+/* --------END--------open Dialog Windows with slideIn slide Out Functions-------------------------- */
 
 /* -------------------all rendering function to show the Board------------------------------ */
 function renderCardsIntoTheBoards() {
@@ -175,12 +194,7 @@ function addCardContactIconOverview(difference, contactField) {
     }
 }
 
-function templateNeedBar(i, checkSubtask, percentBar) {
-    return `<div class="task-card-progressbar">
-                <div id="barId(${i})" class="task-card-bar" style="width:${percentBar}%;" ></div>
-            </div>
-            <span>${checkSubtask} Done</span>`;
-}
+
 /* --------END--------all rendering function to show the Board-------------------------- */
 
 /* ----------------all rendering functions to show the task overview-------------------------- */
@@ -189,12 +203,12 @@ function renderTaskInToOverview(i) {
     let category = tasks[i].category;
     let categoryColor = tasks[i]["category-color"];
     let title = tasks[i].title;
-    let e = tasks[i].e;
+    let description = tasks[i].description;
     let date = tasks[i].date;
     let prio = setPrio(i);
     let prioImage = setPrioImage(i);
     let prioColor = setPrioColor(i);
-    document.getElementById('task-overviewId').innerHTML = templateRenderTaskInToOverview(i, category, categoryColor, title, e, date, prio, prioImage, prioColor);
+    document.getElementById('task-overviewId').innerHTML = templateRenderTaskInToOverview(i, category, categoryColor, title, description, date, prio, prioImage, prioColor);
     if (tasks[i].subtasks.length >= 1) renderSubtaskInToOverview(i);
     renderContactsInToOverview(i);
 }
@@ -242,7 +256,6 @@ function setPrioColor(i) {
 
 function renderContactsInToOverview(i) {
     let contactArray = tasks[i].contacts;
-
     for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
         for (let z = 0; z < contacts.length; z++) {
             let indexOfContact = contacts[z].contactid.indexOf(contactArray[y]); /* if the id does not exist then -1 will be return */
@@ -256,7 +269,6 @@ function renderContactsInToOverview(i) {
         }
     }
 }
-
 /* -------END------all rendering functions to show the task overview-------------------------- */
 
 /* ---------------------Drag and Drop-------------------------  */
@@ -385,9 +397,10 @@ function renderTasksToInToOverviewBySearching(i) {
     let description = tasks[i].description;
     let prioImage = setPrioImage(i);
     let status = tasks[i].status;
+    let contacts = tasks[i].contacts;
     document.getElementById(status + 'Id').innerHTML += templateRenderCardsIntoTheBoard(i, id, category, categoryColor, title, description, prioImage, status);
     checkNeedBar(i);
-    renderContactsIntotheCard(i);
+    renderContactsIntotheCard(i, contacts);
 }
 
 /* ----------END--------Search functions------------------------ */
@@ -399,10 +412,14 @@ function fillInputsByEditTask(i) {
     let title = tasks[i].title;
     let description = tasks[i].description;
     let dueDate = tasks[i].date;
+    let status = returnStatusInTextForm(tasks[i].status);
     document.getElementById('title').value = title;
     document.getElementById('description').value = description;
-    /* document.getElementById('').value = dueDate; */
+    document.getElementById('due-date').value = dueDate;
     setPrioButtonByEditTask(i);
+    renderContacts();
+    setCheckboxesByEditTask(i);
+    document.getElementById('status').innerHTML = status;
 }
 
 function setPrioButtonByEditTask(i) {
@@ -412,3 +429,72 @@ function setPrioButtonByEditTask(i) {
     if (prio == 3) addPrio(3); /* function from addTask.js */
 
 }
+
+function setCheckboxesByEditTask(i) {
+    let contactArray = tasks[i].contacts;
+    for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
+        for (let z = 0; z < contacts.length; z++) {
+            let indexOfContact = contacts[z].contactid.indexOf(contactArray[y]); /* if the id does not exist then -1 will be return */
+            if (indexOfContact >= 0) {
+                let indexOfContact = z;
+                document.getElementById('checkbox' + indexOfContact).checked = true;
+            }
+        }
+    }
+}
+
+function returnStatusInTextForm(status) {
+    if (status == 'toDo') return 'To do';
+    if (status == 'toProgress') return 'In progress';
+    if (status == 'awaitingFeedback') return 'Awaiting Feedback';
+    if (status == 'done') return 'Done';
+}
+
+function changeStatusByEditTask(status) {
+    status = returnStatusInTextForm(status);
+    document.getElementById('status').innerHTML = status;
+    toggleMenu('toggle-3'); /* funktion from addTask.js - it close the drop down menu */
+}
+
+function saveEditTask(i) {
+    let newTitle = document.getElementById('title').value;
+    let newDescription = document.getElementById('description').value;
+    let newPrio = prio;
+    let newDueDate = document.getElementById('due-date').value;
+    let newStatus = setNewStatus();
+    let newContacts = setNewContacts();
+    tasks[i].title = newTitle;
+    tasks[i].description = newDescription;
+    tasks[i].title = newTitle;
+    tasks[i].prio = newPrio;
+    tasks[i].date = newDueDate;
+    tasks[i].status = newStatus;
+    tasks[i].contacts = newContacts;
+    slideOutTaskOverviewDialogBoard();
+}
+
+function setNewStatus() {
+    let newStatus = document.getElementById('status').innerHTML;
+    if (newStatus == 'To do') return 'toDo';
+    if (newStatus == 'In progress') return 'toProgress';
+    if (newStatus == 'Awaiting Feedback') return 'awaitingFeedback';
+    if (newStatus == 'Done') return 'done';
+}
+
+function setNewContacts() {
+    let contactsArray = [];
+    for (let i = 0; i < contacts.length; i++) {
+        checkbox = document.getElementById('checkbox' + i);
+        contactId = contacts[i].contactid;
+        if (checkbox.checked) contactsArray.push(contactId);
+    }
+    return contactsArray;
+}
+
+function deleteTask(i) {
+    tasks.splice(i, 1);
+    slideOutDeleteTaskPopup();
+    slideOutTaskOverviewDialogBoard();
+
+}
+

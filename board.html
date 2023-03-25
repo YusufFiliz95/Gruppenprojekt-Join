@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="styles/board.css">
     <link rel="stylesheet" href="styles/scrollbar.css">
     <link rel="stylesheet" href="styles/add_task.css">
+    <link rel="stylesheet" href="styles/contacts.css">
     <link rel="stylesheet" href="styles/mobile_menu.css">
 
 </head>
@@ -136,6 +137,13 @@
             <!-- by click on a Task it open a overview window -->
             <div id="task-overviewId" class="task-overview-container">
             </div>
+        </div>
+    </div>
+    <!-- delete Task Popup   -->
+    <div onclick="slideOutDeleteTaskPopup()" id="overlay-delete-taskId"
+        class="overlay-dialog-center overlay-shadow  d-none ">
+        <div id="delete-task-pupupId" class="delete-task-popup slide-in-right-task-overview"
+            onclick="doNotClose(event)">
         </div>
     </div>
 </body>
