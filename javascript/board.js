@@ -466,6 +466,7 @@ async function saveEditTask(i) {
     /* here comes the popup from bottom */
     await saveTask(i);
     await saveTaskstoBackend();
+    showConfirmationPopup("edittask");
     slideOutTaskOverviewDialogBoard();
 }
 
@@ -509,6 +510,7 @@ function setNewContacts() {
 async function deleteTask(i) {
     tasks.splice(i, 1);
     await saveTaskstoBackend();
+    showConfirmationPopup("deletetask");
     slideOutDeleteTaskPopup();
     slideOutTaskOverviewDialogBoard();
 }
