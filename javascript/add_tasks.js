@@ -124,21 +124,8 @@ function addContactsToArray() {
 
     for (let i = 0; i < checkbox.length; i++) {
         if (checkbox[i].checked == true) {
-<<<<<<< HEAD
+
             selectedContacts.push(contacts[i]['contactid']);
-=======
-
-            let contact = {
-                'name': contacts[i]['name'],
-                'surname': contacts[i]['surname'],
-                'initials': contacts[i]['Initials'],
-                'color': contacts[i]['profilecolor'],
-                'contactId': contacts[i]['contactid']
-            }
-
-            selectedContacts.push(contact);
-
->>>>>>> f1f8945949645c0859eb10c75e30e8a92a89614e
         }
     }
 }
@@ -266,8 +253,6 @@ function resetForm() {
 }
 
 
-
-
 function createTask() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
@@ -287,10 +272,14 @@ function createTask() {
         'status': 'toDo'
 
     }
-
     tasks.push(task);
-    console.log(tasks);
 }
 
+function checkRequired() {
+    let inputId = ['title', 'description', 'selected-category', 'inicial-circles', 'dueDate'];
 
 
+
+
+
+}
