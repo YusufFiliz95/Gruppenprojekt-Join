@@ -150,10 +150,8 @@ function renderContactsIntotheCard(i, contactArray) {
     let difference = -3;
     let initials;
     let backgroundColor;
-    let amountContacts = checkAmountContactsInCard(contactArray);
     let contactField = document.getElementById('contactsId' + i);
-    /* checks if the id still exists */
-    for (let y = 0; y < contactArray.length; y++) {
+    for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
         for (let z = 0; z < contacts.length; z++) {
             let indexOfContact = contacts[z].contactid.indexOf(contactArray[y]); /* if the id does not exist then -1 will be return */
             if (indexOfContact >= 0) {
@@ -175,13 +173,6 @@ function addCardContactIconOverview(difference, contactField) {
         backgroundColor = "lightgrey";
         contactField.innerHTML += templateRenderContactsIntoTheCard(initials, backgroundColor);
     }
-}
-
-
-function checkAmountContactsInCard(contactArray) {
-    amount = contactArray.length
-    if (amount <= 4) return amount;
-    else return 4;
 }
 
 function templateNeedBar(i, checkSubtask, percentBar) {
@@ -250,14 +241,19 @@ function setPrioColor(i) {
 }
 
 function renderContactsInToOverview(i) {
-    let contacts = tasks[i].contacts;
+    let contactArray = tasks[i].contacts;
 
-    for (let z = 0; z < contacts.length; z++) {
-        let name = tasks[i].contacts[z].name;
-        let surname = tasks[i].contacts[z].surname;
-        let initials = tasks[i].contacts[z].initials;
-        let color = tasks[i].contacts[z].color;
-        document.getElementById('taskoverview-contactsId').innerHTML += templateRenderContactsInToOverview(name, surname, initials, color);
+    for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
+        for (let z = 0; z < contacts.length; z++) {
+            let indexOfContact = contacts[z].contactid.indexOf(contactArray[y]); /* if the id does not exist then -1 will be return */
+            if (indexOfContact >= 0) {
+                let name = contacts[z].name;
+                let surname = contacts[z].surname;
+                let initials = contacts[z].Initials;
+                let color = contacts[z].profilecolor;
+                document.getElementById('taskoverview-contactsId').innerHTML += templateRenderContactsInToOverview(name, surname, initials, color);
+            }
+        }
     }
 }
 
