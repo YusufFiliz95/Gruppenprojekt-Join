@@ -4,13 +4,32 @@ let contacts = [];
 let user = [];
 let category = []; */
 
+
+
+
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
+<<<<<<< HEAD
+=======
+    setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+>>>>>>> f9f725fe4b1c7e6884eb73ec3f26635652dafdb8
     await includeHTML();
     selectMenuPoint(i);
     setSelectedMenu();
     showConfirmationPopup();
 }
+
+// FUNCTIONS TO SAVE AND LOAD TASKS TO/FROM BACKEND
+
+async function saveTaskstoBackend() {
+    await backend.setItem('tasks', JSON.stringify(tasks));
+}
+
+async function loadTasksfromBackend() {
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('tasks')) || [];
+}
+
 
 //FUNCTION FOR INCLUDING OTHER HTML SNIPPETS
 async function includeHTML() {

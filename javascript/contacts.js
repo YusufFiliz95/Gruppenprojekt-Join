@@ -31,7 +31,10 @@ let contacts = [
 ];
 
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
-function loadContacts() {
+async function loadContacts() {
+    setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+    contacts = JSON.parse(backend.getItem('allContacts')) || [];
+    await downloadFromServer();
     renderSavedContacts();
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
@@ -271,7 +274,7 @@ function createNewContact() {
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
         let contactsAsString = JSON.stringify(contacts);
-        backend.setItem('allContacts', contactsAsString);
+        backend.setItem('allContacts', contactsAsString); // Update this line
         closeForm();
         loadContacts();
 
@@ -467,10 +470,10 @@ function validateEditContact() {
     }
 }
 
-function deleteContact(i) {
+async function deleteContact(i) {
     contacts.splice(i, 1);
 
-    // Save updated contacts array to localStorage
+    // Save updated contacts array to the server
     let contactsAsString = JSON.stringify(contacts);
     backend.setItem('allContacts', contactsAsString);
 

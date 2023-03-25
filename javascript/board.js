@@ -95,8 +95,10 @@ function slideOutDeleteTaskPopup() {
 
 /* --------END--------open Dialog Windows with slideIn slide Out Functions-------------------------- */
 
+
 /* -------------------all rendering function to show the Board------------------------------ */
-function renderCardsIntoTheBoards() {
+async function renderCardsIntoTheBoards() {
+    await loadTasksfromBackend();
     deleteBoard();
     for (let i = 0; i < tasks.length; i++) {
         cardAmounts.push(i);  /* using for drag and drop function by searching */
