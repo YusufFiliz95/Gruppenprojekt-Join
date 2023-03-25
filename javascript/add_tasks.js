@@ -273,6 +273,7 @@ function createTask() {
 
     }
     tasks.push(task);
+    saveTaskstoBackend();
 }
 
 function checkRequired() {
