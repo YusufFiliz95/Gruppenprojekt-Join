@@ -6,11 +6,14 @@ let category = []; */
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
+    setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+    await downloadFromServer();
+    contacts = JSON.parse(backend.getItem('allContacts')) || [];
+    loadContacts();
     await includeHTML();
     selectMenuPoint(i);
     setSelectedMenu();
     showConfirmationPopup();
-    //setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
 }
 
 //FUNCTION FOR INCLUDING OTHER HTML SNIPPETS

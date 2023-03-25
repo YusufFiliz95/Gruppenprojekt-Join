@@ -1,3 +1,5 @@
+setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+
 let contacts = [
     {
         'name': 'Max',
@@ -30,10 +32,10 @@ let contacts = [
 
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
 function loadContacts() {
+    renderSavedContacts();
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
     contactListDiv.innerHTML = '';
-
     // If the contacts array, is empty a message will shown to add a contact
     if (contacts.length === 0) {
         document.getElementById('newcontactbtn').classList.add('d-none');
@@ -80,6 +82,14 @@ function loadContacts() {
         `;
         }
     }
+}
+
+function renderSavedContacts(){
+        // Load contacts from localStorage
+        const getSavedContacts = backend.getItem('allContacts');
+        if (getSavedContacts) {
+            contacts = JSON.parse(getSavedContacts);
+        }
 }
 
 function maxEmailChar(email, maxLength = 28) {
@@ -260,6 +270,8 @@ function createNewContact() {
         };
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
+        let contactsAsString = JSON.stringify(contacts);
+        backend.setItem('allContacts', contactsAsString);
         closeForm();
         loadContacts();
 
@@ -278,15 +290,15 @@ let usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
 function getNextContactId() {
     // Initialize the nextId variable with the value 1
     let nextId = 1;
-    
+
     // Keep incrementing the nextId value until an unused ID is found
     while (usedIds.has(nextId)) {
         nextId++;
     }
-    
+
     // Add the found ID to the usedIds Set to mark it as used
     usedIds.add(nextId);
-    
+
     // Return the unused ID
     return nextId;
 }
@@ -457,6 +469,11 @@ function validateEditContact() {
 
 function deleteContact(i) {
     contacts.splice(i, 1);
+
+    // Save updated contacts array to localStorage
+    let contactsAsString = JSON.stringify(contacts);
+    localStorage.setItem('allContacts', contactsAsString);
+
     document.getElementById('contactinfo').innerHTML = '';
     closeDeletePopup();
     loadContacts();
@@ -472,7 +489,7 @@ function deleteContactPopup(i) {
         <div class="delete-texts">
             <h1 class="delete-popup-headline">Delete Contact</h1>
             <p class="delete-popup-text">Are you sure you want to delete</p>
-            <p class="delete-contact-name" id="deleteContactName">${deleteChosenContact.name.charAt(0).toUpperCase() + deleteChosenContact.name.slice(1).toLowerCase()} ${deleteChosenContact.surname.charAt(0).toUpperCase() +                 deleteChosenContact.surname.slice(1).toLowerCase()}?</p>
+            <p class="delete-contact-name" id="deleteContactName">${deleteChosenContact.name.charAt(0).toUpperCase() + deleteChosenContact.name.slice(1).toLowerCase()} ${deleteChosenContact.surname.charAt(0).toUpperCase() + deleteChosenContact.surname.slice(1).toLowerCase()}?</p>
             <div class="delete-contact-name-border"></div>
         </div>
         <div class="delete-btns">
