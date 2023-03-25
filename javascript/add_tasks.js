@@ -253,7 +253,12 @@ function resetForm() {
 }
 
 
-function createTask() {
+async function createTask() {
+    await createTaskIntoJson();
+    await saveTaskstoBackend();
+}
+
+async function createTaskIntoJson() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('due-date').value;
@@ -270,11 +275,11 @@ function createTask() {
         'subtasks': subtasks,
         'subtasks-value': subtaskValue,
         'status': 'toDo'
-
     }
     tasks.push(task);
-    saveTaskstoBackend();
 }
+
+
 
 function checkRequired() {
     let inputId = ['title', 'description', 'selected-category', 'inicial-circles', 'dueDate'];

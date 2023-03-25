@@ -9,7 +9,8 @@ dates = [date1, date2, date3];
 filter = Math.min.apply(null, dates);
 filterDate = new Date(filter);
 
-function loadSummaryContent() {
+async function loadSummaryContent() {
+    await loadTasksfromBackend();
     calcAmountTasksOnBoard();
     calcAmountTasksInProgress();
     calcAwaitingFeedbackTasksInProgress();
