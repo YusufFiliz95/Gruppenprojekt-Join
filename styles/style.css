@@ -137,3 +137,7 @@ h2 {
     align-items: center;
     justify-content: center;
 }
+
+.confirmation-popup.show {
+    bottom: 120px;
+}

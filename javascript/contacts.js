@@ -31,7 +31,10 @@ let contacts = [
 ];
 
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
-function loadContacts() {
+async function loadContacts() {
+    setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
+    contacts = JSON.parse(backend.getItem('allContacts')) || [];
+    await downloadFromServer();
     renderSavedContacts();
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
