@@ -25,7 +25,7 @@
 
 </head>
 
-<body id="bodyBordId" onload="init(2), renderCardsIntoTheBoards()" onresize=" checkWindowInnerScreenForDragAndDrog(),
+<body id="bodyBordId" onload="init(2), loadAllDataForTheBord()" onresize=" checkWindowInnerScreenForDragAndDrog(),
     clearInputSearchingByResize()">
 
     <!-- include W3 - Menu/Header -->
@@ -145,6 +145,10 @@
         <div id="delete-task-pupupId" class="delete-task-popup slide-in-right-task-overview"
             onclick="doNotClose(event)">
         </div>
+    </div>
+    <!-- confirmation-popup -->
+    <div class="confirmation-popup">
+        <p id="confirmationpopuptext"></p>
     </div>
 </body>
 

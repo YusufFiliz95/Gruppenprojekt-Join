@@ -20,6 +20,7 @@ async function init(i) {
 
 async function saveTaskstoBackend() {
     await backend.setItem('tasks', JSON.stringify(tasks));
+    console.log('backend durch');
 }
 
 async function loadTasksfromBackend() {
@@ -97,6 +98,12 @@ function showConfirmationPopup(actionType) {
                 break;
             case 'createtask':
                 confirmationText = '<p>Task successfully created</p>';
+                break;
+            case 'edittask':
+                confirmationText = '<p>Task successfully edited</p>';
+                break;
+            case 'deletetask':
+                confirmationText = '<p>Task successfully deleted</p>';
                 break;
         }
         document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
