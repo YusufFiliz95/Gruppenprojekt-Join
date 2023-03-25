@@ -9,10 +9,7 @@ let category = []; */
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
-<<<<<<< HEAD
-=======
     setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
->>>>>>> f9f725fe4b1c7e6884eb73ec3f26635652dafdb8
     await includeHTML();
     selectMenuPoint(i);
     setSelectedMenu();
