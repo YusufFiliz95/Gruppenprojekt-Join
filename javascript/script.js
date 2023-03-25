@@ -99,6 +99,12 @@ function showConfirmationPopup(actionType) {
             case 'createtask':
                 confirmationText = '<p>Task successfully created</p>';
                 break;
+            case 'edittask':
+                confirmationText = '<p>Task successfully edited</p>';
+                break;
+            case 'deletetask':
+                confirmationText = '<p>Task successfully deleted</p>';
+                break;
         }
         document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
         setTimeout(() => {
