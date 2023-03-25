@@ -234,12 +234,6 @@ function newContact() {
         }, 500);
     });
 }
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Bind newContact() function to click event of the new contact button
-    const newContactBtn = document.getElementById('newcontactbtn');
-    newContactBtn.addEventListener('click', newContact);
-});
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION FOR CREATING NEW CONTACT AND ADD IT TO THE ARRAY THAT IS SHOWN IN THE LIST AFTER THAT***********************************//
@@ -277,17 +271,27 @@ function createNewContact() {
     }
 }
 
-// This function finds the highest existing contact ID in the 'contacts' array, and returns a new unique ID by adding 1 to it.
+// Create a Set to store used contact IDs from the contacts array
+let usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
+
+// Function to get the next available contact ID
 function getNextContactId() {
-    let maxId = 0;
-    for (const contact of contacts) {
-        const contactIdAsNumber = parseInt(contact.contactid);
-        if (contactIdAsNumber > maxId) {
-            maxId = contactIdAsNumber;
-        }
+    // Initialize the nextId variable with the value 1
+    let nextId = 1;
+    
+    // Keep incrementing the nextId value until an unused ID is found
+    while (usedIds.has(nextId)) {
+        nextId++;
     }
-    return maxId + 1;
+    
+    // Add the found ID to the usedIds Set to mark it as used
+    usedIds.add(nextId);
+    
+    // Return the unused ID
+    return nextId;
 }
+
+//**************************************************************************************************************************************//
 
 /**
  * It validates the input fields and if they are valid, it calls the createNewContact() function.
