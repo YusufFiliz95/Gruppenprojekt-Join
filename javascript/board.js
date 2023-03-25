@@ -1,5 +1,5 @@
 
-/* All templates for the renderingron the board are in the templates/template.js */
+/* All templates for the renderings the board are in the templates/template.js */
 
 let currentDraggedElement;
 let cardAmounts = [];
@@ -94,6 +94,7 @@ function slideOutDeleteTaskPopup() {
 }
 
 /* --------END--------open Dialog Windows with slideIn slide Out Functions-------------------------- */
+
 
 async function loadAllDataForTheBord() {
     await loadTasksfromBackend();
@@ -235,14 +236,12 @@ function rendersubtaskCheckboxes(i) {
         if (subtasksValue[z] == 0) document.getElementById('checkboxId' + z).checked = false;
         else document.getElementById('checkboxId' + z).checked = true;
     }
-
 }
 
 function subtasksCheckBoxClick(i, z) {
     let checkbox = document.getElementById('checkboxId' + z);
     if (checkbox.checked == true) tasks[i]["subtasks-value"][z] = 1;
     else tasks[i]["subtasks-value"][z] = 0;
-
 }
 
 function setPrio(i) {
@@ -276,70 +275,7 @@ function renderContactsInToOverview(i) {
 }
 /* -------END------all rendering functions to show the task overview-------------------------- */
 
-/* ---------------------Drag and Drop-------------------------  */
-
-function startDragging(id) {
-    currentDraggedElement = id;
-    rotateCardByDragging(id);
-    document
-}
-
-function allowDrop(ev, id) {
-    ev.preventDefault();
-    onDropOverBorder(id);
-}
-
-function onDragLeave(id) {
-    document.getElementById(id).classList.remove('ondroped');
-}
-
-function onDropOverBorder(id) {
-    document.getElementById(id).classList.add('ondroped');
-}
-
-function onDropEnd(status) {
-    id = status + 'Id';
-    document.getElementById(id).classList.remove('ondroped');
-}
-
-async function moveTo(status) {
-    let searchFieldId;
-    tasks[currentDraggedElement].status = status;
-    await saveTaskstoBackend();
-    let inputSearchingField1 = document.getElementById('input-searchingId1').value;
-    let inputSearchingField2 = document.getElementById('input-searchingId2').value;
-    if (inputSearchingField1.length >= 1) searchFieldId = 1;
-    if (inputSearchingField2.length >= 1) searchFieldId = 2;
-    if (inputSearchingField1 == '' && inputSearchingField1 == '') await loadAllDataForTheBord();
-    else filterTasksBySearching(searchFieldId);
-    onDropEnd(status);
-}
-
-function rotateCardByDragging(id) {
-    document.getElementById('card' + id).classList.add('rotate-card');
-}
-
-function endDragging(id) {
-    rotateCardBack(id);
-}
-
-function rotateCardBack(id) {
-    document.getElementById('card' + id).classList.remove('rotate-card');
-}
-
-function checkWindowInnerScreenForDragAndDrog() {
-    if (window.innerWidth > 1280) {
-        for (let i = 0; i < cardAmounts.length; i++) {
-            id = cardAmounts[i];
-            document.getElementById('card' + id).draggable = true;
-        }
-    } else {
-        for (let i = 0; i < cardAmounts.length; i++) {
-            id = cardAmounts[i];
-            document.getElementById('card' + id).draggable = false;
-        }
-    }
-}
+/* ---------------------Search functions------------------------ */
 
 function clearInputSearchingByResize() {
     let inputSearchingField1 = document.getElementById('input-searchingId1');
@@ -358,10 +294,6 @@ function clearInputSearchingByResize() {
         inputSearchingField2.value = "";
     }
 }
-
-/* ---------END---------Drag and Drop-------------------------  */
-
-/* ---------------------Search functions------------------------ */
 
 function filterTasksBySearching(id) {
     let search = document.getElementById('input-searchingId' + id).value;
@@ -412,105 +344,4 @@ function renderTasksToInToOverviewBySearching(i) {
 /* ----------END--------Search functions------------------------ */
 
 
-/* --------------------- all functions for edit Task------------------- */
-
-function fillInputsByEditTask(i) {
-    let title = tasks[i].title;
-    let description = tasks[i].description;
-    let dueDate = tasks[i].date;
-    let status = returnStatusInTextForm(tasks[i].status);
-    document.getElementById('title').value = title;
-    document.getElementById('description').value = description;
-    document.getElementById('due-date').value = dueDate;
-    setPrioButtonByEditTask(i);
-    renderContacts();
-    setCheckboxesByEditTask(i);
-    document.getElementById('status').innerHTML = status;
-}
-
-function setPrioButtonByEditTask(i) {
-    let prio = tasks[i].prio;
-    if (prio == 1) addPrio(1); /* function from addTask.js */
-    if (prio == 2) addPrio(2); /* function from addTask.js */
-    if (prio == 3) addPrio(3); /* function from addTask.js */
-
-}
-
-function setCheckboxesByEditTask(i) {
-    let contactArray = tasks[i].contacts;
-    for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
-        for (let z = 0; z < contacts.length; z++) {
-            let indexOfContact = contacts[z].contactid.indexOf(contactArray[y]); /* if the id does not exist then -1 will be return */
-            if (indexOfContact >= 0) {
-                let indexOfContact = z;
-                document.getElementById('checkbox' + indexOfContact).checked = true;
-            }
-        }
-    }
-}
-
-function returnStatusInTextForm(status) {
-    if (status == 'toDo') return 'To do';
-    if (status == 'toProgress') return 'In progress';
-    if (status == 'awaitingFeedback') return 'Awaiting Feedback';
-    if (status == 'done') return 'Done';
-}
-
-function changeStatusByEditTask(status) {
-    status = returnStatusInTextForm(status);
-    document.getElementById('status').innerHTML = status;
-    toggleMenuCategory('toggle-3'); /* funktion from addTask.js - it close the drop down menu */
-}
-
-async function saveEditTask(i) {
-    /* here comes the popup from bottom */
-    await saveTask(i);
-    await saveTaskstoBackend();
-    showConfirmationPopup("edittask");
-    slideOutTaskOverviewDialogBoard();
-}
-
-
-async function saveTask(i) {
-    let newTitle = document.getElementById('title').value;
-    let newDescription = document.getElementById('description').value;
-    let newPrio = prio;
-    let newDueDate = document.getElementById('due-date').value;
-    let newStatus = setNewStatus();
-    let newContacts = setNewContacts();
-    tasks[i].title = newTitle;
-    tasks[i].description = newDescription;
-    tasks[i].title = newTitle;
-    tasks[i].prio = newPrio;
-    tasks[i].date = newDueDate;
-    tasks[i].status = newStatus;
-    tasks[i].contacts = newContacts;
-}
-
-
-function setNewStatus() {
-    let newStatus = document.getElementById('status').innerHTML;
-    if (newStatus == 'To do') return 'toDo';
-    if (newStatus == 'In progress') return 'toProgress';
-    if (newStatus == 'Awaiting Feedback') return 'awaitingFeedback';
-    if (newStatus == 'Done') return 'done';
-}
-
-function setNewContacts() {
-    let contactsArray = [];
-    for (let i = 0; i < contacts.length; i++) {
-        checkbox = document.getElementById('checkbox' + i);
-        contactId = contacts[i].contactid;
-        if (checkbox.checked) contactsArray.push(contactId);
-    }
-    return contactsArray;
-}
-
-async function deleteTask(i) {
-    tasks.splice(i, 1);
-    await saveTaskstoBackend();
-    showConfirmationPopup("deletetask");
-    slideOutDeleteTaskPopup();
-    slideOutTaskOverviewDialogBoard();
-}
 
