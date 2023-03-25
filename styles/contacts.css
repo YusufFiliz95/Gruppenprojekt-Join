@@ -1040,7 +1040,3 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 21px;
     transition: bottom 0.3s ease-in-out;
 }
-
-.confirmation-popup.show {
-    bottom: 120px;
-}
