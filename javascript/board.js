@@ -95,10 +95,13 @@ function slideOutDeleteTaskPopup() {
 
 /* --------END--------open Dialog Windows with slideIn slide Out Functions-------------------------- */
 
+async function loadAllDataForTheBord() {
+    await loadTasksfromBackend();
+    renderCardsIntoTheBoards();
+}
 
 /* -------------------all rendering function to show the Board------------------------------ */
 async function renderCardsIntoTheBoards() {
-    await loadTasksfromBackend();
     deleteBoard();
     for (let i = 0; i < tasks.length; i++) {
         cardAmounts.push(i);  /* using for drag and drop function by searching */
@@ -299,14 +302,15 @@ function onDropEnd(status) {
     document.getElementById(id).classList.remove('ondroped');
 }
 
-function moveTo(status) {
+async function moveTo(status) {
     let searchFieldId;
     tasks[currentDraggedElement].status = status;
+    await saveTaskstoBackend();
     let inputSearchingField1 = document.getElementById('input-searchingId1').value;
     let inputSearchingField2 = document.getElementById('input-searchingId2').value;
     if (inputSearchingField1.length >= 1) searchFieldId = 1;
     if (inputSearchingField2.length >= 1) searchFieldId = 2;
-    if (inputSearchingField1 == '' && inputSearchingField1 == '') renderCardsIntoTheBoards();
+    if (inputSearchingField1 == '' && inputSearchingField1 == '') await loadAllDataForTheBord();
     else filterTasksBySearching(searchFieldId);
     onDropEnd(status);
 }
@@ -455,10 +459,18 @@ function returnStatusInTextForm(status) {
 function changeStatusByEditTask(status) {
     status = returnStatusInTextForm(status);
     document.getElementById('status').innerHTML = status;
-    toggleMenu('toggle-3'); /* funktion from addTask.js - it close the drop down menu */
+    toggleMenuCategory('toggle-3'); /* funktion from addTask.js - it close the drop down menu */
 }
 
-function saveEditTask(i) {
+async function saveEditTask(i) {
+    /* here comes the popup from bottom */
+    await saveTask(i);
+    await saveTaskstoBackend();
+    slideOutTaskOverviewDialogBoard();
+}
+
+
+async function saveTask(i) {
     let newTitle = document.getElementById('title').value;
     let newDescription = document.getElementById('description').value;
     let newPrio = prio;
@@ -472,8 +484,9 @@ function saveEditTask(i) {
     tasks[i].date = newDueDate;
     tasks[i].status = newStatus;
     tasks[i].contacts = newContacts;
-    slideOutTaskOverviewDialogBoard();
+    console.log('ja');
 }
+
 
 function setNewStatus() {
     let newStatus = document.getElementById('status').innerHTML;
@@ -493,10 +506,10 @@ function setNewContacts() {
     return contactsArray;
 }
 
-function deleteTask(i) {
+async function deleteTask(i) {
     tasks.splice(i, 1);
+    await saveTaskstoBackend();
     slideOutDeleteTaskPopup();
     slideOutTaskOverviewDialogBoard();
-
 }
 

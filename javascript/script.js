@@ -20,6 +20,7 @@ async function init(i) {
 
 async function saveTaskstoBackend() {
     await backend.setItem('tasks', JSON.stringify(tasks));
+    console.log('backend durch');
 }
 
 async function loadTasksfromBackend() {
