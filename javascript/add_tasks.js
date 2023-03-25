@@ -12,8 +12,14 @@ let subtaskValue = [];
 
 // toggle Menu 
 
-function toggleMenu(id) {
+function toggleMenuCategory(id) {
     document.getElementById(id).classList.toggle('d-none');
+
+}
+
+function toggleMenuContacts(id) {
+    document.getElementById(id).classList.toggle('d-none');
+    renderInicialsCircles();
 }
 
 
@@ -40,7 +46,6 @@ function addedCategory() {
         'name': categoryInput,
         'color': currentColor
     }
-
     categorys.push(category);
 }
 
@@ -76,10 +81,8 @@ function addToInput(i) {
 }
 
 function deleteCategory(i) {
-    categoryColor.splice(i, 1);
-    categoryName.splice(i, 1);
+    categorys.splice(i, 1);
     renderCategory();
-
 }
 
 function renderCategoryColors() {
@@ -110,7 +113,7 @@ function renderContacts() {
         contactContainer.innerHTML += /*html*/ `
         <div class="contact">
             <span>${contact['name']} ${contact['surname']}</span>
-            <input id="checkbox${i}" type="checkbox">
+            <input onclick="addContactsToArray()" id="checkbox${i}" type="checkbox">
         </div>`
     }
 }
@@ -121,28 +124,31 @@ function addContactsToArray() {
 
     for (let i = 0; i < checkbox.length; i++) {
         if (checkbox[i].checked == true) {
-            let contact = {
-                'name': contacts[i]['name'],
-                'surname': contacts[i]['surname'],
-                'initials': contacts[i]['Initials'],
-                'color': contacts[i]['profilecolor'],
-                'contactId': contacts[i]['contactid']
-            }
-
-            selectedContacts.push(contact);
-
+            selectedContacts.push(contacts[i]['contactid']);
         }
     }
+}
 
+function resetCheckbox() {
+    selectedContacts = [];
+    let checkbox = document.querySelectorAll("input[type = 'checkbox'");
+
+    for (let i = 0; i < checkbox.length; i++) {
+        checkbox[i].checked = false;
+    }
 }
 
 
 function renderInicialsCircles() {
+    let colorContainer = document.getElementById('inicial-circles');
+    colorContainer.innerHTML = '';
 
+    for (let i = 0; i < selectedContacts.length; i++) {
+        id = selectedContacts[i] - 1;
+        colorContainer.innerHTML += /*html*/`
+        <div class="color-circle-contact" style="background-color: ${'' + contacts[id]['profilecolor']}">${contacts[id]['Initials']}</div>`
+    }
 }
-
-
-
 
 
 // Prio Buttons
@@ -238,20 +244,20 @@ function resetForm() {
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('selected-category').innerHTML = 'Select task category';
-    // reset Assigned to
+    document.getElementById('inicial-circles').innerHTML = '';
+    resetCheckbox();
     document.getElementById('due-date').value = '';
     addPrio(0);
     document.getElementById('subtasks-container').innerHTML = '';
 }
 
 
+
+
 function createTask() {
-    addContactsToArray();
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('due-date').value;
-
-
 
     let task = {
         'id': tasks.length,
@@ -270,7 +276,6 @@ function createTask() {
 
     tasks.push(task);
     console.log(tasks);
-
 }
 
 
