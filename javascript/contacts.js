@@ -438,6 +438,7 @@ function validateEditContact() {
         contact.email = emailValue;
         contact.phonenumber = phoneValue;
         showConfirmationPopup('editcontact');
+        saveContactstoBackend(contacts);
         closeEditContactForm();
         loadContacts();
         showContactInfo(i);
