@@ -5,8 +5,6 @@ let user = [];
 let category = []; */
 
 
-
-
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
     setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
