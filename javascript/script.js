@@ -1,7 +1,7 @@
 let selectedMenu;
 let tasks = [];
-/* let contacts = [];
-let user = [];
+let contacts = [];
+/*let user = [];
 let category = []; */
 
 
