@@ -1,6 +1,5 @@
 
 
-let contacts = [];
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
 async function loadContacts() {
     await downloadFromServer();
