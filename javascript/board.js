@@ -98,6 +98,7 @@ function slideOutDeleteTaskPopup() {
 
 async function loadAllDataForTheBord() {
     await loadTasksfromBackend();
+    await loadContactsfromBackend();
     renderCardsIntoTheBoards();
 }
 
