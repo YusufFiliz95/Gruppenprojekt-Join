@@ -392,7 +392,7 @@ function closeEditContactForm() {
     }, 500);
 }
 
-function validateEditContact() {
+async function validateEditContact() {
     const editContactContainer = document.querySelector('.edit-contact-container');
     const i = editContactContainer.dataset.contactIndex;
     const contact = contacts[i];
@@ -435,7 +435,7 @@ function validateEditContact() {
         contact.email = emailValue;
         contact.phonenumber = phoneValue;
         showConfirmationPopup('editcontact');
-        saveContactstoBackend(contacts);
+        await saveContactstoBackend();
         closeEditContactForm();
         loadContacts();
         showContactInfo(i);
