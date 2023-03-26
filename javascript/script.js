@@ -48,7 +48,7 @@ async function saveCategorystoBackend() {
 
 async function loadCategorysfromBackend() {
     await downloadFromServer();
-    tasks = JSON.parse(backend.getItem('categorys')) || [];
+    categorys = JSON.parse(backend.getItem('categorys')) || [];
 }
 
 
