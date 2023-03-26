@@ -10,6 +10,11 @@ let selectedContacts = [];
 let subtaskValue = [];
 
 
+async function loadAndRenderContacts() {
+    await loadContactsfromBackend();
+    renderContacts();
+}
+
 // toggle Menu 
 
 function toggleMenuCategory(id) {
@@ -314,7 +319,7 @@ function submitValidation() {
         document.getElementById(`required1`).classList.remove('d-none');
         validation = false;
     }
-    if (category = 'Select task category') {
+    if (category = 0) {
         document.getElementById(`required2`).classList.remove('d-none');
         validation = false;
     }
