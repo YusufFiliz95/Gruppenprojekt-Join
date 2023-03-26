@@ -29,6 +29,31 @@ async function loadTasksfromBackend() {
 }
 
 
+// FUNCTIONS TO SAVE AND LOAD Contacts TO/FROM BACKEND
+
+async function saveContactstoBackend() {
+    await backend.setItem('contacts', JSON.stringify(contacts));
+    console.log('backend durch');
+}
+
+async function loadContactsfromBackend() {
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('contacts')) || [];
+}
+
+// FUNCTIONS TO SAVE AND LOAD Categorys TO/FROM BACKEND
+
+async function saveCategorystoBackend() {
+    await backend.setItem('categorys', JSON.stringify(categorys));
+    console.log('backend durch');
+}
+
+async function loadCategorysfromBackend() {
+    await downloadFromServer();
+    tasks = JSON.parse(backend.getItem('categorys')) || [];
+}
+
+
 //FUNCTION FOR INCLUDING OTHER HTML SNIPPETS
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');

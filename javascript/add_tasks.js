@@ -254,8 +254,15 @@ function resetForm() {
 
 
 async function createTask() {
-    await createTaskIntoJson();
-    await saveTaskstoBackend();
+    resetValidation();
+    if (submitValidation() == true) {
+        await createTaskIntoJson();
+        await saveTaskstoBackend();
+        showConfirmationPopup('createtask');
+        goToBoard();
+    }
+
+
 }
 
 async function createTaskIntoJson() {
@@ -279,13 +286,57 @@ async function createTaskIntoJson() {
     tasks.push(task);
 }
 
+function goToBoard() {
+    setTimeout(function () {
+        window.location.href = "board.html";
+    }, 2000)
+}
 
 
 function checkRequired() {
     let inputId = ['title', 'description', 'selected-category', 'inicial-circles', 'dueDate'];
 
+}
+
+
+// Validation
+function submitValidation() {
+    let title = document.getElementById('title').value;
+    let desc = document.getElementById('description').value;
+    let category = document.getElementById('selected-category');
+
+    let date = document.getElementById('date-input');
+    let validation = true;
+
+    if (title == '') {
+        document.getElementById(`required0`).classList.remove('d-none');
+        validation = false;
+    }
+    if (desc == '') {
+        document.getElementById(`required1`).classList.remove('d-none');
+        validation = false;
+    }
+    if (category = 'Select task category') {
+        document.getElementById(`required2`).classList.remove('d-none');
+        validation = false;
+    }
 
 
 
 
+    // document.getElementById(`required0`).classList.remove('d-none');
+    // document.getElementById(`required0`).classList.remove('d-none');
+    // document.getElementById(`required0`).classList.remove('d-none');
+
+    return validation;
+}
+
+
+
+function resetValidation() {
+
+    for (let i = 0; i < 3; i++) {
+        let text = document.getElementById(`required${i}`);
+        text.classList.add('d-none');
+    }
 }

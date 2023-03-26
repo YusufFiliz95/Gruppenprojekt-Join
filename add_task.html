@@ -7,12 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
     <link rel="icon" type="img/png" href="img/join_logo.svg">
-    <script src="./javascript/script.js"></script>
-    <script src="./javascript/board.js"></script>
-    <script src="./javascript/add_tasks.js"></script>
-    <script src="./javascript/mini_backend.js"></script>
-    <script src="../javascript/tasksArray.js"></script>
-    <script src="./javascript/contacts.js"></script>
+    <script src="javascript/script.js"></script>
+    <script src="javascript/board.js"></script>
+    <script src="javascript/add_tasks.js"></script>
+    <script src="javascript/mini_backend.js"></script>
+    <script src="javascript/tasksArray.js"></script>
+    <script src="javascript/contacts.js"></script>
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/board.css">
@@ -25,7 +25,7 @@
 
 </head>
 
-<body onload="init(3), renderContacts()">
+<body onload="init(3), renderContacts(), loadContactsfromBackend()">
     <!-- include W3 - Menu/Header -->
     <div w3-include-html="templates/menu_template.html"></div>
     <div w3-include-html="templates/menu_mobile_template.html"></div>
@@ -39,14 +39,14 @@
                     <div class="input-field">
                         <input id="title" type="text" placeholder="Enter a title">
                     </div>
-                    <p class="required d-none ">This field is required</p>
+                    <p class="required d-none" id="required0">This field is required</p>
                 </div>
                 <!-- description input -->
                 <div class="input-container">
                     <label>Description</label>
                     <textarea class="textarea-field" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
-                    <p class="required d-none ">This field is required</p>
+                    <p class=" required d-none" id="required1">This field is required</p>
                 </div>
                 <!-- category input -->
                 <div class="input-container">
@@ -71,8 +71,10 @@
                             <div id="category-container"></div>
                         </div>
                     </div>
+                    <p class="required d-none " id="required2">This field is required</p>
                     <div id="color-container" class="color-container">
                     </div>
+
                 </div>
 
                 <!-- contact input -->
@@ -202,6 +204,10 @@
         </div>
     </div>
     <!-------------------------------------------------->
+    <!-- confirmation-popup -->
+    <div class="confirmation-popup">
+        <p id="confirmationpopuptext"></p>
+    </div>
 
 </body>
 
