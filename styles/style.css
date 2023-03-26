@@ -138,6 +138,23 @@ h2 {
     justify-content: center;
 }
 
+.confirmation-popup {
+    position: fixed;
+    bottom: -80px;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    width: 326px;
+    height: 74px;
+    border-radius: 20px;
+    background-color: #2A3647;
+    font-weight: 300;
+    font-size: 21px;
+    transition: bottom 0.3s ease-in-out;
+}
+
 .confirmation-popup.show {
     bottom: 120px;
 }

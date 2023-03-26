@@ -238,8 +238,6 @@ async function createNewContact() {
         };
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
-        let contactsAsString = JSON.stringify(contacts);
-        backend.setItem('contacts', contactsAsString);
         await saveContactstoBackend(contacts);
         await loadContacts();
         // Show the newly created contact info
@@ -251,15 +249,8 @@ async function createNewContact() {
     }
 }
 
-// Create a Set to store used contact IDs from the contacts array
+
 let usedIds;
-
-async function initializeUsedIds() {
-    await loadContactsfromBackend();
-}
-
-// Call the initializeUsedIds function to initialize the usedIds Set
-initializeUsedIds();
 
 // Function to get the next available contact ID
 function getNextContactId() {
@@ -448,12 +439,8 @@ function validateEditContact() {
 async function deleteContact(i) {
     contacts.splice(i, 1);
 
-    // Save updated contacts array to localStorage
-    let contactsAsString = JSON.stringify(contacts);
-    backend.setItem('contacts', contactsAsString);
-
     // Save updated contacts to the server
-    await saveContactstoBackend();
+    await saveContactstoBackend(contacts);
 
     document.getElementById('contactinfo').innerHTML = '';
     closeDeletePopup();
