@@ -37,7 +37,12 @@ async function loadContactsfromBackend() {
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contacts')) || [];
     usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
-    nextContactId = JSON.parse(backend.getItem('nextContactId')) || 1;
+    for (const contact of contacts) {
+        const contactIdNumber = parseInt(contact.contactid, 10);
+        if (contactIdNumber > highestUsedId) {
+            highestUsedId = contactIdNumber;
+        }
+    }
 }
 
 // FUNCTIONS TO SAVE AND LOAD Categorys TO/FROM BACKEND

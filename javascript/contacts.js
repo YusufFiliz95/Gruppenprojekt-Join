@@ -176,7 +176,6 @@ function deleteFormAfterClose() {
 }
 //**************************************************************************************************************************************//
 
-
 /**
  * When the user clicks the button, the container and section are displayed, then the container slides
  * in and the section fades in. When the user clicks the section, the container slides out and the
@@ -246,24 +245,15 @@ async function createNewContact() {
     }
 }
 
-
-let usedIds;
+let highestUsedId = 0;
 
 // Function to get the next available contact ID
 function getNextContactId() {
-    // Initialize the nextId variable with the value 1
-    let nextId = 1;
+    // Increment the highest used ID by 1
+    highestUsedId++;
 
-    // Keep incrementing the nextId value until an unused ID is found
-    while (usedIds.has(nextId)) {
-        nextId++;
-    }
-
-    // Add the found ID to the usedIds Set to mark it as used
-    usedIds.add(nextId);
-
-    // Convert the nextId to a string
-    const stringId = nextId.toString();
+    // Convert the highest used ID to a string
+    const stringId = highestUsedId.toString();
 
     // Return the string ID
     return stringId;
