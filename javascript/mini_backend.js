@@ -23,8 +23,14 @@ window.onload = async function() {
 
 async function downloadFromServer() {
     let result = await loadJSONFromServer();
-    jsonFromServer = JSON.parse(result);
-    console.log('Loaded', result);
+    
+    // Check if the result is a valid JSON string
+    try {
+        jsonFromServer = JSON.parse(result);
+        console.log('Loaded', result);
+    } catch (error) {
+        console.error("Invalid JSON:", result);
+    }
 }
 
 function setURL(url) {

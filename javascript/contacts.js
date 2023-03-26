@@ -1,44 +1,16 @@
 
 
-let contacts = [
-    {
-        'name': 'Max',
-        'surname': 'Mustermann',
-        'email': 'max.mustermann@hotmail.com',
-        'profilecolor': 'red',
-        'Initials': 'MM',
-        'phonenumber': '0132456789',
-        'contactid': '1'
-    },
-    {
-        'name': 'AMax',
-        'surname': 'Mustermann',
-        'email': 'amax.mustermann@hotmail.com',
-        'profilecolor': 'red',
-        'Initials': 'MM',
-        'phonenumber': '0132456789',
-        'contactid': '2'
-    },
-    {
-        'name': 'BMax',
-        'surname': 'Mustermann',
-        'email': 'bmax.mustermann@hotmail.com',
-        'profilecolor': 'red',
-        'Initials': 'MM',
-        'phonenumber': '0132456789',
-        'contactid': '3'
-    }
-];
-
+let contacts = [];
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
 async function loadContacts() {
-    setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
-    contacts = JSON.parse(backend.getItem('allContacts')) || [];
     await downloadFromServer();
+    contacts = JSON.parse(backend.getItem('contacts')) || [];
     renderSavedContacts();
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
     contactListDiv.innerHTML = '';
+        // Initialize the usedIds Set with the contact IDs
+        usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
     // If the contacts array, is empty a message will shown to add a contact
     if (contacts.length === 0) {
         document.getElementById('newcontactbtn').classList.add('d-none');
@@ -250,7 +222,7 @@ function newContact() {
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION FOR CREATING NEW CONTACT AND ADD IT TO THE ARRAY THAT IS SHOWN IN THE LIST AFTER THAT***********************************//
-function createNewContact() {
+async function createNewContact() {
     const colors = ['#e04f3f', '#29b6f6', '#ffb900', '#8bc34a', '#7e57c2', '#ff5722'];
     const newContactNameInput = document.getElementById('newContactName');
     const newContactEmailInput = document.getElementById('newContactEmail');
@@ -260,6 +232,7 @@ function createNewContact() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Check if the email address is valid.
 
     if (nameRegex.test(newContactNameInput.value) && emailRegex.test(newContactEmailInput.value)) {
+        await loadContactsfromBackend();
         const [name, surname] = newContactNameInput.value.split(' '); // Split the name into first and last name.
         const lastContactId = getNextContactId();
         const newContact = {
@@ -274,20 +247,27 @@ function createNewContact() {
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
         let contactsAsString = JSON.stringify(contacts);
-        backend.setItem('allContacts', contactsAsString); // Update this line
-        closeForm();
-        loadContacts();
-
+        backend.setItem('allContacts', contactsAsString);
+        await saveContactstoBackend(contacts);
+        await loadContacts();
         // Show the newly created contact info
         const newContactIndex = contacts.findIndex(contact => contact === newContact);
         if (newContactIndex >= 0) {
             showContactInfo(newContactIndex);
         }
+        closeForm();
     }
 }
 
 // Create a Set to store used contact IDs from the contacts array
-let usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
+let usedIds;
+
+async function initializeUsedIds() {
+    await loadContactsfromBackend();
+}
+
+// Call the initializeUsedIds function to initialize the usedIds Set
+initializeUsedIds();
 
 // Function to get the next available contact ID
 function getNextContactId() {
@@ -302,10 +282,12 @@ function getNextContactId() {
     // Add the found ID to the usedIds Set to mark it as used
     usedIds.add(nextId);
 
-    // Return the unused ID
-    return nextId;
-}
+    // Convert the nextId to a string
+    const stringId = nextId.toString();
 
+    // Return the string ID
+    return stringId;
+}
 //**************************************************************************************************************************************//
 
 /**
@@ -473,14 +455,25 @@ function validateEditContact() {
 async function deleteContact(i) {
     contacts.splice(i, 1);
 
-    // Save updated contacts array to the server
+    // Save updated contacts array to localStorage
     let contactsAsString = JSON.stringify(contacts);
     backend.setItem('allContacts', contactsAsString);
 
+    // Save updated contacts to the server
+    await saveContactstoBackend();
+
     document.getElementById('contactinfo').innerHTML = '';
     closeDeletePopup();
-    loadContacts();
+    await loadContacts();
     showConfirmationPopup('deletecontact');
+}
+
+async function saveContactstoBackend(contacts) {
+    // Convert the contacts array to a JSON string
+    const contactsJson = JSON.stringify(contacts);
+
+    // Save the contacts JSON to the backend
+    await backend.setItem('contacts', contactsJson);
 }
 
 

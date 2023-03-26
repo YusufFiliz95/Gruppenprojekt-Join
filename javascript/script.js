@@ -30,9 +30,10 @@ async function loadTasksfromBackend() {
 
 // FUNCTIONS TO SAVE AND LOAD Contacts TO/FROM BACKEND
 
-async function saveContactstoBackend() {
-    await backend.setItem('contacts', JSON.stringify(contacts));
-    console.log('backend durch');
+async function loadContactsfromBackend() {
+    await downloadFromServer();
+    contacts = JSON.parse(backend.getItem('contacts')) || [];
+    usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
 }
 
 async function loadContactsfromBackend() {
