@@ -30,13 +30,14 @@ async function loadTasksfromBackend() {
 
 async function saveContactstoBackend() {
     await backend.setItem('contacts', JSON.stringify(contacts));
-    console.log('backend durch');
+    await backend.setItem('nextContactId', JSON.stringify(nextContactId));
 }
 
 async function loadContactsfromBackend() {
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contacts')) || [];
     usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
+    nextContactId = JSON.parse(backend.getItem('nextContactId')) || 1;
 }
 
 // FUNCTIONS TO SAVE AND LOAD Categorys TO/FROM BACKEND
