@@ -5,7 +5,7 @@ let contacts = [];
 async function loadContacts() {
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contacts')) || [];
-    renderSavedContacts();
+    await loadContactsfromBackend()
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
     contactListDiv.innerHTML = '';
@@ -57,14 +57,6 @@ async function loadContacts() {
         `;
         }
     }
-}
-
-function renderSavedContacts(){
-        // Load contacts from localStorage
-        const getSavedContacts = backend.getItem('allContacts');
-        if (getSavedContacts) {
-            contacts = JSON.parse(getSavedContacts);
-        }
 }
 
 function maxEmailChar(email, maxLength = 28) {
@@ -247,7 +239,7 @@ async function createNewContact() {
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
         let contactsAsString = JSON.stringify(contacts);
-        backend.setItem('allContacts', contactsAsString);
+        backend.setItem('contacts', contactsAsString);
         await saveContactstoBackend(contacts);
         await loadContacts();
         // Show the newly created contact info
@@ -457,7 +449,7 @@ async function deleteContact(i) {
 
     // Save updated contacts array to localStorage
     let contactsAsString = JSON.stringify(contacts);
-    backend.setItem('allContacts', contactsAsString);
+    backend.setItem('contacts', contactsAsString);
 
     // Save updated contacts to the server
     await saveContactstoBackend();
