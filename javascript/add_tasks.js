@@ -12,6 +12,7 @@ let subtaskValue = [];
 
 async function loadAndRenderContacts() {
     await loadContactsfromBackend();
+    await loadTasksfromBackend();
     renderContacts();
 }
 
