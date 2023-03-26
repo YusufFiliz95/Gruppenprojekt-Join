@@ -96,6 +96,7 @@ textarea:focus {
     border-radius: 10px;
     padding-left: 6px;
     padding-bottom: 6px;
+    z-index: 1;
 
 }
 

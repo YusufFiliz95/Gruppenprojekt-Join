@@ -14,7 +14,6 @@ let subtaskValue = [];
 
 function toggleMenuCategory(id) {
     document.getElementById(id).classList.toggle('d-none');
-
 }
 
 function toggleMenuContacts(id) {
@@ -35,7 +34,6 @@ function closeInputfield(id) {
     document.getElementById(id).classList.remove('d-none');
     document.getElementById('color-container').classList.add('d-none');
     document.getElementById('category-input-field').value = '';
-
 }
 
 // category Input
