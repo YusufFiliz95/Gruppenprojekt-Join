@@ -1,16 +1,13 @@
 
 
-
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
 async function loadContacts() {
-    await downloadFromServer();
-    contacts = JSON.parse(backend.getItem('contacts')) || [];
-    await loadContactsfromBackend()
+    await loadContactsfromBackend();
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
     contactListDiv.innerHTML = '';
-        // Initialize the usedIds Set with the contact IDs
-        usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
+    // Initialize the usedIds Set with the contact IDs
+    usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
     // If the contacts array, is empty a message will shown to add a contact
     if (contacts.length === 0) {
         document.getElementById('newcontactbtn').classList.add('d-none');
