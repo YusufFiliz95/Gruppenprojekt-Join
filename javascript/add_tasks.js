@@ -259,7 +259,6 @@ function resetForm() {
 
 
 async function createTask() {
-    resetCheckRequired()
     if (checkRequired() == true) {
         await createTaskIntoJson();
         await saveTaskstoBackend();
@@ -317,15 +316,11 @@ function checkRequired() {
         }
     }
 
-    return validation;
-}
+    if (prio == 0) {
+        document.getElementById(`required5`).innerText += "A priority button is required";
+        validation = false;
 
-
-
-function resetCheckRequired() {
-
-    for (let i = 0; i < 5; i++) {
-        let required = document.getElementById(`required${i}`);
-        required.innerText = '';
+        return validation;
     }
+
 }
