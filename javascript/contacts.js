@@ -2,14 +2,12 @@
 
 //***********************************FUNCTION FOR LOAD THE LIST OF CONTACTS***********************************//
 async function loadContacts() {
-    await downloadFromServer();
-    contacts = JSON.parse(backend.getItem('contacts')) || [];
-    await loadContactsfromBackend()
+    await loadContactsfromBackend();
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
     contactListDiv.innerHTML = '';
-        // Initialize the usedIds Set with the contact IDs
-        usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
+    // Initialize the usedIds Set with the contact IDs
+    usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
     // If the contacts array, is empty a message will shown to add a contact
     if (contacts.length === 0) {
         document.getElementById('newcontactbtn').classList.add('d-none');
@@ -178,7 +176,6 @@ function deleteFormAfterClose() {
 }
 //**************************************************************************************************************************************//
 
-
 /**
  * When the user clicks the button, the container and section are displayed, then the container slides
  * in and the section fades in. When the user clicks the section, the container slides out and the
@@ -237,8 +234,6 @@ async function createNewContact() {
         };
         showConfirmationPopup('addcontact');
         contacts.push(newContact);
-        let contactsAsString = JSON.stringify(contacts);
-        backend.setItem('contacts', contactsAsString);
         await saveContactstoBackend(contacts);
         await loadContacts();
         // Show the newly created contact info
@@ -250,31 +245,15 @@ async function createNewContact() {
     }
 }
 
-// Create a Set to store used contact IDs from the contacts array
-let usedIds;
-
-async function initializeUsedIds() {
-    await loadContactsfromBackend();
-}
-
-// Call the initializeUsedIds function to initialize the usedIds Set
-initializeUsedIds();
+let highestUsedId = 0;
 
 // Function to get the next available contact ID
 function getNextContactId() {
-    // Initialize the nextId variable with the value 1
-    let nextId = 1;
+    // Increment the highest used ID by 1
+    highestUsedId++;
 
-    // Keep incrementing the nextId value until an unused ID is found
-    while (usedIds.has(nextId)) {
-        nextId++;
-    }
-
-    // Add the found ID to the usedIds Set to mark it as used
-    usedIds.add(nextId);
-
-    // Convert the nextId to a string
-    const stringId = nextId.toString();
+    // Convert the highest used ID to a string
+    const stringId = highestUsedId.toString();
 
     // Return the string ID
     return stringId;
@@ -394,7 +373,7 @@ function closeEditContactForm() {
     }, 500);
 }
 
-function validateEditContact() {
+async function validateEditContact() {
     const editContactContainer = document.querySelector('.edit-contact-container');
     const i = editContactContainer.dataset.contactIndex;
     const contact = contacts[i];
@@ -437,7 +416,7 @@ function validateEditContact() {
         contact.email = emailValue;
         contact.phonenumber = phoneValue;
         showConfirmationPopup('editcontact');
-        saveContactstoBackend(contacts);
+        await saveContactstoBackend();
         closeEditContactForm();
         loadContacts();
         showContactInfo(i);
@@ -447,12 +426,8 @@ function validateEditContact() {
 async function deleteContact(i) {
     contacts.splice(i, 1);
 
-    // Save updated contacts array to localStorage
-    let contactsAsString = JSON.stringify(contacts);
-    backend.setItem('contacts', contactsAsString);
-
     // Save updated contacts to the server
-    await saveContactstoBackend();
+    await saveContactstoBackend(contacts);
 
     document.getElementById('contactinfo').innerHTML = '';
     closeDeletePopup();

@@ -289,6 +289,7 @@ async function createTaskIntoJson() {
         'status': 'toDo'
     }
     tasks.push(task);
+    console.log(tasks);
 }
 
 function goToBoard() {

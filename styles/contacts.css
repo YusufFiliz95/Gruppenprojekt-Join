@@ -1023,20 +1023,3 @@ input[type="number"]::-webkit-outer-spin-button {
     height: 2px;
     background-color: #29ABE2;
 }
-
-.confirmation-popup {
-    position: fixed;
-    bottom: -80px;
-    left: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    width: 326px;
-    height: 74px;
-    border-radius: 20px;
-    background-color: #2A3647;
-    font-weight: 300;
-    font-size: 21px;
-    transition: bottom 0.3s ease-in-out;
-}

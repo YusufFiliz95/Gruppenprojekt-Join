@@ -179,12 +179,12 @@ function renderContactsIntotheCard(i, contactArray) {
     let contactField = document.getElementById('contactsId' + i);
     for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
         for (let z = 0; z < contacts.length; z++) {
-            let indexOfContact = contacts[z].contactid.indexOf(contactArray[y]); /* if the id does not exist then -1 will be return */
+            let indexOfContact = contacts[z].contactid.indexOf(`${contactArray[y]}`); /* if the id does not exist then -1 will be return */
             if (indexOfContact >= 0) {
                 difference++;
                 if (y <= 2) {
-                    initials = contacts[indexOfContact].Initials;
-                    backgroundColor = contacts[indexOfContact].profilecolor;
+                    initials = contacts[z].Initials;
+                    backgroundColor = contacts[z].profilecolor;
                     contactField.innerHTML += templateRenderContactsIntoTheCard(initials, backgroundColor);
                 }
             }
