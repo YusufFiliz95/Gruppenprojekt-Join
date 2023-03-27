@@ -269,6 +269,9 @@ input:focus {
     background-color: rgba(255, 255, 255, 1);
     position: fixed;
     top: 0;
+}
+
+.animate-white-background {
     animation: hideBackground 1.5s 0.2s forwards;
 }
 
@@ -617,6 +620,9 @@ input:focus {
         background-color: rgb(78, 146, 235);
         position: fixed;
         top: 0;
+    }
+
+    .animate-white-background {
         animation: hideBackground 1.5s 0.2s forwards;
     }
     
