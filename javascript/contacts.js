@@ -245,7 +245,7 @@ async function createNewContact() {
     }
 }
 
-let highestUsedId = 0;
+
 
 // Function to get the next available contact ID
 function getNextContactId() {
