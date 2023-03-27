@@ -259,6 +259,7 @@ function resetForm() {
 
 
 async function createTask() {
+    resetCheckRequired()
     if (checkRequired() == true) {
         await createTaskIntoJson();
         await saveTaskstoBackend();
@@ -305,7 +306,7 @@ function checkRequired() {
     let title = document.getElementById('title').value;
     let desc = document.getElementById('description').value;
     let dueDate = document.getElementById('due-date').value;
-    let allData = [title, desc, selectedCategoryColor, selectedContacts, dueDate,]
+    let allData = [title, desc, selectedCategoryName, selectedContacts, dueDate,]
     let validation = true;
 
     for (let i = 0; i < allData.length; i++) {
