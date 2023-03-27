@@ -3,7 +3,7 @@ let tasks = [];
 let contacts = [];
 let user = [];
 let categorys = [];
-
+let highestUsedId = [];
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
