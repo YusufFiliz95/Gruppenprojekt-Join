@@ -11,7 +11,7 @@
     <script src="javascript/board.js"></script>
     <script src="javascript/add_tasks.js"></script>
     <script src="javascript/mini_backend.js"></script>
-    <script src="javascript/contacts.js"></script>
+    <!-- <script src="javascript/contacts.js"></script> -->
     <link rel="stylesheet" href="styles/style.css">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/board.css">
@@ -38,14 +38,14 @@
                     <div class="input-field">
                         <input id="title" type="text" placeholder="Enter a title">
                     </div>
-                    <p class="required d-none" id="required0">This field is required</p>
+                    <p class="required" id="required0"></p>
                 </div>
                 <!-- description input -->
                 <div class="input-container">
                     <label>Description</label>
                     <textarea class="textarea-field" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
-                    <p class=" required d-none" id="required1">This field is required</p>
+                    <p class=" required" id="required1"></p>
                 </div>
                 <!-- category input -->
                 <div class="input-container">
@@ -70,7 +70,7 @@
                             <div id="category-container"></div>
                         </div>
                     </div>
-                    <p class="required d-none " id="required2">This field is required</p>
+                    <p class="required" id="required2"></p>
                     <div id="color-container" class="color-container">
                     </div>
 
@@ -92,6 +92,7 @@
                             </div>
                         </div>
                     </div>
+                    <p class="required" id="required3"></p>
                     <div class="color-container-contact" id="inicial-circles"></div>
                 </div>
             </div>
@@ -101,8 +102,8 @@
                     <label>Due date</label>
                     <div class="input-field due-date">
                         <input id="due-date" type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
-                        <p class="required d-none ">This field is required</p>
                     </div>
+                    <p class="required" id="required4"></p>
                 </div>
                 <!-- Prio Buttons input -->
                 <div class="input-container">
@@ -115,6 +116,7 @@
                         <button id="low-btn" onclick="addPrio(3)"><span>Low</span><img class="prio-img" id="low-image"
                                 src="./img/prio_low.svg"></button>
                     </div>
+                    <p class="required" id="required5"></p>
                 </div>
                 <!-- subtask input -->
                 <div class="input-container">

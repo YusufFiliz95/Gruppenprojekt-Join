@@ -1,8 +1,8 @@
 let selectedMenu;
 let tasks = [];
 let contacts = [];
-/*let user = [];
-let category = []; */
+let user = [];
+let categorys = [];
 
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS

@@ -1,8 +1,7 @@
 
 let currentColor;
 let selectedCategoryColor;
-let selectedCategoryName;
-let categorys = []
+let selectedCategoryName = '';
 let pointColor = ['#8AA4FF', '#FB0101', '#43D300', '#FD8A01', '#E224BE', '#013DFF', '#33D7C1',];
 let subtasks = [];
 let prio = 0;
@@ -13,7 +12,9 @@ let subtaskValue = [];
 async function loadAndRenderContacts() {
     await loadContactsfromBackend();
     await loadTasksfromBackend();
+    await loadCategorysfromBackend();
     renderContacts();
+    renderCategory();
 }
 
 // toggle Menu 
@@ -258,10 +259,10 @@ function resetForm() {
 
 
 async function createTask() {
-    resetValidation();
-    if (submitValidation() == true) {
+    if (checkRequired() == true) {
         await createTaskIntoJson();
         await saveTaskstoBackend();
+        await saveCategorystoBackend();
         showConfirmationPopup('createtask');
         goToBoard();
     }
@@ -297,50 +298,32 @@ function goToBoard() {
 }
 
 
-function checkRequired() {
-    let inputId = ['title', 'description', 'selected-category', 'inicial-circles', 'dueDate'];
-
-}
-
 
 // Validation
-function submitValidation() {
+function checkRequired() {
     let title = document.getElementById('title').value;
     let desc = document.getElementById('description').value;
-    let category = document.getElementById('selected-category');
-
-    let date = document.getElementById('date-input');
+    let dueDate = document.getElementById('due-date').value;
+    let allData = [title, desc, selectedCategoryColor, selectedContacts, dueDate,]
     let validation = true;
 
-    if (title == '') {
-        document.getElementById(`required0`).classList.remove('d-none');
-        validation = false;
+    for (let i = 0; i < allData.length; i++) {
+        input = allData[i];
+        if (input == '') {
+            document.getElementById(`required${i}`).innerText += "This field is required";
+            validation = false;
+        }
     }
-    if (desc == '') {
-        document.getElementById(`required1`).classList.remove('d-none');
-        validation = false;
-    }
-    if (category = 0) {
-        document.getElementById(`required2`).classList.remove('d-none');
-        validation = false;
-    }
-
-
-
-
-    // document.getElementById(`required0`).classList.remove('d-none');
-    // document.getElementById(`required0`).classList.remove('d-none');
-    // document.getElementById(`required0`).classList.remove('d-none');
 
     return validation;
 }
 
 
 
-function resetValidation() {
+function resetCheckRequired() {
 
-    for (let i = 0; i < 3; i++) {
-        let text = document.getElementById(`required${i}`);
-        text.classList.add('d-none');
+    for (let i = 0; i < 5; i++) {
+        let required = document.getElementById(`required${i}`);
+        required.innerText = '';
     }
 }
