@@ -173,8 +173,8 @@ h2 {
     top: 0;
     left: 0;
     width: 100px;
-    margin-left: 32px;
-    margin-top: 32px;
+    padding-left: 60px;
+    padding-top: 80px;
 }
 
 .join-warning-section h1 {
