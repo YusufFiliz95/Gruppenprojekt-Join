@@ -17,56 +17,11 @@
     <link rel="stylesheet" href="styles/fonts.css">
 </head>
 
-<!--<div w3-include-html="includes/header.html"></div>-->
-<!--TODO: 
--->
-
 <body onload="init()">
-    <div class="white-background"></div>
-    <div class="login-section">
-        <div class="login-header">
-            <img src="img/join_logo.svg" alt="" class="join-logo">
-            <div class="sign-up-header" id="signupheader">
-                <span>Not a Join user?</span>
-                <button onclick="singUpForm()">Sign up</button>
-            </div>
-        </div>
-        <div class="log-in-main">
-            <div class="log-in" id="login">
-                <span class="log-in-title">Log in</span>
-                <div class="log-in-border"></div>
-                <div class="input-field email">
-                    <input type="email" placeholder="Email" required>
-                    <img src="img/email_logo.svg" alt="">
-                </div>
-                <div class="input-field">
-                    <input type="password" placeholder="Password" id="inputpassword" oninput="showLock()" required>
-                    <div class="password-lock" id="passwordlock">
-                        <img id="lock" src="img/lock_logo.svg" alt="">
-                    </div>
-                </div>
-                <div class="options">
-                    <div class="remember-me-option">
-                        <input type="checkbox" id="myCheckbox" name="myCheckbox" value="on" class="checkbox">
-                        <span>Remember me</span>
-                    </div>
-                    <div class="forgot-pw-option">
-                        <a href="#">Forgot my password</a>
-                    </div>
-                </div>
-                <div class="log-in-buttons">
-                    <button class="dark-btn log-in-btn">Log in</button>
-                    <button class="transparent-btn guest-log-in-btn">Guest Log in</button>
-                </div>
-            </div>
-        </div>
-        <div class="sign-up-bottom-section" id="signupbottomsection">
-            <div class="sign-up-bottom">
-                <span>Not a Join user?</span>
-                <button onclick="singUpForm()">Sign up</button>
-            </div>
-        </div>
+    <div class="white-background">
+        <img src="img/join_logo.svg" alt="">
+        <h1>Welcome to our group project</h1>
+        <h1>Join</h1>
     </div>
 </body>
-
 </html>
