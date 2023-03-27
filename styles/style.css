@@ -213,8 +213,8 @@ h2 {
     width: 700px;
     height: fit-content;
     background-color: rgb(255, 255, 255);
-    -webkit-box-shadow: 0px 0px 12px 1px rgba(59, 59, 59, 0.2);
-    box-shadow: 0px 0px 12px 1px rgba(59, 59, 59, 0.2);
+    -webkit-box-shadow: 0px 0px 12px 1px rgba(119, 119, 119, 0.2);
+    box-shadow: 0px 0px 12px 1px rgba(119, 119, 119, 0.2);
     border-radius: 32px;
     padding: 32px;
 }
