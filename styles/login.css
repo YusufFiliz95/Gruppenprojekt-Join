@@ -272,7 +272,7 @@ input:focus {
 }
 
 .animate-white-background {
-    animation: hideBackground 1.5s 0.2s forwards;
+    animation: hideBackground 0.8s 0.2s forwards;
 }
 
 @keyframes fromCenterToCurrentPosition {
@@ -623,7 +623,7 @@ input:focus {
     }
 
     .animate-white-background {
-        animation: hideBackground 1.5s 0.2s forwards;
+        animation: hideBackground 0.8s 0.2s forwards;
     }
     
 
