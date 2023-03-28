@@ -148,14 +148,26 @@ function resetCheckbox() {
 function renderInicialsCircles() {
     let colorContainer = document.getElementById('inicial-circles');
     colorContainer.innerHTML = '';
-
-    for (let i = 0; i < selectedContacts.length; i++) {
-        id = selectedContacts[i] - 1;
-        colorContainer.innerHTML += /*html*/`
-        <div class="color-circle-contact" style="background-color: ${'' + contacts[id]['profilecolor']}">${contacts[id]['Initials']}</div>`
+    for (let y = 0; y < selectedContacts.length; y++) { /* checks if the id still exists */
+        for (let z = 0; z < contacts.length; z++) {
+            let indexOfContact = contacts[z].contactid.indexOf(selectedContacts[y]); /* if the id does not exist then -1 will be return */
+            if (indexOfContact >= 0) {
+                colorContainer.innerHTML += /*html*/`
+                <div class="color-circle-contact" style="background-color: ${'' + contacts[z].profilecolor}">${contacts[z].Initials}</div>`
+            }
+        }
     }
 }
 
+
+// let colorContainer = document.getElementById('inicial-circles');
+// colorContainer.innerHTML = '';
+
+// for (let i = 0; i < selectedContacts.length; i++) {
+//     contactColor = contacts[i]['profilecolor'];
+//     colorContainer.innerHTML += /*html*/`
+//     <div class="color-circle-contact" style="background-color: ${'' + contactColor}">${contacts[i]['Initials']}</div>`
+// }
 
 // Prio Buttons
 function addPrio(prioValue) {
@@ -299,7 +311,6 @@ function goToBoard() {
 }
 
 
-
 // Validation
 function checkRequired() {
     let title = document.getElementById('title').value;
@@ -315,12 +326,10 @@ function checkRequired() {
             validation = false;
         }
     }
-
     if (prio == 0) {
         document.getElementById(`required5`).innerText += "A priority button is required";
         validation = false;
-
-        return validation;
     }
+    return validation;
 
 }
