@@ -83,9 +83,9 @@ function addNewCategorytoInput() {
             <div class="color-circle" style="background-color: ${'' + currentColor}"></div>
         </div>
     </div>`
-
-
 }
+
+
 
 
 function addToInput(i) {
