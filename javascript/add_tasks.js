@@ -62,14 +62,31 @@ function renderCategory() {
     for (let i = 0; i < categorys.length; i++) {
         categoryContainer.innerHTML += /*html*/`
         <div class="category">
-            <div class="category-name">
-                <span onclick="addToInput(${i})">${categorys[i]['name']}</span>
+            <div onclick="addToInput(${i}), toggleMenuCategory('toggle-1')" class="category-name">
+                <span >${categorys[i]['name']}</span>
                 <div class="color-circle" style="background-color: ${'' + categorys[i]['color']}"></div>
             </div>
             <img onclick="deleteCategory(${i})"src="./img/black-x.svg" >
         </div>`
     }
 }
+
+function addNewCategorytoInput() {
+    let categoryInput = document.getElementById('category-input-field').value;
+    let selectedCategory = document.getElementById('selected-category');
+    selectedCategory.innerHTML = '';
+
+    selectedCategory.innerHTML += /*html*/`
+    <div class="category">
+        <div class="category-name">
+            <span id="selected-category-name">${categoryInput}</span>
+            <div class="color-circle" style="background-color: ${'' + currentColor}"></div>
+        </div>
+    </div>`
+
+
+}
+
 
 function addToInput(i) {
     let selectedCategory = document.getElementById('selected-category');
@@ -159,15 +176,6 @@ function renderInicialsCircles() {
     }
 }
 
-
-// let colorContainer = document.getElementById('inicial-circles');
-// colorContainer.innerHTML = '';
-
-// for (let i = 0; i < selectedContacts.length; i++) {
-//     contactColor = contacts[i]['profilecolor'];
-//     colorContainer.innerHTML += /*html*/`
-//     <div class="color-circle-contact" style="background-color: ${'' + contactColor}">${contacts[i]['Initials']}</div>`
-// }
 
 // Prio Buttons
 function addPrio(prioValue) {
@@ -259,6 +267,7 @@ function deleteSubtasks(i) {
 
 
 function resetForm() {
+    resetRequired();
     document.getElementById('title').value = '';
     document.getElementById('description').value = '';
     document.getElementById('selected-category').innerHTML = 'Select task category';
@@ -271,6 +280,7 @@ function resetForm() {
 
 
 async function createTask() {
+    resetRequired();
     if (checkRequired() == true) {
         await createTaskIntoJson();
         await saveTaskstoBackend();
@@ -278,9 +288,8 @@ async function createTask() {
         showConfirmationPopup('createtask');
         goToBoard();
     }
-
-
 }
+
 
 async function createTaskIntoJson() {
     let title = document.getElementById('title').value;
@@ -304,6 +313,7 @@ async function createTaskIntoJson() {
     console.log(tasks);
 }
 
+
 function goToBoard() {
     setTimeout(function () {
         window.location.href = "board.html";
@@ -318,7 +328,6 @@ function checkRequired() {
     let dueDate = document.getElementById('due-date').value;
     let allData = [title, desc, selectedCategoryName, selectedContacts, dueDate,]
     let validation = true;
-
     for (let i = 0; i < allData.length; i++) {
         input = allData[i];
         if (input == '') {
@@ -326,10 +335,22 @@ function checkRequired() {
             validation = false;
         }
     }
+    checkprioRequired(validation);
+    return validation;
+}
+
+function checkprioRequired(validation) {
     if (prio == 0) {
         document.getElementById(`required5`).innerText += "A priority button is required";
-        validation = false;
+        return validation = false;
     }
-    return validation;
-
 }
+
+
+function resetRequired() {
+    for (let i = 0; i < 6; i++) {
+        document.getElementById(`required${i}`).innerText = "";
+
+    }
+}
+

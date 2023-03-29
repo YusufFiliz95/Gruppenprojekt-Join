@@ -20,8 +20,6 @@
     <link rel="stylesheet" href="styles/mobile_menu.css">
     <link rel="stylesheet" href="styles/contacts.css">
 
-
-
 </head>
 
 <body onload="init(3), loadAndRenderContacts()">
@@ -60,12 +58,12 @@
                             <div id="add-input" class="add-input">
                                 <div id="currentColor" class="color-circle"></div>
                                 <img onclick="closeInputfield('toggle-menu')" class="x" src="./img/black-x.svg">
-                                <img onclick="addedCategory(), renderCategory(), closeInputfield('toggle-menu')"
+                                <img onclick="addNewCategorytoInput(), addedCategory(), renderCategory(), closeInputfield('toggle-menu')"
                                     src="./img/tick_dark.svg">
                             </div>
                         </div>
                         <div id="toggle-1" class="selection d-none">
-                            <span class="new-category" onclick="openInputfield('toggle-1'), renderCategoryColors()">New
+                            <span class="category" onclick="openInputfield('toggle-1'), renderCategoryColors()">New
                                 Category</span>
                             <div id="category-container"></div>
                         </div>
@@ -195,7 +193,8 @@
                             <p>Cancel</p>
                             <div class="cancel-btn-img"></div>
                         </div>
-                        <div class="dark-btn create-contact-btn" onclick="validateContact()" type="submit">
+                        <div class="dark-btn create-contact-btn"
+                            onclick="validateContact(), closeForm(), renderContacts()" type="submit">
                             <p>Create Contact</p>
                             <img src="img/tick_white.svg" alt="">
                         </div>
