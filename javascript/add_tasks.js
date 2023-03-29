@@ -348,7 +348,7 @@ function checkprioRequired(validation) {
 
 
 function resetRequired() {
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
         document.getElementById(`required${i}`).innerText = "";
 
     }
