@@ -1,3 +1,5 @@
+
+
 function showLock() {
     const passwordInput = document.getElementById('inputpassword');
     const passwordLock = document.getElementById('passwordlock');
@@ -30,8 +32,8 @@ function hidePassword() {
 }
 
 
-function logInAsGuest(){
-    document.getElementById('user').innerHTML = 'Guest';
+async function logInAsGuest(){
+    await backend.setItem('username', 'Guest');
 }
 
 
