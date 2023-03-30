@@ -1,4 +1,3 @@
-
 let currentColor;
 let selectedCategoryColor;
 let selectedCategoryName = '';
@@ -17,11 +16,12 @@ async function loadAndRenderContacts() {
     renderCategory();
 }
 
-// toggle Menu 
 
+// toggle Menu 
 function toggleMenuCategory(id) {
     document.getElementById(id).classList.toggle('d-none');
 }
+
 
 function toggleMenuContacts(id) {
     document.getElementById(id).classList.toggle('d-none');
@@ -36,12 +36,14 @@ function openInputfield(id) {
     document.getElementById('color-container').classList.remove('d-none');
 }
 
+
 function closeInputfield(id) {
     document.getElementById('category-input').classList.add('d-none');
     document.getElementById(id).classList.remove('d-none');
     document.getElementById('color-container').classList.add('d-none');
     document.getElementById('category-input-field').value = '';
 }
+
 
 // category Input
 function addedCategory() {
@@ -71,6 +73,7 @@ function renderCategory() {
     }
 }
 
+
 function addNewCategorytoInput() {
     let categoryInput = document.getElementById('category-input-field').value;
     let selectedCategory = document.getElementById('selected-category');
@@ -84,8 +87,6 @@ function addNewCategorytoInput() {
         </div>
     </div>`
 }
-
-
 
 
 function addToInput(i) {
@@ -102,10 +103,12 @@ function addToInput(i) {
     </div>`
 }
 
+
 function deleteCategory(i) {
     categorys.splice(i, 1);
     renderCategory();
 }
+
 
 function renderCategoryColors() {
     let colorContainer = document.getElementById('color-container');
@@ -118,11 +121,13 @@ function renderCategoryColors() {
     }
 }
 
+
 function addColor(color) {
     document.getElementById('currentColor').innerHTML = '';
     document.getElementById('currentColor').innerHTML += /*html*/ `<div class="color-circle" style="background-color: ${'' + color}"></div>`
     currentColor = color;
 }
+
 
 // Contacts
 function renderContacts() {
@@ -140,6 +145,7 @@ function renderContacts() {
     }
 }
 
+
 function addContactsToArray() {
     selectedContacts = [];
     let checkbox = document.querySelectorAll("input[type = 'checkbox'");
@@ -151,6 +157,7 @@ function addContactsToArray() {
         }
     }
 }
+
 
 function resetCheckbox() {
     selectedContacts = [];
@@ -195,11 +202,13 @@ function addPrio(prioValue) {
     }
 }
 
+
 function selectUrgent() {
     document.getElementById('urgent-btn').classList.add('urgent-aktiv');
     document.getElementById('urgent-image').style.filter = 'brightness(0) invert(1)';
     prio = 1;
 }
+
 
 function selectMedium() {
     document.getElementById('medium-btn').classList.add('medium-aktiv');
@@ -207,11 +216,13 @@ function selectMedium() {
     prio = 2;
 }
 
+
 function selectLow() {
     document.getElementById('low-btn').classList.add('low-aktiv');
     document.getElementById('low-image').style.filter = 'brightness(0) invert(1)';
     prio = 3;
 }
+
 
 function resetPrio() {
     document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
@@ -339,6 +350,7 @@ function checkRequired() {
     return validation;
 }
 
+
 function checkprioRequired(validation) {
     if (prio == 0) {
         document.getElementById(`required5`).innerText += "A priority button is required";
@@ -348,7 +360,7 @@ function checkprioRequired(validation) {
 
 
 function resetRequired() {
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i <= 5; i++) {
         document.getElementById(`required${i}`).innerText = "";
 
     }

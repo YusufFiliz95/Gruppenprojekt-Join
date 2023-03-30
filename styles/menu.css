@@ -21,6 +21,7 @@
     background: rgb(255, 255, 255);
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
     font-size: 21px;
+    z-index: 1;
 }
 
 .headline-logo {
