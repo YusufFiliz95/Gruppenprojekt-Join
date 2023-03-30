@@ -28,3 +28,8 @@ function hidePassword() {
         <div class="hide-password" onclick="showPassword()" id="showpassword"></div>
     `;
 }
+
+
+function logInAsGuest(){
+
+}

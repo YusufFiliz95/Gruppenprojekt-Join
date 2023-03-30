@@ -25,7 +25,7 @@ function singUpForm() {
         </div>
     </div>
     </form>
-    <button class="dark-btn sign-up-btn">Sign up</button>
+    <button class="dark-btn sign-up-btn" onclick="signUp()">Sign up</button>
     `;
 }
 
@@ -63,4 +63,8 @@ function goBackToLogIn(){
             </div>
         </div>
     `;
+}
+
+function signUp(){
+    
 }
