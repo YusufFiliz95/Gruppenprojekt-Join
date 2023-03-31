@@ -419,7 +419,7 @@ async function validateEditContact() {
         contact.email = emailValue;
         contact.phonenumber = phoneValue;
         showConfirmationPopup('editcontact');
-        await saveContactstoBackend();
+        await saveContactstoBackend(contacts);
         closeEditContactForm();
         loadContacts();
         showContactInfo(i);

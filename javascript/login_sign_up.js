@@ -154,8 +154,6 @@ function singUpForm() {
     <span id="passwordError" class="error-message" style="display:none;"></span>
     
     <button class="dark-btn sign-up-btn" type="submit" onclick="validateSignUpForm(event)">Sign up</button>
-
-
     `;
 }
 
