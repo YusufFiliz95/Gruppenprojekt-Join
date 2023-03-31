@@ -2,9 +2,15 @@ let selectedMenu;
 let tasks = [];
 let contacts = [];
 let user = [];
-let password = [];
 let categorys = [];
 let highestUsedId = [];
+let users = [
+    {
+        'name': 'User Uuser',
+        'email': 'user@test.com',
+        'password': 'test123'
+    }
+];
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
