@@ -2,6 +2,7 @@ let selectedMenu;
 let tasks = [];
 let contacts = [];
 let user = [];
+let password = [];
 let categorys = [];
 let highestUsedId = [];
 
