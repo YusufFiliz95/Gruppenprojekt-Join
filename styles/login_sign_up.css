@@ -260,6 +260,17 @@ input:focus {
     align-items: center;
 }
 
+.error-message-sign-up {
+    width: 70%;
+}
+
+.error-message-sign-up label {
+    font-size: 10px;
+    color: red;
+    margin-top: -28px;
+    margin-left: 6px;
+}
+
 /**********************************************************************/
 
 /*LOGO ANIMATION*/

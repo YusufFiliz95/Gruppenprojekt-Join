@@ -1,5 +1,10 @@
 
 
+function focusInputField(container) {
+    const input = container.querySelector('input');
+    input.focus();
+}
+
 /*********************************LOG IN*********************************/
 function showLoginLock() {
     const passwordInput = document.getElementById('loginpassword');
@@ -38,36 +43,7 @@ async function logInAsGuest() {
 /*********************************************************************************************************************/
 
 /*********************************SIGN UP*********************************/
-function showSignUpLock() {
-    const passwordInput = document.getElementById('signuppassword');
-    const passwordLock = document.getElementById('signuppasswordlock');
 
-    if (passwordInput.value === '') {
-        passwordLock.innerHTML = /*html*/ `
-            <img id="lock" src="img/lock_logo.svg" alt="">
-        `;
-    } else {
-        passwordLock.innerHTML = /*html*/ `
-            <div class="hide-password" onclick="showSignUpPassword()" id="showpassword"></div>
-        `;
-    }
-}
-
-function showSignUpPassword() {
-    const passwordInput = document.getElementById('signuppassword');
-    passwordInput.type = 'text';
-    document.getElementById('signuppasswordlock').innerHTML = /*html*/ `
-        <div class="show-password" onclick="hideSignUpPassword()" id="showpassword"></div>
-    `;
-}
-
-function hideSignUpPassword() {
-    const passwordInput = document.getElementById('signuppassword');
-    passwordInput.type = 'password';
-    document.getElementById('signuppasswordlock').innerHTML = /*html*/ `
-        <div class="hide-password" onclick="showSignUpPassword()" id="showpassword"></div>
-    `;
-}
 
 function showSignUpErrorMessage(id, message) {
     const errorLabel = document.getElementById(id);
@@ -81,7 +57,7 @@ function hideSignUpErrorMessage(id) {
 }
 
 
-function validateSignUpForm(event) {
+function validateSignUpForm() {
     const nameValue = document.getElementById('signupname').value;
     const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
 
@@ -89,7 +65,7 @@ function validateSignUpForm(event) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const passwordValue = document.getElementById('signuppassword').value;
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d\w\W]{8,64}$/; // Adjust the regex according to the desired password format.
+    const passwordRegex = /^(?=.*\d)[a-zA-Z0-9]{8,64}$/;
 
     let isValid = true;
 
@@ -108,19 +84,48 @@ function validateSignUpForm(event) {
     }
 
     if (!passwordRegex.test(passwordValue)) {
-        showSignUpErrorMessage('passwordError', 'Please enter a valid password (at least 8 characters, including at least 1 uppercase letter, 1 lowercase letter, and 1 number).');
+        showSignUpErrorMessage('passwordError', 'Please enter a valid password (at least 8 characters and 1 number).');
         isValid = false;
     } else {
         hideSignUpErrorMessage('passwordError');
     }
 
-    if (!isValid) {
-        event.preventDefault();
-    } else {
+    if (isValid) {
         signUp();
+    }
+
+}
+
+function showSignUpLock() {
+    const passwordInput = document.getElementById('signuppassword');
+    const passwordLock = document.getElementById('signuppasswordlock');
+
+    if (passwordInput.value === '') {
+        passwordLock.innerHTML = /*html*/ `
+            <img id="lock" src="img/lock_logo.svg" alt="">
+        `;
+    } else {
+        passwordLock.innerHTML = /*html*/ `
+            <div class="hide-password" onclick="showSignUpPassword()" id="showsignuppassword"></div>
+        `;
     }
 }
 
+function showSignUpPassword() {
+    const passwordInput = document.getElementById('signuppassword');
+    passwordInput.type = 'text';
+    document.getElementById('signuppasswordlock').innerHTML = /*html*/ `
+        <div class="show-password" onclick="hideSignUpPassword()" id="showsignuppassword"></div>
+    `;
+}
+
+function hideSignUpPassword() {
+    const passwordInput = document.getElementById('signuppassword');
+    passwordInput.type = 'password';
+    document.getElementById('signuppasswordlock').innerHTML = /*html*/ `
+        <div class="hide-password" onclick="showSignUpPassword()" id="showsignuppassword"></div>
+    `;
+}
 
 function singUpForm() {
     document.getElementById('login').innerHTML = '';
@@ -133,25 +138,29 @@ function singUpForm() {
     </div>
     <h1 class="sign-up-title">Sign Up</h1>
     <div class="log-in-border"></div>
-    <div class="input-field user user-margin-top">
+    <div class="input-field user user-margin-top" onclick="focusInputField(this)">
         <input type="text" placeholder="Name" id="signupname">
         <img src="img/user.svg" alt="" class="user-img">
     </div>
-    <span id="nameError" class="error-message" style="display:none;"></span>
-    
-    <div class="input-field user">
+    <div class="error-message-sign-up">
+        <label id="nameError" style="display:none;"></label>
+    </div>
+    <div class="input-field user" onclick="focusInputField(this)">
         <input type="email" placeholder="Email" id="signupemail">
         <img src="img/email_logo.svg" alt="">
     </div>
-    <span id="emailError" class="error-message" style="display:none;"></span>
-    
-    <div class="input-field user">
-        <input type="password" placeholder="Password" id="signuppassword">
+    <div class="error-message-sign-up">
+        <label id="emailError" style="display:none;"></label>
+    </div>
+    <div class="input-field user" onclick="focusInputField(this)">
+        <input type="password" placeholder="Password" id="signuppassword" oninput="showSignUpLock()">
         <div class="password-lock" id="signuppasswordlock">
                 <img id="lock" src="img/lock_logo.svg" alt="">
         </div>
     </div>
-    <span id="passwordError" class="error-message" style="display:none;"></span>
+    <div class="error-message-sign-up">
+        <label id="passwordError" style="display:none;"></label>
+    </div>
     
     <button class="dark-btn sign-up-btn" type="submit" onclick="validateSignUpForm(event)">Sign up</button>
     `;
@@ -171,11 +180,11 @@ function goBackToLogIn() {
     document.getElementById('login').innerHTML = /*html*/ `
                     <span class="log-in-title">Log in</span>
                 <div class="log-in-border"></div>
-                <div class="input-field email">
+                <div class="input-field email" onclick="focusInputField(this)">
                     <input type="email" placeholder="Email">
                     <img src="img/email_logo.svg" alt="">
                 </div>
-                <div class="input-field">
+                <div class="input-field" onclick="focusInputField(this)">
                     <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()" required>
                     <div class="password-lock" id="loginpasswordlock">
                         <img id="lock" src="img/lock_logo.svg" alt="">
@@ -192,14 +201,14 @@ function goBackToLogIn() {
                 </div>
                 <div class="log-in-buttons">
                     <button class="dark-btn log-in-btn">Log in</button>
-                    <button class="transparent-btn guest-log-in-btn">Guest Log in</button>
+                    <button class="transparent-btn guest-log-in-btn" onclick="location.href = 'summary.html'">Guest Log in</button>
                 </div>
             </div>
         </div>
     `;
 }
 
-function signUp() {
+async function signUp() {
     const signUpName = document.getElementById('signupname').value;
     const signUpEmail = document.getElementById('signupemail').value;
     const signUpPassword = document.getElementById('signuppassword').value;
@@ -209,24 +218,18 @@ function signUp() {
         return;
     }
 
-    // Check if email is already registered
-    for (let user of users) {
-        if (user.email === signUpEmail) {
-            alert('This email is already registered.');
-            return;
-        }
-    }
-
     // Save user data in the array
-    const user = {
+    await loadSignedInUserfromBackend();
+    const newUser = {
         name: signUpName,
         email: signUpEmail,
-        password: signUpPassword, // Caution! Saving passwords in plain text is insecure. Use a secure hashing library before saving passwords.
+        password: signUpPassword
     };
 
-    users.push(user);
-    alert('Registration successful!');
-    // Perform redirection or actions after successful registration
+    users.push(newUser);        
+    await saveSignedInUserToBackend();
+    await loadSignedInUserfromBackend();
+
 }
 
 

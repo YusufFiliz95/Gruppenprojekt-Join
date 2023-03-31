@@ -9,10 +9,11 @@
     <!--Favicon-->
     <link rel="icon" type="img/png" href="img/join_logo.svg">
     <script src="javascript/script.js"></script>
+    <script src="javascript/mini_backend.js"></script>
     <script src="javascript/summary.js"></script>
     <script src="javascript/login_sign_up.js"></script>
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="styles/login.css">
+    <link rel="stylesheet" href="styles/login_sign_up.css">
     <link rel="stylesheet" href="styles/fonts.css">
 </head>
 
@@ -30,11 +31,11 @@
             <div class="log-in" id="login">
                 <span class="log-in-title">Log in</span>
                 <div class="log-in-border"></div>
-                <div class="input-field email">
+                <div class="input-field email" onclick="focusInputField(this)">
                     <input type="email" placeholder="Email" required>
                     <img src="img/email_logo.svg" alt="">
                 </div>
-                <div class="input-field">
+                <div class="input-field" onclick="focusInputField(this)">
                     <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()" required>
                     <div class="password-lock" id="loginpasswordlock">
                         <img id="lock" src="img/lock_logo.svg" alt="">

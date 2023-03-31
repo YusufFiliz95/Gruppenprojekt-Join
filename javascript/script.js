@@ -33,7 +33,7 @@ async function loadTasksfromBackend() {
 }
 
 
-// FUNCTIONS TO SAVE AND LOAD Contacts TO/FROM BACKEND
+// FUNCTIONS TO SAVE AND LOAD CONTACTS TO/FROM BACKEND
 
 async function saveContactstoBackend() {
     await backend.setItem('contacts', JSON.stringify(contacts));
@@ -51,6 +51,18 @@ async function loadContactsfromBackend() {
         }
     }
     console.log('Loaded contacts:', contacts);
+}
+
+// FUNCTIONS TO SAVE AND LOAD USER TO/FROM BACKEND
+
+async function saveSignedInUserToBackend() {
+    await backend.setItem('users', JSON.stringify(users));
+}
+
+async function loadSignedInUserfromBackend() {
+    await downloadFromServer();
+    users = JSON.parse(backend.getItem('users')) || [];
+    console.log('Loaded users:', users);
 }
 
 // FUNCTIONS TO SAVE AND LOAD Categorys TO/FROM BACKEND
