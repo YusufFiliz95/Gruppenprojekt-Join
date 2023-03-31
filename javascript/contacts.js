@@ -211,7 +211,6 @@ function newContact() {
 
 //***********************************FUNCTION FOR CREATING NEW CONTACT AND ADD IT TO THE ARRAY THAT IS SHOWN IN THE LIST AFTER THAT***********************************//
 async function createNewContact() {
-    const colors = ['#e04f3f', '#29b6f6', '#ffb900', '#8bc34a', '#7e57c2', '#ff5722'];
     const newContactNameInput = document.getElementById('newContactName');
     const newContactEmailInput = document.getElementById('newContactEmail');
     const newContactPhoneInput = document.getElementById('newContactPhone');
@@ -223,11 +222,14 @@ async function createNewContact() {
         await loadContactsfromBackend();
         const [name, surname] = newContactNameInput.value.split(' '); // Split the name into first and last name.
         const lastContactId = getNextContactId();
+        const usedColors = contacts.map(contact => contact.profilecolor);
+        const availableColors = ['#343a40', '#dc3545', '#007bff', '#28a745', '#6c757d', '#ffc107', '#7952b3', '#17a2b8', '#6f42c1'].filter(color => !usedColors.includes(color));
+        const profileColor = availableColors[Math.floor(Math.random() * availableColors.length)];
         const newContact = {
             'name': name,
             'surname': surname,
             'email': newContactEmailInput.value,
-            'profilecolor': colors[Math.floor(Math.random() * colors.length)],
+            'profilecolor': profileColor,
             'Initials': name[0].toUpperCase() + surname[0].toUpperCase(),
             'phonenumber': newContactPhoneInput.value,
             'contactid': lastContactId
@@ -244,6 +246,7 @@ async function createNewContact() {
         closeForm();
     }
 }
+
 
 
 
@@ -496,5 +499,3 @@ function closeDeletePopup() {
         deleteNotification.classList.add('d-none');
     }, 300);
 }
-
-//TODO: FALLS DIE E-MAIL-ADRESSE IN DER KONTAKTLISTE ZU LANG IST, MUSS DIE LÄNGE AM ENDE GEKÜRZT WERDEN MIT "...". ZUM BEISPIEL "max.mustermann@hotma..."

@@ -50,6 +50,7 @@ async function loadContactsfromBackend() {
             highestUsedId = contactIdNumber;
         }
     }
+    console.log('Loaded contacts:', contacts);
 }
 
 // FUNCTIONS TO SAVE AND LOAD Categorys TO/FROM BACKEND
