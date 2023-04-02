@@ -58,6 +58,7 @@ function slideOutTaskOverviewDialogBoard() {
 function renderAddTaskDialog() {
     document.getElementById('add-task-contentId').innerHTML = templateAddTaskDialog();
     renderContacts();
+    renderCategory();
 }
 
 function renderEditTaskDialog(i) {
@@ -99,6 +100,7 @@ function slideOutDeleteTaskPopup() {
 async function loadAllDataForTheBord() {
     await loadTasksfromBackend();
     await loadContactsfromBackend();
+    await loadCategorysfromBackend();
     renderCardsIntoTheBoards();
 }
 
