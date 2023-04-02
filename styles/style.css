@@ -142,6 +142,7 @@ h2 {
     position: fixed;
     bottom: -80px;
     left: 50%;
+    transform: translateX(-50%);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,11 +154,11 @@ h2 {
     font-weight: 300;
     font-size: 21px;
     transition: bottom 0.3s ease-in-out;
-}
-
-.confirmation-popup.show {
+    }
+    
+    .confirmation-popup.show {
     bottom: 120px;
-}
+    }
 
 /********************************WARNING SECTION********************************/
 

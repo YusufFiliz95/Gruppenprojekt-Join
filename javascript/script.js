@@ -149,8 +149,9 @@ function showConfirmationPopup(actionType) {
                 confirmationText = '<p>Task successfully deleted</p>';
                 break;
             case 'signup':
-                confirmationText = '<p>Congratulations, you have successfully signed up!</p>';
+                confirmationText = '<p>Sign up successful!</p>';
                 break;
+            // in case you need more text, just copy the case till break and change it to your style
         }
         document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
         setTimeout(() => {
@@ -158,4 +159,12 @@ function showConfirmationPopup(actionType) {
         }, 1500);
     }
 }
-//Füge diese Funktion zu deiner Funktion hinzu, in der der Task erstellt wird: showConfirmationPopup('createtask');
+/**First, add this element to your html file, where the popup should show:
+ * 
+ *     <div class="confirmation-popup">
+        <p id="confirmationpopuptext"></p>
+    </div>
+ * 
+ */
+
+//Whenever you need to show this popup, use this function: showConfirmationPopup('createtask');

@@ -160,8 +160,11 @@ async function signUp() {
     contacts.push(newContact);
     await saveContactstoBackend(contacts);
     await loadContacts();
+    document.getElementById('signupname').value = '';
+    document.getElementById('signupemail').value = '';
+    document.getElementById('signuppassword').value = '';
     showConfirmationPopup('signup');
-    goBackToLogIn();
+    setTimeout(goBackToLogIn, 1500);
 }
 
 function showSignUpErrorMessage(id, message) {
