@@ -352,12 +352,6 @@ function resetRequired() {
     }
 }
 
-function renderAddContactsOverlay() {
-    overlay = document.getElementById('add-contacts-in-tasks');
-
-    overlay.innerHTML += greateHtmlRenderAddContactsOverlay();
-}
-
 
 let input = document.getElementById("subtask-input");
 console.log(input);
@@ -367,4 +361,6 @@ input.addEventListener("keypress", function (event) {
         document.getElementById("enter-button").click();
     }
 });
+
+
 
