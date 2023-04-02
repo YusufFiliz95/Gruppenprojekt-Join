@@ -5,10 +5,14 @@ async function loadContacts() {
     await loadContactsfromBackend();
     const sortedContacts = contacts.sort((a, b) => a.name.localeCompare(b.name));
     const contactListDiv = document.getElementById('contactlist');
+
+    if (!contactListDiv) {
+        return; // Exit the function if the contactListDiv element is not found
+    }
+
     contactListDiv.innerHTML = '';
-    // Initialize the usedIds Set with the contact IDs
     usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
-    // If the contacts array, is empty a message will shown to add a contact
+
     if (contacts.length === 0) {
         document.getElementById('newcontactbtn').classList.add('d-none');
         contactListDiv.innerHTML = /*html*/`
@@ -26,17 +30,14 @@ async function loadContacts() {
         let currentChar = '';
         for (let i = 0; i < sortedContacts.length; i++) {
             const list = sortedContacts[i];
-            // Check if the first character of the name is different from the previous contact
             if (list.name.charAt(0) != currentChar) {
                 currentChar = list.name.charAt(0);
-                // Add the contact-char div only if an element with the same ID does not exist
                 if (!document.getElementById(`char-${currentChar.toUpperCase()}`)) {
                     contactListDiv.innerHTML += /*html*/ `
                     <div class="contact-char" id="char-${currentChar.toUpperCase()}"><p>${currentChar.toUpperCase()}</p></div>
                 `;
                 }
             }
-            // Render the contact
             contactListDiv.innerHTML += /*html*/ `
             <div class="contacts" onclick="showContactInfo(${i})" id="${list.contactid}">
                 <div class="contact-initials" style="background-color: ${list.profilecolor}">
@@ -55,6 +56,7 @@ async function loadContacts() {
         }
     }
 }
+
 
 function maxEmailChar(email, maxLength = 28) {
     if (email.length <= maxLength) {
@@ -246,9 +248,6 @@ async function createNewContact() {
         closeForm();
     }
 }
-
-
-
 
 // Function to get the next available contact ID
 function getNextContactId() {

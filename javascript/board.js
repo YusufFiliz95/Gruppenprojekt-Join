@@ -18,9 +18,10 @@ function closeAddTaskDialogBord() {
     addTaskWindow = document.getElementById('add-task-bordId');
     addTaskWindow.classList.add('slide-in-right-add-task');
     addTaskWindow.classList.remove('slide-out-right-add-task');
-    if (selectedMenu == 2) renderCardsIntoTheBoards();
     deleteAddTaskDialog();
     clearInputSearchingByResize();
+    prio = 0;
+    selectedContacts = [];
 }
 
 function slideOutAddTaskDialogBord() {
@@ -58,6 +59,7 @@ function slideOutTaskOverviewDialogBoard() {
 function renderAddTaskDialog() {
     document.getElementById('add-task-contentId').innerHTML = templateAddTaskDialog();
     renderContacts();
+    renderCategory();
 }
 
 function renderEditTaskDialog(i) {
@@ -99,6 +101,7 @@ function slideOutDeleteTaskPopup() {
 async function loadAllDataForTheBord() {
     await loadTasksfromBackend();
     await loadContactsfromBackend();
+    await loadCategorysfromBackend();
     renderCardsIntoTheBoards();
 }
 

@@ -216,6 +216,11 @@
 
     .taskoverview-editbutton-container {
         right: 25px;
+        width: 100%;
+        position: inherit;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
     }
 
     .taskoverview-editbutton-container img {
@@ -227,7 +232,13 @@
         padding-right: 2.5px;
     }
 
+    .edit-button-content {
+        display: flex;
+    }
+
     .edit-button-ok {
+        margin-left: 15px;
+        margin-top: 0px;
         font-size: 18px;
         width: 63px !important;
         height: 42px !important;

@@ -127,6 +127,7 @@
 }
 
 .task-card-bord {
+    width: calc(100% - 36px);
     display: flex;
     flex-direction: column;
     padding: 18px;
@@ -236,6 +237,14 @@
     justify-content: center;
 }
 
+.add-task-content p {
+    margin: 0;
+    margin-top: -5px;
+    padding-left: 10px;
+    margin-bottom: 2px;
+    font-size: 12px;
+    height: 12px;
+}
 
 .slide-in-right-add-task {
     animation-name: slideInRightAddTask;
@@ -279,7 +288,7 @@
 }
 
 .task-overview-bord {
-    width: 623px;
+    width: 670px;
     height: 90%;
     position: relative;
 
@@ -464,7 +473,7 @@
 }
 
 .edit-button-ok {
-    margin-left: 15px;
+    margin-top: 15px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -489,9 +498,7 @@
     height: 62px !important;
 }
 
-.edit-button-content {
-    display: flex;
-}
+.edit-button-content {}
 
 .edit-button-trash img {
     height: 32px;
@@ -527,11 +534,20 @@
     align-items: center;
 }
 
+.edit-task-container p {
+    margin: 0;
+    margin-top: -5px;
+    margin-bottom: 2px;
+    padding-left: 10px;
+    font-size: 12px;
+    height: 12px;
+}
+
 .add-task-headline {
     width: 400px;
     display: flex;
     justify-content: flex-start;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 }
 
 .delete-task-popup {
@@ -617,5 +633,3 @@
 .overlay-shadow {
     background-color: rgba(0, 0, 0, 0.3) !important;
 }
-
-

@@ -11,6 +11,8 @@ function fillInputsByEditTask(i) {
     setPrioButtonByEditTask(i);
     renderContacts();
     setCheckboxesByEditTask(i);
+    addContactsToArray();
+    renderInicialsCircles();
     document.getElementById('status').innerHTML = status;
 }
 
@@ -49,11 +51,14 @@ function changeStatusByEditTask(status) {
 }
 
 async function saveEditTask(i) {
-    /* here comes the popup from bottom */
-    await saveTask(i);
-    await saveTaskstoBackend();
-    showConfirmationPopup("edittask");
-    slideOutTaskOverviewDialogBoard();
+    resetRequiredOnEditTask();
+    if (checkRequiredOnEditTask() == true) {
+        /* here comes the popup from bottom */
+        await saveTask(i);
+        await saveTaskstoBackend();
+        showConfirmationPopup("edittask");
+        slideOutTaskOverviewDialogBoard();
+    }
 }
 
 
@@ -99,3 +104,47 @@ async function deleteTask(i) {
     slideOutDeleteTaskPopup();
     slideOutTaskOverviewDialogBoard();
 }
+
+// Validation
+function checkRequiredOnEditTask() {
+    let title = document.getElementById('title').value;
+    let desc = document.getElementById('description').value;
+    let dueDate = document.getElementById('due-date').value;
+    let allData = [title, desc, selectedContacts, dueDate,]
+    let validation = true;
+    for (let i = 0; i < allData.length; i++) {
+        input = allData[i];
+        if (input == '') {
+            document.getElementById(`required${i}`).innerText += "This field is required";
+            validation = false;
+        }
+    }
+    checkprioRequiredOnEditTask(validation);
+    return validation;
+}
+
+function checkprioRequiredOnEditTask(validation) {
+    if (prio == 0) {
+        document.getElementById(`required4`).innerText += "A priority button is required";
+        return validation = false;
+    }
+}
+
+function resetRequiredOnEditTask() {
+    for (let i = 0; i <= 4; i++) {
+        document.getElementById(`required${i}`).innerText = "";
+    }
+}
+
+async function createTaskOnBoard() {
+    resetRequired();
+    if (checkRequired() == true) {
+        await createTaskIntoJson();
+        await saveTaskstoBackend();
+        await saveCategorystoBackend();
+        slideOutAddTaskDialogBord()
+        showConfirmationPopup('createtask');
+
+    }
+}
+
