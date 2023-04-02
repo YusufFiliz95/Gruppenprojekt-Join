@@ -10,6 +10,62 @@ async function loadUsers() {
 }
 
 /*********************************LOG IN*********************************/
+function validateLogin() {
+    const emailValue = document.getElementById('loginemail').value;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    const passwordValue = document.getElementById('loginpassword').value;
+    const passwordRegex = /^(?=.*\d)[a-zA-Z0-9]{8,64}$/;
+
+    let isValid = true;
+    if (!emailRegex.test(emailValue)) {
+        loginErrorMessage('emailError', 'Please enter a valid email address.');
+        isValid = false;
+    } else {
+        hideLoginErrorMessage('emailError');
+    }
+
+    if (!passwordRegex.test(passwordValue)) {
+        loginErrorMessage('passwordError', 'Please enter a valid password (at least 8 characters and 1 number).');
+        isValid = false;
+    } else {
+        hideLoginErrorMessage('passwordError');
+    }
+
+    if (isValid) {
+        login();
+    }
+}
+
+function login() {
+    let loginemail = document.getElementById('loginemail');
+    let loginpassword = document.getElementById('loginpassword');
+    let user = users.find(u => u.email == loginemail.value);
+
+    if (user) {
+        if (user.password == loginpassword.value) {
+            window.location.href = 'summary.html';
+        } else {
+            hideLoginErrorMessage('emailError');
+            loginErrorMessage('passwordError', 'Incorrect password. Please try again.');
+        }
+    } else {
+        loginErrorMessage('emailError', 'Email not found. Please check your email address.');
+        hideLoginErrorMessage('passwordError');
+    }
+}
+
+function loginErrorMessage(id, message) {
+    const errorLabel = document.getElementById(id);
+    errorLabel.innerHTML = message;
+    errorLabel.style.display = 'block';
+}
+
+function hideLoginErrorMessage(id) {
+    const errorLabel = document.getElementById(id);
+    errorLabel.style.display = 'none';
+}
+
 function showLoginLock() {
     const passwordInput = document.getElementById('loginpassword');
     const passwordLock = document.getElementById('loginpasswordlock');
@@ -137,7 +193,7 @@ async function signUp() {
         password: signUpPassword
     };
 
-    users.push(newUser);        
+    users.push(newUser);
     await saveSignedInUserToBackend(users);
     await loadSignedInUserfromBackend();
 
@@ -145,7 +201,7 @@ async function signUp() {
     const [name, surname] = signUpName.split(' '); // Split the name into first and last name.
     const lastContactId = getNextContactId();
     const usedColors = contacts.map(contact => contact.profilecolor);
-    const availableColors = ['#343a40', '#dc3545', '#007bff', '#28a745', '#6c757d', '#ffc107', '#7952b3', '#17a2b8', '#6f42c1'].filter(color => !usedColors.includes(color));
+    const availableColors = ['#343a40', '#dc3545', '#007bff', '#28a745', '#6c757d', '#ffc107', '#7952b3', '#17a2b8', '#6f42c1'].filter(color => !usedColors.includes(color) && color !== '#FFFFFF');
     const profileColor = availableColors[Math.floor(Math.random() * availableColors.length)];
     const newContact = {
         'name': name,
@@ -164,7 +220,9 @@ async function signUp() {
     document.getElementById('signupemail').value = '';
     document.getElementById('signuppassword').value = '';
     showConfirmationPopup('signup');
-    setTimeout(goBackToLogIn, 1500);
+    setTimeout(() => {
+        window.location.href = "login_sign_up.html";
+    }, 1500);
 }
 
 function showSignUpErrorMessage(id, message) {
@@ -221,17 +279,25 @@ function goBackToLogIn() {
     document.getElementById('signupheader').classList.remove('d-none');
     document.getElementById('signupbottomsection').classList.remove('d-none');
     document.getElementById('login').innerHTML = /*html*/ `
-                    <span class="log-in-title">Log in</span>
+                <span class="log-in-title">Log in</span>
                 <div class="log-in-border"></div>
-                <div class="input-field email" onclick="focusInputField(this)">
-                    <input type="email" placeholder="Email">
-                    <img src="img/email_logo.svg" alt="">
-                </div>
-                <div class="input-field" onclick="focusInputField(this)">
-                    <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()" required>
-                    <div class="password-lock" id="loginpasswordlock">
-                        <img id="lock" src="img/lock_logo.svg" alt="">
+                <div class="login-form">
+                    <div class="input-field login-email" onclick="focusInputField(this)">
+                        <input type="email" placeholder="Email" id="loginemail" required>
+                        <img src="img/email_logo.svg" alt="">
                     </div>
+                    <div class="error-message-login">
+                        <label for="loginemail" id="emailError" style="display:none;"></label>
+                    </div>
+                    <div class="input-field login-password" onclick="focusInputField(this)">
+                        <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()" required>
+                        <div class="password-lock" id="loginpasswordlock">
+                            <img id="lock" src="img/lock_logo.svg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="error-message-login-password">
+                    <label for="loginpassword" id="passwordError" style="display:none;"></label>
                 </div>
                 <div class="options">
                     <div class="remember-me-option">
@@ -243,11 +309,8 @@ function goBackToLogIn() {
                     </div>
                 </div>
                 <div class="log-in-buttons">
-                    <button class="dark-btn log-in-btn">Log in</button>
-                    <button class="transparent-btn guest-log-in-btn" onclick="location.href = 'summary.html'">Guest Log in</button>
-                </div>
-            </div>
-        </div>
+                    <button class="dark-btn log-in-btn" onclick="validateLogin()">Log in</button>
+                    <button class="transparent-btn guest-log-in-btn" onclick="window.location.href='summary.html'" onclick="logInAsGuest()">Guest Log in</button>
     `;
 }
 
