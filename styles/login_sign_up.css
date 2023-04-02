@@ -303,7 +303,7 @@ input:focus {
 .error-message-login label {
     font-size: 10px;
     color: red;
-    margin-top: -19px;
+    margin-top: -18px;
     margin-left: 10px;
 }
 
@@ -314,7 +314,7 @@ input:focus {
 .error-message-login-password label {
     font-size: 10px;
     color: red;
-    margin-top: -18px;
+    margin-top: -17px;
     margin-left: 10px;
 }
 

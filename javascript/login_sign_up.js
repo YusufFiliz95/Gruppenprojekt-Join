@@ -289,7 +289,8 @@ function goBackToLogIn() {
                         <label for="loginemail" id="emailError" style="display:none;"></label>
                     </div>
                     <div class="input-field login-password" onclick="focusInputField(this)">
-                        <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()" required>
+                        <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()"
+                            required>
                         <div class="password-lock" id="loginpasswordlock">
                             <img id="lock" src="img/lock_logo.svg" alt="">
                         </div>
@@ -303,13 +304,15 @@ function goBackToLogIn() {
                         <input type="checkbox" id="myCheckbox" name="myCheckbox" value="on" class="checkbox">
                         <span>Remember me</span>
                     </div>
-                    <div class="forgot-pw-option">
+                    <div class="forgot-pw-option" onclick="forgotMyPw()">
                         <a href="#">Forgot my password</a>
                     </div>
                 </div>
                 <div class="log-in-buttons">
                     <button class="dark-btn log-in-btn" onclick="validateLogin()">Log in</button>
-                    <button class="transparent-btn guest-log-in-btn" onclick="window.location.href='summary.html'" onclick="logInAsGuest()">Guest Log in</button>
+                    <button class="transparent-btn guest-log-in-btn" onclick="window.location.href='summary.html'"
+                        onclick="logInAsGuest()">Guest Log in</button>
+                </div>
     `;
 }
 
