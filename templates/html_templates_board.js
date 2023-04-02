@@ -224,10 +224,6 @@ function templateAddTaskDialog() {
                         </div>
                         <div id="toggle-2" class="selection d-none">
                             <div id="contact-container"></div>
-                            <div onclick="newContact()" class="contact">
-                                <span>Invite new contact</span>
-                                <img src="./img/contact_dark.svg">
-                            </div>
                         </div>
                     </div>
                     <div class="color-container-contact" id="inicial-circles"></div>

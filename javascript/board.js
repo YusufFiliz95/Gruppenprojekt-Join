@@ -18,9 +18,10 @@ function closeAddTaskDialogBord() {
     addTaskWindow = document.getElementById('add-task-bordId');
     addTaskWindow.classList.add('slide-in-right-add-task');
     addTaskWindow.classList.remove('slide-out-right-add-task');
-    if (selectedMenu == 2) renderCardsIntoTheBoards();
     deleteAddTaskDialog();
     clearInputSearchingByResize();
+    prio = 0;
+    selectedContacts = [];
 }
 
 function slideOutAddTaskDialogBord() {
