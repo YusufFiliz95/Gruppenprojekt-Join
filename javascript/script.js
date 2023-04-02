@@ -4,13 +4,7 @@ let contacts = [];
 let user = [];
 let categorys = [];
 let highestUsedId = [];
-let users = [
-    {
-        'name': 'User Uuser',
-        'email': 'user@test.com',
-        'password': 'test123'
-    }
-];
+let users = [];
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
 async function init(i) {
@@ -153,6 +147,9 @@ function showConfirmationPopup(actionType) {
                 break;
             case 'deletetask':
                 confirmationText = '<p>Task successfully deleted</p>';
+                break;
+            case 'signup':
+                confirmationText = '<p>Congratulations, you have successfully signed up!</p>';
                 break;
         }
         document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
