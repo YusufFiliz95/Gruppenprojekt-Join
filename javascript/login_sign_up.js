@@ -1,5 +1,3 @@
-
-
 function focusInputField(container) {
     const input = container.querySelector('input');
     input.focus();
@@ -7,6 +5,8 @@ function focusInputField(container) {
 
 async function loadUsers() {
     await loadSignedInUserfromBackend();
+    await loadContacts();
+    usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
 }
 
 /*********************************LOG IN*********************************/
@@ -160,6 +160,8 @@ async function signUp() {
     contacts.push(newContact);
     await saveContactstoBackend(contacts);
     await loadContacts();
+    showConfirmationPopup('signup');
+    goBackToLogIn();
 }
 
 function showSignUpErrorMessage(id, message) {

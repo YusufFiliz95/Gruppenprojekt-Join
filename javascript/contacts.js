@@ -57,7 +57,6 @@ async function loadContacts() {
     }
 }
 
-
 function maxEmailChar(email, maxLength = 28) {
     if (email.length <= maxLength) {
         return email;
