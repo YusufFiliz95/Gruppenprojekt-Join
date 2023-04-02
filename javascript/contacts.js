@@ -224,7 +224,7 @@ async function createNewContact() {
         const [name, surname] = newContactNameInput.value.split(' '); // Split the name into first and last name.
         const lastContactId = getNextContactId();
         const usedColors = contacts.map(contact => contact.profilecolor);
-        const availableColors = ['#343a40', '#dc3545', '#007bff', '#28a745', '#6c757d', '#ffc107', '#7952b3', '#17a2b8', '#6f42c1'].filter(color => !usedColors.includes(color));
+        const availableColors = ['#343a40', '#dc3545', '#007bff', '#28a745', '#6c757d', '#ffc107', '#7952b3', '#17a2b8', '#6f42c1'].filter(color => !usedColors.includes(color) && color !== '#FFFFFF');
         const profileColor = availableColors[Math.floor(Math.random() * availableColors.length)];
         const newContact = {
             'name': name,

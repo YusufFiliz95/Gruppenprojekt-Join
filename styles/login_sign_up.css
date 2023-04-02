@@ -56,10 +56,28 @@
     justify-content: center;
 }
 
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    min-height: 173px;
+}
+
+.login-email {
+    margin-top: 11px;
+}
+
+.login-password {
+    margin-bottom: 19px;
+}
+
+
 .log-in {
     margin-top: 10em;
     width: 600px;
-    height: 480px;
+    height: 485px;
     border-radius: 30px;
     display: flex;
     flex-direction: column;
@@ -85,7 +103,7 @@
     background-color: rgb(41, 171, 226);
     margin-top: 15px;
     margin-bottom: 20px;
-    height: 3px;
+    min-height: 3px;
     width: 130px;
     border-radius: 16px;
 }
@@ -134,7 +152,7 @@ input:focus {
 }
 
 .options {
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
     justify-content: center;
 }
@@ -275,8 +293,29 @@ input:focus {
     margin-top: -28px;
     margin-left: 6px;
 }
-
 /**********************************************************************/
+
+.error-message-login {
+    width: 70%;
+}
+
+.error-message-login label {
+    font-size: 10px;
+    color: red;
+    margin-top: -19px;
+    margin-left: 10px;
+}
+
+.error-message-login-password {
+    width: 70%;
+}
+
+.error-message-login-password label {
+    font-size: 10px;
+    color: red;
+    margin-top: -18px;
+    margin-left: 10px;
+}
 
 /*LOGO ANIMATION*/
 .white-background {
