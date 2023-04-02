@@ -293,6 +293,7 @@ input:focus {
     margin-top: -28px;
     margin-left: 6px;
 }
+
 /**********************************************************************/
 
 .error-message-login {
@@ -315,6 +316,59 @@ input:focus {
     color: red;
     margin-top: -18px;
     margin-left: 10px;
+}
+
+.forgt-ym-pw-section {
+    display: flex;
+    justify-content: center;
+    margin-top: -59em;
+}
+
+.forgot-my-pw-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 14px 3px rgba(0, 0, 0, 0.04);
+    border-radius: 30px;
+    margin-top: 10em;
+    width: 826px;
+    height: 462px;
+}
+
+.forgot-my-pw-container h1 {
+    margin-top: -25px;
+    margin-bottom: 30px;
+}
+
+.forgot-border {
+    margin-top: -10px;
+}
+
+.forgot-my-pw-container span{
+    text-align: center;
+    margin-top: 10px;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.forgot-my-pw-input {
+    margin-top: 35px;
+    width: 50%;
+}
+
+.send-email-btn {
+    margin-top: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+}
+
+.send-email-btn span{
+    margin: 0;
+    padding-left: 25px;
+    padding-right: 25px;
 }
 
 /*LOGO ANIMATION*/
@@ -389,7 +443,7 @@ input:focus {
             left: 50%;
             width: 300px;
         }
-    
+
         to {
             transform: translateX(0);
             top: 0;
@@ -475,7 +529,7 @@ input:focus {
             left: 50%;
             width: 300px;
         }
-    
+
         to {
             transform: translateX(0);
             top: 0;
@@ -627,7 +681,7 @@ input:focus {
             left: 50%;
             width: 100px;
         }
-    
+
         to {
             transform: translateX(0);
             top: 0;
@@ -680,7 +734,7 @@ input:focus {
     .animate-white-background {
         animation: hideBackground 0.8s 0.2s forwards;
     }
-    
+
 
 }
 

@@ -103,7 +103,6 @@ async function logInAsGuest() {
 /*********************************************************************************************************************/
 
 /*********************************SIGN UP*********************************/
-
 function singUpForm() {
     document.getElementById('login').innerHTML = '';
     document.getElementById('signupheader').classList.add('d-none');
@@ -314,4 +313,16 @@ function goBackToLogIn() {
     `;
 }
 
+/*********************************************************************************************************************/
+
+/*********************************SIGN UP*********************************/
+function forgotMyPw(){
+document.getElementById('loginmain').classList.add('d-none');
+document.getElementById('signupheader').classList.add('d-none');
+document.getElementById('forgotmypw').classList.remove('d-none');
+}
+
+function goBackToMainLogin(){
+    window.location.href = "login_sign_up.html";
+}
 /*********************************************************************************************************************/

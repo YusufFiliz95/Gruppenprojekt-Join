@@ -28,7 +28,7 @@
                 <button onclick="singUpForm()">Sign up</button>
             </div>
         </div>
-        <div action="" class="log-in-main">
+        <div class="log-in-main" id="loginmain">
             <div class="log-in" id="login">
                 <span class="log-in-title">Log in</span>
                 <div class="log-in-border"></div>
@@ -41,7 +41,8 @@
                         <label for="loginemail" id="emailError" style="display:none;"></label>
                     </div>
                     <div class="input-field login-password" onclick="focusInputField(this)">
-                        <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()" required>
+                        <input type="password" placeholder="Password" id="loginpassword" oninput="showLoginLock()"
+                            required>
                         <div class="password-lock" id="loginpasswordlock">
                             <img id="lock" src="img/lock_logo.svg" alt="">
                         </div>
@@ -55,13 +56,14 @@
                         <input type="checkbox" id="myCheckbox" name="myCheckbox" value="on" class="checkbox">
                         <span>Remember me</span>
                     </div>
-                    <div class="forgot-pw-option">
+                    <div class="forgot-pw-option" onclick="forgotMyPw()">
                         <a href="#">Forgot my password</a>
                     </div>
                 </div>
                 <div class="log-in-buttons">
                     <button class="dark-btn log-in-btn" onclick="validateLogin()">Log in</button>
-                    <button class="transparent-btn guest-log-in-btn" onclick="window.location.href='summary.html'" onclick="logInAsGuest()">Guest Log in</button>
+                    <button class="transparent-btn guest-log-in-btn" onclick="window.location.href='summary.html'"
+                        onclick="logInAsGuest()">Guest Log in</button>
                 </div>
             </div>
         </div>
@@ -69,11 +71,31 @@
             <div class="sign-up-bottom">
                 <span>Not a Join user?</span>
                 <button onclick="singUpForm()">Sign up</button>
+                <div class="log-in-border"></div>
+                <span></span>
             </div>
         </div>
     </div>
-    <div class="confirmation-popup">
-        <p id="confirmationpopuptext"></p>
+    <div class="forgt-ym-pw-section d-none" id="forgotmypw">
+        <div class="forgot-my-pw-container">
+            <div class="back-btn" onclick="goBackToMainLogin()">
+                <img src="img/back_btn.svg" alt="" onclick="goBackToLogIn()">
+            </div>
+            <h1>I forgot my password</h1>
+            <div class="log-in-border forgot-border"></div>
+            <span id="confirmationpopuptext">Don't worry, we won't be sending you an email with instructions to reset
+                your password, because this is just a project.</span>
+            <div class="input-field forgot-my-pw-input" onclick="focusInputField(this)">
+                <input type="email" placeholder="Email">
+                <img src="img/email_logo.svg" alt="">
+            </div>
+            <div class="dark-btn send-email-btn" onclick="goBackToMainLogin()">
+                <span>Don't send me the email</span>
+            </div>
+        </div>
+        <div class="confirmation-popup">
+        </div>
     </div>
 </body>
+
 </html>
