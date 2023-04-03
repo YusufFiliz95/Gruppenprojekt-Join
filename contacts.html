@@ -39,6 +39,10 @@
             <p>New Contact</p>
             <img src="../img/new_contact_icon.svg" alt="">
         </div>
+
+        <div class="dark-btn new-contact pos-fixed-responsive" onclick="newContact()" id="newcontactbtn">
+            <img src="../img/new_contact_icon.svg" alt="">
+        </div>
     </div>
     <!--overlay + addTask Dialog-->
     <div onclick="slideOutAddTaskDialogBord()" id="overlay-bord-addTaskId" class="overlay-dialog-center d-none">
@@ -74,21 +78,21 @@
                     </div>
                     <div>
                         <form action="" class="input-form">
-                            <div class="input-field add-contact" onclick="focusInputField(this)">
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
                                 <input type="text" placeholder="Name" id="newContactName" required>
                                 <img src="img/person_icon.svg" alt="">
                             </div>
                             <div class="error-message">
                                 <label for="newContactName" id="nameError" style="display:none;"></label>
                             </div>
-                            <div class="input-field add-contact" onclick="focusInputField(this)">
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
                                 <input type="email" placeholder="Email" id="newContactEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
                                 <img src="img/email_logo.svg" alt="">
                             </div>
                             <div class="error-message">
                                 <label for="newContactEmail" id="emailError" style="display:none;"></label>
                             </div>
-                            <div class="input-field add-contact" onclick="focusInputField(this)">
+                            <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
                                 <input type="number" placeholder="Phone" id="newContactPhone" step="any" required>
                                 <img src="img/phone_icon.svg" alt="">
                             </div>
