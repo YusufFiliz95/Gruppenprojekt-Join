@@ -44,8 +44,8 @@ async function login() {
 
     if (user) {
         if (user.password == loginpassword.value) {
-            // Speichern des Surnames auf dem Backend
-            await saveUserToBackend(user.name);
+            // Speichern des Surnames auf dem Local Storage
+            saveUserToLocalStorage(user.name);
             window.location.href = 'summary.html';
         } else {
             hideLoginErrorMessage('emailError');
@@ -102,7 +102,8 @@ function hidePassword() {
 }
 
 async function logInAsGuest() {
-
+    saveUserToLocalStorage('Guest');
+    window.location.href = 'summary.html';
 }
 /*********************************************************************************************************************/
 

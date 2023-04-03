@@ -47,15 +47,14 @@ async function loadContactsfromBackend() {
     console.log('Loaded contacts:', contacts);
 }
 
-// FUNCTIONS TO SAVE AND LOAD USER TO/FROM BACKEND
+// FUNCTIONS TO SAVE AND LOAD USER TO/FROM LOCALSTORAGE
 
-async function saveUserToBackend(name) {
-    await backend.setItem('loggedInUserSurname', JSON.stringify(name));
+function saveUserToLocalStorage(name) {
+    localStorage.setItem('loggedInUserSurname', JSON.stringify(name));
 }
 
-async function loadUserFromBackend() {
-    await downloadFromServer();
-    let loggedInUsername = JSON.parse(backend.getItem('loggedInUserSurname')) || null;
+function loadUserFromLocalStorage() {
+    let loggedInUsername = JSON.parse(localStorage.getItem('loggedInUserSurname')) || null;
     console.log('Loaded loggedInUserSurname:', loggedInUsername);
     return loggedInUsername;
 }
@@ -173,11 +172,11 @@ function showConfirmationPopup(actionType) {
     }
 }
 /**First, add this element to your html file, where the popup should show:
- * 
+ *
  *     <div class="confirmation-popup">
         <p id="confirmationpopuptext"></p>
         </div>
- * 
+ *
  */
 
 //Whenever you need to show this popup, use this function: showConfirmationPopup('createtask');

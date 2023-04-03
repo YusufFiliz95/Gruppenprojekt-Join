@@ -24,10 +24,7 @@ async function loadSummaryContent() {
     calcAmountTasksInDone();
     getRightGreeting();
     getUpcomingDeadline();
-    // Abrufen des Surnames vom Backend
-    let loggedInUsername = await loadUserFromBackend();
-
-    // Anzeigen des Surnames im Element
+    let loggedInUsername = loadUserFromLocalStorage();
     if (loggedInUsername) {
         document.getElementById('nameoflogedinuser').innerHTML = loggedInUsername;
     }
