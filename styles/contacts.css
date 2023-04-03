@@ -175,7 +175,6 @@
     flex-direction: column;
     justify-content: space-between;
     height: 110px;
-    width: 800px;
     padding-left: 32px;
 }
 
@@ -628,7 +627,6 @@ input[type="number"] {
     margin-left: -8px;
 }
 
-
 /*****EDIT CONTACT******/
 
 .edit-contact-section {
@@ -1022,4 +1020,18 @@ input[type="number"]::-webkit-outer-spin-button {
     margin-top: -8px;
     height: 2px;
     background-color: #29ABE2;
+}
+
+@media(max-width: 1360px) {
+    .contact-info-section {
+        width: 583px;
+    }
+
+    .contact-list {
+        min-width: 370px;
+    }
+
+    .contacts {
+        margin-left: 7px;
+    }
 }
