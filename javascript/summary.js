@@ -9,11 +9,6 @@ dates = [date1, date2, date3];
 filter = Math.min.apply(null, dates);
 filterDate = new Date(filter);
 
-window.onload = async function () {
-    downloadFromServer();
-    await loadSummaryContent();
-}
-
 async function loadSummaryContent() {
     await loadTasksfromBackend();
     calcAmountTasksOnBoard();
@@ -24,10 +19,6 @@ async function loadSummaryContent() {
     calcAmountTasksInDone();
     getRightGreeting();
     getUpcomingDeadline();
-    let loggedInUsername = loadUserFromLocalStorage();
-    if (loggedInUsername) {
-        document.getElementById('nameoflogedinuser').innerHTML = loggedInUsername;
-    }
 }
 
 function calcAmountTasksOnBoard() {

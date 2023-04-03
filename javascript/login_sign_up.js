@@ -44,8 +44,8 @@ async function login() {
 
     if (user) {
         if (user.password == loginpassword.value) {
-            // Speichern des Surnames auf dem Local Storage
             saveUserToLocalStorage(user.name);
+            saveUserInitialsToLocalStorage(user.name[0].toUpperCase() + user.surname[0].toUpperCase());
             window.location.href = 'summary.html';
         } else {
             hideLoginErrorMessage('emailError');
@@ -56,8 +56,6 @@ async function login() {
         hideLoginErrorMessage('passwordError');
     }
 }
-
-
 
 function loginErrorMessage(id, message) {
     const errorLabel = document.getElementById(id);
@@ -102,8 +100,8 @@ function hidePassword() {
 }
 
 async function logInAsGuest() {
+    saveUserInitialsToLocalStorage("G");
     saveUserToLocalStorage('Guest');
-    window.location.href = 'summary.html';
 }
 /*********************************************************************************************************************/
 
@@ -189,7 +187,6 @@ async function signUp() {
     const signUpName = document.getElementById('signupname').value;
     const signUpEmail = document.getElementById('signupemail').value;
     const signUpPassword = document.getElementById('signuppassword').value;
-
     const [name, surname] = signUpName.split(' '); // Split the name into first and last name.
 
     // Save user data in the array
@@ -214,9 +211,15 @@ async function signUp() {
         'email': signUpEmail,
         'profilecolor': profileColor,
         'Initials': name[0].toUpperCase() + surname[0].toUpperCase(),
-        'phonenumber': '', // Set an empty phone number or add a new input field for the phone number during sign up
+        'phonenumber': '',
         'contactid': lastContactId
     };
+
+    if (loggedInUsername) {
+        document.getElementById('nameoflogedinuser').innerHTML = loggedInUsername;
+    }
+    saveUserInitialsToLocalStorage(name[0].toUpperCase() + surname[0].toUpperCase());
+    loadLoggedInUser();
 
     contacts.push(newContact);
     await saveContactstoBackend(contacts);

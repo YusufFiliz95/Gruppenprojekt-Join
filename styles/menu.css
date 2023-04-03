@@ -56,14 +56,11 @@
     justify-content: center;
     align-items: center;
     background-color: #1e80aa;
-    font-weight: 200;
+    font-size: 19px;
+    font-weight: 400;
     color: white;
     border: 3px solid #2A3647;
     border-radius: 100%;
-}
-
-.profile p {
-    font-size: 14px;
 }
 
 .join-logo-menu {

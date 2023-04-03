@@ -7,12 +7,28 @@ let highestUsedId = [];
 let users = [];
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
-async function init(i) {
+function init(i) {
     setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
-    await includeHTML();
-    selectMenuPoint(i);
-    setSelectedMenu();
-    showConfirmationPopup();
+    includeHTML().then(() => {
+        selectMenuPoint(i);
+        setSelectedMenu();
+        showConfirmationPopup();
+        let loggedInUsername = loadUserFromLocalStorage();
+        if (loggedInUsername) {
+            let nameoflogedinuserElement = document.getElementById('nameoflogedinuser');
+            if (nameoflogedinuserElement) {
+                nameoflogedinuserElement.innerHTML = loggedInUsername;
+            }
+        }
+        loadLoggedInUser();
+    });
+}
+
+function loadLoggedInUser() {
+    let loggedInUserInitials = localStorage.getItem("userInitials");
+    if (loggedInUserInitials) {
+        document.getElementById('userInitials').innerHTML = loggedInUserInitials;
+    }
 }
 
 // FUNCTIONS TO SAVE AND LOAD TASKS TO/FROM BACKEND
@@ -51,6 +67,10 @@ async function loadContactsfromBackend() {
 
 function saveUserToLocalStorage(name) {
     localStorage.setItem('loggedInUserSurname', JSON.stringify(name));
+}
+
+function saveUserInitialsToLocalStorage(initials) {
+    localStorage.setItem("userInitials", initials);
 }
 
 function loadUserFromLocalStorage() {
