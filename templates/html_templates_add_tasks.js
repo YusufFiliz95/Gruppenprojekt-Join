@@ -30,8 +30,3 @@ function greateHtmlAddInput(selectedCategoryColor, selectedCategoryName) {
     </div>`
 }
 
-
-function greateHtmlRenderAddContactsOverlay() {
-    return /*html*/`
-`
-}
