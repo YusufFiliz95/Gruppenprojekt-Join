@@ -12,12 +12,12 @@ async function loadAndRenderData() {
     await loadContactsfromBackend();
     await loadTasksfromBackend();
     await loadCategorysfromBackend();
-    renderAddContactsOverlay();
     renderContacts();
     renderCategory();
 }
 
 async function loadAndRenderContacts() {
+    await saveContactstoBackend();
     await loadContactsfromBackend();
     renderContacts();
 }
@@ -352,15 +352,6 @@ function resetRequired() {
     }
 }
 
-
-let input = document.getElementById("subtask-input");
-console.log(input);
-input.addEventListener("keypress", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        document.getElementById("enter-button").click();
-    }
-});
 
 
 
