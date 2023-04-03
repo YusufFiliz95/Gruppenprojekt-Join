@@ -144,9 +144,18 @@ function selectMenuPoint(i) {
 }
 
 function setSelectedMenu() {
-    document.getElementById(selectedMenu).classList.add('clicked');
-    document.getElementById('mobile-buttonId' + selectedMenu).classList.add('mobile-menu-selected');
+    const selectedMenuElement = document.getElementById(selectedMenu);
+    const mobileButtonElement = document.getElementById('mobile-buttonId' + selectedMenu);
+
+    if (selectedMenuElement) {
+        selectedMenuElement.classList.add('clicked');
+    }
+
+    if (mobileButtonElement) {
+        mobileButtonElement.classList.add('mobile-menu-selected');
+    }
 }
+
 
 /*  -------------------open Dialog Window AddTask with slideIn slide Out Functions--------------------------  */
 
