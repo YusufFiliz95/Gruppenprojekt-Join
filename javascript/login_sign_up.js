@@ -37,13 +37,15 @@ function validateLogin() {
     }
 }
 
-function login() {
+async function login() {
     let loginemail = document.getElementById('loginemail');
     let loginpassword = document.getElementById('loginpassword');
     let user = users.find(u => u.email == loginemail.value);
 
     if (user) {
         if (user.password == loginpassword.value) {
+            // Speichern des Surnames auf dem Backend
+            await saveUserToBackend(user.name);
             window.location.href = 'summary.html';
         } else {
             hideLoginErrorMessage('emailError');
@@ -54,6 +56,8 @@ function login() {
         hideLoginErrorMessage('passwordError');
     }
 }
+
+
 
 function loginErrorMessage(id, message) {
     const errorLabel = document.getElementById(id);
@@ -98,7 +102,7 @@ function hidePassword() {
 }
 
 async function logInAsGuest() {
-    await backend.setItem('username', 'Guest');
+
 }
 /*********************************************************************************************************************/
 
@@ -185,19 +189,20 @@ async function signUp() {
     const signUpEmail = document.getElementById('signupemail').value;
     const signUpPassword = document.getElementById('signuppassword').value;
 
+    const [name, surname] = signUpName.split(' '); // Split the name into first and last name.
+
     // Save user data in the array
     const newUser = {
-        name: signUpName,
+        name: name,
+        surname: surname, // Add the surname attribute
         email: signUpEmail,
         password: signUpPassword
     };
 
     users.push(newUser);
     await saveSignedInUserToBackend(users);
-    await loadSignedInUserfromBackend();
 
     // Create a new contact with the user data
-    const [name, surname] = signUpName.split(' '); // Split the name into first and last name.
     const lastContactId = getNextContactId();
     const usedColors = contacts.map(contact => contact.profilecolor);
     const availableColors = ['#343a40', '#dc3545', '#007bff', '#28a745', '#6c757d', '#ffc107', '#7952b3', '#17a2b8', '#6f42c1'].filter(color => !usedColors.includes(color) && color !== '#FFFFFF');
@@ -214,7 +219,6 @@ async function signUp() {
 
     contacts.push(newContact);
     await saveContactstoBackend(contacts);
-    await loadContacts();
     document.getElementById('signupname').value = '';
     document.getElementById('signupemail').value = '';
     document.getElementById('signuppassword').value = '';

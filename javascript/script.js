@@ -49,6 +49,20 @@ async function loadContactsfromBackend() {
 
 // FUNCTIONS TO SAVE AND LOAD USER TO/FROM BACKEND
 
+async function saveUserToBackend(name) {
+    await backend.setItem('loggedInUserSurname', JSON.stringify(name));
+}
+
+async function loadUserFromBackend() {
+    await downloadFromServer();
+    let loggedInUsername = JSON.parse(backend.getItem('loggedInUserSurname')) || null;
+    console.log('Loaded loggedInUserSurname:', loggedInUsername);
+    return loggedInUsername;
+}
+
+
+// FUNCTIONS TO SAVE AND LOAD USER TO/FROM BACKEND
+
 async function saveSignedInUserToBackend() {
     await backend.setItem('users', JSON.stringify(users));
 }
@@ -151,7 +165,6 @@ function showConfirmationPopup(actionType) {
             case 'signup':
                 confirmationText = '<p>Sign up successful!</p>';
                 break;
-            // in case you need more text, just copy the case till break and change it to your style
         }
         document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
         setTimeout(() => {
@@ -163,7 +176,7 @@ function showConfirmationPopup(actionType) {
  * 
  *     <div class="confirmation-popup">
         <p id="confirmationpopuptext"></p>
-    </div>
+        </div>
  * 
  */
 
