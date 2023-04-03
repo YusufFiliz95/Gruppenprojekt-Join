@@ -62,8 +62,7 @@
                 </div>
                 <div class="log-in-buttons">
                     <button class="dark-btn log-in-btn" onclick="validateLogin()">Log in</button>
-                    <button class="transparent-btn guest-log-in-btn" onclick="window.location.href='summary.html'"
-                        onclick="logInAsGuest()">Guest Log in</button>
+                    <button class="transparent-btn guest-log-in-btn" onclick="logInAsGuest(); window.location.href='summary.html'">Guest Log in</button>
                 </div>
             </div>
         </div>
@@ -76,6 +75,9 @@
             </div>
         </div>
     </div>
+    <div class="confirmation-popup">
+        <p id="confirmationpopuptext"></p>
+        </div>
     <div class="forgt-ym-pw-section d-none" id="forgotmypw">
         <div class="forgot-my-pw-container">
             <div class="back-btn" onclick="goBackToMainLogin()">
@@ -92,8 +94,6 @@
             <div class="dark-btn send-email-btn" onclick="goBackToMainLogin()">
                 <span>Don't send me the email</span>
             </div>
-        </div>
-        <div class="confirmation-popup">
         </div>
     </div>
 </body>

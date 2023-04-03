@@ -69,10 +69,6 @@ function loadJSONFromServerOld() {
     });
 }
 
-
-
-
-
 /**
  * Saves a JSON or JSON Array to the Server
  */

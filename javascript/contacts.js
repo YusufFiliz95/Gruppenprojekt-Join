@@ -285,7 +285,7 @@ function validateContact() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const phoneValue = document.getElementById('newContactPhone').value;
-    const phoneRegex = /^\d{10,15}$/; // Adjust the regex according to the desired phone number format.
+    const phoneRegex = /^\d{10,15}$/;
 
     let isValid = true;
 
@@ -386,7 +386,7 @@ async function validateEditContact() {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     const phoneValue = document.getElementById('editContactPhone').value;
-    const phoneRegex = /^\d{10,15}$/; // Adjust the regex according to the desired phone number format.
+    const phoneRegex = /^\d{10,15}$/;
 
     let isValid = true;
 

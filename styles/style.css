@@ -163,6 +163,7 @@ h2 {
 /********************************WARNING SECTION********************************/
 
 .join-warning-section {
+    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;

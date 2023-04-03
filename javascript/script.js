@@ -7,13 +7,44 @@ let highestUsedId = [];
 let users = [];
 
 //FUNCTION FOR LOADING OTHER FUNCTIONS
-async function init(i) {
+function init(i) {
     setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
-    await includeHTML();
-    selectMenuPoint(i);
-    setSelectedMenu();
-    showConfirmationPopup();
+    includeHTML().then(() => {
+        selectMenuPoint(i);
+        setSelectedMenu();
+        showConfirmationPopup();
+        let loggedInUsername = loadUserFromLocalStorage();
+        if (loggedInUsername) {
+            let nameoflogedinuserElement = document.getElementById('nameoflogedinuser');
+            if (nameoflogedinuserElement) {
+                nameoflogedinuserElement.innerHTML = loggedInUsername;
+            }
+        }
+        loadLoggedInUser();
+    });
 }
+
+function loadLoggedInUser() {
+    let loggedInUserInitials = localStorage.getItem("userInitials");
+    if (loggedInUserInitials) {
+        document.getElementById('userInitials').innerHTML = loggedInUserInitials;
+    }
+}
+
+function openLogOutDropDown() {
+    document.getElementById('dropdownlogout').classList.toggle('d-none');
+}
+
+window.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdownlogout');
+    const profile = document.getElementById('userinitials');
+    const isClickInsideDropdown = dropdown.contains(event.target);
+    const isClickInsideProfile = profile.contains(event.target);
+
+    if (!isClickInsideDropdown && !isClickInsideProfile) {
+        dropdown.classList.add('d-none');
+    }
+});
 
 // FUNCTIONS TO SAVE AND LOAD TASKS TO/FROM BACKEND
 
@@ -46,6 +77,23 @@ async function loadContactsfromBackend() {
     }
     console.log('Loaded contacts:', contacts);
 }
+
+// FUNCTIONS TO SAVE AND LOAD USER TO/FROM LOCALSTORAGE
+
+function saveUserToLocalStorage(name) {
+    localStorage.setItem('loggedInUserSurname', JSON.stringify(name));
+}
+
+function saveUserInitialsToLocalStorage(initials) {
+    localStorage.setItem("userInitials", initials);
+}
+
+function loadUserFromLocalStorage() {
+    let loggedInUsername = JSON.parse(localStorage.getItem('loggedInUserSurname')) || null;
+    console.log('Loaded loggedInUserSurname:', loggedInUsername);
+    return loggedInUsername;
+}
+
 
 // FUNCTIONS TO SAVE AND LOAD USER TO/FROM BACKEND
 
@@ -96,9 +144,18 @@ function selectMenuPoint(i) {
 }
 
 function setSelectedMenu() {
-    document.getElementById(selectedMenu).classList.add('clicked');
-    document.getElementById('mobile-buttonId' + selectedMenu).classList.add('mobile-menu-selected');
+    const selectedMenuElement = document.getElementById(selectedMenu);
+    const mobileButtonElement = document.getElementById('mobile-buttonId' + selectedMenu);
+
+    if (selectedMenuElement) {
+        selectedMenuElement.classList.add('clicked');
+    }
+
+    if (mobileButtonElement) {
+        mobileButtonElement.classList.add('mobile-menu-selected');
+    }
 }
+
 
 /*  -------------------open Dialog Window AddTask with slideIn slide Out Functions--------------------------  */
 
@@ -151,7 +208,6 @@ function showConfirmationPopup(actionType) {
             case 'signup':
                 confirmationText = '<p>Sign up successful!</p>';
                 break;
-            // in case you need more text, just copy the case till break and change it to your style
         }
         document.getElementById('confirmationpopuptext').innerHTML = confirmationText;
         setTimeout(() => {
@@ -160,11 +216,11 @@ function showConfirmationPopup(actionType) {
     }
 }
 /**First, add this element to your html file, where the popup should show:
- * 
+ *
  *     <div class="confirmation-popup">
         <p id="confirmationpopuptext"></p>
-    </div>
- * 
+        </div>
+ *
  */
 
 //Whenever you need to show this popup, use this function: showConfirmationPopup('createtask');
