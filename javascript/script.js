@@ -31,6 +31,21 @@ function loadLoggedInUser() {
     }
 }
 
+function openLogOutDropDown() {
+    document.getElementById('dropdownlogout').classList.toggle('d-none');
+}
+
+window.addEventListener('click', function(event) {
+    const dropdown = document.getElementById('dropdownlogout');
+    const profile = document.getElementById('userinitials');
+    const isClickInsideDropdown = dropdown.contains(event.target);
+    const isClickInsideProfile = profile.contains(event.target);
+
+    if (!isClickInsideDropdown && !isClickInsideProfile) {
+        dropdown.classList.add('d-none');
+    }
+});
+
 // FUNCTIONS TO SAVE AND LOAD TASKS TO/FROM BACKEND
 
 async function saveTaskstoBackend() {
