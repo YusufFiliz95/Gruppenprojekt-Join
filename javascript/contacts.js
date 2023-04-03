@@ -10,12 +10,18 @@ async function loadContacts() {
         return; // Exit the function if the contactListDiv element is not found
     }
 
-    contactListDiv.innerHTML = '';
+    contactListDiv.innerHTML = /*html*/ `
+                <div class="contactlist-info-headline">
+                    <h1>Contacts</h1>
+                    <div class="contactlist-border"></div>
+                    <p>Better with a team</p>
+                </div>
+    `;
     usedIds = new Set(contacts.map(contact => parseInt(contact.contactid)));
 
     if (contacts.length === 0) {
         document.getElementById('newcontactbtn').classList.add('d-none');
-        contactListDiv.innerHTML = /*html*/`
+        contactListDiv.innerHTML += /*html*/`
         <div class="no-contacts">
             <p class="no-contacts-text">No contacts yet! Add some to brighten up your list and stay connected with your favorite people.</p>
             <div class="dark-btn new-contact" onclick="newContact()" id="newcontactbtn">
@@ -56,6 +62,7 @@ async function loadContacts() {
         }
     }
 }
+
 
 function maxEmailChar(email, maxLength = 28) {
     if (email.length <= maxLength) {
