@@ -1022,16 +1022,50 @@ input[type="number"]::-webkit-outer-spin-button {
     background-color: #29ABE2;
 }
 
+.contactlist-info-headline {
+    margin-top: 10px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactlist-border {
+    width: 100%;
+    height: 4px;
+    border-radius: 10px;
+    background-color: #29ABE2;
+}
+
 @media(max-width: 1360px) {
     .contact-info-section {
         width: 583px;
     }
 
     .contact-list {
-        min-width: 370px;
+        min-width: 100%;
+        margin-left: 119px;
     }
 
-    .contacts {
-        margin-left: 7px;
+
+    .contactlist-info-headline {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
     }
+
+    .contact-char {
+        width: 70%;
+        border-bottom: 1px solid black;
+    }
+
+    .contacts-section {
+        margin: 0;
+    }
+}
+
+@media(max-width: 1360px) {
+
 }
