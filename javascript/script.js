@@ -26,14 +26,23 @@ function init(i) {
 
 function loadLoggedInUser() {
     let loggedInUserInitials = localStorage.getItem("userInitials");
-    if (loggedInUserInitials) {
-        document.getElementById('userInitials').innerHTML = loggedInUserInitials;
+    let userInitialsElement = document.getElementById('userInitials');
+    
+    if (loggedInUserInitials && userInitialsElement) {
+        userInitialsElement.innerHTML = loggedInUserInitials;
     }
 }
-/*
+
 function toggleLogOutDropDown(event) {
+    event.stopPropagation(); // Verhindert, dass das Event weiter nach oben im DOM weitergeleitet wird
     const dropdown = document.getElementById('dropdownlogout');
     const profile = document.getElementById('userinitials');
+
+    // Überprüfen, ob die Elemente vorhanden sind
+    if (!dropdown || !profile) {
+        return;
+    }
+
     const isClickInsideDropdown = dropdown.contains(event.target);
     const isClickInsideProfile = profile.contains(event.target);
 
@@ -42,7 +51,9 @@ function toggleLogOutDropDown(event) {
     } else if (!isClickInsideDropdown) {
         dropdown.classList.add('d-none');
     }
-}*/
+}
+
+
 
 // Event-Listener für das Klicken im gesamten Fenster
 window.addEventListener('click', toggleLogOutDropDown);

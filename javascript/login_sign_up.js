@@ -187,6 +187,7 @@ async function signUp() {
     const signUpName = document.getElementById('signupname').value;
     const signUpEmail = document.getElementById('signupemail').value;
     const signUpPassword = document.getElementById('signuppassword').value;
+    const loggedInUsername = loadUserFromLocalStorage();
     const [name, surname] = signUpName.split(' '); // Split the name into first and last name.
 
     // Save user data in the array
@@ -216,8 +217,12 @@ async function signUp() {
     };
 
     if (loggedInUsername) {
-        document.getElementById('nameoflogedinuser').innerHTML = loggedInUsername;
+        const nameoflogedinuserElement = document.getElementById('nameoflogedinuser');
+        if (nameoflogedinuserElement) {
+            nameoflogedinuserElement.innerHTML = loggedInUsername;
+        }
     }
+    
     saveUserInitialsToLocalStorage(name[0].toUpperCase() + surname[0].toUpperCase());
     loadLoggedInUser();
 
