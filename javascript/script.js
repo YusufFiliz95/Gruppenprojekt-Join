@@ -34,11 +34,11 @@ function loadLoggedInUser() {
 }
 
 function toggleLogOutDropDown(event) {
-    event.stopPropagation(); // Verhindert, dass das Event weiter nach oben im DOM weitergeleitet wird
+    event.stopPropagation();
     const dropdown = document.getElementById('dropdownlogout');
     const profile = document.getElementById('userinitials');
 
-    // Überprüfen, ob die Elemente vorhanden sind
+    // Check if the elements exist
     if (!dropdown || !profile) {
         return;
     }
@@ -46,16 +46,17 @@ function toggleLogOutDropDown(event) {
     const isClickInsideDropdown = dropdown.contains(event.target);
     const isClickInsideProfile = profile.contains(event.target);
 
+    // Toggle the dropdown menu if the click was inside the profile initials
     if (isClickInsideProfile) {
         dropdown.classList.toggle('d-none');
-    } else if (!isClickInsideDropdown) {
+    }
+    // Hide the dropdown menu if the click was not inside the menu
+    else if (!isClickInsideDropdown) {
         dropdown.classList.add('d-none');
     }
 }
 
-
-
-// Event-Listener für das Klicken im gesamten Fenster
+// Event listener for clicking anywhere in the window
 window.addEventListener('click', toggleLogOutDropDown);
 
 
