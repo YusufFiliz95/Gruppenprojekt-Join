@@ -89,9 +89,13 @@ function showContactInfo(i) {
     const formattedSurname = contactinfo.surname.charAt(0).toUpperCase() + contactinfo.surname.slice(1).toLowerCase();
     const formattedEmail = contactinfo.email.toLowerCase();
     const showClickedContact = document.getElementById('contactinfo');
+    document.querySelector('.contact-info-section').style.display = 'block';
     showClickedContact.innerHTML = /*html*/`
+    <div class="close-contact-info-section" onclick="hideContactInfo()">
+        <img src="img/black-x.svg" alt="">
+    </div>
     <div class="contact-info-initials-name-add-task">
-        <div class="contact-info-initials" style="background-color: ${contactinfo.profilecolor}">
+        <div class="contact-info-initials-info" style="background-color: ${contactinfo.profilecolor}">
             <p>${contactinfo.Initials}</p>
         </div>
         <div class="contact-info-name-add-task">
@@ -135,6 +139,10 @@ function showContactInfo(i) {
         highlightContact[j].classList.remove('selected-contact-info');
     }
     highlightContact[i].classList.add('selected-contact-info');
+}
+
+function hideContactInfo() {
+    document.querySelector('.contact-info-section').style.display = 'none';
 }
 //**************************************************************************************************************************************//
 
@@ -430,6 +438,8 @@ async function validateEditContact() {
         showContactInfo(i);
     }
 }
+
+
 
 async function deleteContact(i) {
     contacts.splice(i, 1);

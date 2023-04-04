@@ -120,62 +120,67 @@
     </div>
     <!-------------------------------------------------->
 
-    <!--EDIT CONTACT-->
-    <div class="edit-contact-section d-none" id="editcontactformsection" onclick="closeEditContactForm()">
-        <div class="edit-contact-container" onclick="doNotClose(event)">
-            <div class="edit-contact-headline">
-                <div class="edit-contact-headline-height">
-                    <img src="img/join_logo_menu.svg" alt="">
-                    <h1>Edit Contact</h1>
-                    <div class="edit-contact-border"></div>
-                </div>
+<!--EDIT CONTACT-->
+<div class="add-new-contact-section edit-contact-section d-none" id="editcontactformsection" onclick="closeEditContactForm()">
+    <div class="add-new-contact-container edit-contact-container" onclick="doNotClose(event)">
+        <div class="add-new-contact-headline">
+            <div class="close-form-btn-responsive">
+                <img class="close-form-btn-responsive-img" src="img/close_btn_responsive.svg" alt="">
             </div>
-            <div class="edit-contact-form-section">
-                <div class="empty-profile-picutre" id="profileofcontact">
-                    <img src="img/empty_profile_picture.svg" alt="">
+            <div class="add-new-contact-headline-height">
+                <img src="img/join_logo_menu.svg" alt="">
+                <h1>Edit Contact</h1>
+                <p>Tasks are better with a team!</p>
+                <div class="add-contact-border"></div>
+            </div>
+        </div>
+        <div class="add-new-contact-form-section">
+            <div class="empty-profile-picutre" id="profileofcontact">
+                <img src="img/empty_profile_picture.svg" alt="">
+            </div>
+            <div class="add-new-contact-form">
+                <div class="close-form-btn">
+                    <img src="img/close_btn.svg" alt="" onclick="closeEditContactForm()">
                 </div>
-                <div class="edit-contact-form">
-                    <div class="close-form-btn">
-                        <img src="img/close_btn.svg" alt="" onclick="closeEditContactForm()">
+                <div>
+                    <form action="" class="input-form">
+                        <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                            <input type="text" placeholder="Full Name" id="editContactName" required>
+                            <img src="img/person_icon.svg" alt="">
+                        </div>
+                        <div class="error-message">
+                            <label for="editContactName" id="editNameError" style="display:none;"></label>
+                        </div>
+                        <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                            <input type="email" placeholder="Email" id="editContactEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                            <img src="img/email_logo.svg" alt="">
+                        </div>
+                        <div class="error-message">
+                            <label for="editContactEmail" id="editEmailError" style="display:none;"></label>
+                        </div>
+                        <div class="input-field add-contact add-contact-responsive" onclick="focusInputField(this)">
+                            <input type="number" placeholder="Phone" id="editContactPhone" step="any" required>
+                            <img src="img/phone_icon.svg" alt="">
+                        </div>
+                        <div class="error-message">
+                            <label for="editContactPhone" id="editPhoneError" style="display:none;"></label>
+                        </div>
+                    </form>
+                </div>
+                <div class="form-buttons">
+                    <div class="transparent-btn cancel-btn" onclick="closeEditContactForm()">
+                        <p>Cancel</p>
+                        <div class="cancel-btn-img"></div>
                     </div>
-                    <div>
-                        <div class="input-form">
-                            <div class="input-field cursor-text" onclick="focusInputField(this)">
-                                <input type="text" placeholder="Full Name" id="editContactName" required>
-                                <img src="img/person_icon.svg" alt="">
-                            </div>
-                            <div class="error-message">
-                                <label for="editContactName" id="editNameError" style="display:none;"></label>
-                            </div>
-                            <div class="input-field cursor-text" onclick="focusInputField(this)">
-                                <input type="email" placeholder="Email" id="editContactEmail" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
-                                <img src="img/email_logo.svg" alt="">
-                            </div>
-                            <div class="error-message">
-                                <label for="editContactEmail" id="editEmailError" style="display:none;"></label>
-                            </div>
-                            <div class="input-field cursor-text" onclick="focusInputField(this)">
-                                <input type="number" placeholder="Phone" id="editContactPhone" step="any" required>
-                                <img src="img/phone_icon.svg" alt="">
-                            </div>
-                            <div class="error-message">
-                                <label for="editContactPhone" id="editPhoneError" style="display:none;"></label>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-buttons">
-                        <div class="transparent-btn cancel-btn" onclick="closeEditContactForm()">
-                            <p>Cancel</p>
-                            <div class="cancel-btn-img"></div>
-                        </div>
-                        <div class="dark-btn save-edited-contact" onclick="validateEditContact()" type="submit">
-                            <p>Save</p>
-                        </div>
+                    <div class="dark-btn create-contact-btn" onclick="validateEditContact()" type="submit">
+                        <p>Save</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+
     <!-------------------------------------------------->
     <div class="delete-popup-section d-none" id="deletenotification" onclick="closeDeletePopup()"></div>
     <div class="confirmation-popup">
