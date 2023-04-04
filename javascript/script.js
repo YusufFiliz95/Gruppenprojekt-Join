@@ -30,21 +30,23 @@ function loadLoggedInUser() {
         document.getElementById('userInitials').innerHTML = loggedInUserInitials;
     }
 }
-
-function openLogOutDropDown() {
-    document.getElementById('dropdownlogout').classList.toggle('d-none');
-}
-
-window.addEventListener('click', function(event) {
+/*
+function toggleLogOutDropDown(event) {
     const dropdown = document.getElementById('dropdownlogout');
     const profile = document.getElementById('userinitials');
     const isClickInsideDropdown = dropdown.contains(event.target);
     const isClickInsideProfile = profile.contains(event.target);
 
-    if (!isClickInsideDropdown && !isClickInsideProfile) {
+    if (isClickInsideProfile) {
+        dropdown.classList.toggle('d-none');
+    } else if (!isClickInsideDropdown) {
         dropdown.classList.add('d-none');
     }
-});
+}*/
+
+// Event-Listener für das Klicken im gesamten Fenster
+window.addEventListener('click', toggleLogOutDropDown);
+
 
 // FUNCTIONS TO SAVE AND LOAD TASKS TO/FROM BACKEND
 
