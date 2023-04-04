@@ -1,10 +1,11 @@
+.help-container {
+    margin-top: 120px;
+    margin-bottom: 120px;
+}
+
 .main-container {
     padding-left: 100px;
     padding-right: 100px;
-}
-
-.legal-notice-container {
-    margin-bottom: 120px;
 }
 
 .main-container p {
