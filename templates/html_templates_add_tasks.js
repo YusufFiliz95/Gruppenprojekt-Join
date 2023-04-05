@@ -10,7 +10,7 @@ function greateHtmlRenderCategory(i) {
 }
 
 
-function greateHtmladdNewCategoryToInput(categoryInput) {
+function greateHtmlAddNewCategoryToInput(categoryInput) {
     return /*html*/`
     <div class="category">
         <div class="category-name">

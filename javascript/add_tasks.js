@@ -78,7 +78,7 @@ function addNewCategorytoInput() {
     let selectedCategory = document.getElementById('selected-category');
     selectedCategory.innerHTML = '';
 
-    selectedCategory.innerHTML += greateHtmladdNewCategoryToInput(categoryInput);
+    selectedCategory.innerHTML += greateHtmlAddNewCategoryToInput(categoryInput);
 }
 
 
@@ -323,7 +323,8 @@ function checkRequired() {
     let title = document.getElementById('title').value;
     let desc = document.getElementById('description').value;
     let dueDate = document.getElementById('due-date').value;
-    let allData = [title, desc, selectedCategoryName, selectedContacts, dueDate,]
+    let selectedCategory = document.getElementById('selected-category');
+    let allData = [title, desc, selectedCategory, selectedContacts, dueDate,]
     let validation = true;
     for (let i = 0; i < allData.length; i++) {
         input = allData[i];
