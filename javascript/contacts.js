@@ -72,7 +72,7 @@ function maxEmailChar(email, maxLength = 28) {
     }
 }
 
-function maxNameSurnameChar(name, surname, maxLength = 20) {
+function maxNameSurnameChar(name, surname, maxLength = 18) {
     const combinedName = name + ' ' + surname;
     if (combinedName.length <= maxLength) {
         return combinedName;
@@ -451,6 +451,7 @@ async function deleteContact(i) {
     closeDeletePopup();
     await loadContacts();
     showConfirmationPopup('deletecontact');
+    hideContactInfo();
 }
 
 async function saveContactstoBackend(contacts) {
@@ -514,3 +515,6 @@ function closeDeletePopup() {
         deleteNotification.classList.add('d-none');
     }, 300);
 }
+
+
+
