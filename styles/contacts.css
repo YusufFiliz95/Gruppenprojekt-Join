@@ -155,7 +155,6 @@
 .contact-info-initials-name-add-task {
     height: auto;
     display: flex;
-    justify-content: space-between;
     align-items: center;
 }
 

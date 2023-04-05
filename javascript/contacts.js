@@ -439,8 +439,6 @@ async function validateEditContact() {
     }
 }
 
-
-
 async function deleteContact(i) {
     contacts.splice(i, 1);
 
@@ -516,5 +514,179 @@ function closeDeletePopup() {
     }, 300);
 }
 
+//************************** ADD TASK TO CONTACT***********************************/
+
+function openAddTaskDialogBord(contactIndex) {
+    document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
+    document.getElementById('bodyBordId').classList.add('overflow-dialog');
+    selectContact(contactIndex);
+    renderAddTaskDialog(contactIndex);
+}
 
 
+function renderAddTaskDialog(contactIndex) {
+    document.getElementById('add-task-contact-contentId').innerHTML = templateAddTaskContactDialog();
+    renderContacts();
+    renderCategory();
+    renderSelectedContact(contactIndex);
+}
+
+
+
+function deleteAddTaskDialog() {
+    document.getElementById('add-task-contact-contentId').innerHTML = "";
+}
+
+function selectContact(contactIndex) {
+    document.querySelectorAll("input[type = 'checkbox'")[contactIndex];
+    selectedContacts.push(contacts[contactIndex]['contactid']);
+}
+
+function addContactsToArray() {
+    selectedContacts = [];
+    let checkbox = document.querySelectorAll("input[type = 'checkbox'");
+
+    for (let i = 0; i < checkbox.length; i++) {
+        if (checkbox[i].checked == true) {
+            selectedContacts.push(contacts[i]['contactid']);
+        }
+    }
+}
+
+function renderSelectedContact(contactIndex) {
+    const selectedContact = contacts[contactIndex];
+    const colorContainer = document.getElementById('inicial-circles');
+    colorContainer.innerHTML = /*html*/ `
+        <div class="color-circle-contact" style="background-color: ${selectedContact['profilecolor']}">
+            ${selectedContact['Initials']}
+        </div>
+    `;
+}
+
+
+function renderContacts() {
+    let contactContainer = document.getElementById('contact-container');
+    contactContainer.innerHTML = '';
+
+    for (let i = 0; i < contacts.length; i++) {
+        const contact = contacts[i];
+
+        contactContainer.innerHTML += /*html*/ `
+        <div class="contact">
+            <span>${contact['name']} ${contact['surname']}</span>
+            <input onclick="addContactsToArray()" id="checkbox${i}" type="checkbox">
+        </div>`
+    }
+}
+
+function templateAddTaskContactDialog() {
+    return /*html*/ `
+        <h1 class="task-headline">Add Task</h1>
+        <div class="task-container">
+            <div class="task-left">
+                <!-- tittle input -->
+                <div class="input-container">
+                    <label>Title</label>
+                    <div class="input-field">
+                        <input id="title" type="text" placeholder="Enter a title">
+                    </div>
+                    <p class="required" id="required0"></p>
+                </div>
+                <!-- description input -->
+                <div class="input-container">
+                    <label>Description</label>
+                    <textarea class="textarea-field" id="description" rows="3"
+                        placeholder="Enter a description"></textarea>
+                    <p class=" required" id="required1"></p>
+                </div>
+                <!-- category input -->
+                <div class="input-container">
+                    <label>Category</label>
+                    <div class="toggle-menu">
+                        <div id="toggle-menu" class="select-task-category" onclick="toggleMenuCategory('toggle-1')">
+                            <div id="selected-category">Select task category</div>
+                            <img src=" ./img/triangle.svg">
+                        </div>
+                        <div id="category-input" class="input-field d-none">
+                            <input id="category-input-field" type="text" placeholder="New category name">
+                            <div id="add-input" class="add-input">
+                                <div id="currentColor" class="color-circle"></div>
+                                <img onclick="closeInputfield('toggle-menu')" class="x" src="./img/black-x.svg">
+                                <img onclick="addNewCategorytoInput(), addedCategory(), renderCategory(), closeInputfield('toggle-menu')"
+                                    src="./img/tick_dark.svg">
+                            </div>
+                        </div>
+                        <div id="toggle-1" class="selection d-none">
+                            <span class="category" onclick="openInputfield('toggle-1'), renderCategoryColors()">New
+                                Category</span>
+                            <div id="category-container"></div>
+                        </div>
+                    </div>
+                    <div id="color-container" class="color-container"></div>
+                    <p class="required" id="required2"></p>
+                </div>
+                <!-- contact input -->
+                <div class="input-container">
+                    <label>Assigned to</label>
+                    <div class="toggle-menu">
+                        <div class="assigned-to" onclick="toggleMenuContacts('toggle-2')">
+                            <span>Select contact to assign</span>
+                            <img src="./img/triangle.svg">
+                        </div>
+                        <div id="toggle-2" class="selection d-none">
+                            <div id="contact-container"></div>
+                        </div>
+                    </div>
+                    <div class="color-container-contact" id="inicial-circles"></div>
+                    <p class="required" id="required3"></p>
+                </div>
+            </div>
+            <div class="task-right">
+                <!-- Date input -->
+                <div class="input-container">
+                    <label>Due date</label>
+                    <div class="input-field due-date">
+                        <input id="due-date" type="date" placeholder="dd/mm/yyyy" min="2023-03-15">
+                    </div>
+                    <p class="required" id="required4"></p>
+                </div>
+                <!-- Prio Buttons input -->
+                <div class="input-container">
+                    <label>Prio</label>
+                    <div class="prio-btn">
+                        <button id="urgent-btn" onclick="addPrio(1)"><span>Urgent</span><img class="prio-img"
+                                id="urgent-image" src="./img/prio_urgent.svg"></button>
+                        <button id="medium-btn" onclick="addPrio(2)"><span>Medium</span><img class="prio-img"
+                                id="medium-image" src="./img/prio_medium.svg"></button>
+                        <button id="low-btn" onclick="addPrio(3)"><span>Low</span><img class="prio-img" id="low-image"
+                                src="./img/prio_low.svg"></button>
+                    </div>
+                    <p class="required" id="required5"></p>
+                </div>
+                <!-- subtask input -->
+                <div class="input-container">
+                    <label>Subtasks</label>
+                    <div class="input-field">
+                        <input onclick="openSubtaskInput()" id="subtask-input" type="text"
+                            placeholder="Add new subtask">
+                        <img onclick="openSubtaskInput()" id="subtask-plus" src="./img/plus_dark.svg">
+                        <div id="subtask-buttons" class="d-none subtask-input">
+                            <img onclick="closeSubtaskInput()" class="x" src="./img/black-x.svg">
+                            <img onclick="addSubtasks(), renderSubtasks()" src="./img/tick_dark.svg">
+                        </div>
+                    </div>
+                    <div id="subtasks-container"></div>
+                </div>
+            </div>
+        </div>
+        <!-- Clear and Create Buttons -->
+        <div class="add-task-buttons">
+            <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear
+                    x</span></button>
+            <button onclick="createTaskOnBoard()" type="submit" class="dark-btn create-btn">
+                <span>Create Task</span>
+                <img src="./img/tick_white.svg">
+            </button>
+        </div>
+    `
+}
