@@ -531,8 +531,6 @@ function renderAddTaskDialog(contactIndex) {
     renderSelectedContact(contactIndex);
 }
 
-
-
 function deleteAddTaskDialog() {
     document.getElementById('add-task-contact-contentId').innerHTML = "";
 }
@@ -683,10 +681,22 @@ function templateAddTaskContactDialog() {
         <div class="add-task-buttons">
             <button onclick="resetForm()" class="transparent-btn clear-btn"><span>clear
                     x</span></button>
-            <button onclick="createTaskOnBoard()" type="submit" class="dark-btn create-btn">
+            <button onclick="createTaskForContactOnBoard()" type="submit" class="dark-btn create-btn">
                 <span>Create Task</span>
                 <img src="./img/tick_white.svg">
             </button>
         </div>
     `
+}
+
+async function createTaskForContactOnBoard() {
+    resetRequired();
+    if (checkRequired() == true) {
+        await createTaskIntoJson();
+        await saveTaskstoBackend();
+        await saveCategorystoBackend();
+        slideOutAddTaskDialogBord()
+        showConfirmationPopup('createtask');
+    }
+    loadTasksfromBackend();
 }

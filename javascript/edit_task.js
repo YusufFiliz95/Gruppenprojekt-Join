@@ -144,7 +144,6 @@ async function createTaskOnBoard() {
         await saveCategorystoBackend();
         slideOutAddTaskDialogBord()
         showConfirmationPopup('createtask');
-
     }
 }
 
