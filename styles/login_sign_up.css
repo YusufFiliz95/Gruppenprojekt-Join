@@ -433,6 +433,34 @@ input:focus {
 /**********************************************************************/
 
 /*RESPONSIVE*/
+
+@media (max-width: 870px) {
+    .forgot-my-pw-container {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 830px) {
+    .forgot-my-pw-container h1{
+        font-size: 50px;
+        margin-top: 30px;
+    }
+
+    .forgot-my-pw-container span{
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .send-email-btn {
+        margin-top: 30px;
+    }
+
+    .forgot-my-pw-input {
+        width: 80%;
+    }
+}
+
 @media (max-width: 624px) {
 
     @keyframes fromCenterToCurrentPosition {
@@ -519,6 +547,49 @@ input:focus {
     }
 }
 
+@media (max-width: 580px) {
+    .forgot-my-pw-container h1{
+        font-size: 40px;
+        margin-top: 30px;
+    }
+
+    .forgot-my-pw-container span{
+        font-size: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .send-email-btn {
+        margin-top: 30px;
+    }
+
+    .forgot-my-pw-input {
+        width: 80%;
+    }
+}
+
+@media (max-width: 480px) {
+    .forgot-my-pw-container h1{
+        font-size: 30px;
+        margin-top: 30px;
+    }
+
+    .forgot-my-pw-container span{
+        font-size: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .send-email-btn {
+        margin-top: 30px;
+    }
+
+    .forgot-my-pw-input {
+        width: 80%;
+    }
+
+}
+
 @media (max-width: 515px) {
 
     @keyframes fromCenterToCurrentPosition {
@@ -594,9 +665,13 @@ input:focus {
         height: 91%;
     }
 
+    .login-form {
+        justify-content: space-around;
+    }
+
     .log-in {
         margin-top: 10em;
-        height: 520px;
+        height: 550px;
         margin-left: 25px;
         margin-right: 25px;
     }
@@ -655,7 +730,7 @@ input:focus {
     }
 
     .sign-up-btn {
-        margin-top: 0px;
+        margin-top: 16px;
     }
 
     .back-btn img {
@@ -668,6 +743,10 @@ input:focus {
         margin-top: -30px;
         font-size: 40px;
         font-weight: 700;
+    }
+
+    .error-message-sign-up label {
+        margin-left: -28px;
     }
 }
 
@@ -735,7 +814,13 @@ input:focus {
         animation: hideBackground 0.8s 0.2s forwards;
     }
 
-
+    .error-message-sign-up label {
+        margin-left: -28px;
+    }
+    
+    .sign-up-btn {
+        margin-top: 16px;
+    }
 }
 
 /**********************************************************************/

@@ -335,6 +335,7 @@ function goBackToLogIn() {
 function forgotMyPw(){
 document.getElementById('loginmain').classList.add('d-none');
 document.getElementById('signupheader').classList.add('d-none');
+document.getElementById('signupbottomsection').classList.add('d-none');
 document.getElementById('forgotmypw').classList.remove('d-none');
 }
 
