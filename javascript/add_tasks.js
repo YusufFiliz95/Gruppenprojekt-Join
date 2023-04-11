@@ -8,6 +8,9 @@ let selectedContacts = [];
 let subtaskValue = [];
 
 
+/**
+ * This function loads all Data for Add_Tasks from Backend and render the Data in the Corresponding fields
+ */
 async function loadAndRenderData() {
     await loadContactsfromBackend();
     await loadTasksfromBackend();
@@ -16,25 +19,39 @@ async function loadAndRenderData() {
     renderCategory();
 }
 
+
+/**
+ * This functions saves a new contact in the Backend, load all Contacts from backend and render them, in the toggle menu.
+ */
 async function loadAndRenderContacts() {
     await saveContactstoBackend();
     await loadContactsfromBackend();
     renderContacts();
 }
 
-
-// toggle Menu 
+/**
+ * This function open the toggle Menu for the category
+ * @param {string} id of the corresponding toggle menu
+ */
 function toggleMenuCategory(id) {
     document.getElementById(id).classList.toggle('d-none');
 }
 
 
+/**
+ * This function open the toggle Menu for the Contact
+ * @param {string} id of the corresponding toggle menu
+ */
 function toggleMenuContacts(id) {
     document.getElementById(id).classList.toggle('d-none');
     renderInicialsCircles();
 }
 
 
+/**
+ * This function open the toggle Menu for category input
+ * @param {string} id- the id of the corresponding toggle menu
+ */
 function openInputfield(id) {
     document.getElementById('toggle-menu').classList.add('d-none');
     document.getElementById('category-input').classList.remove('d-none');
@@ -42,7 +59,10 @@ function openInputfield(id) {
     document.getElementById('color-container').classList.remove('d-none');
 }
 
-
+/**
+ * This function close the toggle Menu for category input
+ * @param {string} id - the id of the corresponding toggle menu
+ */
 function closeInputfield(id) {
     document.getElementById('category-input').classList.add('d-none');
     document.getElementById(id).classList.remove('d-none');
@@ -51,7 +71,9 @@ function closeInputfield(id) {
 }
 
 
-// category Input
+/**
+ * This funktion push the category name and the color in the categorys Array
+ */
 function addedCategory() {
     let categoryInput = document.getElementById('category-input-field').value;
 
@@ -62,7 +84,9 @@ function addedCategory() {
     categorys.push(category);
 }
 
-
+/**
+ * This function render the selected category into the input field
+ */
 function renderCategory() {
     let categoryContainer = document.getElementById('category-container');
     categoryContainer.innerHTML = '';
@@ -72,7 +96,9 @@ function renderCategory() {
     }
 }
 
-
+/**
+ * This function render a newly added category in the input field
+ */
 function addNewCategorytoInput() {
     let categoryInput = document.getElementById('category-input-field').value;
     let selectedCategory = document.getElementById('selected-category');
@@ -81,7 +107,11 @@ function addNewCategorytoInput() {
     selectedCategory.innerHTML += greateHtmlAddNewCategoryToInput(categoryInput);
 }
 
-
+/**
+ * This funktion is used to added a category to input field
+ * 
+ * @param {number} i - the index of a category
+ */
 function addToInput(i) {
     let selectedCategory = document.getElementById('selected-category');
     selectedCategoryColor = categorys[i]['color'];
@@ -90,13 +120,19 @@ function addToInput(i) {
     selectedCategory.innerHTML += greateHtmlAddInput(selectedCategoryColor, selectedCategoryName);
 }
 
-
+/**
+ * This function is used to delete a category
+ * @param {number} i - the index of a category
+ */
 function deleteCategory(i) {
     categorys.splice(i, 1);
     renderCategory();
 }
 
 
+/**
+ * This function is used to render the color points that can be assigned to a category
+ */
 function renderCategoryColors() {
     let colorContainer = document.getElementById('color-container');
     colorContainer.innerHTML = '';
@@ -108,7 +144,10 @@ function renderCategoryColors() {
     }
 }
 
-
+/**
+ * This funktion is used to render the selected color point to the input field
+ * @param {string} color - the Hex-colorcode of the selected color
+ */
 function addColor(color) {
     document.getElementById('currentColor').innerHTML = '';
     document.getElementById('currentColor').innerHTML += /*html*/ `<div class="color-circle" style="background-color: ${'' + color}"></div>`
@@ -116,7 +155,9 @@ function addColor(color) {
 }
 
 
-// Contacts
+/**
+ * This function is used to render the contacts in the toggle Menu
+ */
 function renderContacts() {
     let contactContainer = document.getElementById('contact-container');
     contactContainer.innerHTML = '';
@@ -132,7 +173,9 @@ function renderContacts() {
     }
 }
 
-
+/**
+ * This funktion is used to put the selected contacts in an array
+ */
 function addContactsToArray() {
     selectedContacts = [];
     let checkbox = document.querySelectorAll("input[type = 'checkbox'");
@@ -145,6 +188,9 @@ function addContactsToArray() {
 }
 
 
+/**
+ * This function is used clear the selected checkboxes
+ */
 function resetCheckbox() {
     selectedContacts = [];
     let checkbox = document.querySelectorAll("input[type = 'checkbox'");
@@ -154,7 +200,9 @@ function resetCheckbox() {
     }
 }
 
-
+/**
+ * This function is used to render the circle of a contact
+ */
 function renderInicialsCircles() {
     let colorContainer = document.getElementById('inicial-circles');
     colorContainer.innerHTML = '';
@@ -170,7 +218,10 @@ function renderInicialsCircles() {
 }
 
 
-// Prio Buttons
+/**
+ * this function checks which button is clicked
+ * @param {number} prioValue - number of the prio button
+ */
 function addPrio(prioValue) {
     resetPrio();
     if (prioValue == prio) {
@@ -189,6 +240,9 @@ function addPrio(prioValue) {
 }
 
 
+/**
+ * This function changes the color of the Urgent button
+ */
 function selectUrgent() {
     document.getElementById('urgent-btn').classList.add('urgent-aktiv');
     document.getElementById('urgent-image').style.filter = 'brightness(0) invert(1)';
@@ -196,6 +250,9 @@ function selectUrgent() {
 }
 
 
+/**
+ * This function changes the color of the Medium button
+ */
 function selectMedium() {
     document.getElementById('medium-btn').classList.add('medium-aktiv');
     document.getElementById('medium-image').style.filter = 'brightness(0) invert(1)';
@@ -203,13 +260,18 @@ function selectMedium() {
 }
 
 
+/**
+ * This function changes the color of the Low button
+ */
 function selectLow() {
     document.getElementById('low-btn').classList.add('low-aktiv');
     document.getElementById('low-image').style.filter = 'brightness(0) invert(1)';
     prio = 3;
 }
 
-
+/**
+ * This function is used to reset all prio buttons
+ */
 function resetPrio() {
     document.getElementById('urgent-btn').classList.remove('urgent-aktiv');
     document.getElementById('urgent-image').style.filter = '';
@@ -219,12 +281,17 @@ function resetPrio() {
     document.getElementById('low-image').style.filter = '';
 }
 
-// subtasks
+/**
+ * This function is used to open the subtask input field
+ */
 function openSubtaskInput() {
     document.getElementById('subtask-plus').classList.add('d-none');
     document.getElementById('subtask-buttons').classList.remove('d-none');
 }
 
+/**
+ * This function is used to close the subtask input field
+ */
 function closeSubtaskInput() {
     document.getElementById('subtask-input').value = '';
     document.getElementById('subtask-buttons').classList.add('d-none');
@@ -232,7 +299,9 @@ function closeSubtaskInput() {
 
 }
 
-
+/**
+ * This function is used to add a subtask to the subtasks array
+ */
 function addSubtasks() {
     subtaskName = document.getElementById('subtask-input').value;
     subtasks.push(subtaskName);
@@ -240,7 +309,9 @@ function addSubtasks() {
 
 }
 
-
+/**
+ * This function is used to render the subtasks
+ */
 function renderSubtasks() {
     closeSubtaskInput();
     document.getElementById('subtask-input').value = '';
@@ -256,13 +327,18 @@ function renderSubtasks() {
     }
 }
 
-
+/**
+ * This function is used to delete a subtask
+ * @param {number} i - the index of the subtask
+ */
 function deleteSubtasks(i) {
     subtasks.splice(i, 1);
     renderSubtasks();
 }
 
-
+/**
+ * this function reset the complete form
+ */
 function resetForm() {
     resetRequired();
     document.getElementById('title').value = '';
@@ -276,6 +352,9 @@ function resetForm() {
 }
 
 
+/**
+ * This function is used to create a task into a Json, save task and category to the Backend and leads to the board.
+ */
 async function createTask() {
     resetRequired();
     if (checkRequired() == true) {
@@ -288,11 +367,14 @@ async function createTask() {
 }
 
 
+/**
+ * 
+ * This function is used to create a task into a Json
+ */
 async function createTaskIntoJson() {
     let title = document.getElementById('title').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('due-date').value;
-
     let task = {
         'id': tasks.length,
         'title': title,
@@ -307,18 +389,21 @@ async function createTaskIntoJson() {
         'status': 'toDo'
     }
     tasks.push(task);
-    console.log(tasks);
 }
 
-
+/**
+ * This function is used to go to the board, if the task is create
+ */
 function goToBoard() {
     setTimeout(function () {
         window.location.href = "board.html";
     }, 2000)
 }
 
-
-// Validation
+/**
+ * This function checked the validation of all form fields
+ * @returns validatrion = true
+ */
 function checkRequired() {
     let title = document.getElementById('title').value;
     let desc = document.getElementById('description').value;
@@ -337,7 +422,11 @@ function checkRequired() {
     return validation;
 }
 
-
+/**
+ * This fuction checked the validartion of the prio buttons
+ * @param {boolean} validation - true form is valid
+ * @returns false if the prio buttons are not valid
+ */
 function checkprioRequired(validation) {
     if (prio == 0) {
         document.getElementById(`required5`).innerText += "A priority button is required";
@@ -345,7 +434,9 @@ function checkprioRequired(validation) {
     }
 }
 
-
+/**
+ * This function is used to reset the required alert
+ */
 function resetRequired() {
     for (let i = 0; i <= 5; i++) {
         document.getElementById(`required${i}`).innerText = "";
