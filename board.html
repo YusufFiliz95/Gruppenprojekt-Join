@@ -122,7 +122,7 @@
                         onkeyup="filterTasksBySearching(1)">
                     <img src="img/search-logo.svg" alt="">
                 </div>
-                <button onclick="openAddTaskDialogBord()" class="dark-btn add-task-button">
+                <button onclick="openAddTaskDialogBord(), setStatusByOnclick('toDo')" class="dark-btn add-task-button">
                     <p>Add task</p>
                     <div class="plus-icon">
                         <img src="img/plus.svg" alt="">
@@ -142,7 +142,7 @@
                     ondragleave="onDragLeave('toDoId')">
                     <div class=" to-do-headline-bord">
                         <h2>To do</h2>
-                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('toDo')" class="tasks-bord-btn">
                             <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                         </button>
                     </div>
@@ -155,7 +155,8 @@
                     ondrop="moveTo('toProgress')" ondragleave="onDragLeave('toProgressId')">
                     <div class="to-do-headline-bord">
                         <h2>In progress</h2>
-                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('toProgress')"
+                            class="tasks-bord-btn">
                             <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                         </button>
                     </div>
@@ -170,7 +171,8 @@
                     ondrop="moveTo('awaitingFeedback')" ondragleave="onDragLeave('awaitingFeedbackId')">
                     <div class="to-do-headline-bord">
                         <h2>Awaiting Feedback</h2>
-                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('awaitingFeedback')"
+                            class="tasks-bord-btn">
                             <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                         </button>
                     </div>
@@ -183,7 +185,7 @@
                     ondragleave="onDragLeave('doneId')">
                     <div class="to-do-headline-bord">
                         <h2>Done</h2>
-                        <button onclick="openAddTaskDialogBord()" class="tasks-bord-btn">
+                        <button onclick="openAddTaskDialogBord(), setStatusByOnclick('done')" class="tasks-bord-btn">
                             <img class="tasks-bord-plus" src="img/plus.svg" alt="">
                         </button>
                     </div>

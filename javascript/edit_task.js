@@ -1,4 +1,4 @@
-/* --------------------- all functions for edit Task------------------- */
+
 
 function fillInputsByEditTask(i) {
     let title = tasks[i].title;
@@ -136,14 +136,5 @@ function resetRequiredOnEditTask() {
     }
 }
 
-async function createTaskOnBoard() {
-    resetRequired();
-    if (checkRequired() == true) {
-        await createTaskIntoJson();
-        await saveTaskstoBackend();
-        await saveCategorystoBackend();
-        slideOutAddTaskDialogBord()
-        showConfirmationPopup('createtask');
-    }
-}
+
 

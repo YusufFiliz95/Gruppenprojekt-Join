@@ -3,6 +3,7 @@
 
 let currentDraggedElement;
 let cardAmounts = [];
+let statusByClick = "";
 
 /*  -------------------open Dialog Windows with slideIn slide Out Functions--------------------------  */
 
@@ -347,5 +348,28 @@ function renderTasksToInToOverviewBySearching(i) {
 
 /* ----------END--------Search functions------------------------ */
 
+
+async function createTaskOnBoard() {
+    resetRequired();
+    if (checkRequired() == true) {
+        await createTaskIntoJson();
+        await saveTaskstoBackend();
+        await saveCategorystoBackend();
+        slideOutAddTaskDialogBord();
+        showConfirmationPopup('createtask');
+        await setStatusAddTaskOnBoard();
+        loadAllDataForTheBord();
+    }
+}
+
+function setStatusByOnclick(status) {
+    statusByClick = status;
+
+}
+async function setStatusAddTaskOnBoard() {
+    let lastTask = tasks.length - 1;
+    tasks[lastTask].status = statusByClick;
+    await saveTaskstoBackend();
+}
 
 

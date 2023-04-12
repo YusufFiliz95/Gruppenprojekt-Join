@@ -54,11 +54,20 @@ function checkWindowInnerScreenForDragAndDrog() {
         for (let i = 0; i < cardAmounts.length; i++) {
             id = cardAmounts[i];
             document.getElementById('card' + id).draggable = true;
+            setMinHeightByScreenSizing('200px');
         }
     } else {
         for (let i = 0; i < cardAmounts.length; i++) {
             id = cardAmounts[i];
             document.getElementById('card' + id).draggable = false;
+            setMinHeightByScreenSizing('0px');
         }
     }
+}
+
+function setMinHeightByScreenSizing(size) {
+    document.getElementById('toDoId').style.minHeight = size;
+    document.getElementById('toProgressId').style.minHeight = size;
+    document.getElementById('awaitingFeedbackId').style.minHeight = size;
+    document.getElementById('doneId').style.minHeight = size;
 }
