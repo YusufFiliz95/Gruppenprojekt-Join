@@ -70,8 +70,7 @@ function checkRequired() {
     let title = document.getElementById('title').value;
     let desc = document.getElementById('description').value;
     let dueDate = document.getElementById('due-date').value;
-    let selectedCategory = document.getElementById('selected-category');
-    let allData = [title, desc, selectedCategory, selectedContacts, dueDate,]
+    let allData = [title, desc, selectedCategoryName, selectedContacts, dueDate,]
     let validation = true;
     for (let i = 0; i < allData.length; i++) {
         input = allData[i];
@@ -80,21 +79,13 @@ function checkRequired() {
             validation = false;
         }
     }
-    checkprioRequired(validation);
+    if (prio == 0) {
+        document.getElementById(`required5`).innerText += "A priority button is required";
+        validation = false;
+    }
     return validation;
 }
 
-/**
- * This fuction checked the validartion of the prio buttons
- * @param {boolean} validation - true form is valid
- * @returns false if the prio buttons are not valid
- */
-function checkprioRequired(validation) {
-    if (prio == 0) {
-        document.getElementById(`required5`).innerText += "A priority button is required";
-        return validation = false;
-    }
-}
 
 /**
  * This function is used to reset the required alert
