@@ -195,6 +195,11 @@ function slideOutAddTaskDialogBord() {
 }
 
 
+/**
+ * The function shows a confirmation popup with a specific message based on the action type provided.
+ * @param actionType - The type of action that was performed, such as adding, editing, or deleting a
+ * contact or task, or signing up.
+ */
 function showConfirmationPopup(actionType) {
     if (actionType) {
         const confirmationPopup = document.querySelector('.confirmation-popup');

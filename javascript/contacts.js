@@ -886,6 +886,13 @@ function renderContacts() {
     }
 }
 
+/**
+ * This function returns a template for an HTML form to add a task with various input fields and
+ * buttons.
+ * @returns A HTML template for a dialog box to add a task, including input fields for title,
+ * description, category, assigned contact, due date, priority, and subtasks, as well as buttons to
+ * clear the form and create the task.
+ */
 function templateAddTaskContactDialog() {
     return /*html*/ `
         <h1 class="task-headline">Add Task</h1>
