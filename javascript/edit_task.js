@@ -1,5 +1,9 @@
 
-
+/**
+ * This function is used to fill all input fields in the edit task dialog window
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ */
 function fillInputsByEditTask(i) {
     let title = tasks[i].title;
     let description = tasks[i].description;
@@ -15,7 +19,11 @@ function fillInputsByEditTask(i) {
     renderInicialsCircles();
     document.getElementById('status').innerHTML = status;
 }
-
+/**
+ * This function is is used to set the right priority in the edit task dialog window
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ */
 function setPrioButtonByEditTask(i) {
     let prio = tasks[i].prio;
     if (prio == 1) addPrio(1); /* function from addTask.js */
@@ -23,7 +31,11 @@ function setPrioButtonByEditTask(i) {
     if (prio == 3) addPrio(3); /* function from addTask.js */
 
 }
-
+/**
+ * This function is used to set the checkmark in the contacts drop down menu
+ * 
+ * @param {number} i - is the index position from the array tasks  
+ */
 function setCheckboxesByEditTask(i) {
     let contactArray = tasks[i].contacts;
     for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
@@ -36,20 +48,33 @@ function setCheckboxesByEditTask(i) {
         }
     }
 }
-
+/**
+ * This function is used to return the current status in the edit task dialog window
+ * 
+ * @param {string} status- is the status of the task
+ * @returns - returns the right status 
+ */
 function returnStatusInTextForm(status) {
     if (status == 'toDo') return 'To do';
     if (status == 'toProgress') return 'In progress';
     if (status == 'awaitingFeedback') return 'Awaiting Feedback';
     if (status == 'done') return 'Done';
 }
-
+/**
+ * This function is used to changes to the status that was clicked in the drop down menu
+ * 
+ * @param {string} status - ist the status that was clicked 
+ */
 function changeStatusByEditTask(status) {
     status = returnStatusInTextForm(status);
     document.getElementById('status').innerHTML = status;
     toggleMenuCategory('toggle-3'); /* funktion from addTask.js - it close the drop down menu */
 }
-
+/**
+ * This function is used to initiates all functions to change 
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ */
 async function saveEditTask(i) {
     resetRequiredOnEditTask();
     if (checkRequiredOnEditTask() == true) {
@@ -61,7 +86,11 @@ async function saveEditTask(i) {
     }
 }
 
-
+/**
+ * This function is used to save the changes in the task
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ */
 async function saveTask(i) {
     let newTitle = document.getElementById('title').value;
     let newDescription = document.getElementById('description').value;
@@ -78,7 +107,11 @@ async function saveTask(i) {
     tasks[i].contacts = newContacts;
 }
 
-
+/**
+ * This function is used to returns the new status
+ * 
+ * @returns returns the new added status
+ */
 function setNewStatus() {
     let newStatus = document.getElementById('status').innerHTML;
     if (newStatus == 'To do') return 'toDo';
@@ -86,7 +119,11 @@ function setNewStatus() {
     if (newStatus == 'Awaiting Feedback') return 'awaitingFeedback';
     if (newStatus == 'Done') return 'done';
 }
-
+/**
+ * This function is used to returns new contact list
+ * 
+ * @returns the new selected contacts
+ */
 function setNewContacts() {
     let contactsArray = [];
     for (let i = 0; i < contacts.length; i++) {
@@ -96,7 +133,11 @@ function setNewContacts() {
     }
     return contactsArray;
 }
-
+/**
+ * This function is used to delete a tasks
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ */
 async function deleteTask(i) {
     tasks.splice(i, 1);
     await saveTaskstoBackend();
@@ -105,7 +146,11 @@ async function deleteTask(i) {
     slideOutTaskOverviewDialogBoard();
 }
 
-// Validation
+/**
+ * This function is used to check the validation and in which case it required a right input
+ * 
+ * @returns returns true or false
+ */
 function checkRequiredOnEditTask() {
     let title = document.getElementById('title').value;
     let desc = document.getElementById('description').value;
@@ -122,14 +167,21 @@ function checkRequiredOnEditTask() {
     checkprioRequiredOnEditTask(validation);
     return validation;
 }
-
+/**
+ * 
+ * 
+ * @param {boolean} validation - the whole validation except priority   
+ * @returns returns true or false by checking the priority
+ */
 function checkprioRequiredOnEditTask(validation) {
     if (prio == 0) {
         document.getElementById(`required4`).innerText += "A priority button is required";
         return validation = false;
     }
 }
-
+/**
+ * This function is used to resets the prompts for required fields
+ */
 function resetRequiredOnEditTask() {
     for (let i = 0; i <= 4; i++) {
         document.getElementById(`required${i}`).innerText = "";

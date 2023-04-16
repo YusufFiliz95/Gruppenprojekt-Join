@@ -1,18 +1,19 @@
 
-/* All templates for the renderings the board are in the templates/template.js */
-
 let currentDraggedElement;
 let cardAmounts = [];
 let statusByClick = "";
 
-/*  -------------------open Dialog Windows with slideIn slide Out Functions--------------------------  */
-
+/**
+ * This function is used to open the add task dialog
+ */
 function openAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
     renderAddTaskDialog();
 }
-
+/**
+ * This function is used to close the add task dialog
+ */
 function closeAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
@@ -24,20 +25,26 @@ function closeAddTaskDialogBord() {
     prio = 0;
     selectedContacts = [];
 }
-
+/**
+ * This function is used to slide out the dialog window by closing
+ */
 function slideOutAddTaskDialogBord() {
     let window = document.getElementById('add-task-bordId');
     window.classList.remove('slide-in-right-add-task');
     window.classList.add('slide-out-right-add-task');
     setTimeout(closeAddTaskDialogBord, 350);
 }
-
+/**
+ * This function is used to open the task overview by clicking on a added task
+ */
 function openTaskOverviewDialogBord(i) {
     document.getElementById('overlay-bord-taskoverviewId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
     renderTaskInToOverview(i);
 }
-
+/**
+ * This function is used to close the overview task
+ */
 function closeTaskOverviewDialogBoard() {
     document.getElementById('overlay-bord-taskoverviewId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
@@ -48,65 +55,84 @@ function closeTaskOverviewDialogBoard() {
     renderCardsIntoTheBoards();
     clearInputSearchingByResize();
 }
-
-function slideOutTaskOverviewDialogBoard() {
+/**
+ * This function is used to slide out the task overview window by closing
+ */
+async function slideOutTaskOverviewDialogBoard() {
     let window = document.getElementById('taskoverview-bordId');
     window.classList.remove('slide-in-right-task-overview');
     window.classList.add('slide-out-right-task-overview');
+    await saveTaskstoBackend();
     setTimeout(closeTaskOverviewDialogBoard, 100);
     prio = 0; /* var from AddTask.js */
 }
-
+/**
+ * This function is used to render the add task dialog from a template
+ */
 function renderAddTaskDialog() {
     document.getElementById('add-task-contentId').innerHTML = templateAddTaskDialog();
     renderContacts();
     renderCategory();
 }
-
+/**
+ * This function is used to render the edit task dialog from a template
+ * 
+ * @param {number} i - is the index position from the array tasks
+ */
 function renderEditTaskDialog(i) {
     deleteTaskOverview();
     document.getElementById('task-overviewId').innerHTML = templateEditTask(i);
     fillInputsByEditTask(i)
 }
-
+/**
+ * This function is used to clear the add task dialog
+ */
 function deleteAddTaskDialog() {
     document.getElementById('add-task-contentId').innerHTML = "";
 }
-
+/**
+ * This function is used to clear the task overview dialog
+ */
 function deleteTaskOverview() {
     document.getElementById('task-overviewId').innerHTML = "";
 }
-
+/**
+ * This function is used to opens a popup when deleting a task in the section edit task
+ */
 function openDeleteTaskPopup(i) {
     document.getElementById('overlay-delete-taskId').classList.remove('d-none');
     document.getElementById('delete-task-pupupId').innerHTML = templateDeleteTaskPopup(i);
 }
-
+/**
+ * This function is used to close the delete popup when everything is updated
+ */
 function closeDeleteTaskPopup() {
     document.getElementById('overlay-delete-taskId').classList.add('d-none');
     let window = document.getElementById('delete-task-pupupId');
     window.classList.add('slide-in-right-task-overview');
     window.classList.remove('slide-out-right-task-overview');
 }
-
+/**
+ * This function is used to slide out the delete popup
+ */
 function slideOutDeleteTaskPopup() {
     let window = document.getElementById('delete-task-pupupId');
     window.classList.remove('slide-in-right-task-overview');
     window.classList.add('slide-out-right-task-overview');
     setTimeout(closeDeleteTaskPopup, 100);
 }
-
-/* --------END--------open Dialog Windows with slideIn slide Out Functions-------------------------- */
-
-
+/**
+ * This function is used to loads all data needed for the board
+ */
 async function loadAllDataForTheBord() {
     await loadTasksfromBackend();
     await loadContactsfromBackend();
     await loadCategorysfromBackend();
     renderCardsIntoTheBoards();
 }
-
-/* -------------------all rendering function to show the Board------------------------------ */
+/**
+ * This function is used to render all tasks into the board
+ */
 async function renderCardsIntoTheBoards() {
     deleteBoard();
     for (let i = 0; i < tasks.length; i++) {
@@ -125,7 +151,9 @@ async function renderCardsIntoTheBoards() {
     }
     checkWindowInnerScreenForDragAndDrog();
 }
-
+/**
+ * This function is used to clear the board
+ */
 function deleteBoard() {
     cardAmounts = [];
     document.getElementById('toDoId').innerHTML = '';
@@ -133,7 +161,12 @@ function deleteBoard() {
     document.getElementById('awaitingFeedbackId').innerHTML = '';
     document.getElementById('doneId').innerHTML = '';
 }
-
+/**
+ * This function is used checks the task whether subtasks are included and returns the amount of them 
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ * @returns - returns them amount of the subtasks - for example in this form  1/5 
+ */
 function checkSubtasksOnCard(i) {
     let subtask = tasks[i].subtasks;
     let subtaskValue = tasks[i]["subtasks-value"];
@@ -147,14 +180,23 @@ function checkSubtasksOnCard(i) {
     }
     return "";
 }
-
+/**
+ * This function is used to sets the correct image to the priority
+ * 
+ * @param {number} i - is the index position from the array tasks
+ * @returns returns the path from correct image
+ */
 function setPrioImage(i) {
     let prio = tasks[i].prio;
     if (prio == 1) return "prio_urgent.svg";
     if (prio == 2) return "prio_medium.svg";
     if (prio == 3) return "prio_low.svg";
 }
-
+/**
+ * This function is used to checks if a bar is required = a subtasks is available
+ * 
+ * @param {number} i - is the index position from the array tasks
+ */
 function checkNeedBar(i) {
     let checkSubtask = checkSubtasksOnCard(i);
     let subtask = tasks[i].subtasks;
@@ -163,7 +205,12 @@ function checkNeedBar(i) {
         document.getElementById('progressbarId' + i).innerHTML = templateNeedBar(i, checkSubtask, percentBar);
     }
 }
-
+/**
+ * This function is used to calculates the percentage of the completed to the total. It is needed to show the progress bar
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ * @returns returns the calculated percent
+ */
 function calcPercentForProgressBarOnCard(i) {
     let subtaskValue = tasks[i]["subtasks-value"];
     let subtaskLength = tasks[i]["subtasks-value"].length;
@@ -175,7 +222,12 @@ function calcPercentForProgressBarOnCard(i) {
     percent = 100 / subtaskLength * amount;
     return percent;
 }
-
+/**
+ * This function is used to puts in the added contacts into the task card  
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ * @param {array} contactArray - are the added contacts in the respective task
+ */
 function renderContactsIntotheCard(i, contactArray) {
     let difference = -3;
     let initials;
@@ -196,7 +248,12 @@ function renderContactsIntotheCard(i, contactArray) {
     }
     addCardContactIconOverview(difference, contactField);
 }
-
+/**
+ * This function is used to puts in the contacts background into the task card
+ * 
+ * @param {number} difference - difference is needed to shows an icon after 3 displayed contacts more available
+ * @param {id} contactField - the respective icon container in the task card
+ */
 function addCardContactIconOverview(difference, contactField) {
     if (difference > 0) {
         initials = "+" + difference;
@@ -204,12 +261,11 @@ function addCardContactIconOverview(difference, contactField) {
         contactField.innerHTML += templateRenderContactsIntoTheCard(initials, backgroundColor);
     }
 }
-
-
-/* --------END--------all rendering function to show the Board-------------------------- */
-
-/* ----------------all rendering functions to show the task overview-------------------------- */
-
+/**
+ * This function is used to render the selected task into the task overview
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ */
 function renderTaskInToOverview(i) {
     let category = tasks[i].category;
     let categoryColor = tasks[i]["category-color"];
@@ -223,7 +279,11 @@ function renderTaskInToOverview(i) {
     if (tasks[i].subtasks.length >= 1) renderSubtaskInToOverview(i);
     renderContactsInToOverview(i);
 }
-
+/**
+ * This function is used to render the subtasks into the task overview
+ * 
+ * @param {number} i - is the index position from the array tasks
+ */
 function renderSubtaskInToOverview(i) {
     let subtaskfield = document.getElementById('overviewSubtasksId');
     subtaskfield.innerHTML = '';
@@ -234,7 +294,11 @@ function renderSubtaskInToOverview(i) {
     }
     rendersubtaskCheckboxes(i);
 }
-
+/**
+ *  This function is used to render the subtasks-checkboxes into the task overview and and sets the status of the checkbox
+ * 
+ * @param {*} i - is the index position from the array tasks 
+ */
 function rendersubtaskCheckboxes(i) {
     let subtasksValue = tasks[i]["subtasks-value"];
     for (let z = 0; z < subtasksValue.length; z++) {
@@ -242,27 +306,46 @@ function rendersubtaskCheckboxes(i) {
         else document.getElementById('checkboxId' + z).checked = true;
     }
 }
-
+/**
+ * This function is used to set the subtast to done or not done
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ * @param {number} z - is the checkbox position from the subtasks
+ */
 function subtasksCheckBoxClick(i, z) {
     let checkbox = document.getElementById('checkboxId' + z);
     if (checkbox.checked == true) tasks[i]["subtasks-value"][z] = 1;
     else tasks[i]["subtasks-value"][z] = 0;
 }
-
+/**
+ * This function is used to returns the right priority from the tasks
+ * 
+ * @param {number} i - is the index position from the array tasks  
+ * @returns - returns the right priority
+ */
 function setPrio(i) {
     let prio = tasks[i].prio;
     if (prio == 1) return "Urgent";
     if (prio == 2) return "Medium";
     if (prio == 3) return "Low";
 }
-
+/**
+ * This function is used to returns the right priority-color
+ * 
+ * @param {number} i - is the index position from the array tasks  
+ * @returns - returns the right priority color 
+ */
 function setPrioColor(i) {
     let prio = tasks[i].prio;
     if (prio == 1) return "#FF3D00";
     if (prio == 2) return "#FFA800";
     if (prio == 3) return "#7AE229";
 }
-
+/**
+ * This function is used to render the contacts from the selected task into the task overview
+ * 
+ * @param {number} i - is the index position from the array tasks 
+ */
 function renderContactsInToOverview(i) {
     let contactArray = tasks[i].contacts;
     for (let y = 0; y < contactArray.length; y++) { /* checks if the id still exists */
@@ -278,10 +361,9 @@ function renderContactsInToOverview(i) {
         }
     }
 }
-/* -------END------all rendering functions to show the task overview-------------------------- */
-
-/* ---------------------Search functions------------------------ */
-
+/**
+ *  This function is used to clear the search field when changing the screen size
+ */
 function clearInputSearchingByResize() {
     let inputSearchingField1 = document.getElementById('input-searchingId1');
     let inputSearchingField2 = document.getElementById('input-searchingId2');
@@ -299,7 +381,11 @@ function clearInputSearchingByResize() {
         inputSearchingField2.value = "";
     }
 }
-
+/**
+ * This function is used to checks if the search field is active or not and and renders accordingly
+ * 
+ * @param {*} id 
+ */
 function filterTasksBySearching(id) {
     let search = document.getElementById('input-searchingId' + id).value;
     search = search.toLowerCase();
@@ -311,7 +397,11 @@ function filterTasksBySearching(id) {
         indexesOfSearching(search);
     }
 }
-
+/**
+ * This function is used to filter related to the search input
+ * 
+ * @param {*} search - is the input in the search field 
+ */
 function indexesOfSearching(search) {
     let indexesOfSearching = [];
     for (let i = 0; i < tasks.length; i++) {
@@ -331,7 +421,11 @@ function indexesOfSearching(search) {
     }
     checkWindowInnerScreenForDragAndDrog();
 }
-
+/**
+ * This function is used to render the filtered task into the board
+ * 
+ * @param {*} i - filtered indexes via search  
+ */
 function renderTasksToInToOverviewBySearching(i) {
     let id = tasks[i].id;
     let category = tasks[i].category;
@@ -345,10 +439,9 @@ function renderTasksToInToOverviewBySearching(i) {
     checkNeedBar(i);
     renderContactsIntotheCard(i, contacts);
 }
-
-/* ----------END--------Search functions------------------------ */
-
-
+/**
+ * This function is used to creates a task from the create task function on the bord 
+ */
 async function createTaskOnBoard() {
     resetRequired();
     if (checkRequired() == true) {
@@ -361,11 +454,17 @@ async function createTaskOnBoard() {
         loadAllDataForTheBord();
     }
 }
-
+/**
+ * This function is used to uses the plus next to the respective status to set the correct status in the global variable
+ * 
+ * @param {*} status - transmitted status about the plus 
+ */
 function setStatusByOnclick(status) {
     statusByClick = status;
-
 }
+/**
+ * This function is used to takes the right status from the global variable and puts the task in the right field
+ */
 async function setStatusAddTaskOnBoard() {
     let lastTask = tasks.length - 1;
     tasks[lastTask].status = statusByClick;

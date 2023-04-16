@@ -229,12 +229,4 @@ function showConfirmationPopup(actionType) {
         }, 1500);
     }
 }
-/**First, add this element to your html file, where the popup should show:
- *
- *     <div class="confirmation-popup">
-        <p id="confirmationpopuptext"></p>
-        </div>
- *
- */
 
-//Whenever you need to show this popup, use this function: showConfirmationPopup('createtask');

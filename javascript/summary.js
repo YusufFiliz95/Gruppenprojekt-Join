@@ -1,14 +1,6 @@
-
-let date1 = new Date("10/23/2015");
-let date2 = new Date("2022.03.24");
-let date3 = new Date("2022.03.23");
-
-
-dates = [date1, date2, date3];
-
-filter = Math.min.apply(null, dates);
-filterDate = new Date(filter);
-
+/**
+ * This function is used to load all needed content for the summary
+ */
 async function loadSummaryContent() {
     await loadTasksfromBackend();
     calcAmountTasksOnBoard();
@@ -20,12 +12,16 @@ async function loadSummaryContent() {
     getRightGreeting();
     getUpcomingDeadline();
 }
-
+/**
+ * This function is used to calculates the total amount of tasks
+ */
 function calcAmountTasksOnBoard() {
     let amountTasks = tasks.length;
     document.getElementById('tasksId').innerHTML = amountTasks;
 }
-
+/**
+ * This function is used to calculates the amount of the "in progress" tasks
+ */
 function calcAmountTasksInProgress() {
     let amountInProgress = 0;
 
@@ -35,7 +31,9 @@ function calcAmountTasksInProgress() {
     }
     document.getElementById('toProgressId').innerHTML = amountInProgress;
 }
-
+/**
+ * This function is used to calculates the amount of the "awaiting feedback" tasks
+ */
 function calcAwaitingFeedbackTasksInProgress() {
     let amountAwaitingFeedbacks = 0;
 
@@ -45,7 +43,9 @@ function calcAwaitingFeedbackTasksInProgress() {
     }
     document.getElementById('awaitingFeedbackId').innerHTML = amountAwaitingFeedbacks;
 }
-
+/**
+ * This function is used to calculate the amount of the priority urgent
+ */
 function calcPrioUrgent() {
     let amountUrgents = 0;
 
@@ -55,7 +55,9 @@ function calcPrioUrgent() {
     }
     document.getElementById('urgentsId').innerHTML = amountUrgents;
 }
-
+/**
+ * This function is used to calculate the amount of the "to do" tasks
+ */
 function calcAmountTasksInToDo() {
     let amountToDoes = 0;
 
@@ -65,7 +67,9 @@ function calcAmountTasksInToDo() {
     }
     document.getElementById('toDoId').innerHTML = amountToDoes;
 }
-
+/**
+ * This function is used to calculate the amount of the "done" tasks
+ */
 function calcAmountTasksInDone() {
     let amountDone = 0;
 
@@ -75,7 +79,9 @@ function calcAmountTasksInDone() {
     }
     document.getElementById('doneId').innerHTML = amountDone;
 }
-
+/**
+ * makes the greeting appropriate to the time of day
+ */
 function getRightGreeting() {
     let greetingField = document.getElementById('greetingId');
     let day = new Date();
@@ -90,7 +96,9 @@ function getRightGreeting() {
         greetingField.innerHTML = ("Good evening,");
     }
 }
-
+/**
+ * This function is used to generate the next upcoming deadline
+ */
 function getUpcomingDeadline() {
     let dates = [];
     for (let i = 0; i < tasks.length; i++) {
@@ -103,7 +111,11 @@ function getUpcomingDeadline() {
     }
     if (dates.length >= 1) filterUrgentDates(dates);
 }
-
+/**
+ * This function is used to filter the next upcoming deadline and to show them 
+ * 
+ * @param {array} dates - dates from the urgents tasks 
+ */
 function filterUrgentDates(dates) {
     let filterTimestamp = Math.min.apply(null, dates);
     let upcomingDate = new Date(filterTimestamp);
@@ -112,7 +124,6 @@ function filterUrgentDates(dates) {
     let day = upcomingDate.toLocaleString('en-us', { day: "numeric" });
 
     document.getElementById('upcomingDateId').innerHTML = `${month} ${day}, ${year}`;
-
 
 }
 
