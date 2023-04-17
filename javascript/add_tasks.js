@@ -21,6 +21,15 @@ async function loadAndRenderData() {
 
 
 /**
+ * This functions saves a new contact in the Backend, load all Contacts from backend and render them, in the toggle menu.
+ */
+async function loadAndRenderContacts() {
+    await saveContactstoBackend();
+    await loadContactsfromBackend();
+    renderContacts();
+}
+
+/**
  * This function open the toggle Menu for the category
  * @param {string} id of the corresponding toggle menu
  */
@@ -165,7 +174,7 @@ function renderContacts() {
 }
 
 /**
- * This funktion is used to put the selected contacts in an array
+ * The function adds selected contacts' IDs to an array.
  */
 function addContactsToArray() {
     selectedContacts = [];
