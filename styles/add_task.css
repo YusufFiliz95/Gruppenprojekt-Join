@@ -101,6 +101,15 @@ textarea:focus {
 
 }
 
+
+.category-input {
+    padding-right: 6px;
+    padding-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    gap: 6px
+}
+
 .category {
     padding-right: 6px;
     padding-bottom: 6px;

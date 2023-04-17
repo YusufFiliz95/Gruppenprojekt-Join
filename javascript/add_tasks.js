@@ -130,8 +130,7 @@ function renderCategoryColors() {
 
     for (let i = 0; i < pointColor.length; i++) {
         color = pointColor[i];
-        colorContainer.innerHTML += /*html*/`
-        <div onclick="addColor('${color}')" id="circle${i}" class="color-circle" style="background-color: ${'' + color}"></div>`
+        colorContainer.innerHTML += greateHtmlCategorColor(color, i)
     }
 }
 
