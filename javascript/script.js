@@ -6,7 +6,10 @@ let categorys = [];
 let highestUsedId = [];
 let users = [];
 
-//FUNCTION FOR LOADING OTHER FUNCTIONS
+/**
+ * This fuction is used to load the Menu, show the selected page, show the user und load the user
+ * @param {number} i id of the different pages
+ */
 function init(i) {
     setURL('https://gruppenarbeit-join-475.developerakademie.net/smallest_backend_ever');
     includeHTML().then(() => {
@@ -24,14 +27,19 @@ function init(i) {
     });
 }
 
+
+/**
+ * This fuction is used to show the user icon
+ */
 function loadLoggedInUser() {
     let loggedInUserInitials = localStorage.getItem("userInitials");
     let userInitialsElement = document.getElementById('userInitials');
-    
+
     if (loggedInUserInitials && userInitialsElement) {
         userInitialsElement.innerHTML = loggedInUserInitials;
     }
 }
+
 
 function toggleLogOutDropDown(event) {
     event.stopPropagation();
@@ -60,25 +68,33 @@ function toggleLogOutDropDown(event) {
 window.addEventListener('click', toggleLogOutDropDown);
 
 
-// FUNCTIONS TO SAVE AND LOAD TASKS TO/FROM BACKEND
-
+/**
+ * This fuction is used to save Tasks in the Backend
+ */
 async function saveTaskstoBackend() {
     await backend.setItem('tasks', JSON.stringify(tasks));
 }
 
+/**
+ * This fuction is used to load Tasks from Backend
+ */
 async function loadTasksfromBackend() {
     await downloadFromServer();
     tasks = JSON.parse(backend.getItem('tasks')) || [];
 }
 
 
-// FUNCTIONS TO SAVE AND LOAD CONTACTS TO/FROM BACKEND
-
+/**
+ * This fuction is used to save Contacts in the Backend
+ */
 async function saveContactstoBackend() {
     await backend.setItem('contacts', JSON.stringify(contacts));
     await backend.setItem('nextContactId', JSON.stringify(nextContactId));
 }
 
+/**
+ * This fuction is used to load Contacts from Backend
+ */
 async function loadContactsfromBackend() {
     await downloadFromServer();
     contacts = JSON.parse(backend.getItem('contacts')) || [];
@@ -89,52 +105,71 @@ async function loadContactsfromBackend() {
             highestUsedId = contactIdNumber;
         }
     }
-    console.log('Loaded contacts:', contacts);
 }
 
-// FUNCTIONS TO SAVE AND LOAD USER TO/FROM LOCALSTORAGE
+/**
+ * This function is used to save the user name
+ * @param {string} name user name
+ */
 
 function saveUserToLocalStorage(name) {
     localStorage.setItem('loggedInUserSurname', JSON.stringify(name));
 }
 
+/**
+ * This funktion is used to save the user inatials
+ * @param {string} initials intitials from the user
+ */
+
 function saveUserInitialsToLocalStorage(initials) {
     localStorage.setItem("userInitials", initials);
 }
 
+
+/**
+ * This function is used to load the user
+ * @returns the logged user
+ */
 function loadUserFromLocalStorage() {
     let loggedInUsername = JSON.parse(localStorage.getItem('loggedInUserSurname')) || null;
-    console.log('Loaded loggedInUserSurname:', loggedInUsername);
     return loggedInUsername;
 }
 
-
-// FUNCTIONS TO SAVE AND LOAD USER TO/FROM BACKEND
-
+/**
+ * This fuction is used save Singed in User in the Backend
+ */
 async function saveSignedInUserToBackend() {
     await backend.setItem('users', JSON.stringify(users));
 }
 
+
+/**
+ * This fuction is used to load Singed in User from Backend
+ */
 async function loadSignedInUserfromBackend() {
     await downloadFromServer();
     users = JSON.parse(backend.getItem('users')) || [];
-    console.log('Loaded users:', users);
 }
 
-// FUNCTIONS TO SAVE AND LOAD Categorys TO/FROM BACKEND
-
+/**
+ * This function is used to save categorys in the Backend
+ */
 async function saveCategorystoBackend() {
     await backend.setItem('categorys', JSON.stringify(categorys));
-    console.log('backend durch');
 }
 
+
+/**
+ * This fuction is used to load categorys from the Backend
+ */
 async function loadCategorysfromBackend() {
     await downloadFromServer();
     categorys = JSON.parse(backend.getItem('categorys')) || [];
 }
 
-
-//FUNCTION FOR INCLUDING OTHER HTML SNIPPETS
+/**
+ * This function is used to load templates
+ */
 async function includeHTML() {
     let includeElements = document.querySelectorAll('[w3-include-html]');
     for (let i = 0; i < includeElements.length; i++) {
@@ -148,15 +183,26 @@ async function includeHTML() {
         }
     }
 }
-/* function so that the dialog window does not close when clicked */
+/**
+ * This function reduces the closing of the dialog window, when clicking on it
+ * @param {} event 
+ */
 function doNotClose(event) {
     event.stopPropagation();
 }
 
+
+/**
+ * This function is used to shows which page is open
+ * @param {*} i id of the different pages
+ */
 function selectMenuPoint(i) {
     selectedMenu = i;
 }
 
+/**
+ *  This function is used to shows which page is open
+ */
 function setSelectedMenu() {
     const selectedMenuElement = document.getElementById(selectedMenu);
     const mobileButtonElement = document.getElementById('mobile-buttonId' + selectedMenu);
@@ -173,11 +219,19 @@ function setSelectedMenu() {
 
 /*  -------------------open Dialog Window AddTask with slideIn slide Out Functions--------------------------  */
 
+
+/**
+ * This fuction is used to open the task dialog on the board
+ */
 function openAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
 }
 
+
+/**
+ * This fuction is used to close the task dialog on the board und show the board
+ */
 function closeAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.add('d-none');
     document.getElementById('bodyBordId').classList.remove('overflow-dialog');
@@ -187,6 +241,10 @@ function closeAddTaskDialogBord() {
     if (selectedMenu == 2) renderCardsIntoTheBoards();
 }
 
+
+/**
+ * This function is used to silde out the task dailog 
+ */
 function slideOutAddTaskDialogBord() {
     let window = document.getElementById('add-task-bordId');
     window.classList.remove('slide-in-right-add-task');
