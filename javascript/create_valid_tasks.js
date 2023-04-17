@@ -97,7 +97,39 @@ function resetRequired() {
     }
 }
 
-
+/**
+ *  This function is used to validat contacts in add_task Overlay
+ */
 function validateTaskContacts() {
+    const nameValue = document.getElementById('newContactName').value;
+    const emailValue = document.getElementById('newContactEmail').value;
+    const phoneValue = document.getElementById('newContactPhone').value;
+
+    const isValidName = validateName(nameValue, 'nameError');
+    const isValidEmail = validateEmail(emailValue, 'emailError');
+    const isValidPhone = validatePhone(phoneValue, 'phoneError');
+
+    if (isValidName && isValidEmail && isValidPhone) {
+        createNewContactOnAddTask();
+    }
+}
+
+/**
+ *  This function is used to create contacts in add_task Overlay
+ */
+async function createNewContactOnAddTask() {
+    await loadContactsfromBackend();
+    const newContact = createNewContactObject();
+    showConfirmationPopup('addcontact');
+    contacts.push(newContact);
+    await saveContactstoBackend(contacts);
+    await loadContacts();
+    // Show the newly created contact info
+    const newContactIndex = contacts.findIndex(contact => contact === newContact);
+    if (newContactIndex >= 0) {
+        showContactInfo(newContactIndex);
+    }
+    closeForm();
+    renderContacts();
 
 }
