@@ -372,9 +372,7 @@ function createNewContactObject() {
     const newContactPhoneInput = document.getElementById('newContactPhone');
     const [name, surname] = newContactNameInput.value.split(' '); // Split the name into first and last name.
     const lastContactId = getNextContactId();
-    const usedColors = contacts.map(contact => contact.profilecolor);
-    const availableColors = ['#343a40', '#dc3545', '#007bff', '#28a745', '#6c757d', '#ffc107', '#7952b3', '#17a2b8', '#6f42c1'].filter(color => !usedColors.includes(color) && color !== '#FFFFFF');
-    const profileColor = availableColors[Math.floor(Math.random() * availableColors.length)];
+    const profileColor = getRandomDarkColor();
     const newContact = {
         'name': name,
         'surname': surname,
@@ -385,6 +383,16 @@ function createNewContactObject() {
         'contactid': lastContactId
     };
     return newContact;
+}
+
+function getRandomDarkColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 3; i++) {
+        let subcolor = letters[Math.floor(Math.random() * 16)];
+        color += subcolor + subcolor; // make the subcolor darker by repeating it twice
+    }
+    return color;
 }
 
 // Function to get the next available contact ID
@@ -401,6 +409,114 @@ function getNextContactId() {
 //**************************************************************************************************************************************//
 
 //***********************************FUNCTION THAT CHECKS IF THE INPUT IS VALID***********************************//
+
+/**
+ * The function validates contact information and creates a new contact if all information is valid.
+ */
+function validateContact() {
+    const nameValue = document.getElementById('newContactName').value;
+    const emailValue = document.getElementById('newContactEmail').value;
+    const phoneValue = document.getElementById('newContactPhone').value;
+
+    const isValidName = validateName(nameValue, 'nameError');
+    const isValidEmail = validateEmail(emailValue, 'emailError');
+    const isValidPhone = validatePhone(phoneValue, 'phoneError');
+
+    if (isValidName && isValidEmail && isValidPhone) {
+        createNewContact();
+    }
+}
+
+/**
+ * This function validates and updates a contact's information, saves it to the backend, and displays a
+ * confirmation popup.
+ */
+async function validateEditContact() {
+    const editContactContainer = document.querySelector('.edit-contact-container');
+    const i = editContactContainer.dataset.contactIndex;
+    const contact = contacts[i];
+
+    const nameValue = document.getElementById('editContactName').value;
+    const emailValue = document.getElementById('editContactEmail').value;
+    const phoneValue = document.getElementById('editContactPhone').value;
+
+    const isValidName = validateName(nameValue, 'editNameError');
+    const isValidEmail = validateEmail(emailValue, 'editEmailError');
+    const isValidPhone = validatePhone(phoneValue, 'editPhoneError');
+
+    if (isValidName && isValidEmail && isValidPhone) {
+        updateContact(contact, nameValue, emailValue, phoneValue);
+        showConfirmationPopup('editcontact');
+        await saveContactstoBackend(contacts);
+        closeEditContactForm();
+        loadContacts();
+        showContactInfo(i);
+    }
+}
+
+/**
+ * The function validates if a given name (first and last name) matches a regular expression and
+ * displays an error message if it doesn't.
+ * @param nameValue - The value of the name input field that needs to be validated.
+ * @param errorId - The ID of the HTML element where the error message will be displayed if the name is
+ * invalid.
+ * @returns a boolean value - true or false. It returns true if the nameValue parameter matches the
+ * regular expression pattern for a valid name (first and last name), and false if it does not match
+ * the pattern.
+ */
+function validateName(nameValue, errorId) {
+    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
+    if (!nameRegex.test(nameValue)) {
+        showErrorMessage(errorId, 'Please enter a valid name (first and last name).');
+        return false;
+    } else {
+        hideErrorMessage(errorId);
+        return true;
+    }
+}
+
+/**
+ * The function validates if an email address is valid using a regular expression and displays an error
+ * message if it is not.
+ * @param emailValue - The email address that needs to be validated.
+ * @param errorId - The ID of the HTML element where the error message will be displayed if the email
+ * is invalid.
+ * @returns a boolean value - true or false. It returns true if the emailValue parameter matches the
+ * emailRegex pattern and false if it does not.
+ */
+function validateEmail(emailValue, errorId) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailValue)) {
+        showErrorMessage(errorId, 'Please enter a valid email address.');
+        return false;
+    } else {
+        hideErrorMessage(errorId);
+        return true;
+    }
+}
+
+/**
+ * The function validates if a phone number is valid and returns a boolean value.
+ * @param phoneValue - The phone number value that needs to be validated.
+ * @param errorId - The ID of the HTML element where the error message will be displayed if the phone
+ * number is invalid.
+ * @returns a boolean value (either true or false) depending on whether the phone number passed as the
+ * first argument matches the regular expression pattern defined in the function. If the phone number
+ * is valid, the function returns true and hides any error message displayed in the HTML element with
+ * the ID specified as the second argument. If the phone number is invalid, the function returns false
+ * and displays an error message
+ */
+function validatePhone(phoneValue, errorId) {
+    const phoneRegex = /^\d{10,15}$/;
+    if (!phoneRegex.test(phoneValue)) {
+        showErrorMessage(errorId, 'Please enter a valid phone number (10-15 digits).');
+        return false;
+    } else {
+        hideErrorMessage(errorId);
+        return true;
+    }
+}
+
 /**
  * It validates the input fields and if they are valid, it calls the createNewContact() function.
  * @param id - The id of the element to show the error message in.
@@ -421,77 +537,6 @@ function hideErrorMessage(id) {
     const errorLabel = document.getElementById(id);
     errorLabel.style.display = 'none';
 }
-
-/**
- * Validates the new contact information entered by the user.
- * Displays error messages for invalid input and creates a new contact if all inputs are valid.
- */
-function validateContact() {
-    const nameValue = document.getElementById('newContactName').value;
-    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
-
-    const emailValue = document.getElementById('newContactEmail').value;
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const phoneValue = document.getElementById('newContactPhone').value;
-    const phoneRegex = /^\d{10,15}$/;
-
-    let isValid = true;
-
-    /**
-     * Displays an error message if the name input is invalid, otherwise hides the error message.
-     * @param {boolean} isValid - Whether or not the name input is valid.
-     * @returns {boolean} isValid - Whether or not the name input is valid.
-     */
-    function validateName(isValid) {
-        if (!nameRegex.test(nameValue)) {
-            showErrorMessage('nameError', 'Please enter a valid name (first and last name).');
-            isValid = false;
-        } else {
-            hideErrorMessage('nameError');
-        }
-        return isValid;
-    }
-
-    /**
-     * Displays an error message if the email input is invalid, otherwise hides the error message.
-     * @param {boolean} isValid - Whether or not the email input is valid.
-     * @returns {boolean} isValid - Whether or not the email input is valid.
-     */
-    function validateEmail(isValid) {
-        if (!emailRegex.test(emailValue)) {
-            showErrorMessage('emailError', 'Please enter a valid email address.');
-            isValid = false;
-        } else {
-            hideErrorMessage('emailError');
-        }
-        return isValid;
-    }
-
-    /**
-     * Displays an error message if the phone input is invalid, otherwise hides the error message.
-     * @param {boolean} isValid - Whether or not the phone input is valid.
-     * @returns {boolean} isValid - Whether or not the phone input is valid.
-     */
-    function validatePhone(isValid) {
-        if (!phoneRegex.test(phoneValue)) {
-            showErrorMessage('phoneError', 'Please enter a valid phone number (10-15 digits).');
-            isValid = false;
-        } else {
-            hideErrorMessage('phoneError');
-        }
-        return isValid;
-    }
-
-    isValid = validateName(isValid);
-    isValid = validateEmail(isValid);
-    isValid = validatePhone(isValid);
-
-    if (isValid) {
-        createNewContact();
-    }
-}
-
 
 //**************************************************************************************************************************************//
 
@@ -604,87 +649,6 @@ function closeEditContactForm() {
     }, 500);
 }
 
-/**
- * This function validates and updates a contact's information, shows a confirmation popup, saves the
- * updated contacts to the backend, closes the edit contact form, reloads the contacts, and shows the
- * updated contact's information.
- */
-async function validateEditContact() {
-    const editContactContainer = document.querySelector('.edit-contact-container');
-    const i = editContactContainer.dataset.contactIndex;
-    const contact = contacts[i];
-
-    const nameValue = document.getElementById('editContactName').value;
-    const emailValue = document.getElementById('editContactEmail').value;
-    const phoneValue = document.getElementById('editContactPhone').value;
-
-    const isValidName = validateName(nameValue);
-    const isValidEmail = validateEmail(emailValue);
-    const isValidPhone = validatePhone(phoneValue);
-
-    if (isValidName && isValidEmail && isValidPhone) {
-        updateContact(contact, nameValue, emailValue, phoneValue);
-        showConfirmationPopup('editcontact');
-        await saveContactstoBackend(contacts);
-        closeEditContactForm();
-        loadContacts();
-        showContactInfo(i);
-    }
-}
-
-/**
- * The function validates if a given name value contains only first and last name using a regular
- * expression.
- * @param nameValue - The value of the name input field that needs to be validated.
- * @returns a boolean value (either true or false) depending on whether the nameValue parameter matches
- * the regular expression pattern defined in the nameRegex variable. If the nameValue is valid, the
- * function returns true, otherwise it returns false.
- */
-function validateName(nameValue) {
-    const nameRegex = /^[a-zA-Z]+\s[a-zA-Z]+$/;
-    if (!nameRegex.test(nameValue)) {
-        showErrorMessage('editNameError', 'Please enter a valid name (first and last name).');
-        return false;
-    } else {
-        hideErrorMessage('editNameError');
-        return true;
-    }
-}
-
-/**
- * The function validates if an email address is in a valid format using a regular expression.
- * @param emailValue - The email address that needs to be validated.
- * @returns a boolean value - either true or false. It returns true if the emailValue parameter matches
- * the emailRegex pattern and false if it does not.
- */
-function validateEmail(emailValue) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(emailValue)) {
-        showErrorMessage('editEmailError', 'Please enter a valid email address.');
-        return false;
-    } else {
-        hideErrorMessage('editEmailError');
-        return true;
-    }
-}
-
-/**
- * The function validates if a phone number is valid based on a regular expression and returns a
- * boolean value.
- * @param phoneValue - The phone number value that needs to be validated.
- * @returns a boolean value (true or false) depending on whether the phoneValue parameter matches the
- * phoneRegex pattern or not. If it matches, the function returns true, otherwise it returns false.
- */
-function validatePhone(phoneValue) {
-    const phoneRegex = /^\d{10,15}$/;
-    if (!phoneRegex.test(phoneValue)) {
-        showErrorMessage('editPhoneError', 'Please enter a valid phone number (10-15 digits).');
-        return false;
-    } else {
-        hideErrorMessage('editPhoneError');
-        return true;
-    }
-}
 
 /**
  * The function updates a contact object with new name, email, and phone number values.
