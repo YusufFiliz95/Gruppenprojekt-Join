@@ -97,6 +97,23 @@ function resetRequired() {
     }
 }
 
+
+/**
+ * this function reset the complete form
+ */
+function resetForm() {
+    resetRequired();
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('selected-category').innerHTML = 'Select task category';
+    document.getElementById('inicial-circles').innerHTML = '';
+    resetCheckbox();
+    document.getElementById('due-date').value = '';
+    addPrio(0);
+    document.getElementById('subtasks-container').innerHTML = '';
+}
+
+
 /**
  *  This function is used to validat contacts in add_task Overlay
  */

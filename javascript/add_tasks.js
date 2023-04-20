@@ -15,6 +15,7 @@ async function loadAndRenderData() {
     await loadContactsfromBackend();
     await loadTasksfromBackend();
     await loadCategorysfromBackend();
+    setCurrentDate();
     renderContacts();
     renderCategory();
 }
@@ -326,21 +327,25 @@ function deleteSubtasks(i) {
     renderSubtasks();
 }
 
-/**
- * this function reset the complete form
- */
-function resetForm() {
-    resetRequired();
-    document.getElementById('title').value = '';
-    document.getElementById('description').value = '';
-    document.getElementById('selected-category').innerHTML = 'Select task category';
-    document.getElementById('inicial-circles').innerHTML = '';
-    resetCheckbox();
-    document.getElementById('due-date').value = '';
-    addPrio(0);
-    document.getElementById('subtasks-container').innerHTML = '';
-}
 
+/**
+ * This function used to set the current date in the 'min attribute, from the date input
+ */
+function setCurrentDate() {
+    let today = new Date();
+    let dd = today.getDate();
+    let mm = today.getMonth() + 1;
+    let yyyy = today.getFullYear();
+    if (dd < 10) {
+        dd = '0' + dd;
+    }
+    if (mm < 10) {
+        mm = '0' + mm;
+    }
+    today = yyyy + '-' + mm + '-' + dd;
+    dueDate = document.getElementById('due-date');
+    dueDate.setAttribute('min', today);
+}
 
 /**
  * This function is used to create a task into a Json, save task and category to the Backend and leads to the board.
