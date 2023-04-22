@@ -46,14 +46,14 @@ function onDropEnd(status) {
 async function moveTo(status) {
     let searchFieldId;
     tasks[currentDraggedElement].status = status;
-    await saveTaskstoBackend();
     let inputSearchingField1 = document.getElementById('input-searchingId1').value;
     let inputSearchingField2 = document.getElementById('input-searchingId2').value;
     if (inputSearchingField1.length >= 1) searchFieldId = 1;
     if (inputSearchingField2.length >= 1) searchFieldId = 2;
-    if (inputSearchingField1 == '' && inputSearchingField1 == '') await loadAllDataForTheBord();
+    if (inputSearchingField1 == '' && inputSearchingField1 == '') await renderCardsIntoTheBoards(); 
     else filterTasksBySearching(searchFieldId);
     onDropEnd(status);
+    await saveTaskstoBackend();
 }
 /**
  * This function is used to rotate the selected card by start dragging

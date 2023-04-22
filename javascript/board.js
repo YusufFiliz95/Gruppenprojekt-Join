@@ -9,6 +9,7 @@ let statusByClick = "";
 function openAddTaskDialogBord() {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
+    subtasks = []; /* clear the subtasks Array */
     renderAddTaskDialog();
 }
 /**
@@ -73,6 +74,7 @@ function renderAddTaskDialog() {
     document.getElementById('add-task-contentId').innerHTML = templateAddTaskDialog();
     renderContacts();
     renderCategory();
+    setCurrentDate(); 
 }
 /**
  * This function is used to render the edit task dialog from a template
@@ -297,7 +299,7 @@ function renderSubtaskInToOverview(i) {
 /**
  *  This function is used to render the subtasks-checkboxes into the task overview and and sets the status of the checkbox
  * 
- * @param {*} i - is the index position from the array tasks 
+ * @param {number} i - is the index position from the array tasks 
  */
 function rendersubtaskCheckboxes(i) {
     let subtasksValue = tasks[i]["subtasks-value"];

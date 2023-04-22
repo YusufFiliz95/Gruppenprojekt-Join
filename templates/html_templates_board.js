@@ -264,7 +264,7 @@ function templateAddTaskDialog() {
                             <img onclick="addSubtasks(), renderSubtasks()" src="./img/tick_dark.svg">
                         </div>
                     </div>
-                    <div id="subtasks-container"></div>
+                    <div class="subtasks-container" id="subtasks-container"></div>
                 </div>
             </div>
         </div>

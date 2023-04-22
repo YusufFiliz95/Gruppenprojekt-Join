@@ -633,3 +633,8 @@
 .overlay-shadow {
     background-color: rgba(0, 0, 0, 0.3) !important;
 }
+
+.subtasks-container {
+    max-height: 130px;
+    overflow-y: auto;
+}
