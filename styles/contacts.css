@@ -1540,6 +1540,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
     .contact-info-section {
         padding-left: 0px;
+        z-index: 1000 !important;
+    }
+
+    .close-contact-info-section {
+        margin-top: 50px;
     }
 
     .contact-information-edit-contact {
