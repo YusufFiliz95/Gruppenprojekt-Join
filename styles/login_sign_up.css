@@ -325,6 +325,7 @@ input:focus {
 }
 
 .forgot-my-pw-container {
+    margin-top: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -746,6 +747,38 @@ input:focus {
 
     .error-message-sign-up label {
         margin-left: -28px;
+    }
+}
+
+@media (max-width: 420px) {
+    .join-logo {
+        width: 30px !important;
+    }
+
+    .log-in {
+        margin-top: 120px !important;
+        height: 480px;
+    }
+
+    .log-in-title {
+        margin-top: 10px;
+        font-size: 40px;
+    }
+
+    .options {
+        margin: 0px;
+    }
+
+    .dark-btn {
+        margin-top: 20px;
+    }
+
+    .transparent-btn {
+        margin-bottom: 20px;
+    }
+
+    .forgot-my-pw-container {
+        margin-top: 400px;
     }
 }
 
