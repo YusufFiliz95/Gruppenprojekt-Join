@@ -48,7 +48,7 @@
         overflow-y: auto;
         width: auto;
         max-height: 100vh;
-        min-height: 805px;
+        min-height: 835px;
         padding-left: 20px;
         padding-right: 20px;
     }
@@ -109,6 +109,7 @@
     .subtasks-container {
         max-height: max-content;
         overflow-y: unset;
+        margin-bottom: 15px;
     }
 
 }
@@ -166,8 +167,10 @@
     }
 
     .add-task-buttons {
-        margin-top: 50px;
+        margin-top: 10px;
+        margin-bottom: 34px;
     }
+
 
     .input-field-search-on-board {
         width: 260px;
@@ -190,7 +193,7 @@
     }
 
     .add-task-content {
-        height: 100% !important;
+        height: max-content !important;
         align-items: flex-start !important;
     }
 
