@@ -227,66 +227,65 @@
         padding-bottom: 0px;
         overflow-y: auto;
     }
-}
 
+    .taskoverview-editbutton-container {
+        right: 25px;
+        width: 100%;
+        position: inherit;
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
 
+    .taskoverview-editbutton-container img {
+        height: 25px;
+        width: 25px;
 
-.taskoverview-editbutton-container {
-    right: 25px;
-    width: 100%;
-    position: inherit;
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-}
+        padding-top: 6px;
+        padding-bottom: 4px;
+        padding-left: 2.5px;
+        padding-right: 2.5px;
+    }
 
-.taskoverview-editbutton-container img {
-    height: 25px;
-    width: 25px;
-    padding-top: 6px;
-    padding-bottom: 4px;
-    padding-left: 2.5px;
-    padding-right: 2.5px;
-}
+    .edit-button-content {
+        display: flex;
+    }
 
-.edit-button-content {
-    display: flex;
-}
+    .edit-button-ok {
+        margin-left: 15px;
+        margin-top: 0px;
+        font-size: 18px;
+        width: 63px !important;
+        height: 42px !important;
+    }
 
-.edit-button-ok {
-    margin-left: 15px;
-    margin-top: 0px;
-    font-size: 18px;
-    width: 63px !important;
-    height: 42px !important;
-}
+    .edit-button-ok img {
+        height: 8px;
+    }
 
-.edit-button-ok img {
-    height: 8px;
-}
+    .edit-button-trash {
+        width: 63px !important;
+        height: 42px !important;
+    }
 
-.edit-button-trash {
-    width: 63px !important;
-    height: 42px !important;
-}
+    .edit-button-trash img {
+        height: 21px;
+        width: 21px;
+    }
 
-.edit-button-trash img {
-    height: 21px;
-    width: 21px;
-}
+    .delete-task-popup {
+        width: 100%;
+        height: 350px;
+        border-radius: 0px;
+        text-align: center;
+    }
 
-.delete-task-popup {
-    width: 100%;
-    height: 350px;
-    border-radius: 0px;
-    text-align: center;
-}
+    .overlay-shadow {
+        background-color: rgba(0, 0, 0, 0.3) !important;
+        z-index: 999 !important;
+    }
 
-.overlay-shadow {
-    background-color: rgba(0, 0, 0, 0.3) !important;
-    z-index: 999 !important;
-}
-
-h1 {
-    font-size: 47px !important;
+    h1 {
+        font-size: 47px !important;
+    }
 }

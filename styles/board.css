@@ -535,6 +535,7 @@
 }
 
 .edit-task-container p {
+    height: 100%;
     margin: 0;
     margin-top: -5px;
     margin-bottom: 2px;
