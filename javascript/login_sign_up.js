@@ -188,7 +188,7 @@ function renderSignUpForm() {
     <h1 class="sign-up-title">Sign Up</h1>
     <div class="log-in-border"></div>
     <div class="input-field user user-margin-top" onclick="focusInputField(this)">
-        <input type="text" placeholder="Name" id="signupname">
+        <input type="text" placeholder="Firstname Lastname" id="signupname">
         <img src="img/user.svg" alt="" class="user-img">
     </div>
     <div class="error-message-sign-up">
