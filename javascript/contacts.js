@@ -186,6 +186,18 @@ function showContactInfo(i) {
  * @param i - The index of the contact in the contacts array.
  */
 function renderContactInfo(formattedName, formattedSurname, formattedEmail, showClickedContact, contactinfo, i) {
+    let phoneNumberHTML;
+
+    if (contactinfo.phonenumber === '') {
+        phoneNumberHTML = /*html*/`
+            <p class="weight-1000">Phone</p>
+            <p onclick="editContact(${i})" class="add-phone-number">Add a phone number</p>`;
+    } else {
+        phoneNumberHTML = /*html*/`
+            <p class="weight-1000">Phone</p>
+            <p>${contactinfo.phonenumber}</p>`;
+    }
+
     showClickedContact.innerHTML = /*html*/`
     <div class="contact-info-initials-name-add-task">
         <div class="contact-info-initials-info" style="background-color: ${contactinfo.profilecolor}">
@@ -214,9 +226,8 @@ function renderContactInfo(formattedName, formattedSurname, formattedEmail, show
                 <p class="weight-1000">Email</p>
                 <p class="contact-info-email-underline">${formattedEmail}</p>
             </div>
-            <div class="contact-info-phone">
-                <p class="weight-1000">Phone</p>
-                <p>${contactinfo.phonenumber}</p>
+            <div class="contact-info-phone" id="phonenumberempty">
+                ${phoneNumberHTML}
             </div>
         </div>
         <div class="delete-contact-section">
@@ -227,6 +238,8 @@ function renderContactInfo(formattedName, formattedSurname, formattedEmail, show
     </div>
     `;
 }
+
+
 
 /**
  * The function hides the contact information section if the window width is less than or equal to 1360
@@ -497,17 +510,20 @@ function validateEmail(emailValue, errorId) {
 }
 
 /**
- * The function validates if a phone number is valid and returns a boolean value.
+ * The function validates a phone number input and displays an error message if the input is invalid.
  * @param phoneValue - The phone number value that needs to be validated.
- * @param errorId - The ID of the HTML element where the error message will be displayed if the phone
+ * @param errorId - The ID of the HTML element where the error message should be displayed if the phone
  * number is invalid.
- * @returns a boolean value (either true or false) depending on whether the phone number passed as the
- * first argument matches the regular expression pattern defined in the function. If the phone number
- * is valid, the function returns true and hides any error message displayed in the HTML element with
- * the ID specified as the second argument. If the phone number is invalid, the function returns false
- * and displays an error message
+ * @returns a boolean value (true or false) depending on whether the phone number input is valid or
+ * not. If the phone number is empty, it returns true. If the phone number is not empty, it checks if
+ * it matches the regular expression pattern for a valid phone number (10-15 digits) and returns true
+ * if it does, and false if it doesn't. In both cases
  */
 function validatePhone(phoneValue, errorId) {
+    if (phoneValue === '') {
+        hideErrorMessage(errorId);
+        return true;
+    }
     const phoneRegex = /^\d{10,15}$/;
     if (!phoneRegex.test(phoneValue)) {
         showErrorMessage(errorId, 'Please enter a valid phone number (10-15 digits).');

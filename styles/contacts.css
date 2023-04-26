@@ -1061,6 +1061,17 @@ input[type="number"]::-webkit-outer-spin-button {
     display: none;
 }
 
+.add-phone-number {
+    color: grey;
+    width: fit-content;
+    cursor: pointer;
+    transition: 120ms ease-in-out;
+}
+
+.add-phone-number:hover {
+    color: #29ABE2;
+}
+
 @media(max-width: 1360px) {
 
     .none-responsive {
