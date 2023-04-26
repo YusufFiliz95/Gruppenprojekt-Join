@@ -23,6 +23,7 @@ async function loadContacts() {
         document.getElementById('newcontactbtn').classList.remove('d-none');
         renderGroupedContacts(contactListDiv, sortedContacts); // Call the new function here
     }
+    await loadCategorysfromBackend();
 }
 
 /**
@@ -768,11 +769,12 @@ function closeDeletePopup() {
  * contact in a list or array. It is used as an argument to select and render the details of a specific
  * contact in the `openAddTaskDialogBord` function.
  */
-function openAddTaskDialogBord(contactIndex) {
+async function openAddTaskDialogBord(contactIndex) {
     document.getElementById('overlay-bord-addTaskId').classList.remove('d-none');
     document.getElementById('bodyBordId').classList.add('overflow-dialog');
     selectContact(contactIndex);
     renderAddTaskDialog(contactIndex);
+    setCurrentDate();
 }
 
 /**
@@ -782,7 +784,7 @@ function openAddTaskDialogBord(contactIndex) {
  * selected contact in the list of contacts. It is used to render the selected contact in the add task
  * dialog.
  */
-function renderAddTaskDialog(contactIndex) {
+async function renderAddTaskDialog(contactIndex) {
     document.getElementById('add-task-contact-contentId').innerHTML = templateAddTaskContactDialog();
     renderContacts();
     renderCategory();
