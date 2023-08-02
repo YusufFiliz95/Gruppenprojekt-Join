@@ -32,7 +32,6 @@ label {
     height: 41px;
     border: 1px solid #A8A8A8;
     border-radius: 10px;
-    cursor: pointer;
 }
 
 .input-field input {
@@ -42,7 +41,6 @@ label {
     border: 0;
     background-color: transparent;
     font-family: 'Inter';
-    cursor: pointer;
 }
 
 /* textarea */
@@ -250,16 +248,17 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     width: 15px;
     border-radius: 50%;
     cursor: pointer;
+    margin-left: 4px;
+    margin-right: 4px;
 }
 
 .color-container div:hover {
-    border: 2px solid #FFFFFF;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
 }
 
 .color-container {
     display: flex;
-    gap: 8px
+
 }
 
 /* Color Circles Contact */
@@ -286,8 +285,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
 .required {
     margin-top: 4px;
-    margin-bottom: px;
+    margin-bottom: 4px;
     color: rgb(251, 129, 144);
+}
+
+.required-container {
+    min-height: 28px;
 }
 
 @media(min-width: 600px) {

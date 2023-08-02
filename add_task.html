@@ -119,14 +119,18 @@
                     <div class="input-field">
                         <input id="title" type="text" placeholder="Enter a title">
                     </div>
-                    <p class="required" id="required0"></p>
+                    <div class="required-container">
+                        <p class="required" id="required0"></p>
+                    </div>
                 </div>
                 <!-- description input -->
                 <div class="input-container">
                     <label>Description</label>
                     <textarea class="textarea-field" id="description" rows="3"
                         placeholder="Enter a description"></textarea>
-                    <p class=" required" id="required1"></p>
+                    <div class="required-container">
+                        <p class=" required" id="required1"></p>
+                    </div>
                 </div>
                 <!-- category input -->
                 <div class="input-container">
@@ -152,7 +156,9 @@
                         </div>
                     </div>
                     <div id="color-container" class="color-container"></div>
-                    <p class="required" id="required2"></p>
+                    <div class="required-container">
+                        <p class="required" id="required2"></p>
+                    </div>
                 </div>
                 <!-- contact input -->
                 <div class="input-container">
@@ -171,7 +177,9 @@
                         </div>
                     </div>
                     <div class="color-container-contact" id="inicial-circles"></div>
-                    <p class="required" id="required3"></p>
+                    <div class="required-container">
+                        <p class="required" id="required3"></p>
+                    </div>
                 </div>
             </div>
             <div class="task-right">
@@ -181,7 +189,11 @@
                     <div class="input-field due-date">
                         <input id="due-date" type="date" placeholder="dd/mm/yyyy">
                     </div>
-                    <p class="required" id="required4"></p>
+                    <div class="required-container">
+                        <div class="required-container">
+                            <p class="required" id="required4"></p>
+                        </div>
+                    </div>
                 </div>
                 <!-- Prio Buttons input -->
                 <div class="input-container">
@@ -194,7 +206,9 @@
                         <button id="low-btn" onclick="addPrio(3)"><span>Low</span><img class="prio-img" id="low-image"
                                 src="./img/prio_low.svg"></button>
                     </div>
-                    <p class="required" id="required5"></p>
+                    <div class="required-container">
+                        <p class="required" id="required5"></p>
+                    </div>
                 </div>
                 <!-- subtask input -->
                 <div class="input-container">
