@@ -1,5 +1,5 @@
 body {
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 
@@ -121,6 +121,7 @@ body {
     height: 21px;
     font-size: 21px;
     margin-bottom: 16px;
+    white-space: nowrap;
 }
 
 .contact-name p {
