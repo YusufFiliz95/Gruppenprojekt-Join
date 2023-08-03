@@ -1,3 +1,7 @@
+body {
+    overflow: scroll !important;
+}
+
 .fixed {
     position: fixed;
 }
