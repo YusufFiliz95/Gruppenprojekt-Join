@@ -83,7 +83,7 @@ function rotateCardBack(id) {
  * This function is used to checks the screen size and initiates functions accordingly and allow/ not allow drag&drop
  */
 function checkWindowInnerScreenForDragAndDrog() {
-    if (window.innerWidth > 1280) {
+    if (window.innerWidth > 1023) {
         for (let i = 0; i < cardAmounts.length; i++) {
             id = cardAmounts[i];
             document.getElementById('card' + id).draggable = true;
