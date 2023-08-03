@@ -11,7 +11,7 @@ let users = [];
  * @param {number} i id of the different pages
  */
 function init(i) {
-    setURL('https://tobias-ruhmanseder.developerakademie.net/Modul10_Join/smallest_backend_ever');
+    setURL('https://tobias-ruhmanseder.developerakademie.net/Gruppenaufgaben/Join/smallest_backend_ever');
     includeHTML().then(() => {
         selectMenuPoint(i);
         setSelectedMenu();

@@ -1,7 +1,6 @@
 body {
-    overflow: hidden !important;
+    overflow: hidden;
 }
-
 
 .contacts-section {
     box-sizing: border-box;
